@@ -12,6 +12,7 @@
 * Fixed: Line, Bar, Pie and Doughnut charts not working.
 * Fixed: Option type `button` not showing labels for colors being chosen.
 * Fixed: URLs with inadvertent spaces added to start or end not saving in theme options and layout builder.
+* Fixed: "Add Shortcode" button displaying in layout builder when disabled from *Settings > Writing*.
 
 --------------------------------------------------------------
 

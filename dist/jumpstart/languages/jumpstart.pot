@@ -3537,7 +3537,7 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: ../framework/admin/functions/locals.php:55
+#: ../framework/admin/functions/locals.php:57
 msgid "Add Shortcode"
 msgstr ""
 

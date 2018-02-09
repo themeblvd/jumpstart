@@ -52,8 +52,11 @@ function themeblvd_get_admin_locals( $type ) {
 
 			if ( defined( 'TB_SHORTCODES_PLUGIN_VERSION' ) ) {
 
-				$locals['add_shortcode'] = __( 'Add Shortcode', '@@text-domain' );
+				if ( 'no' != get_option( 'themeblvd_shortcode_generator' ) ) {
 
+					$locals['add_shortcode'] = __( 'Add Shortcode', '@@text-domain' );
+
+				}
 			}
 
 			break;
