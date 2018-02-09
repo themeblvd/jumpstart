@@ -1,6 +1,6 @@
 # Jump Start Changelog
 
-## 2.2.2 - XX/XX/2018
+## 2.2.2 - 02/09/2018
 
 * **Updated Theme Blvd framework to 2.7.2**
 * Improvement: Framework welcome message will now only show on Themes screen, and only once per user dismiss; it will no longer display again when switching back and forth themes.
