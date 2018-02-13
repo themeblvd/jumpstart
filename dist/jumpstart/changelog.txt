@@ -3,6 +3,7 @@
 ## 2.2.3 - XX/XX/2018
 
 * **Updated Theme Blvd framework to 2.7.3**
+* Fixed: Images sometimes not displaying within `[caption]` shortcode; this would happen when a captioned image had a link that was NOT a lightbox URL (i.e. not a link to an image file or video).
 
 --------------------------------------------------------------
 

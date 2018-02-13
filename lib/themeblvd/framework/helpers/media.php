@@ -497,13 +497,13 @@ function themeblvd_img_caption_shortcode( $output, $attr, $content ) {
 
 				$content = str_replace( '<a', '<a class="tb-thumb-link post"', $content );
 
-				$content = str_replace( '</a>', themeblvd_get_thumbnail_link_icon( 'post' ) . '</a>' );
+				$content = str_replace( '</a>', themeblvd_get_thumbnail_link_icon( 'post' ) . '</a>', $content );
 
 			} else {
 
 				$content = str_replace( '<a', '<a class="tb-thumb-link external" target="_blank"', $content );
 
-				$content = str_replace( '</a>', themeblvd_get_thumbnail_link_icon( 'external' ) . '</a>' );
+				$content = str_replace( '</a>', themeblvd_get_thumbnail_link_icon( 'external' ) . '</a>', $content );
 
 			}
 		}
