@@ -281,7 +281,7 @@ class Theme_Blvd_Query {
 
 			}
 
-			if ( empty( $args['order'] ) ) {
+			if ( ! empty( $args['order'] ) ) {
 
 				$query['order'] = $args['order'];
 
