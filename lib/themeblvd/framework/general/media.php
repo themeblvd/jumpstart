@@ -225,8 +225,9 @@ function themeblvd_get_thumbnail_link_icon( $type = '' ) {
 	 * @since @@name-framework 2.7.0
 	 *
 	 * @param string $icon_name Icon name.
+	 * @param string $type      Icon type.
 	 */
-	$icon_name = apply_filters( 'themeblvd_thumbnail_link_icon_name', $icon_name );
+	$icon_name = apply_filters( 'themeblvd_thumbnail_link_icon_name', $icon_name, $type );
 
 	$icon = sprintf(
 		'<span class="thumb-link-icon"><i class="%s"></i></span>',
