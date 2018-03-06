@@ -16,7 +16,7 @@
  *
  * @var {object}
  */
-window.themeblvd = {};
+var themeblvd = {};
 
 /**
  * Admin Utilities: Tools
