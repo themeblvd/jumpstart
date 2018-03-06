@@ -5,6 +5,7 @@
 * **Updated Theme Blvd framework to 2.7.3**
 * Fixed: Images sometimes not displaying within `[caption]` shortcode; this would happen when a captioned image had a link that was NOT a lightbox URL (i.e. not a link to an image file or video).
 * Fixed: Selected "order" query parameter (i.e. `ASC` or `DESC`) sometimes not getting used with paginated post elements.
+* Fixed: Scroll-to-section buttons not working, when sticky header is disabled.
 
 --------------------------------------------------------------
 

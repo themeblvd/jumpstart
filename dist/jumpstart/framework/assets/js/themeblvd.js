@@ -761,11 +761,9 @@ jQuery(document).ready(function($) {
 
 		top = $( to ).offset().top;
 
-		console.log(top);
-
 		if ( themeblvd.scroll_to_section_offset ) {
 			top = top - parseInt( themeblvd.scroll_to_section_offset );
-		} else if ( themeblvd.sticky !== 'false' ) {
+		} else if ( themeblvd.sticky_offset ) {
 			top = top - parseInt( themeblvd.sticky_offset );
 		}
 
