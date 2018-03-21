@@ -2,6 +2,8 @@
 
 ## 2.2.4 - XX/XX/2018
 
+* Improvement: Added filter `themeblvd_slider_disable_mobile_interval` to disable auto-roation of hero unit slider on mobile devices; this was previously disabled by default, with no filter to change.
+
 --------------------------------------------------------------
 
 ## 2.2.3 - 03/12/2018

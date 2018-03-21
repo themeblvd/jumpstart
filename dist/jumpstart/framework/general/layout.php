@@ -1618,7 +1618,15 @@ function themeblvd_get_jumbotron_slider( $args ) {
 
 		$interval = esc_attr( $args['timeout'] );
 
-		if ( wp_is_mobile() ) {
+		/**
+		 * Filters whether auto-rotations is automatically
+		 * disabled on true mobile devices.
+		 *
+		 * @since Theme_Blvd 2.7.4
+		 *
+		 * @param bool Whether to disable.
+		 */
+		if ( wp_is_mobile() && apply_filters( 'themeblvd_slider_disable_mobile_interval', true ) ) {
 
 			$interval = '0'; // Disable auto rotation for true mobile devices.
 
