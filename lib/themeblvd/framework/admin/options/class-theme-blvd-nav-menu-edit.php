@@ -29,6 +29,8 @@ if ( class_exists( 'Walker_Nav_Menu_Edit' ) ) {
 		 */
 		function end_el( &$output, $item, $depth = 0, $args = array() ) {
 
+			parent::end_el( $output, $item, $depth, $args );
+
 			// Options to add
 			ob_start();
 

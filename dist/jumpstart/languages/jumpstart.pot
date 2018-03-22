@@ -4017,23 +4017,23 @@ msgstr ""
 msgid "Masonry"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-nav-menu-edit.php:44
+#: ../framework/admin/options/class-theme-blvd-nav-menu-edit.php:46
 msgid "Enable Theme Blvd mega menu"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-nav-menu-edit.php:50
+#: ../framework/admin/options/class-theme-blvd-nav-menu-edit.php:52
 msgid "Hide mega menu column headers from 2nd level"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-nav-menu-edit.php:56
+#: ../framework/admin/options/class-theme-blvd-nav-menu-edit.php:58
 msgid "Bold menu item text (doesn't apply to mega menu headers)"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-nav-menu-edit.php:62
+#: ../framework/admin/options/class-theme-blvd-nav-menu-edit.php:64
 msgid "Remove link functionality (sub levels only)"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-nav-menu-edit.php:68
+#: ../framework/admin/options/class-theme-blvd-nav-menu-edit.php:70
 msgid "Display as transparent placeholder (sub levels only)"
 msgstr ""
 

@@ -2,7 +2,9 @@
 
 ## 2.2.4 - XX/XX/2018
 
+* Improvement: Navigational arrows now display with hero unit slider on mobile.
 * Improvement: Added filter `themeblvd_slider_disable_mobile_interval` to disable auto-roation of hero unit slider on mobile devices; this was previously disabled by default, with no filter to change.
+* Fixed: Minor HTML output issue at *Appearance > Menus*, due to the mega menu options the theme adds.
 
 --------------------------------------------------------------
 
