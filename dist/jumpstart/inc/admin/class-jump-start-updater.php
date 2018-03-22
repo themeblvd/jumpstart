@@ -166,7 +166,7 @@ class Jump_Start_Updater {
 
 			foreach ( $items as $shortname => $item ) {
 
-				if ( ! empty( $item['license'] ) && 'valid' == $item['license'] ) {
+				if ( ! empty( $extensions[ $shortname ] ) && ! empty( $item['license'] ) && 'valid' == $item['license'] ) {
 
 					$item = wp_parse_args( $item, $extensions[ $shortname ] );
 
