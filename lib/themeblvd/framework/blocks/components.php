@@ -2465,16 +2465,40 @@ function themeblvd_get_toggle( $args ) {
 
 	}
 
+	/**
+	 * Filters the icons used to open and close a toggle.
+	 *
+	 * If you'd like to get really specific with the icon style,
+	 * you can pass specific FA classes like `fal fa-plus-circle`.
+	 *
+	 * @since @@name-framework 2.7.4
+	 *
+	 * @param array {
+	 *     Icon names or classes.
+	 *
+	 *     @type string $show Icon name or classes to open a closed toggle.
+	 *     @type string $show Icon name or classes to close an open toggle.
+ 	 * }
+	 */
+	$icon_names = apply_filters( 'themeblvd_toggle_icons', array(
+		'show' => 'plus-circle',
+		'hide' => 'minus-circle',
+	) );
+
+	$icon_show = '<i class="' . esc_attr( themeblvd_get_icon_class( $icon_names['show'], array( 'icon-show', 'switch-me' ) ) ) . '"></i>'; // switch-me class is for backwards compat.
+
+	$icon_hide = '<i class="' . esc_attr( themeblvd_get_icon_class( $icon_names['hide'], array( 'icon-hide', 'switch-me' ) ) ) . '"></i>'; // switch-me class is for backwards compat.
+
 	// Is toggle open?
 	$state = 'panel-collapse collapse';
 
-	$icon = 'plus-circle';
+	$trigger_class = 'panel-title';
 
 	if ( 'true' == $args['open'] || '1' == $args['open'] ) {
 
 		$state .= ' in';
 
-		$icon = 'minus-circle';
+		$trigger_class .= ' active-trigger';
 
 	}
 
@@ -2486,7 +2510,7 @@ function themeblvd_get_toggle( $args ) {
         <div class="' . esc_attr( $class ) . '">
             <div class="panel-heading">
                 <a class="panel-title" data-toggle="collapse" data-parent="" href="#' . $toggle_id . '">
-                    <i class="' . themeblvd_get_icon_class( $icon ) . ' switch-me"></i>' . themeblvd_kses( $args['title'] ) . '
+                    <span class="panel-title-icon">' . $icon_show . $icon_hide . '</span>' . themeblvd_kses( $args['title'] ) . '
                 </a>
             </div><!-- .panel-heading (end) -->
             <div id="' . $toggle_id . '" class="' . $state . '">

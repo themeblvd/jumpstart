@@ -1321,21 +1321,35 @@ jQuery(document).ready(function($) {
 		// Collapsables expanded
 		// This basically just toggles the Plus/Minus fontawesome
 		// icon we've incorporated into the triggers for the toggles.
-		$('.collapse').on('show.bs.collapse', function() {
+		$( '.collapse' ).on( 'show.bs.collapse', function() {
 
-			// Toggle is opening, add "active-trigger" class and
-			// change icon to a minus sign.
-			$(this).closest('.panel').find('.panel-heading a').addClass('active-trigger').find('.switch-me').removeClass('fa-plus-circle').addClass('fa-minus-circle');
+			var $toggleLink = $( this );
 
-		});
+			/*
+			 * Toggle is opening, add "active-trigger" class and
+			 * change icon to a minus sign.
+			 */
+			$toggleLink
+				.closest( '.panel' )
+				.find( '.panel-heading a' )
+				.addClass( 'active-trigger' );
 
-		$('.collapse').on('hide.bs.collapse', function() {
+		} );
 
-			// Toggle is closing, remove "active-trigger" class and
-			// change icon to a plus sign.
-			$(this).closest('.panel').find('.panel-heading a').removeClass('active-trigger').find('.switch-me').removeClass('fa-minus-circle').addClass('fa-plus-circle');
+		$( '.collapse' ).on( 'hide.bs.collapse', function() {
 
-		});
+			var $toggleLink = $( this );
+
+			/*
+			 * Toggle is closing, remove "active-trigger" class and
+			 * change icon to a plus sign.
+			 */
+			$toggleLink
+				.closest( '.panel' )
+				.find( '.panel-heading a' )
+				.removeClass( 'active-trigger' );
+
+		} );
 
 		// And now if the user has wrapped a set of "toggles" into an
 		// accordian, this will attach them all.

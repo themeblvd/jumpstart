@@ -6198,8 +6198,20 @@ body.mobile .tb-bg-video {
 	border-bottom-right-radius: 0;
 }
 */
-.tb-toggle .panel-heading .switch-me {
+.tb-toggle .panel-heading .panel-title-icon {
 	margin-left: 7px;
+}
+.tb-toggle .panel-heading .icon-show {
+	display: inline-block;
+}
+.tb-toggle .panel-heading .icon-hide {
+	display: none;
+}
+.tb-toggle .panel-heading .active-trigger .icon-show {
+	display: none;
+}
+.tb-toggle .panel-heading .active-trigger .icon-hide {
+	display: inline-block;
 }
 .tb-toggle.panel-default .panel-title {
 	color: #666666;
