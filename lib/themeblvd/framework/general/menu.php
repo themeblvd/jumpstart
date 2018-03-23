@@ -239,6 +239,16 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 			}
 
 			/**
+			 * Filters the sub indicator menu icon name.
+			 *
+			 * @since @@name-framework 2.7.4
+			 *
+			 * @param string            Icon name.
+			 * @param string $direction Direction indicator arrow should point to, like `down` or `right`.
+			 */
+			$icon = apply_filters( 'themeblvd_menu_sub_indicator_icon', 'angle-' . $direction, $direction );
+
+			/**
 			 * Filters the sub indicator menu icon HTML.
 			 *
 			 * @since @@name-framework 2.2.0
@@ -248,7 +258,7 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 			 */
 			$args->link_after = apply_filters(
 				'themeblvd_menu_sub_indicator',
-				sprintf( '<i class="sf-sub-indicator %s"></i>', themeblvd_get_icon_class( 'angle-' . $direction ) ),
+				sprintf( '<i class="sf-sub-indicator %s"></i>', themeblvd_get_icon_class( $icon ) ),
 				$direction
 			);
 

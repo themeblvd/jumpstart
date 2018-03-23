@@ -11,6 +11,7 @@
 * Improvement: Added filter `themeblvd_lang_popup_trigger_icon` to customize the icon used to link to the floating WPML language switcher.
 * Improvement: Added filter `themeblvd_testimonial_author_fallback_icon` to customize the icon used to represent the author of a testimonial, when no image is supplied.
 * Improvement: Added filter `themeblvd_external_link_title_icon` to customize the icon used in the title of "link" format posts.
+* Improvement: Added filter `themeblvd_menu_sub_indicator_icon` to customize the icon used to indicate dropdown menus in the main navigation.
 * Fixed: Minor HTML output issue at *Appearance > Menus*, due to the mega menu options the theme adds.
 * Fixed: Minor PHP warnings when a Jump Start extension's license is activated, but then the plugin is disabled.
 

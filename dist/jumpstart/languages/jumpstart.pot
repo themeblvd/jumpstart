@@ -2649,7 +2649,7 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: ../framework/general/menu.php:555
+#: ../framework/general/menu.php:565
 msgid "The &lt;select&gt; menu to replaces the main navigation on mobile is no longer supported."
 msgstr ""
 
