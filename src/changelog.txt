@@ -5,6 +5,7 @@
 * Improvement: Navigational arrows now display with hero unit slider on mobile.
 * Improvement: Added filter `themeblvd_slider_disable_mobile_interval` to disable auto-roation of hero unit slider on mobile devices; this was previously disabled by default, with no filter to change.
 * Improvement: Added filter `themeblvd_toggle_icons` to customize the icons used for opening and closing a toggle.
+* Improvement: Added filter `themeblvd_contact_bar_icon` to customize which icons are used in a contact bar.
 * Fixed: Minor HTML output issue at *Appearance > Menus*, due to the mega menu options the theme adds.
 * Fixed: Minor PHP warnings when a Jump Start extension's license is activated, but then the plugin is disabled.
 

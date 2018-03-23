@@ -419,7 +419,7 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 				/*
 				 * Convert icon names to FontAwesome icon names.
 				 *
-				 * Most icon ID's already match FontAwesome by default,
+				 * Most icon ID's already match Font Awesome by default,
 				 * but below we'll convert the ones that need to be
 				 * converted.
 				 */
@@ -471,6 +471,17 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 						$icon = 'vimeo-square';
 
 				}
+
+				/**
+				 * Filters the icon name used for icons used
+				 * in the contact bar.
+				 *
+				 * @since @@name-framework 2.7.4
+				 *
+				 * @param string $icon Icon name.
+				 * @param string $type Original icon name before any alterations.
+				 */
+				$icon = apply_filters( 'themeblvd_contact_bar_icon', $icon, $button['icon'] );
 
 				$content = sprintf(
 					'<i class="%s"></i>',
