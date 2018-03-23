@@ -8,6 +8,7 @@
 * Improvement: Added filter `themeblvd_contact_bar_icon` to customize which icons are used in a contact bar.
 * Improvement: Added filter `themeblvd_shopping_cart_icon` to customize the shopping cart icon used on both desktop and mobile.
 * Improvement: Added filter `themeblvd_testimonial_author_fallback_icon` to customize the icon used to represent the author of a testimonial, when no image is supplied.
+* Improvement: Added filter `themeblvd_external_link_title_icon` to customize the icon used in the title of "link" format posts.
 * Fixed: Minor HTML output issue at *Appearance > Menus*, due to the mega menu options the theme adds.
 * Fixed: Minor PHP warnings when a Jump Start extension's license is activated, but then the plugin is disabled.
 

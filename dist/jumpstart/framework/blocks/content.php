@@ -498,7 +498,17 @@ function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
 
 			$url = $find[1];
 
-			$title = $title . ' <i class="' . themeblvd_get_icon_class( 'fa-external-link-square-alt' ) . '"></i>';
+			/**
+			 * Filters the icon name used in the title of a
+			 * "link" format post.
+			 *
+			 * @since Theme_Blvd 2.7.4
+			 *
+			 * @param string Icon name.
+			 */
+			$icon = apply_filters( 'themeblvd_external_link_title_icon', 'external-link-square-alt' );
+
+			$title = $title . ' <i class="' . esc_attr( themeblvd_get_icon_class( $icon ) ) . '"></i>';
 
 		}
 	}
