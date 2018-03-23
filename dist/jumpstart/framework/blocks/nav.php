@@ -1138,6 +1138,16 @@ function themeblvd_mobile_cart_link() {
 function themeblvd_get_lang_popup_trigger( $args = array() ) {
 
 	/**
+	 * Filters the icon used to open the floating
+	 * WPML language switcher.
+	 *
+	 * @since Theme_Blvd 2.7.4
+	 *
+	 * @param string Icon name.
+	 */
+	$icon = apply_filters( 'themeblvd_lang_popup_trigger_icon', 'globe' );
+
+	/**
 	 * Filters the default arguments for a link to
 	 * open a floating language switcher.
 	 *
@@ -1151,7 +1161,7 @@ function themeblvd_get_lang_popup_trigger( $args = array() ) {
 	 * }
 	 */
 	$defaults = apply_filters( 'themeblvd_lang_popup_trigger_defaults', array(
-		'icon'  => 'globe',
+		'icon'  => $icon,
 		'class' => '',
 	) );
 
