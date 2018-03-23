@@ -2145,7 +2145,15 @@ function themeblvd_get_testimonial( $args ) {
 
 			$output .= sprintf(
 				'<span class="author-image"><i class="%s"></i></span>',
-				themeblvd_get_icon_class( 'user' )
+				/**
+				 * Filters the icon used to represent a testimonial
+				 * author, when an image is not supplied.
+				 *
+				 * @since @@name-framework 2.7.4
+				 *
+				 * @param string Icon name.
+				 */
+				esc_attr( themeblvd_get_icon_class( apply_filters( 'themeblvd_testimonial_author_fallback_icon', 'user' ) ) )
 			);
 
 		} else {
