@@ -589,6 +589,16 @@ function themeblvd_contact_bar( $buttons = array(), $args = array(), $trans = tr
 function themeblvd_get_floating_search_trigger( $args = array() ) {
 
 	/**
+	 * Filters the icon used to open the floating
+	 * search modal.
+	 *
+	 * @since Theme_Blvd 2.7.4
+	 *
+	 * @param string Icon name.
+	 */
+	$icon = apply_filters( 'themeblvd_search_trigger_icon', 'search' );
+
+	/**
 	 * Filters the default arguments for a link to
 	 * open a floating searchform.
 	 *
@@ -602,7 +612,7 @@ function themeblvd_get_floating_search_trigger( $args = array() ) {
 	 * }
 	 */
 	$defaults = apply_filters( 'themeblvd_floating_search_trigger_defaults', array(
-		'open'  => 'search',
+		'open'  => $icon,
 		'class' => '',
 	) );
 
