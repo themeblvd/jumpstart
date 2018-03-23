@@ -153,7 +153,7 @@ function themeblvd_get_meta( $args = array() ) {
 
 					if ( in_array( $item, $args['icons'] ) ) {
 
-						$author_icon = '<i class="' . themeblvd_get_icon_class( $icons['author'] ) . '"></i>';
+						$author_icon = '<i class="' . esc_attr( themeblvd_get_icon_class( $icons['author'] ) ) . '"></i>';
 
 					} else {
 
@@ -174,7 +174,7 @@ function themeblvd_get_meta( $args = array() ) {
 				case 'category':
 					if ( in_array( $item, $args['icons'] ) ) {
 
-						$category_icon = '<i class="' . themeblvd_get_icon_class( $tax_icon ) . '"></i>';
+						$category_icon = '<i class="' . esc_attr( themeblvd_get_icon_class( $tax_icon ) ) . '"></i>';
 
 					} else {
 
@@ -213,7 +213,7 @@ function themeblvd_get_meta( $args = array() ) {
 
 					if ( in_array( $item, $args['icons'] ) ) {
 
-						$item_output .= '<i class="' . themeblvd_get_icon_class( $icons['comments'] ) . '"></i>';
+						$item_output .= '<i class="' . esc_attr( themeblvd_get_icon_class( $icons['comments'] ) ) . '"></i>';
 
 					}
 
@@ -238,7 +238,7 @@ function themeblvd_get_meta( $args = array() ) {
 
 								$format_icon = sprintf(
 									'<i class="%s"></i>',
-									themeblvd_get_icon_class( $format_icon )
+									esc_attr( themeblvd_get_icon_class( $format_icon ) )
 								);
 
 							}
@@ -257,7 +257,7 @@ function themeblvd_get_meta( $args = array() ) {
 				case 'time':
 					if ( in_array( $item, $args['icons'] ) ) {
 
-						$time_icon = '<i class="' . themeblvd_get_icon_class( $icons['time'] ) . '"></i>';
+						$time_icon = '<i class="' . esc_attr( themeblvd_get_icon_class( $icons['time'] ) ) . '"></i>';
 
 					} else {
 
