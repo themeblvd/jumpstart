@@ -846,11 +846,11 @@ function themeblvd_get_cart_popup_trigger( $args = array() ) {
 	 */
 	$defaults = apply_filters( 'themeblvd_cart_popup_trigger_defaults', array(
 		'id'     => '',
-		'icon'   => 'shopping-basket',           // FontAwesome icon to open.
-		'class'  => '',                          // Optional CSS classes to add.
-		'target' => 'floating-shopping-cart',    // HTML ID of floating shopping cart linking to.
-		'url'    => '#',                         // Cart URL.
-		'count'  => '',                          // Cart item count.
+		'icon'   => themeblvd_get_shopping_cart_icon(),
+		'class'  => '',
+		'target' => 'floating-shopping-cart',
+		'url'    => '#',
+		'count'  => '',
 	) );
 
 	$args = wp_parse_args( $args, $defaults );
@@ -1059,6 +1059,11 @@ function themeblvd_get_mobile_cart_link() {
 		}
 	}
 
+	$icon = sprintf(
+		'<i class="%s"></i>',
+		esc_attr( themeblvd_get_icon_class( themeblvd_get_shopping_cart_icon() ) )
+	);
+
 	$output = sprintf(
 		'<a href="%s" id="mobile-to-cart" class="btn-navbar cart">%s%s</a>',
 		/**
@@ -1070,13 +1075,14 @@ function themeblvd_get_mobile_cart_link() {
 		 */
 		esc_url( apply_filters( 'themeblvd_cart_url', $cart_url ) ),
 		/**
-		 * Filters the HTML for shopping cart icon in header.
+		 * Filters the HTML for shopping cart icon in the
+		 * mobile header.
 		 *
 		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param string Basic HTML For cart icon.
 		 */
-		themeblvd_kses( apply_filters( 'themeblvd_btn_navbar_cart_text', '<i class="fas fa-shopping-basket"></i>' ) ),
+		themeblvd_kses( apply_filters( 'themeblvd_btn_navbar_cart_text', $icon ) ),
 		themeblvd_kses( $cart_label )
 	);
 
