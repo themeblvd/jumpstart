@@ -4,14 +4,14 @@
 
 * Improvement: Navigational arrows now display with hero unit slider on mobile.
 * Improvement: Added filter `themeblvd_slider_disable_mobile_interval` to disable auto-roation of hero unit slider on mobile devices; this was previously disabled by default, with no filter to change.
-* Improvement: Added filter `themeblvd_toggle_icons` to customize the icons used for opening and closing a toggle.
-* Improvement: Added filter `themeblvd_contact_bar_icon_name` to customize which icons are used in a contact bar.
-* Improvement: Added filter `themeblvd_shopping_cart_icon_name` to customize the shopping cart icon used on both desktop and mobile.
-* Improvement: Added filter `themeblvd_search_trigger_icon_name` to customize the icon used to link to the floating search modal.
-* Improvement: Added filter `themeblvd_lang_popup_trigger_icon_name` to customize the icon used to link to the floating WPML language switcher.
-* Improvement: Added filter `themeblvd_testimonial_author_fallback_icon_name` to customize the icon used to represent the author of a testimonial, when no image is supplied.
-* Improvement: Added filter `themeblvd_external_link_title_icon_name` to customize the icon used in the title of "link" format posts.
-* Improvement: Added filter `themeblvd_sub_indicator_icon_name` to customize the icon used to indicate dropdown menus in the main navigation.
+* Improvement: Added filter `themeblvd_toggle_icons` to customize the icons used for opening and closing a toggle (see [usage example](http://dev.themeblvd.com/tutorial/customizing-font-awesome-icons/#toggles)).
+* Improvement: Added filter `themeblvd_contact_bar_icon_name` to customize which icons are used in a contact bar (see [usage example](http://dev.themeblvd.com/tutorial/customizing-font-awesome-icons/#contact)).
+* Improvement: Added filter `themeblvd_shopping_cart_icon_name` to customize the shopping cart icon used on both desktop and mobile (see [usage example](http://dev.themeblvd.com/tutorial/customizing-font-awesome-icons/#shopping-cart)).
+* Improvement: Added filter `themeblvd_search_trigger_icon_name` to customize the icon used to link to the floating search modal (see [usage example](http://dev.themeblvd.com/tutorial/customizing-font-awesome-icons/#search)).
+* Improvement: Added filter `themeblvd_lang_popup_trigger_icon_name` to customize the icon used to link to the floating WPML language switcher (see [usage example](http://dev.themeblvd.com/tutorial/customizing-font-awesome-icons/#language-switcher)).
+* Improvement: Added filter `themeblvd_testimonial_author_fallback_icon_name` to customize the icon used to represent the author of a testimonial, when no image is supplied (see [usage example](http://dev.themeblvd.com/tutorial/customizing-font-awesome-icons/#testimonials)).
+* Improvement: Added filter `themeblvd_external_link_title_icon_name` to customize the icon used in the title of "link" format posts (see [usage example](http://dev.themeblvd.com/tutorial/customizing-font-awesome-icons/#link-post-format)).
+* Improvement: Added filter `themeblvd_sub_indicator_icon_name` to customize the icon used to indicate dropdown menus in the main navigation (see [usage example](http://dev.themeblvd.com/tutorial/customizing-font-awesome-icons/#menu-subs)).
 * Fixed: Minor HTML output issue at *Appearance > Menus*, due to the mega menu options the theme adds.
 * Fixed: Minor PHP warnings when a Jump Start extension's license is activated, but then the plugin is disabled.
 
