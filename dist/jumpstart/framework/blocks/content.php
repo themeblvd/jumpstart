@@ -506,7 +506,7 @@ function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
 			 *
 			 * @param string Icon name.
 			 */
-			$icon = apply_filters( 'themeblvd_external_link_title_icon', 'external-link-square-alt' );
+			$icon = apply_filters( 'themeblvd_external_link_title_icon_name', 'external-link-square-alt' );
 
 			$title = $title . ' <i class="' . esc_attr( themeblvd_get_icon_class( $icon ) ) . '"></i>';
 

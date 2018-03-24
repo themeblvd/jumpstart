@@ -481,7 +481,7 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 				 * @param string $icon Icon name.
 				 * @param string $type Original icon name before any alterations.
 				 */
-				$icon = apply_filters( 'themeblvd_contact_bar_icon', $icon, $button['icon'] );
+				$icon = apply_filters( 'themeblvd_contact_bar_icon_name', $icon, $button['icon'] );
 
 				$content = sprintf(
 					'<i class="%s"></i>',
@@ -596,7 +596,7 @@ function themeblvd_get_floating_search_trigger( $args = array() ) {
 	 *
 	 * @param string Icon name.
 	 */
-	$icon = apply_filters( 'themeblvd_search_trigger_icon', 'search' );
+	$icon = apply_filters( 'themeblvd_search_trigger_icon_name', 'search' );
 
 	/**
 	 * Filters the default arguments for a link to
@@ -856,7 +856,7 @@ function themeblvd_get_cart_popup_trigger( $args = array() ) {
 	 */
 	$defaults = apply_filters( 'themeblvd_cart_popup_trigger_defaults', array(
 		'id'     => '',
-		'icon'   => themeblvd_get_shopping_cart_icon(),
+		'icon'   => themeblvd_get_shopping_cart_icon_name(),
 		'class'  => '',
 		'target' => 'floating-shopping-cart',
 		'url'    => '#',
@@ -1071,7 +1071,7 @@ function themeblvd_get_mobile_cart_link() {
 
 	$icon = sprintf(
 		'<i class="%s"></i>',
-		esc_attr( themeblvd_get_icon_class( themeblvd_get_shopping_cart_icon() ) )
+		esc_attr( themeblvd_get_icon_class( themeblvd_get_shopping_cart_icon_name() ) )
 	);
 
 	$output = sprintf(
@@ -1145,7 +1145,7 @@ function themeblvd_get_lang_popup_trigger( $args = array() ) {
 	 *
 	 * @param string Icon name.
 	 */
-	$icon = apply_filters( 'themeblvd_lang_popup_trigger_icon', 'globe' );
+	$icon = apply_filters( 'themeblvd_lang_popup_trigger_icon_name', 'globe' );
 
 	/**
 	 * Filters the default arguments for a link to

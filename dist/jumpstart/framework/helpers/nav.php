@@ -832,7 +832,7 @@ function themeblvd_get_menu_toggle( $class = '' ) {
  *
  * @return string Icon name.
  */
-function themeblvd_get_shopping_cart_icon() {
+function themeblvd_get_shopping_cart_icon_name() {
 
 	/**
 	 * Filters the icon name used for the icon linking to
@@ -842,6 +842,6 @@ function themeblvd_get_shopping_cart_icon() {
 	 *
 	 * @param string Icon name.
 	 */
-	return apply_filters( 'themeblvd_shopping_cart_icon', 'shopping-basket' );
+	return apply_filters( 'themeblvd_shopping_cart_icon_name', 'shopping-basket' );
 
 }

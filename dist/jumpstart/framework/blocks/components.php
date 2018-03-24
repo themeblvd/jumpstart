@@ -2153,7 +2153,7 @@ function themeblvd_get_testimonial( $args ) {
 				 *
 				 * @param string Icon name.
 				 */
-				esc_attr( themeblvd_get_icon_class( apply_filters( 'themeblvd_testimonial_author_fallback_icon', 'user' ) ) )
+				esc_attr( themeblvd_get_icon_class( apply_filters( 'themeblvd_testimonial_author_fallback_icon_name', 'user' ) ) )
 			);
 
 		} else {
