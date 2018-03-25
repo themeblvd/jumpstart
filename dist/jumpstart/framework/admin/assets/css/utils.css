@@ -746,7 +746,7 @@ body.themeblvd-stop-scroll {
   bottom: -7px;
 }
 
-.themeblvd-icon-browser .icon-selection-wrap span {
+.themeblvd-icon-browser .icon-selection-wrap .icon-text-preview {
   color: #999;
   display: block;
   font-style: italic;

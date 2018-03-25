@@ -433,16 +433,24 @@ window.themeblvd.options = {};
 
 				$browser.find( '.select-icon' ).removeClass( 'selected' ).show();
 
-				$browser.find( '.media-toolbar-secondary' ).find( 'i, span, .svg-inline--fa' ).remove();
+				$browser.find( '.icon-selection-wrap .icon-preview' ).empty();
 
 				// If valid icon exists in text input, apply the selection.
 				if ( $browser.find( '[data-icon="' + icon + '"]' ).length > 0 ) {
 
-					$browser.find( '[data-icon="' + icon + '"]' ).addClass( 'selected' );
+					var $active = $browser.find( '[data-icon="' + icon + '"]' );
+
+					$active.addClass( 'selected' );
 
 					$browser.find( '.icon-selection' ).val( icon );
 
-					$browser.find( '.media-toolbar-secondary' ).append( '<i class="' + icon + ' fa-2x fa-fw"></i><span>' + icon + '</span>' );
+					$browser
+						.find( '.icon-preview' )
+						.html( $active.html() );
+
+					$browser
+						.find( '.icon-text-preview' )
+						.html( icon );
 
 				}
 
@@ -2645,9 +2653,10 @@ window.themeblvd.options = {};
 
 			event.preventDefault();
 
-			var $btn     = $( this ),
-				$browser = $btn.closest( '.themeblvd-icon-browser' ),
-				icon     = $btn.data( 'icon' );
+			var $btn        = $( this ),
+				$browser    = $btn.closest( '.themeblvd-icon-browser' ),
+				icon        = $btn.data( 'icon' ),
+				iconPreview = $btn.html();
 
 			$browser.find( '.select-icon' ).removeClass( 'selected' );
 
@@ -2655,11 +2664,13 @@ window.themeblvd.options = {};
 
 			$browser.find( '.icon-selection' ).val( icon );
 
-			$browser.find( '.icon-selection-wrap' ).find( 'i, span, .svg-inline--fa' ).remove();
+			$browser
+				.find( '.icon-preview' )
+				.html( iconPreview );
 
 			$browser
-				.find( '.icon-selection-wrap' )
-				.append( '<i class="' + icon + ' fa-2x fa-fw"></i><span>' + icon + '</span>' );
+				.find( '.icon-text-preview' )
+				.html( icon );
 
 		} );
 

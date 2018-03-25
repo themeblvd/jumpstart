@@ -3273,7 +3273,7 @@ msgstr ""
 msgid "You can change your site title by going %s."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1229, ../framework/admin/functions/display.php:1821, ../framework/admin/options/class-theme-blvd-sortable-option.php:1490, ../framework/admin/options/class-theme-blvd-sortable-option.php:2694
+#: ../framework/admin/functions/display.php:1229, ../framework/admin/functions/display.php:1866, ../framework/admin/options/class-theme-blvd-sortable-option.php:1490, ../framework/admin/options/class-theme-blvd-sortable-option.php:2694
 msgid "Title"
 msgstr ""
 
@@ -3329,75 +3329,75 @@ msgstr ""
 msgid "Search for an icon..."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1730
+#: ../framework/admin/functions/display.php:1775
 msgid "Use Icon"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1761
+#: ../framework/admin/functions/display.php:1806
 msgid "Close post browser panel"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1770, ../framework/admin/options/options-interface.php:506
+#: ../framework/admin/functions/display.php:1815, ../framework/admin/options/options-interface.php:506
 msgid "Find Post or Page ID"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1781
+#: ../framework/admin/functions/display.php:1826
 msgid "Search Posts and Pages"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1824
+#: ../framework/admin/functions/display.php:1869
 msgid "Slug"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1827
+#: ../framework/admin/functions/display.php:1872
 msgid "Type"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1830
+#: ../framework/admin/functions/display.php:1875
 msgid "ID"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1833, ../framework/admin/options/media-uploader.php:127
+#: ../framework/admin/functions/display.php:1878, ../framework/admin/options/media-uploader.php:127
 msgid "Select"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1850
+#: ../framework/admin/functions/display.php:1895
 msgid "Use Post"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1858
+#: ../framework/admin/functions/display.php:1903
 msgid "No posts found."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1891
+#: ../framework/admin/functions/display.php:1936
 msgid "Close texture browser panel"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1900
+#: ../framework/admin/functions/display.php:1945
 msgid "Select a texture"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1910
+#: ../framework/admin/functions/display.php:1955
 msgid "Dark Textures"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1919
+#: ../framework/admin/functions/display.php:1964
 msgid "Light Textures"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1919
+#: ../framework/admin/functions/display.php:1964
 msgid "Above textures tweaked slightly to be overlaid on lighter background colors"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1967
+#: ../framework/admin/functions/display.php:2012
 msgid "Use Texture"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:2045
+#: ../framework/admin/functions/display.php:2090
 msgid "Apply Preset"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:2098
+#: ../framework/admin/functions/display.php:2143
 msgid "Changelog"
 msgstr ""
 

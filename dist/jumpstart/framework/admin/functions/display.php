@@ -1706,9 +1706,52 @@ function themeblvd_icon_browser( $args = array() ) {
 										<?php $icons = themeblvd_get_icons( $type ); ?>
 
 										<?php foreach ( $icons as $icon ) : ?>
-											<a href="#" class="select-icon icon-<?php echo esc_attr( $icon ); ?> select-vector-icon tb-tooltip-link" data-icon="<?php echo esc_attr( $prefix ); ?> fa-<?php echo esc_attr( $icon ); ?>" data-tooltip-text="<?php echo esc_attr( $icon ); ?>">
-												<i class="<?php echo esc_attr( $prefix ); ?> fa-<?php echo esc_attr( $icon ); ?> fa-fw fa-2x"></i>
+
+											<?php
+											/**
+											 * Filters the value to be inserted for an icon in the
+											 * icon browser.
+											 *
+											 * By defualt, this value will be structured with a Font
+											 * Awesome style class and icon class, like `fas fa-user`.
+											 *
+											 * @since Theme_Blvd 2.7.4
+											 *
+											 * @param string $icon_value Icon value.
+											 * @param string $icon       Icon name.
+											 * @param string $prefix     Style class, like `fas`.
+											 * @param string $type       Style type, like `solid`.
+											 */
+											$icon_value = apply_filters( 'themeblvd_icon_browser_value', $prefix . ' fa-' . $icon, $icon, $prefix, $type );
+											?>
+
+											<a href="#" class="select-icon icon-<?php echo esc_attr( $icon ); ?> select-vector-icon tb-tooltip-link" data-icon="<?php echo esc_attr( $icon_value ); ?>" data-tooltip-text="<?php echo esc_attr( $icon ); ?>">
+
+												<?php
+												/**
+												 * Filters the HTML output for icons in the icon browser.
+												 *
+												 * @since Theme_Blvd 2.7.4
+												 *
+												 * @param string $icon       Icon HTML output.
+												 * @param string $icon_value Icon value.
+												 * @param string $icon       Icon name.
+												 * @param string $prefix     Style class, like `fas`.
+												 * @param string $type       Style type, like `solid`.
+												 */
+												$icon = apply_filters( 'themeblvd_icon_browser_icon', '', $icon_value, $icon, $prefix, $type );
+
+												if ( ! $icon ) {
+
+													$icon = sprintf( '<i class="%s fa-fw fa-2x"></i>', esc_attr( $icon_value ) );
+
+												}
+
+												echo $icon;
+												?>
+
 											</a>
+
 										<?php endforeach; ?>
 
 										<hr>
@@ -1725,6 +1768,8 @@ function themeblvd_icon_browser( $args = array() ) {
 						<div class="media-toolbar">
 							<div class="icon-selection-wrap">
 								<input type="hidden" class="icon-selection" value="" />
+								<span class="icon-preview"></span>
+								<span class="icon-text-preview"></span>
 							</div>
 							<div class="media-toolbar-primary">
 								<a href="#" class="button media-button button-primary button-large media-button-insert"><?php esc_html_e( 'Use Icon', 'jumpstart' ); ?></a>
