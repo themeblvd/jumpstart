@@ -858,13 +858,35 @@ if ( ! function_exists( 'themeblvd_include_scripts' ) ) {
 
 			$file = themeblvd_get_icon_js_file();
 
-			wp_enqueue_script(
-				$file['handle'],
-				esc_url( $file['url'] ),
-				array(),
-				esc_attr( $file['version'] ),
-				$in_footer
-			);
+			if ( is_array( $file['url'] ) ) {
+
+				$i = 1;
+
+				foreach ( $file['url'] as $url ) {
+
+					$handle =  $i > 1 ? $file['handle'] . '-' . $i : $file['handle']; // foo, foo-2, foo-3, etc.
+
+					wp_enqueue_script(
+						$handle,
+						esc_url( $url ),
+						array(),
+						esc_attr( $file['version'] )
+					);
+
+					$i++;
+
+				}
+			} else {
+
+				wp_enqueue_script(
+					$file['handle'],
+					esc_url( $file['url'] ),
+					array(),
+					esc_attr( $file['version'] ),
+					$in_footer
+				);
+
+			}
 
 			/**
 			 * Filters whether the FontAwesome v4 shim is

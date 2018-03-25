@@ -3481,7 +3481,7 @@ msgstr ""
 msgid "By doing this, you will clear your database of this option set. In other words, you will lose any previously saved settings. Are you sure you want to continue?"
 msgstr ""
 
-#: ../framework/admin/functions/locals.php:37, ../framework/admin/options/class-theme-blvd-options-page.php:556
+#: ../framework/admin/functions/locals.php:37, ../framework/admin/options/class-theme-blvd-options-page.php:580
 msgid "Clear Options"
 msgstr ""
 
@@ -4041,39 +4041,39 @@ msgstr ""
 msgid "Nothing to export. Theme Options have never been saved."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-options-page.php:477, ../framework/admin/tools/class-theme-blvd-bases.php:153
+#: ../framework/admin/options/class-theme-blvd-options-page.php:501, ../framework/admin/tools/class-theme-blvd-bases.php:153
 msgid "Your saved options do not currently match the theme base you've selected. Please configure and save your theme options page."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-options-page.php:554, ../framework/admin/options/options-interface.php:217
+#: ../framework/admin/options/class-theme-blvd-options-page.php:578, ../framework/admin/options/options-interface.php:217
 msgid "Save Options"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-options-page.php:556
+#: ../framework/admin/options/class-theme-blvd-options-page.php:580
 msgid "Delete options from the database."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-options-page.php:571
+#: ../framework/admin/options/class-theme-blvd-options-page.php:595
 msgid "Export options to XML file."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-options-page.php:572
+#: ../framework/admin/options/class-theme-blvd-options-page.php:596
 msgid "Export Options"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-options-page.php:579
+#: ../framework/admin/options/class-theme-blvd-options-page.php:603
 msgid "Import options from XML file."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-options-page.php:580
+#: ../framework/admin/options/class-theme-blvd-options-page.php:604
 msgid "Import Options"
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-options-page.php:657
+#: ../framework/admin/options/class-theme-blvd-options-page.php:681
 msgid "Default options restored."
 msgstr ""
 
-#: ../framework/admin/options/class-theme-blvd-options-page.php:948
+#: ../framework/admin/options/class-theme-blvd-options-page.php:972
 msgid "Options saved."
 msgstr ""
 

@@ -362,17 +362,20 @@ function themeblvd_get_icon_js_file() {
 	$suffix = themeblvd_script_debug() ? '' : '.min';
 
 	/**
-	 * Filters the URL to include the icon font
-	 * JavaScript file.
+	 * Filters the URL to include the icon font JavaScript
+	 * file.
 	 *
-	 * Note: If you'd like to filter not only
-	 * the file URL, but also the handle and/or
-	 * version number, you can use the
-	 * `themeblvd_icon_js_file` filter below instead.
+	 * Note: If you'd like to filter not only the file URL,
+	 * but also the handle and/or version number, you can
+	 * use the `themeblvd_icon_js_file` filter below instead.
+	 *
+	 * Note: If you're wanting to use multiple Font Awesome
+	 * JavaScript files, return an array of the file URL strings
+	 * instead of just a single string.
 	 *
 	 * @since Theme_Blvd 2.7.0
 	 *
-	 * @param string $url JavaScript file URL, like `http://mysite.com/file.js`.
+	 * @param string|array $url JavaScript file URL(s), like `http://mysite.com/file.js`.
 	 */
 	$url = apply_filters(
 		'themeblvd_icon_js_file_url',

@@ -225,12 +225,34 @@ function themeblvd_admin_enqueue() {
 
 	$icon_file = themeblvd_get_icon_js_file();
 
-	wp_register_script(
-		$icon_file['handle'],
-		esc_url( $icon_file['url'] ),
-		array(),
-		esc_attr( $icon_file['version'] )
-	);
+	if ( is_array( $icon_file['url'] ) ) {
+
+		$i = 1;
+
+		foreach ( $icon_file['url'] as $url ) {
+
+			$handle =  $i > 1 ? $icon_file['handle'] . '-' . $i : $icon_file['handle']; // foo, foo-2, foo-3, etc.
+
+			wp_register_script(
+				$handle,
+				esc_url( $url ),
+				array(),
+				esc_attr( $icon_file['version'] )
+			);
+
+			$i++;
+
+		}
+	} else {
+
+		wp_register_script(
+			$icon_file['handle'],
+			esc_url( $icon_file['url'] ),
+			array(),
+			esc_attr( $icon_file['version'] )
+		);
+
+	}
 
 	wp_localize_script(
 		$icon_file['handle'],
