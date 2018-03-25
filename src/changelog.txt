@@ -1,6 +1,6 @@
 # Jump Start Changelog
 
-## 2.2.4 - XX/XX/2018
+## 2.2.4 - 03/26/2018
 
 * **Updated Theme Blvd framework to 2.7.4**
 * Improvement: Navigational arrows now display with hero unit slider on mobile.
