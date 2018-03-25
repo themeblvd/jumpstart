@@ -6106,27 +6106,24 @@ body.mobile .tb-bg-video {
 	display: inline;
 	width: 50px;
 }
-.tb-testimonial .author-image .svg-inline--fa { /* placeholder for no image */
+.tb-testimonial .author-image .icon-wrap { /* placeholder for no image */
 	background-color: #f8f8f8;
 	background-image: repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(255,255,255,.5) 15px, rgba(255,255,255,.5) 30px);
 	border-radius: 50%;
 	color: #666666;
 	color: rgba(26,26,26,.7);
-	display: inline-block;
+	display: block;
+	font-size: 20px;
 	width: 50px;
 	height: 50px;
 }
-.tb-testimonial .author-image .fa:before {
-	font-size: 20px;
-	line-height: 50px;
+/* @noflip */
+.tb-testimonial .author-image .svg-inline--fa {
 	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	text-align: center;
-	width: 50px;
-	height: 50px;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 }
 .tb-testimonial.showcase .author-image img {
 	width: 70px;
