@@ -382,7 +382,7 @@ function themeblvd_get_icon_js_file() {
 	$file = array(
 		'handle'  => 'fontawesome',
 		'url'     => $url,
-		'version' => '5.0.4',
+		'version' => '5.0.8',
 	);
 
 	/**

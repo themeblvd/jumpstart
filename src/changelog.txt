@@ -2,6 +2,7 @@
 
 ## 2.2.4 - XX/XX/2018
 
+* **Updated Theme Blvd framework to 2.7.4**
 * Improvement: Navigational arrows now display with hero unit slider on mobile.
 * Improvement: Added filter `themeblvd_icon`, which filters the final HTML output for each frontend Font Awesome icon instance.
 * Improvement: Added filter `themeblvd_toggle_icons` to customize the icons used for opening and closing a toggle (see [usage example](http://dev.themeblvd.com/tutorial/customizing-font-awesome-icons/#toggles)).
@@ -20,6 +21,7 @@
 * Fixed: Minor PHP warnings when a Jump Start extension's license is activated, but then the plugin is disabled.
 * Fixed: Styling issue on testimonial author icon, when no image is supplied.
 * Fixed: List items generated with `themeblvd_do_fa()` were not closing properly; this primarily relates to using `%icon_name%` in header text and footer text widgets.
+* Updated: FontAwesome to 5.0.8.
 
 --------------------------------------------------------------
 
