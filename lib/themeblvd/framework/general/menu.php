@@ -246,7 +246,7 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 			 * @param string            Icon name.
 			 * @param string $direction Direction indicator arrow should point to, like `down` or `right`.
 			 */
-			$icon = apply_filters( 'themeblvd_sub_indicator_icon_name', 'angle-' . $direction, $direction );
+			$icon_name = apply_filters( 'themeblvd_sub_indicator_icon_name', 'angle-' . $direction, $direction );
 
 			/**
 			 * Filters the sub indicator menu icon HTML.
@@ -258,7 +258,7 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 			 */
 			$args->link_after = apply_filters(
 				'themeblvd_menu_sub_indicator',
-				sprintf( '<i class="sf-sub-indicator %s"></i>', themeblvd_get_icon_class( $icon ) ),
+				themeblvd_get_icon( themeblvd_get_icon_class( $icon_name, array( 'sub-indicator', 'sf-sub-indicator' ) ) ),
 				$direction
 			);
 
@@ -486,10 +486,7 @@ function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
 		/** Default WordPress Filter. */
 		$text = apply_filters( 'the_title', $item->title, $item->ID );
 
-		$icon_output = sprintf(
-			'<i class="%s"></i>',
-			esc_attr( themeblvd_get_icon_class( $icon, array( 'fa-fw' ) ) )
-		);
+		$icon_output = themeblvd_get_icon( themeblvd_get_icon_class( $icon, array( 'fa-fw' ) ) );
 
 		if ( $primary == $args->theme_location && $depth == 0 ) {
 

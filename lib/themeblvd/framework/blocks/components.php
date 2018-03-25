@@ -219,7 +219,7 @@ function themeblvd_get_divider( $args = array() ) {
 
 			} elseif ( 'icon' === $args['insert'] ) {
 
-				$divider = sprintf( '<i class="%s"></i>', esc_attr( themeblvd_get_icon_class( $args['icon'] ) ) );
+				$divider = themeblvd_get_icon( themeblvd_get_icon_class( $args['icon'] ) );
 
 			}
 
@@ -637,17 +637,12 @@ function themeblvd_get_icon_box( $args ) {
 
 		$size = intval( str_replace( 'px', '', $args['size'] ) );
 
-		$lh = ( 3 * $size ) - 2;
-
-		$lh = $lh . 'px';
-
 		$icon = sprintf(
-			'<div class="icon trans-badge" style="border-color: %s; color: %s; font-size: %s;"><i class="%s" style="line-height: %s"></i></div>',
+			'<div class="icon trans-badge" style="border-color: %s; color: %s; font-size: %s;">%s</div>',
 			esc_attr( $args['color'] ),
 			esc_attr( $args['color'] ),
 			esc_attr( $args['size'] ),
-			esc_attr( themeblvd_get_icon_class( $args['icon'] ) ),
-			$lh
+			themeblvd_get_icon( themeblvd_get_icon_class( $args['icon'] ) )
 		);
 
 	} elseif ( $args['badge'] ) {
@@ -658,23 +653,41 @@ function themeblvd_get_icon_box( $args ) {
 
 		$size_3x = $size_3x . 'px';
 
+		$badge_icon = themeblvd_get_icon(
+			themeblvd_get_icon_class( 'fas fa-circle' ), // Force "solid" style.
+			array(
+				'style' => 'color: ' . $args['color'],
+			)
+		);
+
+		$icon = themeblvd_get_icon(
+			themeblvd_get_icon_class( $args['icon'], array( 'fa-inverse' ) ),
+			array(
+				'style' => 'font-size: ' . $args['size'],
+			)
+		);
+
 		$icon = sprintf(
-			'<div class="icon"><span class="fa-layers fa-fw" style="font-size: %1$s; width: %1$s;"><i class="%2$s" style="color: %3$s;"></i><i class="%4$s" style="font-size: %5$s;"></i></span></div>',
+			'<div class="icon"><span class="fa-layers fa-fw" style="font-size: %1$s; width: %1$s;">%2$s%3$s</span></div>',
 			$size_3x,
-			esc_attr( themeblvd_get_icon_class( 'circle', array( 'fas' ) ) ), // Passing `fas` forces to use .fas if the default base icon class were filters to something different.
-			esc_attr( $args['color'] ),
-			esc_attr( themeblvd_get_icon_class( $args['icon'], array( 'fa-inverse' ) ) ),
-			esc_attr( $args['size'] )
+			$badge_icon,
+			$icon
 		);
 
 	} else {
 
+		$icon = themeblvd_get_icon(
+			themeblvd_get_icon_class( $args['icon'] ),
+			array(
+				'style' => 'width: ' . $args['size'],
+			)
+		);
+
 		$icon = sprintf(
-			'<div class="icon" style="color: %s; font-size: %s;"><i class="%s" style="width:%s;"></i></div>',
+			'<div class="icon" style="color: %s; font-size: %s;">%s</div>',
 			esc_attr( $args['color'] ),
 			esc_attr( $args['size'] ),
-			esc_attr( themeblvd_get_icon_class( $args['icon'] ) ),
-			esc_attr( $args['size'] )
+			$icon
 		);
 
 	}
@@ -2143,17 +2156,19 @@ function themeblvd_get_testimonial( $args ) {
 
 		if ( empty( $args['image']['src'] ) ) {
 
+			/**
+			 * Filters the icon used to represent a testimonial
+			 * author, when an image is not supplied.
+			 *
+			 * @since @@name-framework 2.7.4
+			 *
+			 * @param string Icon name.
+			 */
+			$icon_name = apply_filters( 'themeblvd_testimonial_author_fallback_icon_name', 'user' );
+
 			$output .= sprintf(
-				'<span class="author-image"><i class="%s"></i></span>',
-				/**
-				 * Filters the icon used to represent a testimonial
-				 * author, when an image is not supplied.
-				 *
-				 * @since @@name-framework 2.7.4
-				 *
-				 * @param string Icon name.
-				 */
-				esc_attr( themeblvd_get_icon_class( apply_filters( 'themeblvd_testimonial_author_fallback_icon_name', 'user' ) ) )
+				'<span class="author-image"><span class="icon-wrap">%s</span></span>',
+				themeblvd_get_icon( themeblvd_get_icon_class( $icon_name ) )
 			);
 
 		} else {
@@ -2493,9 +2508,9 @@ function themeblvd_get_toggle( $args ) {
 		'hide' => 'minus-circle',
 	) );
 
-	$icon_show = '<i class="' . esc_attr( themeblvd_get_icon_class( $icon_names['show'], array( 'icon-show', 'switch-me' ) ) ) . '"></i>'; // switch-me class is for backwards compat.
+	$icon_show = themeblvd_get_icon( themeblvd_get_icon_class( $icon_names['show'], array( 'icon-show', 'switch-me' ) ) ); // switch-me class is for backwards compat.
 
-	$icon_hide = '<i class="' . esc_attr( themeblvd_get_icon_class( $icon_names['hide'], array( 'icon-hide', 'switch-me' ) ) ) . '"></i>'; // switch-me class is for backwards compat.
+	$icon_hide = themeblvd_get_icon( themeblvd_get_icon_class( $icon_names['hide'], array( 'icon-hide', 'switch-me' ) ) ); // switch-me class is for backwards compat.
 
 	// Is toggle open?
 	$state = 'panel-collapse collapse';

@@ -175,11 +175,11 @@ class Theme_Blvd_Compat_WPML {
 				if ( count( $langs ) ) {
 
 					$output .= sprintf(
-						"\t\t\t<a href=\"%1\$s\" class=\"lang-%2\$s active\" title=\"%3\$s\">%3\$s<i class=\"%4\$s sf-sub-indicator\"></i></a>",
+						"\t\t\t<a href=\"%1\$s\" class=\"lang-%2\$s active\" title=\"%3\$s\">%3\$s%4\$s</a>",
 						$active['url'],
 						$active['language_code'],
 						$active['translated_name'],
-						themeblvd_get_icon_class( 'angle-down' )
+						themeblvd_get_icon( themeblvd_get_icon_class( 'angle-down', array( 'sub-indicator', 'sf-sub-indicator' ) ) )
 					);
 
 					$output .= "\t\t\t<ul class=\"lang-sub-menu\">\n";

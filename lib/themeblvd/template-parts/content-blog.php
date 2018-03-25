@@ -113,7 +113,7 @@ if ( themeblvd_get_att( 'show_meta' ) ) {
 	<?php
 	edit_post_link(
 		themeblvd_get_local( 'edit_post' ),
-		'<div class="edit-link"><i class="' . themeblvd_get_icon_class( 'edit' ) . '"></i> ',
+		'<div class="edit-link">',
 		'</div>'
 	);
 	?>

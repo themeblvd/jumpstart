@@ -153,7 +153,7 @@ function themeblvd_get_meta( $args = array() ) {
 
 					if ( in_array( $item, $args['icons'] ) ) {
 
-						$author_icon = '<i class="' . esc_attr( themeblvd_get_icon_class( $icons['author'] ) ) . '"></i>';
+						$author_icon = themeblvd_get_icon( themeblvd_get_icon_class( $icons['author'] ) );
 
 					} else {
 
@@ -174,7 +174,7 @@ function themeblvd_get_meta( $args = array() ) {
 				case 'category':
 					if ( in_array( $item, $args['icons'] ) ) {
 
-						$category_icon = '<i class="' . esc_attr( themeblvd_get_icon_class( $tax_icon ) ) . '"></i>';
+						$category_icon = themeblvd_get_icon( themeblvd_get_icon_class( $tax_icon ) );
 
 					} else {
 
@@ -213,7 +213,7 @@ function themeblvd_get_meta( $args = array() ) {
 
 					if ( in_array( $item, $args['icons'] ) ) {
 
-						$item_output .= '<i class="' . esc_attr( themeblvd_get_icon_class( $icons['comments'] ) ) . '"></i>';
+						$item_output .= themeblvd_get_icon( themeblvd_get_icon_class( $icons['comments'] ) );
 
 					}
 
@@ -236,10 +236,7 @@ function themeblvd_get_meta( $args = array() ) {
 
 							if ( $format_icon ) {
 
-								$format_icon = sprintf(
-									'<i class="%s"></i>',
-									esc_attr( themeblvd_get_icon_class( $format_icon ) )
-								);
+								$format_icon = themeblvd_get_icon( themeblvd_get_icon_class( $format_icon ) );
 
 							}
 						}
@@ -257,7 +254,7 @@ function themeblvd_get_meta( $args = array() ) {
 				case 'time':
 					if ( in_array( $item, $args['icons'] ) ) {
 
-						$time_icon = '<i class="' . esc_attr( themeblvd_get_icon_class( $icons['time'] ) ) . '"></i>';
+						$time_icon = themeblvd_get_icon( themeblvd_get_icon_class( $icons['time'] ) );
 
 					} else {
 
@@ -515,12 +512,12 @@ function themeblvd_blog_share( $echo = true ) {
 			}
 
 			$output .= sprintf(
-				'<li class="li-%s"><a href="%s" title="%s" class="%s" data-toggle="tooltip" data-placement="top"><i class="%s"></i></a></li>',
+				'<li class="li-%s"><a href="%s" title="%s" class="%s" data-toggle="tooltip" data-placement="top">%s</a></li>',
 				esc_attr( $network ),
 				esc_url( $link ),
 				esc_html( $button['label'] ),
 				esc_attr( $class ),
-				esc_attr( themeblvd_get_icon_class( $patterns[ $network ]['icon'], array( 'fa-fw' ) ) )
+				themeblvd_get_icon( themeblvd_get_icon_class( $patterns[ $network ]['icon'], array( 'fa-fw' ) ) )
 			);
 
 		}

@@ -18,7 +18,7 @@ $icon = themeblvd_get_format_icon( get_post_format(), true );
 <div class="search-result">
 
 	<span class="search-result-icon bg-primary">
-		<i class="<?php echo esc_attr( themeblvd_get_icon_class( $icon ) ); ?>"></i>
+		<?php echo themeblvd_get_icon( themeblvd_get_icon_class( $icon ) ); ?>
 	</span>
 
 	<h3 class="entry-title">

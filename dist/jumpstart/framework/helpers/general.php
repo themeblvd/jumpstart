@@ -195,7 +195,11 @@ function themeblvd_do_fa( $str ) {
 
 		}
 
+		$total = count( $icons[0] );
+
 		foreach ( $icons[0] as $key => $val ) {
+
+			$icon_name = $icons[1][ $key ];
 
 			/**
 			 * Filters the HTML used to add FontAwesome
@@ -203,25 +207,41 @@ function themeblvd_do_fa( $str ) {
 			 *
 			 * @since Theme_Blvd 2.5.0
 			 *
-			 * @param string      FontAwesome icon HTML, with `%s` representing the icon name.,
-			 * @param string $str Original Content string.
+			 * @param string            Icon output HTML.
+			 * @param string $icon_name Icon name.
+			 * @param string $str       Original Content string.
 			 */
-			$html = apply_filters( 'themeblvd_do_fa_html', '<i class="%s"></i>', $str );
+			$icon = apply_filters( 'themeblvd_do_fa_html', '', $icon_name, $str );
 
-			if ( $list && $key > 0 ) {
+			if ( $icon && false !== strpos( $icon, '%s' ) ) {
 
-				$html = "<li>\n" . $html;
+				/*
+				 * Supports old structure of themeblvd_do_fa_html filter,
+				 * which was like `<i class="%s"></i>`.
+				 */
+				$icon = sprintf( $icon, themeblvd_get_icon_class( $icon_name ) );
+
+			} else if ( ! $icon ) {
+
+				$icon = themeblvd_get_icon( themeblvd_get_icon_class( $icon_name, array( 'fa-fw' ) ) );
 
 			}
 
-			$str = str_replace(
-				$val,
-				sprintf(
-					$html,
-					esc_attr( themeblvd_get_icon_class( $icons[1][ $key ], array( 'fa-fw' ) ) )
-				),
-				$str
-			);
+			$item = $icon;
+
+			if ( $list && $key > 0 ) {
+
+				$item = "</li>\n<li>" . $item;
+
+			}
+
+			$str = str_replace( $val, $item, $str );
+
+		}
+
+		if ( $list ) {
+
+			$str = str_replace( ' </li>', '</li>', $str );
 
 		}
 	}

@@ -230,8 +230,8 @@ function themeblvd_get_thumbnail_link_icon( $type = '' ) {
 	$icon_name = apply_filters( 'themeblvd_thumbnail_link_icon_name', $icon_name, $type );
 
 	$icon = sprintf(
-		'<span class="thumb-link-icon"><i class="%s"></i></span>',
-		esc_attr( themeblvd_get_icon_class( $icon_name ) )
+		'<span class="thumb-link-icon">%s</span>',
+		themeblvd_get_icon( themeblvd_get_icon_class( $icon_name ) )
 	);
 
 	/**
@@ -293,10 +293,7 @@ function themeblvd_get_media_placeholder( $args = array() ) {
 
 	$height = strval( $height ) . '%';
 
-	$icon = sprintf(
-		'<i class="%s"></i>',
-		themeblvd_get_icon_class( themeblvd_get_format_icon( $args['format'], true ) )
-	);
+	$icon = themeblvd_get_icon( themeblvd_get_icon_class( themeblvd_get_format_icon( $args['format'], true ) ) );
 
 	if ( $args['link'] ) {
 

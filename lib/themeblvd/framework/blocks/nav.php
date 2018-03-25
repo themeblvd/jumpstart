@@ -58,20 +58,15 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 
 	if ( $icon_before ) {
 
-		$text = sprintf(
-			'<i class="%s before"></i>%s',
-			esc_attr( themeblvd_get_icon_class( $icon_before ) ),
-			$text
-		);
+		$icon = themeblvd_get_icon( themeblvd_get_icon_class( $icon_before, array( 'before' ) ) );
+
+		$text = $icon . $text;
 
 	}
 
 	if ( $icon_after ) {
 
-		$text .= sprintf(
-			'<i class="%s after"></i>',
-			esc_attr( themeblvd_get_icon_class( $icon_after ) )
-		);
+		$text .= themeblvd_get_icon( themeblvd_get_icon_class( $icon_before, array( 'after' ) ) );
 
 	}
 
@@ -483,10 +478,7 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 				 */
 				$icon = apply_filters( 'themeblvd_contact_bar_icon_name', $icon, $button['icon'] );
 
-				$content = sprintf(
-					'<i class="%s"></i>',
-					themeblvd_get_icon_class( $icon, array( 'fa-fw' ) )
-				);
+				$content = themeblvd_get_icon( themeblvd_get_icon_class( $icon, array( 'fa-fw' ) ) );
 
 			}
 
@@ -588,6 +580,8 @@ function themeblvd_contact_bar( $buttons = array(), $args = array(), $trans = tr
  */
 function themeblvd_get_floating_search_trigger( $args = array() ) {
 
+	$icon = themeblvd_get_search_icon_name();
+
 	/**
 	 * Filters the icon used to open the floating
 	 * search modal.
@@ -596,7 +590,7 @@ function themeblvd_get_floating_search_trigger( $args = array() ) {
 	 *
 	 * @param string Icon name.
 	 */
-	$icon = apply_filters( 'themeblvd_search_trigger_icon_name', 'search' );
+	$icon = apply_filters( 'themeblvd_search_trigger_icon_name', $icon );
 
 	/**
 	 * Filters the default arguments for a link to
@@ -627,9 +621,9 @@ function themeblvd_get_floating_search_trigger( $args = array() ) {
 	}
 
 	$output = sprintf(
-		'<a href="#" class="%s"><i class="%s"></i></a>',
+		'<a href="#" class="%s">%s</a>',
 		esc_attr( $class ),
-		esc_attr( themeblvd_get_icon_class( $args['open'] ) )
+		themeblvd_get_icon( themeblvd_get_icon_class( $args['open'] ) )
 	);
 
 	/**
@@ -990,7 +984,7 @@ function themeblvd_get_cart_popup_trigger( $args = array() ) {
 
 	$output .= '>';
 
-	$output .= '<i class="' . esc_attr( themeblvd_get_icon_class( $args['icon'] ) ) . '"></i>';
+	$output .= themeblvd_get_icon( themeblvd_get_icon_class( $args['icon'] ) );
 
 	if ( $count ) {
 
@@ -1069,10 +1063,7 @@ function themeblvd_get_mobile_cart_link() {
 		}
 	}
 
-	$icon = sprintf(
-		'<i class="%s"></i>',
-		esc_attr( themeblvd_get_icon_class( themeblvd_get_shopping_cart_icon_name() ) )
-	);
+	$icon = themeblvd_get_icon( themeblvd_get_icon_class( themeblvd_get_shopping_cart_icon_name() ) );
 
 	$output = sprintf(
 		'<a href="%s" id="mobile-to-cart" class="btn-navbar cart">%s%s</a>',
@@ -1181,7 +1172,7 @@ function themeblvd_get_lang_popup_trigger( $args = array() ) {
 		esc_attr( themeblvd_get_local( 'language' ) )
 	);
 
-	$output .= sprintf( '<i class="%s"></i>', esc_attr( themeblvd_get_icon_class( $args['icon'] ) ) );
+	$output .= themeblvd_get_icon( themeblvd_get_icon_class( $args['icon'] ) );
 
 	$output .= '</a>';
 
@@ -1457,8 +1448,8 @@ function themeblvd_get_simple_contact( $args ) {
 	if ( ! empty( $args['phone_1'] ) ) {
 
 		$output .= sprintf(
-			'<li class="faphone"><i class="%s"></i>%s</li>',
-			esc_attr( themeblvd_get_icon_class( 'phone', array( 'fa-fw' ) ) ),
+			'<li class="faphone">%s%s</li>',
+			themeblvd_get_icon( themeblvd_get_icon_class( 'phone', array( 'fa-fw' ) ) ),
 			themeblvd_kses( $args['phone_1'] )
 		);
 
@@ -1467,8 +1458,8 @@ function themeblvd_get_simple_contact( $args ) {
 	if ( ! empty( $args['phone_2'] ) ) {
 
 		$output .= sprintf(
-			'<li class="phone"><i class="%s"></i>%s</li>',
-			esc_attr( themeblvd_get_icon_class( 'phone', array( 'fa-fw' ) ) ),
+			'<li class="phone">%s%s</li>',
+			themeblvd_get_icon( themeblvd_get_icon_class( 'phone', array( 'fa-fw' ) ) ),
 			themeblvd_kses( $args['phone_2'] )
 		);
 
@@ -1477,8 +1468,8 @@ function themeblvd_get_simple_contact( $args ) {
 	if ( ! empty( $args['email_1'] ) ) {
 
 		$output .= sprintf(
-			'<li class="email"><i class="%s"></i><a href="mailto:%s">%s</a></li>',
-			esc_attr( themeblvd_get_icon_class( 'envelope', array( 'fa-fw' ) ) ),
+			'<li class="email">%s<a href="mailto:%s">%s</a></li>',
+			themeblvd_get_icon( themeblvd_get_icon_class( 'envelope', array( 'fa-fw' ) ) ),
 			esc_attr( $args['email_1'] ),
 			esc_html( $args['email_1'] )
 		);
@@ -1488,8 +1479,8 @@ function themeblvd_get_simple_contact( $args ) {
 	if ( ! empty( $args['email_2'] ) ) {
 
 		$output .= sprintf(
-			'<li class="email"><i class="%s"></i><a href="mailto:%s">%s</a></li>',
-			esc_attr( themeblvd_get_icon_class( 'envelope', array( 'fa-fw' ) ) ),
+			'<li class="email">%s<a href="mailto:%s">%s</a></li>',
+			themeblvd_get_icon( themeblvd_get_icon_class( 'envelope', array( 'fa-fw' ) ) ),
 			esc_attr( $args['email_2'] ),
 			esc_html( $args['email_2'] )
 		);
@@ -1499,8 +1490,8 @@ function themeblvd_get_simple_contact( $args ) {
 	if ( ! empty( $args['contact'] ) ) {
 
 		$output .= sprintf(
-			'<li class="contact"><i class="%s"></i><a href="%s">%s</a></li>',
-			esc_attr( themeblvd_get_icon_class( 'pencil-alt', array( 'fa-fw' ) ) ),
+			'<li class="contact">%s<a href="%s">%s</a></li>',
+			themeblvd_get_icon( themeblvd_get_icon_class( 'pencil-alt', array( 'fa-fw' ) ) ),
 			esc_url( $args['contact'] ),
 			themeblvd_get_local( 'contact_us' )
 		);
@@ -1510,8 +1501,8 @@ function themeblvd_get_simple_contact( $args ) {
 	if ( ! empty( $args['skype'] ) ) {
 
 		$output .= sprintf(
-			'<li class="skype"><i class="%s"></i>%s</li>',
-			esc_attr( themeblvd_get_icon_class( 'skype', array( 'fa-fw' ) ) ),
+			'<li class="skype">%s%s</li>',
+			themeblvd_get_icon( themeblvd_get_icon_class( 'skype', array( 'fa-fw' ) ) ),
 			themeblvd_kses( $args['skype'] )
 		);
 
@@ -1546,10 +1537,9 @@ function themeblvd_get_simple_contact( $args ) {
 
 	if ( $icons ) {
 
-		$output .= sprintf(
-			'<li class="link"><i class="%s"></i>',
-			esc_attr( themeblvd_get_icon_class( 'link', array( 'fa-fw' ) ) )
-		);
+		$output .= '<li class="link">';
+
+		$output .= themeblvd_get_icon( themeblvd_get_icon_class( 'link', array( 'fa-fw' ) ) );
 
 		$output .= themeblvd_get_contact_bar(
 			$icons,

@@ -506,9 +506,9 @@ function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
 			 *
 			 * @param string Icon name.
 			 */
-			$icon = apply_filters( 'themeblvd_external_link_title_icon_name', 'external-link-square-alt' );
+			$icon_name = apply_filters( 'themeblvd_external_link_title_icon_name', 'external-link-square-alt' );
 
-			$title = $title . ' <i class="' . esc_attr( themeblvd_get_icon_class( $icon ) ) . '"></i>';
+			$title = $title . ' ' . themeblvd_get_icon( themeblvd_get_icon_class( $icon_name ) );
 
 		}
 	}
@@ -894,8 +894,7 @@ function themeblvd_get_page_info() {
 	if ( $content && $edit ) {
 
 		$content .= sprintf(
-			'<div class="edit-link"><i class="%s"></i> <a href="%s">%s</a></div>',
-			esc_attr( themeblvd_get_icon_class( 'fa-edit' ) ),
+			'<div class="edit-link"><a href="%s">%s</a></div>',
 			esc_url( $edit ),
 			esc_html( themeblvd_get_local( 'edit_page' ) )
 		);

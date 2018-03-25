@@ -15,7 +15,7 @@
 
 		<div class="search-wrap">
 
-			<i class="search-icon <?php echo esc_attr( themeblvd_get_icon_class( 'search' ) ); ?>"></i>
+			<?php echo themeblvd_get_icon( themeblvd_get_icon_class( themeblvd_get_search_icon_name(), array( 'search-icon' ) ) ); ?>
 
 			<input type="search" class="search-input" name="s" placeholder="<?php echo themeblvd_get_local( 'search' ); ?>" />
 

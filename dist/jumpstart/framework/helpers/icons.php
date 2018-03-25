@@ -107,6 +107,42 @@ function themeblvd_get_icon_class( $icon, $add = array() ) {
 }
 
 /**
+ * Get the CSS classes for displaying an icon.
+ *
+ * @since Theme_Blvd 2.7.4
+ *
+ * @param  string $class  CSS classes for icon, like `fas fa-user`.
+ * @param  string $atts   HTML attributes to add to icon, like `array( 'style' => 'color: #000' )`.
+ * @return string $output Final icon HTML output.
+ */
+function themeblvd_get_icon( $class, $atts = array() ) {
+
+	$output = '<i class="' . esc_attr( $class ) . '"';
+
+	if ( $atts ) {
+
+		foreach ( $atts as $key => $value ) {
+
+			$output .= sprintf(' %s="%s"', esc_attr( $key ), esc_attr( $value ) );
+
+		}
+	}
+
+	$output .= '></i>';
+
+	/**
+	 * Filters the HTML output for an icon.
+	 *
+	 * @since Theme_Blvd 2.7.4
+	 *
+	 * @param string $output Final icon HTML output.
+	 * @param string $class  CSS classes for icon, like `fas fa-user`.
+	 */
+	return apply_filters( 'themeblvd_icon', $output, $class, $atts );
+
+}
+
+/**
  * Get the icon name used for the icon linking to
  * the shopping cart.
  *
@@ -125,6 +161,28 @@ function themeblvd_get_shopping_cart_icon_name() {
 	 * @param string Icon name.
 	 */
 	return apply_filters( 'themeblvd_shopping_cart_icon_name', 'shopping-basket' );
+
+}
+
+/**
+ * Get the general icon name used for the searchform
+ * and linking to it.
+ *
+ * @since Theme_Blvd 2.7.4
+ *
+ * @return string Icon name.
+ */
+function themeblvd_get_search_icon_name() {
+
+	/**
+	 * Filters the general icon name used for the searchform
+	 * and linking to it.
+	 *
+	 * @since Theme_Blvd 2.7.4
+	 *
+	 * @param string Icon name.
+	 */
+	return apply_filters( 'themeblvd_search_icon_name', 'search' );
 
 }
 

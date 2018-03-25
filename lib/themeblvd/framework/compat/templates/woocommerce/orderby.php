@@ -17,9 +17,9 @@ $default = themeblvd_get_option('woo_shop_view');
 $current = $compat->loop_view();
 
 $views = apply_filters( 'themeblvd_woo_views', array(
-	'grid' 		=> '<i class="' . themeblvd_get_icon_class( 'th' ) . '"></i>',
-	'list' 		=> '<i class="' . themeblvd_get_icon_class( 'th-list' ) . '"></i>',
-	'catalog' 	=> '<i class="' . themeblvd_get_icon_class( 'list' ) . '"></i>'
+	'grid' 		=> themeblvd_get_icon( themeblvd_get_icon_class( 'th' ) ),
+	'list' 		=> themeblvd_get_icon( themeblvd_get_icon_class( 'th-list' ) ),
+	'catalog' 	=> themeblvd_get_icon( themeblvd_get_icon_class( 'list' ) ),
 ) );
 ?>
 <div class="tb-woo-ordering">
