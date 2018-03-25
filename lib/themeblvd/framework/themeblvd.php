@@ -341,6 +341,7 @@ include_once( TB_FRAMEWORK_DIRECTORY . '/general/deprecated.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/helpers/base.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/helpers/comments.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/helpers/general.php' );
+include_once( TB_FRAMEWORK_DIRECTORY . '/helpers/icons.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/helpers/layout.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/helpers/media.php' );
 include_once( TB_FRAMEWORK_DIRECTORY . '/helpers/nav.php' );

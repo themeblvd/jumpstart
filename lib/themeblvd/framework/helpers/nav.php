@@ -823,25 +823,3 @@ function themeblvd_get_menu_toggle( $class = '' ) {
 	return apply_filters( 'themeblvd_nav_button', $output, $class );
 
 }
-
-/**
- * Get the icon name used for the icon linking to
- * the shopping cart.
- *
- * @since @@name-framework 2.7.4
- *
- * @return string Icon name.
- */
-function themeblvd_get_shopping_cart_icon_name() {
-
-	/**
-	 * Filters the icon name used for the icon linking to
-	 * the shopping cart.
-	 *
-	 * @since @@name-framework 2.7.4
-	 *
-	 * @param string Icon name.
-	 */
-	return apply_filters( 'themeblvd_shopping_cart_icon_name', 'shopping-basket' );
-
-}
