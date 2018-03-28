@@ -221,7 +221,7 @@ function themeblvd_do_fa( $str ) {
 				 */
 				$icon = sprintf( $icon, themeblvd_get_icon_class( $icon_name ) );
 
-			} else if ( ! $icon ) {
+			} elseif ( ! $icon ) {
 
 				$icon = themeblvd_get_icon( themeblvd_get_icon_class( $icon_name, array( 'fa-fw' ) ) );
 
