@@ -554,6 +554,78 @@ function themeblvd_private_page( $template ) {
 }
 
 /**
+ * Customize the password form on password-protected
+ * pages.
+ *
+ * This function is filtered onto:
+ * 1. `the_password_form` - 10
+ *
+ * @param  int|WP_Post $post Optional. Post ID or WP_Post object. Default is global $post.
+ * @return string      $output Modified HTML output for form.
+ */
+function themeblvd_password_form( $output ) {
+
+	$post = get_post();
+
+	$label = 'pwbox-';
+
+	if ( empty( $post->ID ) ) {
+
+		$label .= rand();
+
+	} else {
+
+		$label .= $post->ID;
+
+	}
+
+	$output = sprintf(
+		"\n<form class=\"tb-password-form\" action=\"%s\" method=\"post\">\n",
+		esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) )
+	);
+
+	$output .= sprintf(
+		"\t<p>%s</p>\n",
+		themeblvd_get_local( 'password_enter' )
+	);
+
+	$output .= "\t<ul class=\"field-group\">";
+
+	$output .= "\t\t<li class=\"has-field\">";
+
+	$output .= sprintf(
+		"\t\t\t<label for=\"%s\">%s</label>",
+		esc_attr( $label ),
+		themeblvd_get_local( 'password' )
+	);
+
+	$output .= sprintf(
+		"\t\t\t<input name=\"post_password\" id=\"%s\" type=\"password\" size=\"20\" />\n",
+		$label
+	);
+
+	$output .= "\t\t</li>\n";
+
+	$output .= "\t\t<li class=\"has-btn\">\n";
+
+	$output .= sprintf(
+		"\t\t\t<input type=\"submit\" name=\"Submit\" value=\"%s\">\n",
+		themeblvd_get_local( 'enter' )
+	);
+
+	$output .= "\t\t</li>\n";
+
+	$output .= "\t</ul>\n";
+
+	$output .= "</form>\n";
+
+	$output .= "</form>\n";
+
+	return $output;
+
+}
+
+/**
  * Get class used to determine width of column
  * in primary sidebar layout.
  *

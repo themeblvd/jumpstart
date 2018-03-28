@@ -601,7 +601,7 @@ msgstr ""
 msgid "When viewing a single post, what do you want to use for the sidebar layout?"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:594, ../framework/api/class-theme-blvd-options-api.php:865, ../framework/api/helpers-options.php:1130, ../framework/general/locals.php:94
+#: ../framework/api/class-theme-blvd-options-api.php:594, ../framework/api/class-theme-blvd-options-api.php:865, ../framework/api/helpers-options.php:1130, ../framework/general/locals.php:97
 msgid "Pages"
 msgstr ""
 
@@ -757,7 +757,7 @@ msgstr ""
 msgid "Hide featured images"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:827, ../framework/general/locals.php:110
+#: ../framework/api/class-theme-blvd-options-api.php:827, ../framework/general/locals.php:113
 msgid "Related Posts"
 msgstr ""
 
@@ -957,7 +957,7 @@ msgstr ""
 msgid "Show date block"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:1072, ../framework/api/class-theme-blvd-options-api.php:1165, ../framework/general/locals.php:109
+#: ../framework/api/class-theme-blvd-options-api.php:1072, ../framework/api/class-theme-blvd-options-api.php:1165, ../framework/general/locals.php:112
 msgid "Read More"
 msgstr ""
 
@@ -2281,7 +2281,7 @@ msgstr ""
 msgid "Oops! Couldn't find a gallery with one or more image attachments. Make sure to insert a gallery into the body of the post. Example: [gallery ids=\"1,2,3\"]"
 msgstr ""
 
-#: ../framework/blocks/post.php:150, ../framework/general/locals.php:129
+#: ../framework/blocks/post.php:150, ../framework/general/locals.php:132
 msgid "View all posts by %s"
 msgstr ""
 
@@ -2381,23 +2381,23 @@ msgstr ""
 msgid "%1$s comments on &ldquo;%2$s&rdquo;"
 msgstr ""
 
-#: ../framework/general/locals.php:51, ../framework/helpers/layout.php:726, ../framework/helpers/posts.php:285
+#: ../framework/general/locals.php:51, ../framework/helpers/layout.php:798, ../framework/helpers/posts.php:285
 msgid "Facebook"
 msgstr ""
 
-#: ../framework/general/locals.php:52, ../framework/helpers/layout.php:730, ../framework/helpers/posts.php:286
+#: ../framework/general/locals.php:52, ../framework/helpers/layout.php:802, ../framework/helpers/posts.php:286
 msgid "Google+"
 msgstr ""
 
-#: ../framework/general/locals.php:53, ../framework/helpers/layout.php:732
+#: ../framework/general/locals.php:53, ../framework/helpers/layout.php:804
 msgid "LinkedIn"
 msgstr ""
 
-#: ../framework/general/locals.php:54, ../framework/helpers/layout.php:734, ../framework/helpers/posts.php:288
+#: ../framework/general/locals.php:54, ../framework/helpers/layout.php:806, ../framework/helpers/posts.php:288
 msgid "Pinterest"
 msgstr ""
 
-#: ../framework/general/locals.php:55, ../framework/helpers/layout.php:740, ../framework/helpers/posts.php:291
+#: ../framework/general/locals.php:55, ../framework/helpers/layout.php:812, ../framework/helpers/posts.php:291
 msgid "Twitter"
 msgstr ""
 
@@ -2450,202 +2450,214 @@ msgid "Enlarge Image"
 msgstr ""
 
 #: ../framework/general/locals.php:71
-msgid "Gallery"
+msgid "Enter"
 msgstr ""
 
 #: ../framework/general/locals.php:72
-msgid "Visit Website"
+msgid "Gallery"
 msgstr ""
 
 #: ../framework/general/locals.php:73
+msgid "Visit Website"
+msgstr ""
+
+#: ../framework/general/locals.php:74
 msgid "Home"
 msgstr ""
 
-#: ../framework/general/locals.php:74, ../framework/admin/functions/display.php:1137
+#: ../framework/general/locals.php:75, ../framework/admin/functions/display.php:1137
 msgid "Image"
 msgstr ""
 
-#: ../framework/general/locals.php:75
+#: ../framework/general/locals.php:76
 msgid "in"
 msgstr ""
 
-#: ../framework/general/locals.php:76
+#: ../framework/general/locals.php:77
 msgid "Invalid Layout ID: The layout ID currently assigned to this page no longer exists."
 msgstr ""
 
-#: ../framework/general/locals.php:77
+#: ../framework/general/locals.php:78
 msgid "Post Comment"
 msgstr ""
 
-#: ../framework/general/locals.php:78
+#: ../framework/general/locals.php:79
 msgid "Set Language"
 msgstr ""
 
-#: ../framework/general/locals.php:79
+#: ../framework/general/locals.php:80
 msgid "The Last 30 Posts"
 msgstr ""
 
-#: ../framework/general/locals.php:80
+#: ../framework/general/locals.php:81
 msgid "Leave a Comment"
 msgstr ""
 
-#: ../framework/general/locals.php:82
+#: ../framework/general/locals.php:83
 msgid "%curr% of %total%"
 msgstr ""
 
-#: ../framework/general/locals.php:83
+#: ../framework/general/locals.php:84
 msgid "The lightbox media could not be loaded."
 msgstr ""
 
-#: ../framework/general/locals.php:84, ../framework/admin/options/class-theme-blvd-sortable-option.php:2082
+#: ../framework/general/locals.php:85, ../framework/admin/options/class-theme-blvd-sortable-option.php:2082
 msgid "Link"
 msgstr ""
 
-#: ../framework/general/locals.php:85
+#: ../framework/general/locals.php:86
 msgid "Link to lightbox"
 msgstr ""
 
-#: ../framework/general/locals.php:86
+#: ../framework/general/locals.php:87
 msgid "Loading..."
 msgstr ""
 
-#: ../framework/general/locals.php:87
+#: ../framework/general/locals.php:88
 msgid "Log in to Reply"
 msgstr ""
 
-#: ../framework/general/locals.php:88
+#: ../framework/general/locals.php:89
 msgid "Monthly Archives"
 msgstr ""
 
-#: ../framework/general/locals.php:89
+#: ../framework/general/locals.php:90
 msgid "My Account"
 msgstr ""
 
-#: ../framework/general/locals.php:90, ../framework/admin/options/class-theme-blvd-sortable-option.php:2409
-msgid "Name"
+#: ../framework/general/locals.php:91
+msgid "Password"
 msgstr ""
 
 #: ../framework/general/locals.php:92
+msgid "This content is password protected. To view it please enter your password below."
+msgstr ""
+
+#: ../framework/general/locals.php:93, ../framework/admin/options/class-theme-blvd-sortable-option.php:2409
+msgid "Name"
+msgstr ""
+
+#: ../framework/general/locals.php:95
 msgid "In order for your custom layout to be displayed, you must be have the %s plugin installed."
 msgstr ""
 
-#: ../framework/general/locals.php:93
+#: ../framework/general/locals.php:96
 msgid "Page"
 msgstr ""
 
-#: ../framework/general/locals.php:96
+#: ../framework/general/locals.php:99
 msgid "Page %s"
 msgstr ""
 
-#: ../framework/general/locals.php:97
+#: ../framework/general/locals.php:100
 msgid "Play Movie"
 msgstr ""
 
-#: ../framework/general/locals.php:98
+#: ../framework/general/locals.php:101
 msgid "Posted on"
 msgstr ""
 
-#: ../framework/general/locals.php:99
+#: ../framework/general/locals.php:102
 msgid "Posted in"
 msgstr ""
 
-#: ../framework/general/locals.php:100
+#: ../framework/general/locals.php:103
 msgid "Posts per category"
 msgstr ""
 
-#: ../framework/general/locals.php:101
+#: ../framework/general/locals.php:104
 msgid "Navigation"
 msgstr ""
 
-#: ../framework/general/locals.php:102
+#: ../framework/general/locals.php:105
 msgid "Next"
 msgstr ""
 
-#: ../framework/general/locals.php:103
+#: ../framework/general/locals.php:106
 msgid "No Comments"
 msgstr ""
 
-#: ../framework/general/locals.php:104
+#: ../framework/general/locals.php:107
 msgid "Slider does not exist."
 msgstr ""
 
-#: ../framework/general/locals.php:105
+#: ../framework/general/locals.php:108
 msgid "Oops! You have not selected a slider in your layout."
 msgstr ""
 
-#: ../framework/general/locals.php:106
+#: ../framework/general/locals.php:109
 msgid "The video url could not retrieve a video."
 msgstr ""
 
-#: ../framework/general/locals.php:107
+#: ../framework/general/locals.php:110
 msgid "Previous"
 msgstr ""
 
-#: ../framework/general/locals.php:108
+#: ../framework/general/locals.php:111
 msgid "Quote"
 msgstr ""
 
-#: ../framework/general/locals.php:111
+#: ../framework/general/locals.php:114
 msgid "Reply"
 msgstr ""
 
-#: ../framework/general/locals.php:112
+#: ../framework/general/locals.php:115
 msgid "Search the site..."
 msgstr ""
 
-#: ../framework/general/locals.php:113
+#: ../framework/general/locals.php:116
 msgid "Search"
 msgstr ""
 
-#: ../framework/general/locals.php:114
+#: ../framework/general/locals.php:117
 msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
 msgstr ""
 
-#: ../framework/general/locals.php:116
+#: ../framework/general/locals.php:119
 msgid "%1$s total search results found for: %2$s"
 msgstr ""
 
-#: ../framework/general/locals.php:117, ../framework/admin/plugin-manager/class-theme-blvd-plugin-manager.php:563
+#: ../framework/general/locals.php:120, ../framework/admin/plugin-manager/class-theme-blvd-plugin-manager.php:563
 msgid "Status"
 msgstr ""
 
-#: ../framework/general/locals.php:118
+#: ../framework/general/locals.php:121
 msgid "Tag"
 msgstr ""
 
-#: ../framework/general/locals.php:119
+#: ../framework/general/locals.php:122
 msgid "Tags"
 msgstr ""
 
-#: ../framework/general/locals.php:120
+#: ../framework/general/locals.php:123
 msgid "Leave a Reply"
 msgstr ""
 
-#: ../framework/general/locals.php:122
+#: ../framework/general/locals.php:125
 msgid "Leave a Reply to %s"
 msgstr ""
 
-#: ../framework/general/locals.php:123
+#: ../framework/general/locals.php:126
 msgid "Top"
 msgstr ""
 
-#: ../framework/general/locals.php:124
+#: ../framework/general/locals.php:127
 msgid "via"
 msgstr ""
 
-#: ../framework/general/locals.php:125
+#: ../framework/general/locals.php:128
 msgid "Video"
 msgstr ""
 
-#: ../framework/general/locals.php:126
+#: ../framework/general/locals.php:129
 msgid "View Post"
 msgstr ""
 
-#: ../framework/general/locals.php:127
+#: ../framework/general/locals.php:130
 msgid "View Item Details"
 msgstr ""
 
-#: ../framework/general/locals.php:130
+#: ../framework/general/locals.php:133
 msgid "Website"
 msgstr ""
 
@@ -2713,147 +2725,147 @@ msgstr ""
 msgid "%1$s is deprecated since version %2$s of the Theme Blvd framework with no alternative available."
 msgstr ""
 
-#: ../framework/helpers/layout.php:707
+#: ../framework/helpers/layout.php:779
 msgid "General: Chat"
 msgstr ""
 
-#: ../framework/helpers/layout.php:708
+#: ../framework/helpers/layout.php:780
 msgid "General: Cloud"
 msgstr ""
 
-#: ../framework/helpers/layout.php:709
+#: ../framework/helpers/layout.php:781
 msgid "General: Link"
 msgstr ""
 
-#: ../framework/helpers/layout.php:710
+#: ../framework/helpers/layout.php:782
 msgid "General: Mail"
 msgstr ""
 
-#: ../framework/helpers/layout.php:711
+#: ../framework/helpers/layout.php:783
 msgid "General: Movie"
 msgstr ""
 
-#: ../framework/helpers/layout.php:712
+#: ../framework/helpers/layout.php:784
 msgid "General: Music"
 msgstr ""
 
-#: ../framework/helpers/layout.php:713
+#: ../framework/helpers/layout.php:785
 msgid "General: Portfolio"
 msgstr ""
 
-#: ../framework/helpers/layout.php:714
+#: ../framework/helpers/layout.php:786
 msgid "General: RSS"
 msgstr ""
 
-#: ../framework/helpers/layout.php:715
+#: ../framework/helpers/layout.php:787
 msgid "General: Store"
 msgstr ""
 
-#: ../framework/helpers/layout.php:716
+#: ../framework/helpers/layout.php:788
 msgid "General: Write"
 msgstr ""
 
-#: ../framework/helpers/layout.php:717
+#: ../framework/helpers/layout.php:789
 msgid "Android"
 msgstr ""
 
-#: ../framework/helpers/layout.php:718
+#: ../framework/helpers/layout.php:790
 msgid "Apple"
 msgstr ""
 
-#: ../framework/helpers/layout.php:719
+#: ../framework/helpers/layout.php:791
 msgid "Behance"
 msgstr ""
 
-#: ../framework/helpers/layout.php:720
+#: ../framework/helpers/layout.php:792
 msgid "CodePen"
 msgstr ""
 
-#: ../framework/helpers/layout.php:721
+#: ../framework/helpers/layout.php:793
 msgid "Delicious"
 msgstr ""
 
-#: ../framework/helpers/layout.php:722
+#: ../framework/helpers/layout.php:794
 msgid "DeviantArt"
 msgstr ""
 
-#: ../framework/helpers/layout.php:723, ../framework/helpers/posts.php:283
+#: ../framework/helpers/layout.php:795, ../framework/helpers/posts.php:283
 msgid "Digg"
 msgstr ""
 
-#: ../framework/helpers/layout.php:724
+#: ../framework/helpers/layout.php:796
 msgid "Dribbble"
 msgstr ""
 
-#: ../framework/helpers/layout.php:725
+#: ../framework/helpers/layout.php:797
 msgid "Dropbox"
 msgstr ""
 
-#: ../framework/helpers/layout.php:727
+#: ../framework/helpers/layout.php:799
 msgid "Flickr"
 msgstr ""
 
-#: ../framework/helpers/layout.php:728
+#: ../framework/helpers/layout.php:800
 msgid "Foursquare"
 msgstr ""
 
-#: ../framework/helpers/layout.php:729
+#: ../framework/helpers/layout.php:801
 msgid "GitHub"
 msgstr ""
 
-#: ../framework/helpers/layout.php:731
+#: ../framework/helpers/layout.php:803
 msgid "Instagram"
 msgstr ""
 
-#: ../framework/helpers/layout.php:733
+#: ../framework/helpers/layout.php:805
 msgid "PayPal"
 msgstr ""
 
-#: ../framework/helpers/layout.php:735, ../framework/helpers/posts.php:289
+#: ../framework/helpers/layout.php:807, ../framework/helpers/posts.php:289
 msgid "Reddit"
 msgstr ""
 
-#: ../framework/helpers/layout.php:736
+#: ../framework/helpers/layout.php:808
 msgid "SlideShare"
 msgstr ""
 
-#: ../framework/helpers/layout.php:737
+#: ../framework/helpers/layout.php:809
 msgid "SoundCloud"
 msgstr ""
 
-#: ../framework/helpers/layout.php:738
+#: ../framework/helpers/layout.php:810
 msgid "StumbleUpon"
 msgstr ""
 
-#: ../framework/helpers/layout.php:739, ../framework/helpers/posts.php:290
+#: ../framework/helpers/layout.php:811, ../framework/helpers/posts.php:290
 msgid "Tumblr"
 msgstr ""
 
-#: ../framework/helpers/layout.php:741
+#: ../framework/helpers/layout.php:813
 msgid "Vimeo"
 msgstr ""
 
-#: ../framework/helpers/layout.php:742
+#: ../framework/helpers/layout.php:814
 msgid "Vine"
 msgstr ""
 
-#: ../framework/helpers/layout.php:743
+#: ../framework/helpers/layout.php:815
 msgid "Windows"
 msgstr ""
 
-#: ../framework/helpers/layout.php:744
+#: ../framework/helpers/layout.php:816
 msgid "WordPress"
 msgstr ""
 
-#: ../framework/helpers/layout.php:745
+#: ../framework/helpers/layout.php:817
 msgid "XING"
 msgstr ""
 
-#: ../framework/helpers/layout.php:746
+#: ../framework/helpers/layout.php:818
 msgid "Yahoo"
 msgstr ""
 
-#: ../framework/helpers/layout.php:747
+#: ../framework/helpers/layout.php:819
 msgid "YouTube"
 msgstr ""
 

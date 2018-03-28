@@ -74,6 +74,7 @@
  * 16.0 - Forms
  *   16.1 - General
  *   16.2 - Form Buttons
+ *   16.3 - Form Groups (experimental)
  * 17.0 - Buttons
  *   17.1 - All Colors
  *   17.2 - Black
@@ -2466,6 +2467,74 @@ button:active {
 	box-shadow: none;
 	color: #666666;
 	color: rgba(26,26,26,.7);
+}
+
+/* Form Groups (experimental) */
+/*
+	This is a tempoary solution to implement some of
+	the possible future styling that will later exist
+	in Front Street (frontstreet.io), to be incorporate
+	into the theme framework.
+
+	We're just using some of the basic flexbox styling
+	for "form groups" -- currently this is getting
+	applied to WP's password form, for password-protected
+	pages.
+*/
+.field-group {
+	list-style: none;
+	margin: 0 0 15px 0;
+	padding-right: 0;
+}
+.field-group > li {
+    margin: 0 0 15px 0;
+}
+.field-group > li:last-child {
+	margin-bottom: 0;
+}
+@media (min-width: 768px) {
+	.field-group {
+	    -webkit-box-align: end;
+	    -webkit-align-items: flex-end;
+	    -ms-flex-align: end;
+	    align-items: flex-end;
+	    display: -webkit-box;
+	    display: -webkit-flex;
+	    display: -ms-flexbox;
+	    display: flex;
+	    -webkit-box-pack: center;
+	    -webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	    justify-content: center;
+	}
+	.field-group > li {
+		margin: 0 5px;
+	}
+	.field-group > li:first-child {
+		margin-right: 0;
+	}
+	.field-group > li:last-chilld {
+		margin-left: 0;
+	}
+	.field-group > li.has-field {
+		-webkit-box-flex: 1;
+		-webkit-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+	}
+	.field-group > li input {
+		height: 39px; /* Match to default rendered button height */
+		margin-bottom: 0;
+	}
+	.tb-password-form .field-group {
+		-webkit-box-pack: flex-start;
+		-webkit-justify-content: flex-start;
+		-ms-flex-pack: flex-start;
+		justify-content: flex-start;
+	}
+	.tb-password-form .field-group > li {
+		max-width: 300px;
+	}
 }
 
 /* =Buttons

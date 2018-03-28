@@ -68,6 +68,7 @@ function themeblvd_get_all_locals() {
 		'edit_profile'              => __( 'Edit Profile', 'jumpstart' ),
 		'email'                     => __( 'Email', 'jumpstart' ),
 		'enlarge'                   => __( 'Enlarge Image', 'jumpstart' ),
+		'enter'                     => __( 'Enter', 'jumpstart' ),
 		'gallery'                   => __( 'Gallery', 'jumpstart' ),
 		'go_to_link'                => __( 'Visit Website', 'jumpstart' ),
 		'home'                      => __( 'Home', 'jumpstart' ),
@@ -87,6 +88,8 @@ function themeblvd_get_all_locals() {
 		'login_text'                => __( 'Log in to Reply', 'jumpstart' ),
 		'monthly_archives'          => __( 'Monthly Archives', 'jumpstart' ),
 		'my_account'                => __( 'My Account', 'jumpstart' ),
+		'password'                  => __( 'Password', 'jumpstart' ),
+		'password_enter'            => __( 'This content is password protected. To view it please enter your password below.', 'jumpstart' ),
 		'name'                      => __( 'Name', 'jumpstart' ),
 		// translators: 1. name of plugin, Theme Blvd Layout Builder
 		'no_builder_plugin'         => __( 'In order for your custom layout to be displayed, you must be have the %s plugin installed.', 'jumpstart' ),

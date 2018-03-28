@@ -391,6 +391,7 @@ add_filter( 'themeblvd_sidebar_layout', 'themeblvd_wpmultisite_signup_sidebar_la
 add_filter( 'the_content_more_link', 'themeblvd_read_more_link', 10, 2 );
 add_filter( 'use_default_gallery_style', '__return_false' );
 add_filter( 'template_include', 'themeblvd_private_page' );
+add_filter( 'the_password_form', 'themeblvd_password_form' );
 add_filter( 'wp_link_pages_args', 'themeblvd_link_pages_args' );
 add_filter( 'wp_link_pages_link', 'themeblvd_link_pages_link', 10, 2 );
 add_filter( 'comment_form_default_fields', 'themeblvd_comment_form_fields' );
