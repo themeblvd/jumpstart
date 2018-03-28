@@ -66,7 +66,7 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 
 	if ( $icon_after ) {
 
-		$text .= themeblvd_get_icon( themeblvd_get_icon_class( $icon_before, array( 'after' ) ) );
+		$text .= themeblvd_get_icon( themeblvd_get_icon_class( $icon_after, array( 'after' ) ) );
 
 	}
 
