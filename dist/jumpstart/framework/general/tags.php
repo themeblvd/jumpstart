@@ -438,7 +438,7 @@ function themeblvd_main_class() {
 
 	$class[] = 'site-main';
 
-	if ( ! is_page_template( 'template_builder.php' ) || post_password_required() ) {
+	if ( ! themeblvd_config( 'builder_post_id' ) || post_password_required() ) {
 
 		$class[] = 'site-inner';
 
