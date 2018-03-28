@@ -365,7 +365,7 @@ function themeblvd_do_fw_narrow() {
 
 			$do = true;
 
-		} elseif ( is_page_template( 'template_builder.php' ) && ! is_search() && ! is_archive() ) { // ! is_search() and ! is_archive() added to fix is_page_template() bug noticed in WordPress 4.7.
+		} elseif ( is_page_template( 'template_builder.php' ) && ! post_password_required() && ! is_search() && ! is_archive() ) { // ! is_search() and ! is_archive() added to fix is_page_template() bug noticed in WordPress 4.7.
 
 			$do = true;
 

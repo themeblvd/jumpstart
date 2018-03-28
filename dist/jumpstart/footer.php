@@ -18,11 +18,14 @@
 			/*
 			 * End the main content.
 			 *
-			 * Note: When displaying a custom layout,
-			 * this does not get outputted; see
-			 * `template_builder.php`.
+			 * Note: When displaying a custom layout, this
+			 * does not get outputted; see `template_builder.php`.
+
+			 * Note: If we're showing a custom layout,
+			 * password-protected pages still show the default
+			 * page template, initially.
 			 */
-			if ( ! themeblvd_config( 'builder_post_id' ) ) {
+			if ( ! themeblvd_config( 'builder_post_id' ) || post_password_required() ) {
 
 				/**
 				 * Fires just inside the bottom of the

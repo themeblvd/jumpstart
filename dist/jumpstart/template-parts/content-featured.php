@@ -15,7 +15,7 @@
 // Set where a full-screen scroll-to-section button goes.
 $to = 'main';
 
-if ( is_page_template( 'template_builder.php' ) ) {
+if ( is_page_template( 'template_builder.php' ) && ! post_password_required() ) {
 
 	$to = 'custom-main';
 

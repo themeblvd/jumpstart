@@ -576,8 +576,13 @@ class Theme_Blvd_Frontend_Init {
 		 * If using a custom layout, set sidebar layout to
 		 * `full_width`, as a formality. No sidebar layout
 		 * used here.
+		 *
+		 * Note: If we're showing a custom layout,
+		 * password-protected pages still show the default
+		 * page template, initially. So the sidebar layout
+		 * still is applied.
 		 */
-		if ( is_page_template( 'template_builder.php' ) && ! is_search() && ! is_archive() ) {
+		if ( is_page_template( 'template_builder.php' ) && ! post_password_required() && ! is_search() && ! is_archive() ) {
 
 			$this->config['sidebar_layout'] = 'full_width';
 
