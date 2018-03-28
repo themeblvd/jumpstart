@@ -501,66 +501,6 @@ class Theme_Blvd_Frontend_Init {
 			}
 		}
 
-		if ( is_page_template( 'template_grid.php' ) ) {
-
-			if ( themeblvd_supports( 'featured', 'grid' ) ) {
-
-				$this->config['featured'][] = 'has_grid_featured';
-
-			}
-
-			if ( themeblvd_supports( 'featured_below', 'grid' ) ) {
-
-				$this->config['featured_below'][] = 'has_grid_featured_below';
-
-			}
-		}
-
-		if ( is_archive() || is_search() ) {
-
-			if ( themeblvd_supports( 'featured', 'archive' ) ) {
-
-				$this->config['featured'][] = 'has_archive_featured';
-
-			}
-
-			if ( themeblvd_supports( 'featured_below', 'archive' ) ) {
-
-				$this->config['featured_below'][] = 'has_archive_featured_below';
-
-			}
-		}
-
-		if ( is_page() && ! is_page_template( 'template_builder.php' ) ) {
-
-			if ( themeblvd_supports( 'featured', 'page' ) ) {
-
-				$this->config['featured'][] = 'has_page_featured';
-
-			}
-
-			if ( themeblvd_supports( 'featured_below', 'page' ) ) {
-
-				$this->config['featured_below'][] = 'has_page_featured_below';
-
-			}
-		}
-
-		if ( is_single() ) {
-
-			if ( themeblvd_supports( 'featured', 'single' ) ) {
-
-				$this->config['featured'][] = 'has_single_featured';
-
-			}
-
-			if ( themeblvd_supports( 'featured_below', 'single' ) ) {
-
-				$this->config['featured_below'][] = 'has_single_featured_below';
-
-			}
-		}
-
 		/*
 		 * Determine the sidebar layout.
 		 *
