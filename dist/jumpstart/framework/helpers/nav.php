@@ -465,7 +465,7 @@ function themeblvd_show_breadcrumbs() {
 	}
 
 	// Disable on custom layouts (can be added in layout from Builder).
-	if ( is_page_template( 'template_builder.php' ) && ! post_password_required() && ! is_search() && ! is_archive() ) { // ! is_search() and ! is_archive() added to fix is_page_template() bug noticed in WordPress 4.7.
+	if ( themeblvd_config( 'builder_post_id' ) && ! post_password_required() && ! is_search() && ! is_archive() ) { // ! is_search() and ! is_archive() added to fix is_page_template() bug noticed in WordPress 4.7.
 
 		$display = 'hide';
 
