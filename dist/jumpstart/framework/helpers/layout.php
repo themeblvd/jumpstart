@@ -361,11 +361,7 @@ function themeblvd_do_fw_narrow() {
 
 	if ( themeblvd_get_option( 'fw_narrow' ) ) {
 
-		if ( 'full_width' === themeblvd_config( 'sidebar_layout' ) ) {
-
-			$do = true;
-
-		} elseif ( is_page_template( 'template_builder.php' ) && ! post_password_required() && ! is_search() && ! is_archive() ) { // ! is_search() and ! is_archive() added to fix is_page_template() bug noticed in WordPress 4.7.
+		if ( 'full_width' === themeblvd_config( 'sidebar_layout' ) ) { // Will include custom layouts.
 
 			$do = true;
 

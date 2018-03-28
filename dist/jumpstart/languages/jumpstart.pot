@@ -2381,23 +2381,23 @@ msgstr ""
 msgid "%1$s comments on &ldquo;%2$s&rdquo;"
 msgstr ""
 
-#: ../framework/general/locals.php:51, ../framework/helpers/layout.php:798, ../framework/helpers/posts.php:285
+#: ../framework/general/locals.php:51, ../framework/helpers/layout.php:794, ../framework/helpers/posts.php:285
 msgid "Facebook"
 msgstr ""
 
-#: ../framework/general/locals.php:52, ../framework/helpers/layout.php:802, ../framework/helpers/posts.php:286
+#: ../framework/general/locals.php:52, ../framework/helpers/layout.php:798, ../framework/helpers/posts.php:286
 msgid "Google+"
 msgstr ""
 
-#: ../framework/general/locals.php:53, ../framework/helpers/layout.php:804
+#: ../framework/general/locals.php:53, ../framework/helpers/layout.php:800
 msgid "LinkedIn"
 msgstr ""
 
-#: ../framework/general/locals.php:54, ../framework/helpers/layout.php:806, ../framework/helpers/posts.php:288
+#: ../framework/general/locals.php:54, ../framework/helpers/layout.php:802, ../framework/helpers/posts.php:288
 msgid "Pinterest"
 msgstr ""
 
-#: ../framework/general/locals.php:55, ../framework/helpers/layout.php:812, ../framework/helpers/posts.php:291
+#: ../framework/general/locals.php:55, ../framework/helpers/layout.php:808, ../framework/helpers/posts.php:291
 msgid "Twitter"
 msgstr ""
 
@@ -2725,147 +2725,147 @@ msgstr ""
 msgid "%1$s is deprecated since version %2$s of the Theme Blvd framework with no alternative available."
 msgstr ""
 
-#: ../framework/helpers/layout.php:779
+#: ../framework/helpers/layout.php:775
 msgid "General: Chat"
 msgstr ""
 
-#: ../framework/helpers/layout.php:780
+#: ../framework/helpers/layout.php:776
 msgid "General: Cloud"
 msgstr ""
 
-#: ../framework/helpers/layout.php:781
+#: ../framework/helpers/layout.php:777
 msgid "General: Link"
 msgstr ""
 
-#: ../framework/helpers/layout.php:782
+#: ../framework/helpers/layout.php:778
 msgid "General: Mail"
 msgstr ""
 
-#: ../framework/helpers/layout.php:783
+#: ../framework/helpers/layout.php:779
 msgid "General: Movie"
 msgstr ""
 
-#: ../framework/helpers/layout.php:784
+#: ../framework/helpers/layout.php:780
 msgid "General: Music"
 msgstr ""
 
-#: ../framework/helpers/layout.php:785
+#: ../framework/helpers/layout.php:781
 msgid "General: Portfolio"
 msgstr ""
 
-#: ../framework/helpers/layout.php:786
+#: ../framework/helpers/layout.php:782
 msgid "General: RSS"
 msgstr ""
 
-#: ../framework/helpers/layout.php:787
+#: ../framework/helpers/layout.php:783
 msgid "General: Store"
 msgstr ""
 
-#: ../framework/helpers/layout.php:788
+#: ../framework/helpers/layout.php:784
 msgid "General: Write"
 msgstr ""
 
-#: ../framework/helpers/layout.php:789
+#: ../framework/helpers/layout.php:785
 msgid "Android"
 msgstr ""
 
-#: ../framework/helpers/layout.php:790
+#: ../framework/helpers/layout.php:786
 msgid "Apple"
 msgstr ""
 
-#: ../framework/helpers/layout.php:791
+#: ../framework/helpers/layout.php:787
 msgid "Behance"
 msgstr ""
 
-#: ../framework/helpers/layout.php:792
+#: ../framework/helpers/layout.php:788
 msgid "CodePen"
 msgstr ""
 
-#: ../framework/helpers/layout.php:793
+#: ../framework/helpers/layout.php:789
 msgid "Delicious"
 msgstr ""
 
-#: ../framework/helpers/layout.php:794
+#: ../framework/helpers/layout.php:790
 msgid "DeviantArt"
 msgstr ""
 
-#: ../framework/helpers/layout.php:795, ../framework/helpers/posts.php:283
+#: ../framework/helpers/layout.php:791, ../framework/helpers/posts.php:283
 msgid "Digg"
 msgstr ""
 
-#: ../framework/helpers/layout.php:796
+#: ../framework/helpers/layout.php:792
 msgid "Dribbble"
 msgstr ""
 
-#: ../framework/helpers/layout.php:797
+#: ../framework/helpers/layout.php:793
 msgid "Dropbox"
 msgstr ""
 
-#: ../framework/helpers/layout.php:799
+#: ../framework/helpers/layout.php:795
 msgid "Flickr"
 msgstr ""
 
-#: ../framework/helpers/layout.php:800
+#: ../framework/helpers/layout.php:796
 msgid "Foursquare"
 msgstr ""
 
-#: ../framework/helpers/layout.php:801
+#: ../framework/helpers/layout.php:797
 msgid "GitHub"
 msgstr ""
 
-#: ../framework/helpers/layout.php:803
+#: ../framework/helpers/layout.php:799
 msgid "Instagram"
 msgstr ""
 
-#: ../framework/helpers/layout.php:805
+#: ../framework/helpers/layout.php:801
 msgid "PayPal"
 msgstr ""
 
-#: ../framework/helpers/layout.php:807, ../framework/helpers/posts.php:289
+#: ../framework/helpers/layout.php:803, ../framework/helpers/posts.php:289
 msgid "Reddit"
 msgstr ""
 
-#: ../framework/helpers/layout.php:808
+#: ../framework/helpers/layout.php:804
 msgid "SlideShare"
 msgstr ""
 
-#: ../framework/helpers/layout.php:809
+#: ../framework/helpers/layout.php:805
 msgid "SoundCloud"
 msgstr ""
 
-#: ../framework/helpers/layout.php:810
+#: ../framework/helpers/layout.php:806
 msgid "StumbleUpon"
 msgstr ""
 
-#: ../framework/helpers/layout.php:811, ../framework/helpers/posts.php:290
+#: ../framework/helpers/layout.php:807, ../framework/helpers/posts.php:290
 msgid "Tumblr"
 msgstr ""
 
-#: ../framework/helpers/layout.php:813
+#: ../framework/helpers/layout.php:809
 msgid "Vimeo"
 msgstr ""
 
-#: ../framework/helpers/layout.php:814
+#: ../framework/helpers/layout.php:810
 msgid "Vine"
 msgstr ""
 
-#: ../framework/helpers/layout.php:815
+#: ../framework/helpers/layout.php:811
 msgid "Windows"
 msgstr ""
 
-#: ../framework/helpers/layout.php:816
+#: ../framework/helpers/layout.php:812
 msgid "WordPress"
 msgstr ""
 
-#: ../framework/helpers/layout.php:817
+#: ../framework/helpers/layout.php:813
 msgid "XING"
 msgstr ""
 
-#: ../framework/helpers/layout.php:818
+#: ../framework/helpers/layout.php:814
 msgid "Yahoo"
 msgstr ""
 
-#: ../framework/helpers/layout.php:819
+#: ../framework/helpers/layout.php:815
 msgid "YouTube"
 msgstr ""
 
