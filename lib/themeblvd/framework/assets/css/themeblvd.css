@@ -1510,15 +1510,6 @@ html {
 		padding-top: 46px;
 	}
 }
-@media (max-width: 600px) {
-	html body.mobile-menu-off #wpadminbar,
-	html body.mobile-menu-on #wpadminbar {
-		top: -46px;
-	}
-	.admin-bar .tb-mobile-panel {
-		padding-top: 0;
-	}
-}
 
 /* Mobile Menu (override some things in .tb-side-menu) */
 .tb-mobile-menu > li {
