@@ -1224,7 +1224,7 @@ function themeblvd_the_loop() {
 
 /**
  * Get arguments to pass into themeblvd_loop() when
- * using a page template that displays the seconday
+ * using a page template that displays the secondary
  * posts loop.
  *
  * @since Theme_Blvd 2.5.0
@@ -1271,7 +1271,7 @@ function themeblvd_get_template_loop_args( $template ) {
 	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $args    Arguments passed to themeblvd_loop().
-	 * @param int   $page_ID ID of current top-level page with templat being displayed.
+	 * @param int   $page_ID ID of current top-level page with template being displayed.
 	 */
 	return apply_filters( "themeblvd_{$template}_template_loop_args", $args, $page_id );
 

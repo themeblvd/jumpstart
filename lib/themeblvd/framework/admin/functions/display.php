@@ -708,7 +708,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 function themeblvd_conditionals_option( $id, $name, $val = null ) {
 
 	/*
-	 * Create array of all assignments seperated
+	 * Create array of all assignments separated
 	 * by type to check against when displaying them
 	 * back to the user.
 	 */
