@@ -30,7 +30,8 @@
 //
 
 .tb-options-wrap .controls select {
-	margin-bottom: 10px;
+	height: 28px !important; // Hack for WP's core #excerpt <select> styling.
+	margin: 0 0 10px 0;
 	width: 100%;
 }
 .tb-options-wrap .controls p > select {
