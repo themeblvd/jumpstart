@@ -1,6 +1,6 @@
 # Jump Start Changelog
 
-## 2.2.5 - XX/XX/2018
+## 2.2.5 - 04/05/2018
 
 * **Updated Theme Blvd framework to 2.7.5**
 * Improvement: Better styling for password form on password-protected posts and pages.
