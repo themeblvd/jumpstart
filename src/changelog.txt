@@ -6,6 +6,7 @@
 * Improvement: Better styling for password form on password-protected posts and pages.
 * Fixed: Layout issues on password-protected custom layout pages, when password form is shown.
 * Fixed: "Icon After Button Text" not working properly on buttons.
+* Updated: FontAwesome to 5.0.9.
 
 --------------------------------------------------------------
 
