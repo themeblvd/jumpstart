@@ -15,7 +15,7 @@ The Jump Start WordPress theme is a powerful, multi-purpose WordPress theme. Jum
 	* `fontawesome/`
 		* *Mirror of the current FontAwesome 5 distributed package.*
 	* `frontstreet/`
-		* *Mirror of [Front Street](https://github.com/themeblvd/frontstreet) `src`.*
+		* *Coming in [3.0](https://github.com/themeblvd/jumpstart/milestone/24). Mirror of [Front Street](https://github.com/themeblvd/frontstreet) `src`.*
 	* `plugin-manager/`
 		* *Custom build of [My Plugin Manager](https://github.com/themeblvd/my-plugin-manager) for the Theme Blvd WordPress Framework.*
 	* `themeblvd/`
