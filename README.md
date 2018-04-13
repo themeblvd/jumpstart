@@ -30,7 +30,7 @@ This project structure is meant to help solve the following:
 * **True separation of Theme Blvd framework and theme.** In the past this was always done by separating out framework functionality into a `/framework` directory of the theme. However, as the theme framework has grown, many files outside of that directory are considered part of the "framework." This project structure will help to port the "framework" to other theme projects without having to remember specific files that were changed outside of the `/framework` directory.
 * **Better distribution workflow.** When publishing an update, hopefully a few steps can be saved by automating the final release. The `/dist` directory will contain a copy of the final theme, and then that will also be zipped automatically into the final installable WordPress theme zip.
 
-* Note: We do push final build changes in the `/dist` directory with each commit, in parallel with source changes. This is a bit of an uncommon practice, but we do it for those downloading previous releases that do not have the required experience with NodeJS or npm to run the project build.*
+**Note: We do push final build changes in the `/dist` directory with each commit, in parallel with source changes. This is a bit of an uncommon practice, but we do it for those downloading previous releases that do not have the required experience with NodeJS or npm to run the project build.**
 
 ## Project Requirements
 
