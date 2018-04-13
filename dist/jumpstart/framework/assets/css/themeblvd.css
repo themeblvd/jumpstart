@@ -3939,7 +3939,7 @@ blockquote small {
 .tb-thumb-link:hover .thumb-link-icon {
 	opacity: 1;
 }
-.element-image .tb-thumb-link {
+.element-image .tb-thumb-link:not(.has-full-size-img) {
 	display: inline-block;
 }
 .container-xs-height .element-image.no-width img,

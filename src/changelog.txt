@@ -2,6 +2,8 @@
 
 ## 2.2.6 - XX/XX/XXXX
 
+* Improvement: Better spacing with Image elements, that are linked and have full-size images.
+
 --------------------------------------------------------------
 
 ## 2.2.5 - 04/05/2018

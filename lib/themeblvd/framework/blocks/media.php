@@ -1157,6 +1157,12 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 
 	}
 
+	if ( 'full' == $img_atts['crop'] ) {
+
+		$img_class .= ' full-size';
+
+	}
+
 	$img_src = $img_atts['src'];
 
 	if ( is_ssl() ) {
@@ -1209,6 +1215,12 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 		if ( ! empty( $args['class'] ) ) {
 
 			$anchor_classes .= ' ' . $args['class'];
+
+		}
+
+		if ( 'full' == $img_atts['crop'] ) {
+
+			$anchor_classes .= ' has-full-size-img';
 
 		}
 
