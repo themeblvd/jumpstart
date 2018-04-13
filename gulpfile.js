@@ -32,7 +32,7 @@ var frameworkName = 'Theme Blvd';
 /**
  * Theme version.
  */
-var version = '2.2.5';
+var version = '2.2.6';
 
 /**
  * Unused framework files.

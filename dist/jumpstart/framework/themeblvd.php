@@ -29,7 +29,7 @@
  *
  * @since Theme_Blvd 2.0.0
  */
-define( 'TB_FRAMEWORK_VERSION', '2.7.5' );
+define( 'TB_FRAMEWORK_VERSION', '2.7.6' );
 
 /**
  * Absolute file path to framework directory.
