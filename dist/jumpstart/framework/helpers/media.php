@@ -311,7 +311,7 @@ function themeblvd_add_image_sizes() {
  * Remove constraints on image URLs generated in
  * the admin.
  *
- * This function isn't by defualt filtered on, but it
+ * This function isn't by default filtered on, but it
  * can be applied and removed as needed onto WordPress's
  * `editor_max_image_size`.
  *

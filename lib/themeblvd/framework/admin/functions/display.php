@@ -1712,7 +1712,7 @@ function themeblvd_icon_browser( $args = array() ) {
 											 * Filters the value to be inserted for an icon in the
 											 * icon browser.
 											 *
-											 * By defualt, this value will be structured with a Font
+											 * By default, this value will be structured with a Font
 											 * Awesome style class and icon class, like `fas fa-user`.
 											 *
 											 * @since @@name-framework 2.7.4

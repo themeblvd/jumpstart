@@ -60,7 +60,7 @@ class Theme_Blvd_Compat_WPML {
 		add_filter( 'themeblvd_framework_stylesheets', array( $this, 'add_style' ) );
 
 		/**
-		 * Fitlers whether the theme's custom language
+		 * Filters whether the theme's custom language
 		 * switcher gets added.
 		 *
 		 * @since @@name-framework 2.5.0
@@ -220,7 +220,7 @@ class Theme_Blvd_Compat_WPML {
 		 * switcher the theme adds.
 		 *
 		 * Note: This funcionality can also be completely disabled
-		 * by filtering to `themeblvd_wpml_has_switcher` FALSE.
+		 * by filtering to `themeblvd_wpml_has_switcher` to FALSE.
 		 *
 		 * @since @@name-framework 2.7.0
 		 *

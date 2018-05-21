@@ -50,7 +50,7 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 		 * featured image can be.
 		 *
 		 * This is an attempt to avoid ever pulling `full` in
-		 * case user uploaded rediculously large image
+		 * case the user uploaded a ridiculously large image.
 		 *
 		 * @since @@name-framework 2.7.0
 		 *

@@ -941,7 +941,7 @@ function themeblvd_get_page_info() {
 	 *
 	 * @since Theme_Blvd 2.5.0
 	 *
-	 * @param string $outuput Final HTML output.
+	 * @param string $output Final HTML output.
 	 */
 	return apply_filters( 'themeblvd_page_info', $output );
 
