@@ -67,7 +67,7 @@ class Theme_Blvd_Bases {
 		$admin_page = add_theme_page(
 			__( 'Theme Base', 'jumpstart' ),
 			__( 'Theme Base', 'jumpstart' ),
-			'edit_theme_options',
+			themeblvd_admin_module_cap( 'base' ),
 			get_template() . '-base',
 			array( $this, 'admin_page' )
 		);

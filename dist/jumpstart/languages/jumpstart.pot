@@ -601,7 +601,7 @@ msgstr ""
 msgid "When viewing a single post, what do you want to use for the sidebar layout?"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:594, ../framework/api/class-theme-blvd-options-api.php:865, ../framework/api/helpers-options.php:1130, ../framework/general/locals.php:97
+#: ../framework/api/class-theme-blvd-options-api.php:594, ../framework/api/class-theme-blvd-options-api.php:865, ../framework/api/helpers-options.php:1131, ../framework/general/locals.php:97
 msgid "Pages"
 msgstr ""
 
@@ -793,7 +793,7 @@ msgstr ""
 msgid "List"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:846, ../framework/api/class-theme-blvd-options-api.php:1535, ../framework/api/class-theme-blvd-options-api.php:1567, ../framework/api/helpers-options.php:521, ../framework/helpers/posts.php:267
+#: ../framework/api/class-theme-blvd-options-api.php:846, ../framework/api/class-theme-blvd-options-api.php:1535, ../framework/api/class-theme-blvd-options-api.php:1567, ../framework/api/helpers-options.php:522, ../framework/helpers/posts.php:267
 msgid "Grid"
 msgstr ""
 
@@ -1609,655 +1609,655 @@ msgstr ""
 msgid "Custom stylesheets should be enqueued via the WordPress wp_enqueu_scripts action hook. Alternatively, if you're using an old custom.css file for child theme CSS customization, you can also just move all that CSS code to your child theme's style.css."
 msgstr ""
 
-#: ../framework/api/helpers-options.php:394
+#: ../framework/api/helpers-options.php:395
 msgid "Arches"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:401
+#: ../framework/api/helpers-options.php:402
 msgid "Boxy"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:408
+#: ../framework/api/helpers-options.php:409
 msgid "Brick Wall"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:415
+#: ../framework/api/helpers-options.php:416
 msgid "Carbon Classic"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:422
+#: ../framework/api/helpers-options.php:423
 msgid "Carbon Diagonal"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:429
+#: ../framework/api/helpers-options.php:430
 msgid "Carbon Weave"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:436
+#: ../framework/api/helpers-options.php:437
 msgid "Chex"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:443
+#: ../framework/api/helpers-options.php:444
 msgid "Circles"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:450
+#: ../framework/api/helpers-options.php:451
 msgid "Climpek"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:457
+#: ../framework/api/helpers-options.php:458
 msgid "Concrete"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:464
+#: ../framework/api/helpers-options.php:465
 msgid "Crosses"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:471
+#: ../framework/api/helpers-options.php:472
 msgid "Crystal"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:478
+#: ../framework/api/helpers-options.php:479
 msgid "Cube Stack"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:485
+#: ../framework/api/helpers-options.php:486
 msgid "Denim"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:492
+#: ../framework/api/helpers-options.php:493
 msgid "Diagonal (thin)"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:499
+#: ../framework/api/helpers-options.php:500
 msgid "Diagonal (thick)"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:506
+#: ../framework/api/helpers-options.php:507
 msgid "Diamonds"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:513
+#: ../framework/api/helpers-options.php:514
 msgid "Escheresque"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:528
+#: ../framework/api/helpers-options.php:529
 msgid "Grunge"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:535
+#: ../framework/api/helpers-options.php:536
 msgid "Feather"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:542
+#: ../framework/api/helpers-options.php:543
 msgid "Hexagons"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:549
+#: ../framework/api/helpers-options.php:550
 msgid "Honey Comb"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:556
+#: ../framework/api/helpers-options.php:557
 msgid "Leather"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:563
+#: ../framework/api/helpers-options.php:564
 msgid "Metal"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:570
+#: ../framework/api/helpers-options.php:571
 msgid "Mosaic"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:577
+#: ../framework/api/helpers-options.php:578
 msgid "Mosaic Triangles"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:584
+#: ../framework/api/helpers-options.php:585
 msgid "Noise"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:591
+#: ../framework/api/helpers-options.php:592
 msgid "Paper"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:598
+#: ../framework/api/helpers-options.php:599
 msgid "Pixel Weave"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:605
+#: ../framework/api/helpers-options.php:606
 msgid "Plaid"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:612
+#: ../framework/api/helpers-options.php:613
 msgid "Pyramids"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:619
+#: ../framework/api/helpers-options.php:620
 msgid "Rubber"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:626
+#: ../framework/api/helpers-options.php:627
 msgid "Skulls"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:633
+#: ../framework/api/helpers-options.php:634
 msgid "Squares"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:640
+#: ../framework/api/helpers-options.php:641
 msgid "Stacked Circles"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:647
+#: ../framework/api/helpers-options.php:648
 msgid "Swirl"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:654
+#: ../framework/api/helpers-options.php:655
 msgid "Textile"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:661
+#: ../framework/api/helpers-options.php:662
 msgid "Tiles"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:668
+#: ../framework/api/helpers-options.php:669
 msgid "Vertical Fabric"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:675
+#: ../framework/api/helpers-options.php:676
 msgid "Vintage"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:682
+#: ../framework/api/helpers-options.php:683
 msgid "Waves"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:689
+#: ../framework/api/helpers-options.php:690
 msgid "Wood"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:696
+#: ../framework/api/helpers-options.php:697
 msgid "Wood Planks"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:703
+#: ../framework/api/helpers-options.php:704
 msgid "---------------"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:709
+#: ../framework/api/helpers-options.php:710
 msgid "Light Arches"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:716
+#: ../framework/api/helpers-options.php:717
 msgid "Light Boxy"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:723
+#: ../framework/api/helpers-options.php:724
 msgid "Light Brick Wall"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:730
+#: ../framework/api/helpers-options.php:731
 msgid "Light Carbon Classic"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:737
+#: ../framework/api/helpers-options.php:738
 msgid "Light Carbon Diagonal"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:744
+#: ../framework/api/helpers-options.php:745
 msgid "Light Carbon Weave"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:751
+#: ../framework/api/helpers-options.php:752
 msgid "Light Chex"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:758
+#: ../framework/api/helpers-options.php:759
 msgid "Light Circles"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:765
+#: ../framework/api/helpers-options.php:766
 msgid "Light Climpek"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:772
+#: ../framework/api/helpers-options.php:773
 msgid "Light Concrete"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:779
+#: ../framework/api/helpers-options.php:780
 msgid "Light Crosses"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:786
+#: ../framework/api/helpers-options.php:787
 msgid "Light Cube Stack"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:793
+#: ../framework/api/helpers-options.php:794
 msgid "Light Denim"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:800
+#: ../framework/api/helpers-options.php:801
 msgid "Light Diagonal (thin)"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:807
+#: ../framework/api/helpers-options.php:808
 msgid "Light Diagonal (thick)"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:814
+#: ../framework/api/helpers-options.php:815
 msgid "Light Diamonds"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:821
+#: ../framework/api/helpers-options.php:822
 msgid "Light Escheresque"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:828
+#: ../framework/api/helpers-options.php:829
 msgid "Light Grid"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:835
+#: ../framework/api/helpers-options.php:836
 msgid "Light Grunge"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:842
+#: ../framework/api/helpers-options.php:843
 msgid "Light Feather"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:849
+#: ../framework/api/helpers-options.php:850
 msgid "Light Hexagons"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:856
+#: ../framework/api/helpers-options.php:857
 msgid "Light Honey Comb"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:863
+#: ../framework/api/helpers-options.php:864
 msgid "Light Leather"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:870
+#: ../framework/api/helpers-options.php:871
 msgid "Light Metal"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:877
+#: ../framework/api/helpers-options.php:878
 msgid "Light Mosaic"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:884
+#: ../framework/api/helpers-options.php:885
 msgid "Light Mosaic Triangles"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:891
+#: ../framework/api/helpers-options.php:892
 msgid "Light Noise"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:898
+#: ../framework/api/helpers-options.php:899
 msgid "Light Paper"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:905
+#: ../framework/api/helpers-options.php:906
 msgid "Light Pixel Weave"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:912
+#: ../framework/api/helpers-options.php:913
 msgid "Light Plaid"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:919
+#: ../framework/api/helpers-options.php:920
 msgid "Light Pyramids"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:926
+#: ../framework/api/helpers-options.php:927
 msgid "Light Rubber"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:933
+#: ../framework/api/helpers-options.php:934
 msgid "Light Skulls"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:940
+#: ../framework/api/helpers-options.php:941
 msgid "Light Squares"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:947
+#: ../framework/api/helpers-options.php:948
 msgid "Light Stacked Circles"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:954
+#: ../framework/api/helpers-options.php:955
 msgid "Light Swirl"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:961
+#: ../framework/api/helpers-options.php:962
 msgid "Light Textile"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:968
+#: ../framework/api/helpers-options.php:969
 msgid "Light Tiles"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:975
+#: ../framework/api/helpers-options.php:976
 msgid "Light Vertical Fabric"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:982
+#: ../framework/api/helpers-options.php:983
 msgid "Light Vintage"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:989
+#: ../framework/api/helpers-options.php:990
 msgid "Light Waves"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:996
+#: ../framework/api/helpers-options.php:997
 msgid "Light Wood"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1003
+#: ../framework/api/helpers-options.php:1004
 msgid "Light Wood Planks"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1041
+#: ../framework/api/helpers-options.php:1042
 msgid "Default Color"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1042
+#: ../framework/api/helpers-options.php:1043
 msgid "Custom Color"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1046
+#: ../framework/api/helpers-options.php:1047
 msgid "Primary"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1047
+#: ../framework/api/helpers-options.php:1048
 msgid "Info"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1048
+#: ../framework/api/helpers-options.php:1049
 msgid "Success"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1049
+#: ../framework/api/helpers-options.php:1050
 msgid "Warning"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1050
+#: ../framework/api/helpers-options.php:1051
 msgid "Danger"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1054
+#: ../framework/api/helpers-options.php:1055
 msgid "Black"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1055, ../inc/base/agent/presets.php:126, ../inc/base/entrepreneur/presets.php:40, ../inc/base/executive/presets.php:40, ../inc/base/superuser/presets.php:40
+#: ../framework/api/helpers-options.php:1056, ../inc/base/agent/presets.php:126, ../inc/base/entrepreneur/presets.php:40, ../inc/base/executive/presets.php:40, ../inc/base/superuser/presets.php:40
 msgid "Blue"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1056
+#: ../framework/api/helpers-options.php:1057
 msgid "Blue (Dark)"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1057
+#: ../framework/api/helpers-options.php:1058
 msgid "Blue (Royal)"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1058
+#: ../framework/api/helpers-options.php:1059
 msgid "Blue (Steel)"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1059
+#: ../framework/api/helpers-options.php:1060
 msgid "Brown"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1060
+#: ../framework/api/helpers-options.php:1061
 msgid "Brown (Dark)"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1061
+#: ../framework/api/helpers-options.php:1062
 msgid "Grey (Slate)"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1062, ../inc/base/agent/presets.php:124, ../inc/base/entrepreneur/presets.php:38, ../inc/base/executive/presets.php:38, ../inc/base/superuser/presets.php:38
+#: ../framework/api/helpers-options.php:1063, ../inc/base/agent/presets.php:124, ../inc/base/entrepreneur/presets.php:38, ../inc/base/executive/presets.php:38, ../inc/base/superuser/presets.php:38
 msgid "Green"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1063
+#: ../framework/api/helpers-options.php:1064
 msgid "Green (Dark)"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1064
+#: ../framework/api/helpers-options.php:1065
 msgid "Mauve"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1065, ../inc/base/agent/presets.php:129, ../inc/base/entrepreneur/presets.php:43, ../inc/base/executive/presets.php:43, ../inc/base/superuser/presets.php:43
+#: ../framework/api/helpers-options.php:1066, ../inc/base/agent/presets.php:129, ../inc/base/entrepreneur/presets.php:43, ../inc/base/executive/presets.php:43, ../inc/base/superuser/presets.php:43
 msgid "Orange"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1066
+#: ../framework/api/helpers-options.php:1067
 msgid "Pearl"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1067
+#: ../framework/api/helpers-options.php:1068
 msgid "Pink"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1068, ../inc/base/agent/presets.php:128, ../inc/base/entrepreneur/presets.php:42, ../inc/base/executive/presets.php:42, ../inc/base/superuser/presets.php:42
+#: ../framework/api/helpers-options.php:1069, ../inc/base/agent/presets.php:128, ../inc/base/entrepreneur/presets.php:42, ../inc/base/executive/presets.php:42, ../inc/base/superuser/presets.php:42
 msgid "Purple"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1069, ../inc/base/agent/presets.php:130, ../inc/base/entrepreneur/presets.php:44, ../inc/base/executive/presets.php:44, ../inc/base/superuser/presets.php:44
+#: ../framework/api/helpers-options.php:1070, ../inc/base/agent/presets.php:130, ../inc/base/entrepreneur/presets.php:44, ../inc/base/executive/presets.php:44, ../inc/base/superuser/presets.php:44
 msgid "Red"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1070
+#: ../framework/api/helpers-options.php:1071
 msgid "Silver"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1071
+#: ../framework/api/helpers-options.php:1072
 msgid "Teal"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1072
+#: ../framework/api/helpers-options.php:1073
 msgid "Yellow"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1073
+#: ../framework/api/helpers-options.php:1074
 msgid "Wheat"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1074
+#: ../framework/api/helpers-options.php:1075
 msgid "White"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1131
+#: ../framework/api/helpers-options.php:1132
 msgid "No pages to display."
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1136
+#: ../framework/api/helpers-options.php:1137
 msgid "Posts"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1137
+#: ../framework/api/helpers-options.php:1138
 msgid "No posts to display."
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1142
+#: ../framework/api/helpers-options.php:1143
 msgid "Posts in Category"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1143, ../framework/api/helpers-options.php:1149, ../framework/api/helpers-options.php:1167, ../framework/api/helpers-options.php:1196, ../framework/api/helpers-options.php:1208
+#: ../framework/api/helpers-options.php:1144, ../framework/api/helpers-options.php:1150, ../framework/api/helpers-options.php:1168, ../framework/api/helpers-options.php:1197, ../framework/api/helpers-options.php:1209
 msgid "No categories to display."
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1148
+#: ../framework/api/helpers-options.php:1149
 msgid "Category Archives"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1154
+#: ../framework/api/helpers-options.php:1155
 msgid "Tag Archives"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1155, ../framework/api/helpers-options.php:1202
+#: ../framework/api/helpers-options.php:1156, ../framework/api/helpers-options.php:1203
 msgid "No tags to display."
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1160
+#: ../framework/api/helpers-options.php:1161
 msgid "Single Portfolio Items"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1161
+#: ../framework/api/helpers-options.php:1162
 msgid "No portfolio items to display."
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1166
+#: ../framework/api/helpers-options.php:1167
 msgid "Items in Portfolio"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1172
+#: ../framework/api/helpers-options.php:1173
 msgid "Portfolios"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1173
+#: ../framework/api/helpers-options.php:1174
 msgid "No portfolios to display."
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1178
+#: ../framework/api/helpers-options.php:1179
 msgid "Portfolio Tag Archives"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1179
+#: ../framework/api/helpers-options.php:1180
 msgid "No portfolio tags to display."
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1184
+#: ../framework/api/helpers-options.php:1185
 msgid "Portfolio Hierarchy"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1188
+#: ../framework/api/helpers-options.php:1189
 msgid "All single portfolio items"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1189
+#: ../framework/api/helpers-options.php:1190
 msgid "Items displayed by portfolio"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1190
+#: ../framework/api/helpers-options.php:1191
 msgid "Items displayed by portfolio tag"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1195
+#: ../framework/api/helpers-options.php:1196
 msgid "Product Category Archives"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1201
+#: ../framework/api/helpers-options.php:1202
 msgid "Product Tag Archives"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1207
+#: ../framework/api/helpers-options.php:1208
 msgid "Products in Category"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1213
+#: ../framework/api/helpers-options.php:1214
 msgid "Product Hierarchy"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1217
+#: ../framework/api/helpers-options.php:1218
 msgid "All WooCommerce pages"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1218
+#: ../framework/api/helpers-options.php:1219
 msgid "All single products"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1219
+#: ../framework/api/helpers-options.php:1220
 msgid "Products displayed by category"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1220
+#: ../framework/api/helpers-options.php:1221
 msgid "Products displayed by tag"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1221
+#: ../framework/api/helpers-options.php:1222
 msgid "WooCommerce search results"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1226
+#: ../framework/api/helpers-options.php:1227
 msgid "Forums"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1232
+#: ../framework/api/helpers-options.php:1233
 msgid "Forum Hierarchy"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1236
+#: ../framework/api/helpers-options.php:1237
 msgid "All bbPress pages"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1237
+#: ../framework/api/helpers-options.php:1238
 msgid "All single topics"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1238
+#: ../framework/api/helpers-options.php:1239
 msgid "All single forums"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1239
+#: ../framework/api/helpers-options.php:1240
 msgid "Viewing topics by tag"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1240
+#: ../framework/api/helpers-options.php:1241
 msgid "Public user profiles"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1241
+#: ../framework/api/helpers-options.php:1242
 msgid "Logged-in user home"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1246
+#: ../framework/api/helpers-options.php:1247
 msgid "Hierarchy"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1250
+#: ../framework/api/helpers-options.php:1251
 msgid "Homepage"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1251
+#: ../framework/api/helpers-options.php:1252
 msgid "All posts (any post type)"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1252
+#: ../framework/api/helpers-options.php:1253
 msgid "All blog posts"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1253
+#: ../framework/api/helpers-options.php:1254
 msgid "All pages"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1254
+#: ../framework/api/helpers-options.php:1255
 msgid "All archives"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1255
+#: ../framework/api/helpers-options.php:1256
 msgid "All category archives"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1256
+#: ../framework/api/helpers-options.php:1257
 msgid "All tag archives"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1257
+#: ../framework/api/helpers-options.php:1258
 msgid "All author archives"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1258
+#: ../framework/api/helpers-options.php:1259
 msgid "Search Results"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1259
+#: ../framework/api/helpers-options.php:1260
 msgid "404 Page"
 msgstr ""
 
-#: ../framework/api/helpers-options.php:1264
+#: ../framework/api/helpers-options.php:1265
 msgid "Custom"
 msgstr ""
 

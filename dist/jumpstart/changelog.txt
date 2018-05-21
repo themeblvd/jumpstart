@@ -2,6 +2,9 @@
 
 ## 2.2.6 - XX/XX/XXXX
 
+* Improvement: Better spacing with Image elements, that are linked and have full-size images.
+* Fixed: Adding missing `base` key in `themeblvd_admin_module_caps` filtered array, so that the user capability of the Theme Bases admin page can be modified (see [tutorial](http://dev.themeblvd.com/tutorial/changing-user-role-access-for-admin-modules/)).
+
 --------------------------------------------------------------
 
 ## 2.2.5 - 04/05/2018

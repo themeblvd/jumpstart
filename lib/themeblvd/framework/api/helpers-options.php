@@ -352,6 +352,7 @@ function themeblvd_admin_module_cap( $page ) {
 		'options'  => 'edit_theme_options', // Role: Administrator
 		'sidebars' => 'edit_theme_options', // Role: Administrator
 		'updates'  => 'edit_theme_options', // Role: Administrator
+		'base'     => 'edit_theme_options', // Role: Administrator
 	) );
 
 	$cap = '';
