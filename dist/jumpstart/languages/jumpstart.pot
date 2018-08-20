@@ -25,7 +25,7 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: ../template_builder.php:2, ../framework/admin/functions/display.php:1633
+#: ../template_builder.php:2, ../framework/admin/functions/display.php:1567
 msgid "Custom Layout"
 msgstr ""
 
@@ -393,7 +393,7 @@ msgstr ""
 msgid "Select a background color for the side panel."
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:349, ../framework/admin/meta/meta.php:510, ../inc/base/agent/options.php:357, ../inc/base/entrepreneur/options.php:876, ../inc/base/executive/options.php:1158, ../inc/base/superuser/options.php:1191
+#: ../framework/api/class-theme-blvd-options-api.php:349, ../framework/admin/meta/meta.php:502, ../inc/base/agent/options.php:357, ../inc/base/entrepreneur/options.php:876, ../inc/base/executive/options.php:1158, ../inc/base/superuser/options.php:1191
 msgid "Header"
 msgstr ""
 
@@ -461,7 +461,7 @@ msgstr ""
 msgid "Hide search form"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:402, ../framework/admin/meta/meta.php:515, ../inc/base/agent/options.php:359, ../inc/base/entrepreneur/options.php:450
+#: ../framework/api/class-theme-blvd-options-api.php:402, ../framework/admin/meta/meta.php:507, ../inc/base/agent/options.php:359, ../inc/base/entrepreneur/options.php:450
 msgid "Transparent Header"
 msgstr ""
 
@@ -517,7 +517,7 @@ msgstr ""
 msgid "Configure the primary branding logo for the mobile header of your site."
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:493, ../framework/admin/meta/meta.php:521, ../inc/base/agent/options.php:365, ../inc/base/entrepreneur/options.php:886, ../inc/base/executive/options.php:1168, ../inc/base/superuser/options.php:1201
+#: ../framework/api/class-theme-blvd-options-api.php:493, ../framework/admin/meta/meta.php:513, ../inc/base/agent/options.php:365, ../inc/base/entrepreneur/options.php:886, ../inc/base/executive/options.php:1168, ../inc/base/superuser/options.php:1201
 msgid "Footer"
 msgstr ""
 
@@ -581,11 +581,11 @@ msgstr ""
 msgid "Show your site title."
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:568, ../framework/admin/meta/class-theme-blvd-user-options.php:302, ../framework/admin/meta/meta.php:313
+#: ../framework/api/class-theme-blvd-options-api.php:568, ../framework/admin/meta/class-theme-blvd-user-options.php:302, ../framework/admin/meta/meta.php:495
 msgid "Sidebar Layout"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:572, ../framework/admin/functions/helpers.php:316, ../framework/admin/meta/class-theme-blvd-user-options.php:179, ../framework/admin/meta/class-theme-blvd-user-options.php:188, ../inc/base/entrepreneur/presets.php:37, ../inc/base/executive/presets.php:37, ../inc/base/superuser/presets.php:37
+#: ../framework/api/class-theme-blvd-options-api.php:572, ../framework/admin/functions/helpers.php:270, ../framework/admin/meta/class-theme-blvd-user-options.php:179, ../framework/admin/meta/class-theme-blvd-user-options.php:188, ../framework/admin/meta/meta.php:477, ../inc/base/entrepreneur/presets.php:37, ../inc/base/executive/presets.php:37, ../inc/base/superuser/presets.php:37
 msgid "Default"
 msgstr ""
 
@@ -641,7 +641,7 @@ msgstr ""
 msgid "Extras"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:687, ../framework/admin/meta/meta.php:381
+#: ../framework/api/class-theme-blvd-options-api.php:687, ../framework/admin/meta/meta.php:358
 msgid "Breadcrumbs"
 msgstr ""
 
@@ -649,11 +649,11 @@ msgstr ""
 msgid "Select whether you'd like breadcrumbs to show throughout the site or not."
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:693, ../framework/admin/meta/meta.php:224, ../framework/admin/meta/meta.php:386
+#: ../framework/api/class-theme-blvd-options-api.php:693, ../framework/admin/meta/meta.php:210, ../framework/admin/meta/meta.php:363
 msgid "Yes, show breadcrumbs"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:694, ../framework/admin/meta/meta.php:225, ../framework/admin/meta/meta.php:387
+#: ../framework/api/class-theme-blvd-options-api.php:694, ../framework/admin/meta/meta.php:211, ../framework/admin/meta/meta.php:364
 msgid "No, hide breadcrumbs"
 msgstr ""
 
@@ -701,11 +701,11 @@ msgstr ""
 msgid "Select if you'd like the meta information (like date posted, author, etc) to show on the single post. If you're going for a non-blog type of setup, you may want to hide the meta info."
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:774, ../framework/api/class-theme-blvd-options-api.php:1003, ../framework/api/class-theme-blvd-options-api.php:1063, ../framework/api/class-theme-blvd-options-api.php:1145, ../framework/admin/meta/meta.php:163
+#: ../framework/api/class-theme-blvd-options-api.php:774, ../framework/api/class-theme-blvd-options-api.php:1003, ../framework/api/class-theme-blvd-options-api.php:1063, ../framework/api/class-theme-blvd-options-api.php:1145, ../framework/admin/meta/meta.php:149
 msgid "Show meta info"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:775, ../framework/api/class-theme-blvd-options-api.php:1004, ../framework/api/class-theme-blvd-options-api.php:1064, ../framework/api/class-theme-blvd-options-api.php:1146, ../framework/admin/meta/meta.php:164
+#: ../framework/api/class-theme-blvd-options-api.php:775, ../framework/api/class-theme-blvd-options-api.php:1004, ../framework/api/class-theme-blvd-options-api.php:1064, ../framework/api/class-theme-blvd-options-api.php:1146, ../framework/admin/meta/meta.php:150
 msgid "Hide meta info"
 msgstr ""
 
@@ -717,11 +717,11 @@ msgstr ""
 msgid "Select if you'd like the sub meta information (like tags, categories, etc) to show on the single post."
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:785, ../framework/api/class-theme-blvd-options-api.php:1014, ../framework/admin/meta/meta.php:175
+#: ../framework/api/class-theme-blvd-options-api.php:785, ../framework/api/class-theme-blvd-options-api.php:1014, ../framework/admin/meta/meta.php:161
 msgid "Show sub meta info"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:786, ../framework/api/class-theme-blvd-options-api.php:1015, ../framework/admin/meta/meta.php:176
+#: ../framework/api/class-theme-blvd-options-api.php:786, ../framework/api/class-theme-blvd-options-api.php:1015, ../framework/admin/meta/meta.php:162
 msgid "Hide sub meta info"
 msgstr ""
 
@@ -741,19 +741,19 @@ msgstr ""
 msgid "Choose how you want your featured images to show on the single post, by default. This option can be useful if you've set featured images strictly for use in a blog, post grid, portfolio, etc, but you don't want those featured images to show on the single posts."
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:820, ../framework/api/class-theme-blvd-options-api.php:874, ../framework/api/class-theme-blvd-options-api.php:961, ../framework/admin/meta/meta.php:236, ../framework/admin/meta/meta.php:398
+#: ../framework/api/class-theme-blvd-options-api.php:820, ../framework/api/class-theme-blvd-options-api.php:874, ../framework/api/class-theme-blvd-options-api.php:961, ../framework/admin/meta/meta.php:222, ../framework/admin/meta/meta.php:375
 msgid "Full width, above content"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:821, ../framework/api/class-theme-blvd-options-api.php:875, ../framework/api/class-theme-blvd-options-api.php:962, ../framework/admin/meta/meta.php:237, ../framework/admin/meta/meta.php:399
+#: ../framework/api/class-theme-blvd-options-api.php:821, ../framework/api/class-theme-blvd-options-api.php:875, ../framework/api/class-theme-blvd-options-api.php:962, ../framework/admin/meta/meta.php:223, ../framework/admin/meta/meta.php:376
 msgid "Full screen parallax, above content"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:822, ../framework/api/class-theme-blvd-options-api.php:876, ../framework/admin/meta/meta.php:238, ../framework/admin/meta/meta.php:400
+#: ../framework/api/class-theme-blvd-options-api.php:822, ../framework/api/class-theme-blvd-options-api.php:876, ../framework/admin/meta/meta.php:224, ../framework/admin/meta/meta.php:377
 msgid "Standard, with content"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:823, ../framework/api/class-theme-blvd-options-api.php:877, ../framework/api/class-theme-blvd-options-api.php:993, ../framework/api/class-theme-blvd-options-api.php:1053, ../framework/api/class-theme-blvd-options-api.php:1122, ../framework/admin/meta/meta.php:401
+#: ../framework/api/class-theme-blvd-options-api.php:823, ../framework/api/class-theme-blvd-options-api.php:877, ../framework/api/class-theme-blvd-options-api.php:993, ../framework/api/class-theme-blvd-options-api.php:1053, ../framework/api/class-theme-blvd-options-api.php:1122, ../framework/admin/meta/meta.php:378
 msgid "Hide featured images"
 msgstr ""
 
@@ -761,23 +761,23 @@ msgstr ""
 msgid "Related Posts"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:828, ../framework/admin/meta/meta.php:194
+#: ../framework/api/class-theme-blvd-options-api.php:828, ../framework/admin/meta/meta.php:180
 msgid "Select if you'd like to show more posts related to the one being viewed."
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:828, ../framework/admin/meta/meta.php:194
+#: ../framework/api/class-theme-blvd-options-api.php:828, ../framework/admin/meta/meta.php:180
 msgid "Note: This only applies to standard posts."
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:833, ../framework/admin/meta/meta.php:199
+#: ../framework/api/class-theme-blvd-options-api.php:833, ../framework/admin/meta/meta.php:185
 msgid "Show related posts by tag"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:834, ../framework/admin/meta/meta.php:200
+#: ../framework/api/class-theme-blvd-options-api.php:834, ../framework/admin/meta/meta.php:186
 msgid "Show related posts by category"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:835, ../framework/admin/meta/meta.php:201
+#: ../framework/api/class-theme-blvd-options-api.php:835, ../framework/admin/meta/meta.php:187
 msgid "Hide related posts"
 msgstr ""
 
@@ -805,11 +805,11 @@ msgstr ""
 msgid "This will hide the presence of comments on the single post."
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:856, ../framework/admin/meta/meta.php:212
+#: ../framework/api/class-theme-blvd-options-api.php:856, ../framework/admin/meta/meta.php:198
 msgid "Show comments"
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:857, ../framework/admin/meta/meta.php:213
+#: ../framework/api/class-theme-blvd-options-api.php:857, ../framework/admin/meta/meta.php:199
 msgid "Hide comments"
 msgstr ""
 
@@ -1217,7 +1217,7 @@ msgstr ""
 msgid "You must have a Google Maps API key setup to use the \"Google Maps\" element of our layout builder."
 msgstr ""
 
-#: ../framework/api/class-theme-blvd-options-api.php:1402, ../framework/admin/meta/meta.php:511, ../framework/admin/meta/meta.php:632, ../framework/admin/meta/meta.php:638
+#: ../framework/api/class-theme-blvd-options-api.php:1402, ../framework/admin/meta/meta.php:503, ../framework/admin/meta/meta.php:624, ../framework/admin/meta/meta.php:630
 msgid "Learn More"
 msgstr ""
 
@@ -3215,7 +3215,7 @@ msgstr ""
 msgid "portfolio tags"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:884, ../framework/admin/meta/meta.php:619
+#: ../framework/admin/functions/display.php:884, ../framework/admin/meta/meta.php:611
 msgid "tag"
 msgstr ""
 
@@ -3285,7 +3285,7 @@ msgstr ""
 msgid "You can change your site title by going %s."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1229, ../framework/admin/functions/display.php:1866, ../framework/admin/options/class-theme-blvd-sortable-option.php:1490, ../framework/admin/options/class-theme-blvd-sortable-option.php:2694
+#: ../framework/admin/functions/display.php:1229, ../framework/admin/functions/display.php:1800, ../framework/admin/options/class-theme-blvd-sortable-option.php:1490, ../framework/admin/options/class-theme-blvd-sortable-option.php:2694
 msgid "Title"
 msgstr ""
 
@@ -3317,163 +3317,159 @@ msgstr ""
 msgid "Button has border"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1579
-msgid "Default Sidebar Layout"
-msgstr ""
-
-#: ../framework/admin/functions/display.php:1617
+#: ../framework/admin/functions/display.php:1551
 msgid "In order to use the \"Custom Layout\" template, you must have the %s plugin installed."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1654
+#: ../framework/admin/functions/display.php:1588
 msgid "You haven't created any custom layouts in the Layout builder yet."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1683
+#: ../framework/admin/functions/display.php:1617
 msgid "Close icon browser panel"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1692
+#: ../framework/admin/functions/display.php:1626
 msgid "Select an Icon"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1700
+#: ../framework/admin/functions/display.php:1634
 msgid "Search for an icon..."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1775
+#: ../framework/admin/functions/display.php:1709
 msgid "Use Icon"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1806
+#: ../framework/admin/functions/display.php:1740
 msgid "Close post browser panel"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1815, ../framework/admin/options/options-interface.php:506
+#: ../framework/admin/functions/display.php:1749, ../framework/admin/options/options-interface.php:506
 msgid "Find Post or Page ID"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1826
+#: ../framework/admin/functions/display.php:1760
 msgid "Search Posts and Pages"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1869
+#: ../framework/admin/functions/display.php:1803
 msgid "Slug"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1872
+#: ../framework/admin/functions/display.php:1806
 msgid "Type"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1875
+#: ../framework/admin/functions/display.php:1809
 msgid "ID"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1878, ../framework/admin/options/media-uploader.php:127
+#: ../framework/admin/functions/display.php:1812, ../framework/admin/options/media-uploader.php:127
 msgid "Select"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1895
+#: ../framework/admin/functions/display.php:1829
 msgid "Use Post"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1903
+#: ../framework/admin/functions/display.php:1837
 msgid "No posts found."
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1936
+#: ../framework/admin/functions/display.php:1870
 msgid "Close texture browser panel"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1945
+#: ../framework/admin/functions/display.php:1879
 msgid "Select a texture"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1955
+#: ../framework/admin/functions/display.php:1889
 msgid "Dark Textures"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1964
+#: ../framework/admin/functions/display.php:1898
 msgid "Light Textures"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:1964
+#: ../framework/admin/functions/display.php:1898
 msgid "Above textures tweaked slightly to be overlaid on lighter background colors"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:2012
+#: ../framework/admin/functions/display.php:1946
 msgid "Use Texture"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:2090
+#: ../framework/admin/functions/display.php:2024
 msgid "Apply Preset"
 msgstr ""
 
-#: ../framework/admin/functions/display.php:2143
+#: ../framework/admin/functions/display.php:2077
 msgid "Changelog"
 msgstr ""
 
-#: ../framework/admin/functions/helpers.php:156
+#: ../framework/admin/functions/helpers.php:110
 msgid "Options cleared from database."
 msgstr ""
 
-#: ../framework/admin/functions/helpers.php:173
+#: ../framework/admin/functions/helpers.php:127
 msgid "No background"
 msgstr ""
 
-#: ../framework/admin/functions/helpers.php:174, ../inc/base/executive/options.php:519, ../inc/base/superuser/options.php:528
+#: ../framework/admin/functions/helpers.php:128, ../inc/base/executive/options.php:519, ../inc/base/superuser/options.php:528
 msgid "Custom color"
 msgstr ""
 
-#: ../framework/admin/functions/helpers.php:175
+#: ../framework/admin/functions/helpers.php:129
 msgid "Custom color + texture"
 msgstr ""
 
-#: ../framework/admin/functions/helpers.php:176
+#: ../framework/admin/functions/helpers.php:130
 msgid "Custom color + image"
 msgstr ""
 
-#: ../framework/admin/functions/helpers.php:177
+#: ../framework/admin/functions/helpers.php:131
 msgid "Custom image slideshow"
 msgstr ""
 
-#: ../framework/admin/functions/helpers.php:178
+#: ../framework/admin/functions/helpers.php:132
 msgid "Custom video"
 msgstr ""
 
-#: ../framework/admin/functions/helpers.php:246
+#: ../framework/admin/functions/helpers.php:200
 msgid "No pages exist."
 msgstr ""
 
-#: ../framework/admin/functions/helpers.php:253
+#: ../framework/admin/functions/helpers.php:207
 msgid "<strong>All Categories</strong>"
 msgstr ""
 
-#: ../framework/admin/functions/helpers.php:315
+#: ../framework/admin/functions/helpers.php:269
 msgid "Location:"
 msgstr ""
 
-#: ../framework/admin/functions/helpers.php:333
+#: ../framework/admin/functions/helpers.php:287
 msgid "Full Size"
 msgstr ""
 
-#: ../framework/admin/functions/helpers.php:376
+#: ../framework/admin/functions/helpers.php:330
 msgid "hard crop"
 msgstr ""
 
-#: ../framework/admin/functions/helpers.php:380
+#: ../framework/admin/functions/helpers.php:334
 msgid "no height crop"
 msgstr ""
 
-#: ../framework/admin/functions/helpers.php:384
+#: ../framework/admin/functions/helpers.php:338
 msgid "soft crop"
 msgstr ""
 
-#: ../framework/admin/functions/helpers.php:409
+#: ../framework/admin/functions/helpers.php:363
 msgid "For Darker Background Color"
 msgstr ""
 
-#: ../framework/admin/functions/helpers.php:413
+#: ../framework/admin/functions/helpers.php:367
 msgid "For Lighter Background Color"
 msgstr ""
 
@@ -3557,7 +3553,7 @@ msgstr ""
 msgid "Suggested Plugins"
 msgstr ""
 
-#: ../framework/admin/meta/class-theme-blvd-tax-options.php:140, ../framework/admin/meta/class-theme-blvd-tax-options.php:150, ../framework/admin/meta/class-theme-blvd-tax-options.php:173, ../framework/admin/meta/meta.php:162, ../framework/admin/meta/meta.php:174, ../framework/admin/meta/meta.php:198, ../framework/admin/meta/meta.php:211, ../framework/admin/meta/meta.php:223, ../framework/admin/meta/meta.php:235, ../framework/admin/meta/meta.php:385, ../framework/admin/meta/meta.php:397, ../framework/admin/meta/meta.php:665
+#: ../framework/admin/meta/class-theme-blvd-tax-options.php:140, ../framework/admin/meta/class-theme-blvd-tax-options.php:150, ../framework/admin/meta/class-theme-blvd-tax-options.php:173, ../framework/admin/meta/meta.php:148, ../framework/admin/meta/meta.php:160, ../framework/admin/meta/meta.php:184, ../framework/admin/meta/meta.php:197, ../framework/admin/meta/meta.php:209, ../framework/admin/meta/meta.php:221, ../framework/admin/meta/meta.php:362, ../framework/admin/meta/meta.php:374, ../framework/admin/meta/meta.php:657
 msgid "Use default setting"
 msgstr ""
 
@@ -3633,399 +3629,399 @@ msgstr ""
 msgid "Author Archives"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:149
+#: ../framework/admin/meta/meta.php:135
 msgid "Post Options"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:157
+#: ../framework/admin/meta/meta.php:143
 msgid "Meta Information (the single post)"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:158
+#: ../framework/admin/meta/meta.php:144
 msgid "Select if you'd like the meta information (like date posted, author, etc) to show on this single post. If you're going for a non-blog type of setup, you may want to hide the meta info."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:169
+#: ../framework/admin/meta/meta.php:155
 msgid "Sub Meta Information (the single post)"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:170
+#: ../framework/admin/meta/meta.php:156
 msgid "Select if you'd like the sub meta information (like tags, categories, etc) to show on this single post."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:181
+#: ../framework/admin/meta/meta.php:167
 msgid "Author Box (the single post)"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:182
+#: ../framework/admin/meta/meta.php:168
 msgid "Select if you'd like to display a box with information about the post's author."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:186
+#: ../framework/admin/meta/meta.php:172
 msgid "Use WordPress user's default setting"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:187
+#: ../framework/admin/meta/meta.php:173
 msgid "Show author box"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:188
+#: ../framework/admin/meta/meta.php:174
 msgid "Hide author box"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:193
+#: ../framework/admin/meta/meta.php:179
 msgid "Related Posts (the single post)"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:206
+#: ../framework/admin/meta/meta.php:192
 msgid "Comments (the single post)"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:207
+#: ../framework/admin/meta/meta.php:193
 msgid "This will hide the presence of comments on this single post."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:218
+#: ../framework/admin/meta/meta.php:204
 msgid "Breadcrumbs (the single post)"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:219
+#: ../framework/admin/meta/meta.php:205
 msgid "Select whether you'd like breadcrumbs to show on this post or not."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:230
+#: ../framework/admin/meta/meta.php:216
 msgid "Featured Image or Gallery (the single post)"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:231
+#: ../framework/admin/meta/meta.php:217
 msgid "Select how you'd like the featured image to show at the top of the post. This option only refers to this single post."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:231
+#: ../framework/admin/meta/meta.php:217
 msgid "Note: The full-screen option will work best when a Transparent Header is set."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:239
+#: ../framework/admin/meta/meta.php:225
 msgid "Hide featured image"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:248
+#: ../framework/admin/meta/meta.php:234
 msgid "Featured Image Link (everywhere)"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:249
+#: ../framework/admin/meta/meta.php:235
 msgid "Here you can select how you'd like this post's featured image to react when clicked. This DOES apply to both this single post page and when this post is used in a blog, post list, post grid, or post showcase."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:249
+#: ../framework/admin/meta/meta.php:235
 msgid "Note: This does not apply to the single post when the featured image is displayed above the content."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:253, ../framework/admin/meta/meta.php:415
+#: ../framework/admin/meta/meta.php:239, ../framework/admin/meta/meta.php:392
 msgid "Featured image is not a link"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:254
+#: ../framework/admin/meta/meta.php:240
 msgid "It links to its post"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:255, ../framework/admin/meta/meta.php:416
+#: ../framework/admin/meta/meta.php:241, ../framework/admin/meta/meta.php:393
 msgid "It links to its enlarged lightbox version"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:256, ../framework/admin/meta/meta.php:417
+#: ../framework/admin/meta/meta.php:242, ../framework/admin/meta/meta.php:394
 msgid "It links to a custom lightbox image"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:257, ../framework/admin/meta/meta.php:418
+#: ../framework/admin/meta/meta.php:243, ../framework/admin/meta/meta.php:395
 msgid "It links to a lightbox video"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:258, ../framework/admin/meta/meta.php:419
+#: ../framework/admin/meta/meta.php:244, ../framework/admin/meta/meta.php:396
 msgid "It links to a webpage"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:264, ../framework/admin/meta/meta.php:425
+#: ../framework/admin/meta/meta.php:250, ../framework/admin/meta/meta.php:402
 msgid "Featured Image - Image Link"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:265, ../framework/admin/meta/meta.php:426
+#: ../framework/admin/meta/meta.php:251, ../framework/admin/meta/meta.php:403
 msgid "Enter the full URL of enlarged image that the featured image will link to."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:265, ../framework/admin/meta/meta.php:426
+#: ../framework/admin/meta/meta.php:251, ../framework/admin/meta/meta.php:403
 msgid "Ex: http://your-site.com/uploads/image.jpg"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:271, ../framework/admin/meta/meta.php:432
+#: ../framework/admin/meta/meta.php:257, ../framework/admin/meta/meta.php:409
 msgid "Featured Image - Video Link"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:272, ../framework/admin/meta/meta.php:433
+#: ../framework/admin/meta/meta.php:258, ../framework/admin/meta/meta.php:410
 msgid "Enter the full webpage URL to a video from YouTube or Vimeo."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:272, ../framework/admin/meta/meta.php:272, ../framework/admin/meta/meta.php:433, ../framework/admin/meta/meta.php:433
+#: ../framework/admin/meta/meta.php:258, ../framework/admin/meta/meta.php:258, ../framework/admin/meta/meta.php:410, ../framework/admin/meta/meta.php:410
 msgid "Ex"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:278, ../framework/admin/meta/meta.php:439
+#: ../framework/admin/meta/meta.php:264, ../framework/admin/meta/meta.php:416
 msgid "Featured Image - External Link"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:279, ../framework/admin/meta/meta.php:440
+#: ../framework/admin/meta/meta.php:265, ../framework/admin/meta/meta.php:417
 msgid "Enter the full URL of where the featured image will link."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:279, ../framework/admin/meta/meta.php:440
+#: ../framework/admin/meta/meta.php:265, ../framework/admin/meta/meta.php:417
 msgid "Ex: http://google.com"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:285, ../framework/admin/meta/meta.php:446
+#: ../framework/admin/meta/meta.php:271, ../framework/admin/meta/meta.php:423
 msgid "Featured Image - External Link Target"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:286, ../framework/admin/meta/meta.php:447
+#: ../framework/admin/meta/meta.php:272, ../framework/admin/meta/meta.php:424
 msgid "Select whether you'd like the external link to open in a new window or not."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:290, ../framework/admin/meta/meta.php:451
+#: ../framework/admin/meta/meta.php:276, ../framework/admin/meta/meta.php:428
 msgid "Open link in new window"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:291, ../framework/admin/meta/meta.php:452
+#: ../framework/admin/meta/meta.php:277, ../framework/admin/meta/meta.php:429
 msgid "Open link in same window"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:297
+#: ../framework/admin/meta/meta.php:283
 msgid "Featured Image Link (the single post)"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:298
+#: ../framework/admin/meta/meta.php:284
 msgid "If you've selected a featured image link above, select whether you'd like the image link to be applied to the featured image on the single post page."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:298, ../framework/admin/meta/meta.php:411
+#: ../framework/admin/meta/meta.php:284, ../framework/admin/meta/meta.php:388
 msgid "Note: This does not apply when the featured image is displayed above the content."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:302
+#: ../framework/admin/meta/meta.php:288
 msgid "Yes, apply featured image link to single post"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:303
+#: ../framework/admin/meta/meta.php:289
 msgid "No, don't apply featured image link to single post"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:304
+#: ../framework/admin/meta/meta.php:290
 msgid "Link it to its enlarged lightbox version"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:314
-msgid "Choose the sidebar layout for this specific post. Keeping it set to \"Website Default\" will allow this post to continue using the sidebar layout selected on the Theme Options page."
-msgstr ""
-
-#: ../framework/admin/meta/meta.php:363
+#: ../framework/admin/meta/meta.php:340
 msgid "Page Options"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:371
+#: ../framework/admin/meta/meta.php:348
 msgid "Page Title"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:372
+#: ../framework/admin/meta/meta.php:349
 msgid "Select whether to display the page's title."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:372
+#: ../framework/admin/meta/meta.php:349
 msgid "This option will be ignored if you've applied the \"Custom Layout\" template; however, if you've set your featured image to display above the content, it will still apply."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:375
+#: ../framework/admin/meta/meta.php:352
 msgid "Yes, show page's title"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:376
+#: ../framework/admin/meta/meta.php:353
 msgid "No, hide page's title"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:382
+#: ../framework/admin/meta/meta.php:359
 msgid "Select whether you'd like breadcrumbs to show on this page or not. This option will be ignored if you've applied the \"Custom Layout\" or \"Blank Page\" templates."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:392
+#: ../framework/admin/meta/meta.php:369
 msgid "Featured Image Display"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:393
+#: ../framework/admin/meta/meta.php:370
 msgid "Select how you'd like the featured image to show at the top of the page."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:393
+#: ../framework/admin/meta/meta.php:370
 msgid "Notes: (1) When not using the default page template, featured image can only displayed above the content. (2) The full-screen option will work best when a Transparent Header is set."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:410
+#: ../framework/admin/meta/meta.php:387
 msgid "Featured Image Link"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:411
+#: ../framework/admin/meta/meta.php:388
 msgid "Here you can select how you'd like this page's featured image to react when clicked, if you've set one."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:502
+#: ../framework/admin/meta/meta.php:487
 msgid "Theme Layout"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:511
+#: ../framework/admin/meta/meta.php:496
+msgid "Note: The sidebar layout is not applied when using a custom layout."
+msgstr ""
+
+#: ../framework/admin/meta/meta.php:503
 msgid "Note: The transparent header option will work best when a large graphic is displayed prominently at the top of the page."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:514
+#: ../framework/admin/meta/meta.php:506
 msgid "Standard Header"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:516
+#: ../framework/admin/meta/meta.php:508
 msgid "Hide Header"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:524
+#: ../framework/admin/meta/meta.php:516
 msgid "Standard Footer"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:525
+#: ../framework/admin/meta/meta.php:517
 msgid "Hide Footer"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:593
+#: ../framework/admin/meta/meta.php:585
 msgid "Post Template Options"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:602
+#: ../framework/admin/meta/meta.php:594
 msgid "Below are the custom fields you can use with the Blog, Post List, Post Grid, and Post Showcase page templates. When working with these options, you can find a lot of helpful information by viewing WordPress's Codex page on the %s."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:607
+#: ../framework/admin/meta/meta.php:599
 msgid "cat"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:608
+#: ../framework/admin/meta/meta.php:600
 msgid "Category ID(s) to include/exclude."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:608
+#: ../framework/admin/meta/meta.php:600
 msgid "Ex: 1"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:608
+#: ../framework/admin/meta/meta.php:600
 msgid "Ex: 1,2,3"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:608
+#: ../framework/admin/meta/meta.php:600
 msgid "Ex: -1,-2,-3"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:613
+#: ../framework/admin/meta/meta.php:605
 msgid "category_name"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:614
+#: ../framework/admin/meta/meta.php:606
 msgid "Category slug(s) to include."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:614
+#: ../framework/admin/meta/meta.php:606
 msgid "Ex: cat-1"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:614
+#: ../framework/admin/meta/meta.php:606
 msgid "Ex: cat-1,cat-2"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:620
+#: ../framework/admin/meta/meta.php:612
 msgid "Tag(s) to include."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:620
+#: ../framework/admin/meta/meta.php:612
 msgid "Ex: tag-1"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:620
+#: ../framework/admin/meta/meta.php:612
 msgid "Ex: tag-1,tag-2"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:625
+#: ../framework/admin/meta/meta.php:617
 msgid "posts_per_page"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:626
+#: ../framework/admin/meta/meta.php:618
 msgid "Number of posts per page. This option gets used for the Blog template, Post List template, and when using \"masonry\" style display for the Post Grid and Post Showcase template. Standard grid view for Post Grid and Post Showcase templates use rows*columns."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:631
+#: ../framework/admin/meta/meta.php:623
 msgid "orderby"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:632
+#: ../framework/admin/meta/meta.php:624
 msgid "What to order posts by &mdash; date, title, rand, etc."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:637
+#: ../framework/admin/meta/meta.php:629
 msgid "order"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:638
+#: ../framework/admin/meta/meta.php:630
 msgid "How to order posts &mdash; ASC or DESC."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:643
+#: ../framework/admin/meta/meta.php:635
 msgid "query"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:644
+#: ../framework/admin/meta/meta.php:636
 msgid "A custom query string. This will override other options."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:644
+#: ../framework/admin/meta/meta.php:636
 msgid "Ex: tag=baking"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:644
+#: ../framework/admin/meta/meta.php:636
 msgid "Ex: post_type=my_type&my_tax=my_term"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:649
+#: ../framework/admin/meta/meta.php:641
 msgid "columns"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:650
+#: ../framework/admin/meta/meta.php:642
 msgid "Number of columns for Post Grid or Post Showcase template, which can be 2-5. When empty, default value is used from theme options page."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:655
+#: ../framework/admin/meta/meta.php:647
 msgid "rows"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:656
+#: ../framework/admin/meta/meta.php:648
 msgid "Number of rows for Post Grid and Post Showcase templates. When empty, default value is used from theme options page."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:656
+#: ../framework/admin/meta/meta.php:648
 msgid "Note: This option does not apply when using masonry."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:661
+#: ../framework/admin/meta/meta.php:653
 msgid "tb_display"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:662
+#: ../framework/admin/meta/meta.php:654
 msgid "When using Post Grid and Post Showcase template, this custom field allows you to override the default display option."
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:666, ../inc/base/entrepreneur/options.php:542, ../inc/base/executive/options.php:822, ../inc/base/superuser/options.php:857
+#: ../framework/admin/meta/meta.php:658, ../inc/base/entrepreneur/options.php:542, ../inc/base/executive/options.php:822, ../inc/base/superuser/options.php:857
 msgid "Standard"
 msgstr ""
 
-#: ../framework/admin/meta/meta.php:667
+#: ../framework/admin/meta/meta.php:659
 msgid "Masonry"
 msgstr ""
 

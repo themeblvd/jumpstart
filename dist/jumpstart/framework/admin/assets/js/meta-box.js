@@ -17,33 +17,6 @@
 
 	$( document ).ready( function( $ ) {
 
-		/**
-		 * Toggle sidebar layout selection added to Page
-		 * Attributes meta box.
-		 *
-		 * When the "Custom Layout" or "Blank Page" page template
-		 * are selected, we want to hide the selection for a
-		 * sidebar layout, to make it obvious these template do
-		 * not use a sidebar layout.
-		 *
-		 * @since Theme_Blvd 2.2.0
-		 */
-		$( '#page_template' ).on( 'change', function() {
-
-			var value = $( this ).val();
-
-			if ( 'template_builder.php' === value || 'template_blank.php' === value ) {
-
-				$( '#tb-sidebar-layout' ).hide();
-
-			} else {
-
-				$( '#tb-sidebar-layout' ).show();
-
-			}
-
-		} );
-
 		// Setup options with $.fn.themeblvd namspace.
 
 		var $metaBoxes = $( '.tb-meta-box' );

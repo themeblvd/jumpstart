@@ -129,20 +129,6 @@ function themeblvd_add_meta_boxes() {
  */
 function setup_themeblvd_post_meta() {
 
-	$imagepath = get_template_directory_uri() . '/framework/admin/assets/img/';
-
-	$sidebar_layouts = array(
-		'default' => $imagepath . 'layout-default.png',
-	);
-
-	$layouts = themeblvd_sidebar_layouts();
-
-	foreach ( $layouts as $layout ) {
-
-		$sidebar_layouts[ $layout['id'] ] = $imagepath . 'layout-' . $layout['id'] . '.png';
-
-	}
-
 	$setup = array(
 		'config' => array(
 			'id'        => 'tb_post_options',                     // Make it unique.
@@ -307,15 +293,6 @@ function setup_themeblvd_post_meta() {
 			),
 			'section_end' => array(
 				'type'      => 'subgroup_end',
-			),
-			'tb_sidebar_layout' => array(
-				'id'        => '_tb_sidebar_layout',
-				'name'      => __( 'Sidebar Layout', '@@text-domain' ),
-				'desc'      => __( 'Choose the sidebar layout for this specific post. Keeping it set to "Website Default" will allow this post to continue using the sidebar layout selected on the Theme Options page.', '@@text-domain' ),
-				'std'       => 'default',
-				'type'      => 'images',
-				'options'   => $sidebar_layouts,
-				'img_width' => '45',
 			),
 		),
 	);
@@ -496,6 +473,14 @@ function setup_themeblvd_page_meta() {
  */
 function setup_themeblvd_layout_meta() {
 
+	$sidebar_layouts = array(
+		'default' => __( 'Default', '@@text-domain' )
+	);
+
+	foreach ( themeblvd_sidebar_layouts() as $layout ) {
+		$sidebar_layouts[ $layout['id'] ] = $layout['name'];
+	}
+
 	$setup = array(
 		'config' => array(
 			'id'        => 'tb_layout_options',                   // Make it unique.
@@ -505,6 +490,13 @@ function setup_themeblvd_layout_meta() {
 			'priority'  => 'core',                                // high, core, default, or low
 		),
 		'options' => array(
+			'sidebar_layout' => array(
+				'id'      => '_tb_sidebar_layout',
+				'name'    => __( 'Sidebar Layout', '@@text-domain' ),
+				'desc'    => __( 'Note: The sidebar layout is not applied when using a custom layout.', '@@text-domain' ),
+				'type'    => 'select',
+				'options' => $sidebar_layouts
+			),
 			'layout_header' => array(
 				'id'        => '_tb_layout_header',
 				'name'      => __( 'Header', '@@text-domain' ),

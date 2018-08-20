@@ -79,52 +79,6 @@ function themeblvd_get_assignment_conflicts( $posts ) {
 }
 
 /**
- * Saved any data we've added to the Page Attributes
- * meta box of WordPress.
- *
- * Currently this just includes an option for a sidebar
- * layout selection, when editing pages.
- *
- * This function is hooked to:
- * 1. `save_post_page` - 10
- *
- * @since @@name-framework 2.0.0
- *
- * @param int $post_id Post ID for post being saved.
- */
-function themeblvd_save_page_atts( $post_id ) {
-
-	if ( ! isset( $_POST['_tb_sidebar_layout'] ) ) {
-
-		return;
-
-	}
-
-	check_admin_referer(
-		'themeblvd-save-page-atts_' . $post_id,
-		'themeblvd-save-page-atts_' . $post_id
-	);
-
-	$layouts = array_merge(
-		array(
-			'default' => null,
-		),
-		themeblvd_sidebar_layouts()
-	);
-
-	if ( array_key_exists( $_POST['_tb_sidebar_layout'], $layouts ) ) {
-
-		update_post_meta(
-			$post_id,
-			'_tb_sidebar_layout',
-			$_POST['_tb_sidebar_layout']
-		);
-
-	}
-
-}
-
-/**
  * Clear set of options.
  *
  * This function is hooked to:

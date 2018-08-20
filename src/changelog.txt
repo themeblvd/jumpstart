@@ -2,6 +2,10 @@
 
 ## 2.2.6 - XX/XX/XXXX
 
+* **Updated Theme Blvd framework to 2.7.6**
+* New: Basic WordPress 5+ editor (i.e. Gutenberg) compatibility.
+	* Moved "Sidebar Layout" option to "Theme Layout" meta box, for editing both Posts and Pages.
+	* Added styles for default Separator block.
 * Improvement: Better spacing with Image elements, that are linked and have full-size images.
 * Fixed: Adding missing `base` key in `themeblvd_admin_module_caps` filtered array, so that the user capability of the Theme Bases admin page can be modified (see [tutorial](http://dev.themeblvd.com/tutorial/changing-user-role-access-for-admin-modules/)).
 
