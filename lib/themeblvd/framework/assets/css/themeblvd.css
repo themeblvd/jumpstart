@@ -217,6 +217,9 @@
  *   34.5 - Forms
  *   34.6 - Form Buttons
  * 35.0 - Primary Color
+ * 36.0 - Blocks (WordPress 5+)
+ *   36.1 - Separator
+
 ----------------------------------------------- */
 
 /* =Bootstrap Mods
@@ -7169,4 +7172,16 @@ input.alt:focus {
 }
 .panel-primary {
 	border-color: #000000;
+}
+
+/* =Blocks (WordPress 5+)
+----------------------------------------------- */
+
+/* Separator */
+.wp-block-separator {
+	border-color: #8f98a1;
+	max-width: 100px;
+}
+.wp-block-separator.is-style-wide {
+	max-width: none;
 }
