@@ -4,7 +4,7 @@
   "description": "Jump Start WordPress Theme",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:fontawesome": "gulp --gulpfile ./build/gulpfile.js build-fontawesome"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,7 @@
     "gulp-yaml": "^1.0.1",
     "gulp-zip": "latest"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.4.1"
+  }
 }
