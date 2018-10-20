@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
@@ -16,7 +16,7 @@
  *
  * This is a singleton class, to be used once.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @see themeblvd_admin_init()
  */
@@ -25,14 +25,14 @@ class Theme_Blvd_User_Options {
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	private static $instance = null;
 
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return Theme_Blvd_User_Options A single instance of this class.
 	 */
@@ -51,7 +51,7 @@ class Theme_Blvd_User_Options {
 	/**
 	 * Constructor. Hook everything in.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -76,7 +76,7 @@ class Theme_Blvd_User_Options {
 	 * Get social sharing icon options that we're adding
 	 * to user profile editing.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public static function get_icons() {
 
@@ -84,7 +84,7 @@ class Theme_Blvd_User_Options {
 		 * Filters the contact fields added to the
 		 * Edit Profile screen of the WordPress admin.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param array Contact fields to be added.
 		 */
@@ -133,7 +133,7 @@ class Theme_Blvd_User_Options {
 	/**
 	 * Display options on user profile edit.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  array $methods Current contact options (methods) WordPress has on Edit Profile page.
 	 * @return array          Modified contact options, with our's added.
@@ -163,7 +163,7 @@ class Theme_Blvd_User_Options {
 	/**
 	 * Display options on user profile edit.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param WP_User $user Current user profile is being edited for.
 	 */
@@ -335,7 +335,7 @@ class Theme_Blvd_User_Options {
 	/**
 	 * Save author meta data for user profiles.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param int $user_id User ID of user we're saving meta data for.
 	 */

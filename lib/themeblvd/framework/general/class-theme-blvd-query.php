@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.3.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.3.0
  */
 
 /**
@@ -21,21 +21,21 @@
  * from WordPress's primary query, while the secondary
  * would be contained somewhere within, separately.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  */
 class Theme_Blvd_Query {
 
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	private static $instance = null;
 
 	/**
 	 * Secondary query args
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @access private
 	 * @see set_second_query()
 	 * @var array
@@ -45,14 +45,14 @@ class Theme_Blvd_Query {
 	/**
 	 * Conditionals for original post object.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	private $was = array();
 
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @return Theme_Blvd_Query A single instance of this class.
 	 */
@@ -71,7 +71,7 @@ class Theme_Blvd_Query {
 	/**
 	 * Hook everything in.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	private function __construct() {
 
@@ -99,7 +99,7 @@ class Theme_Blvd_Query {
 	 * This method can best be utilized with the wrapper
 	 * function, `themeblvd_set_second_query()`.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param array|string $args         Arguments to parse into query.
 	 * @param string       $type         Type of secondary query, `blog`, `list`, `grid` or `showcase`.
@@ -186,7 +186,7 @@ class Theme_Blvd_Query {
 					 * Filters whether to force a maximum posts per
 					 * page on grid post displays.
 					 *
-					 * @since @@name-framework 2.3.0
+					 * @since Theme_Blvd 2.3.0
 					 *
 					 * @param bool Whether to force posts per page on grids.
 					 */
@@ -319,7 +319,7 @@ class Theme_Blvd_Query {
 	 * This method can best be utilized with the wrapper
 	 * function, `themeblvd_get_second_query()`.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @return array $second_query Query arguments to feed to WP_Query
 	 */
@@ -341,7 +341,7 @@ class Theme_Blvd_Query {
 	 * This method is hooked to:
 	 * 1. `wp` - 5
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	public function set_was() {
 
@@ -421,7 +421,7 @@ class Theme_Blvd_Query {
 	 * Get stored "was" conditional parameters for
 	 * original main WordPress query.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @return array $was All conditions; see set_was().
 	 */
@@ -439,7 +439,7 @@ class Theme_Blvd_Query {
 	 *
 	 * @see themeblvd_was()
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param  string $type   The primary type of WP page being checked for.
 	 * @param  string $helper A secondary param if allowed with $type.
@@ -508,7 +508,7 @@ class Theme_Blvd_Query {
 	 * This method is hooked to:
 	 * 1. `wp` - 10
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	public function templates_init() {
 
@@ -740,7 +740,7 @@ class Theme_Blvd_Query {
 		 * The filter name will vary by the type of template,
 		 * which will be, `blog`, `list`, `grid` or `showcase`.
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param array|string $query  The generated query.
 		 * @param string       $custom Original custom query string meta value.
@@ -759,7 +759,7 @@ class Theme_Blvd_Query {
 	 * This method is hooked to:
 	 * 1. `pre_get_posts` - 10
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param WP_Query $q The WP_Query instance (passed by reference).
 	 */
@@ -795,7 +795,7 @@ class Theme_Blvd_Query {
 			 * Filters the page temlates that use pagination
 			 * for secondary loop of posts.
 			 *
-			 * @param @@name-framework 2.3.0
+			 * @param Theme_Blvd 2.3.0
 			 *
 			 * @param array Page templates.
 			 */
@@ -886,7 +886,7 @@ class Theme_Blvd_Query {
 		 * Fires at the end of the theme's modifications
 		 * with pre_get_posts.
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param WP_Query         $q    The WP_Query instance (passed by reference).
 		 * @param Theme_Blvd_Query $this Instance of theme's query object (passed by reference).

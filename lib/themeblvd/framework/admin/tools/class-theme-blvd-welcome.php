@@ -17,30 +17,30 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.6.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.6.0
  */
 
 /**
  * Add Theme Blvd framework welcome message when the
  * theme is activated.
  *
- * @since @@name-framework 2.6.0
+ * @since Theme_Blvd 2.6.0
  */
 class Theme_Blvd_Welcome {
 
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 */
 	private static $instance = null;
 
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 *
 	 * @return Theme_Blvd_Welcome A single instance of this class.
 	 */
@@ -74,7 +74,7 @@ class Theme_Blvd_Welcome {
 	/**
 	 * Reset welcome message when user switches themes.
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 */
 	public function reset() {
 
@@ -85,7 +85,7 @@ class Theme_Blvd_Welcome {
 	/**
 	 * Show welcome message.
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 */
 	public function show() {
 
@@ -132,7 +132,7 @@ class Theme_Blvd_Welcome {
 		 * Filters the arguments used to build the welcome
 		 * message when the theme is activated.
 		 *
-		 * @since @@name-framework 2.6.0
+		 * @since Theme_Blvd 2.6.0
 		 *
 		 * @param array {
 		 *     @type string $msg   Message with HTML printed within box.
@@ -186,7 +186,7 @@ class Theme_Blvd_Welcome {
 	/**
 	 * Disable welcome message.
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 */
 	public function disable() {
 
@@ -218,7 +218,7 @@ class Theme_Blvd_Welcome {
 	/**
 	 * Get URL to disable welcome message.
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 *
 	 * @return string $url URL to disable welcome message.
 	 */

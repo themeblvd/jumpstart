@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
@@ -21,7 +21,7 @@
  * also be returned to represent some different
  * post types.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $format Current post format, like `aside`.
  * @param  bool   $force  Whether to return icon, when no post format.
@@ -99,7 +99,7 @@ function themeblvd_get_format_icon( $format = '', $force = false ) {
 	 * Filters the icons used from FontAwesome to
 	 * represent each post type and post format.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array Icons used for post formats and post types.
 	 */
@@ -115,7 +115,7 @@ function themeblvd_get_format_icon( $format = '', $force = false ) {
 	 * Filters the individual icon used to represent a
 	 * post format.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $icon        Icon name.
 	 * @param string $format      Post format of current post, or post type if no post format and $force is TRUE.
@@ -138,7 +138,7 @@ function themeblvd_get_format_icon( $format = '', $force = false ) {
  * This function is filtered onto:
  * 1. `the_content` - 7
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param  string $content Post content.
  * @return string $content Modified post content.
@@ -170,7 +170,7 @@ function themeblvd_content_format_gallery( $content ) {
  * This function is filtered onto:
  * 1. `the_content` - 7
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param  string $content Post content.
  * @return string $content Modified post content.
@@ -209,7 +209,7 @@ function themeblvd_content_format_link( $content ) {
  * Also checks for a URL on the first line of the
  * content or and <a> tag.
  *
- * @since @@name-framework 2.4.0
+ * @since Theme_Blvd 2.4.0
  *
  * @param  string $content A string which might contain a URL, passed by reference.
  * @return string          The found URL.
@@ -257,7 +257,7 @@ function themeblvd_get_content_url( $content ) {
  * This function is filtered onto:
  * 1. `the_content` - 7
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $content Post content.
  * @return string $content Modified post content.
@@ -291,7 +291,7 @@ function themeblvd_content_format_quote( $content ) {
  * Checks for a <blockquote> or [blockquote]
  * shortcode on the first line of the content.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $content A string which might contain a quote, passed by reference.
  * @param  bool   $run     If a [blockquote] shortcode is found, whether to process it into HTML.
@@ -342,7 +342,7 @@ function themeblvd_get_content_quote( $content, $run = true ) {
  * Display the extracted quote from a quote
  * format post.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_content_quote() {
 
@@ -363,7 +363,7 @@ function themeblvd_content_quote() {
  * This function is filtered onto:
  * 1. `the_content` - 7
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $content Post content.
  * @return string $content Modified post content.
@@ -394,7 +394,7 @@ function themeblvd_content_format_video( $content ) {
  * Get a video from the first line a block of
  * content.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $content A string which might contain a video, passed by reference.
  * @param  bool   $run     Whether to process the HTML for an oembed URL or [video] shortcode.
@@ -453,7 +453,7 @@ function themeblvd_get_content_video( $content, $run = true ) {
  * Display the extracted video from the content
  * of a video format post.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param bool $placeholder Whether to display placeholder, when no video exists.
  */
@@ -484,7 +484,7 @@ function themeblvd_content_video( $placeholder = false ) {
  * This function is filtered onto:
  * 1. `the_content` - 7
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $content Post content.
  * @return string $content Modified post content.
@@ -515,7 +515,7 @@ function themeblvd_content_format_audio( $content ) {
  * Get an audio player from the first line a
  * block of content.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $content A string which might contain an audio player, passed by reference.
  * @param  bool   $run     Whether to process the HTML for an oembed URL or [audio] shortcode.
@@ -569,7 +569,7 @@ function themeblvd_get_content_audio( $content, $run = true ) {
  * Display the extracted audio from the content
  * of an audio format post.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param bool $placeholder Whether to display placeholder, when no audio exists.
  */

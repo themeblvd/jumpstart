@@ -8,15 +8,15 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.7.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.7.0
  */
 
 /**
  * Sanitize option type, `upload`.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  array $input {
  *     Original value.
@@ -132,7 +132,7 @@ function themeblvd_sanitize_upload( $input ) {
  * This option lets the end-user to configure the
  * background image for an element.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  array $input {
  *     Original value.
@@ -193,7 +193,7 @@ function themeblvd_sanitize_background( $input ) {
 		 * Filters the background-repeat CSS property for
 		 * within a `background` option type.
 		 *
-		 * @since @@name-framework 2.2.0
+		 * @since Theme_Blvd 2.2.0
 		 *
 		 * @param string CSS background-repeat property.
 		 */
@@ -207,7 +207,7 @@ function themeblvd_sanitize_background( $input ) {
 		 * Filters the background-position CSS property for
 		 * within a `background` option type.
 		 *
-		 * @since @@name-framework 2.2.0
+		 * @since Theme_Blvd 2.2.0
 		 *
 		 * @param string CSS background-position property.
 		 */
@@ -221,7 +221,7 @@ function themeblvd_sanitize_background( $input ) {
 		 * Filters the background-attachment CSS property for
 		 * within a `background` option type.
 		 *
-		 * @since @@name-framework 2.2.0
+		 * @since Theme_Blvd 2.2.0
 		 *
 		 * @param string CSS background-attachment property.
 		 */
@@ -235,7 +235,7 @@ function themeblvd_sanitize_background( $input ) {
 		 * Filters the background-size CSS property for
 		 * within a `background` option type.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param string CSS background-size property.
 		 */
@@ -253,7 +253,7 @@ function themeblvd_sanitize_background( $input ) {
  * This option lets the end-user to configure the
  * background video for an element.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  array $input {
  *     Original value.
@@ -296,7 +296,7 @@ function themeblvd_sanitize_background_video( $input ) {
 /**
  * Get accepted CSS background-repeat properties.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @see themeblvd_sanitize_background_repeat()
  *
@@ -308,7 +308,7 @@ function themeblvd_recognized_background_repeat() {
 	 * Filters what can be used for the background-repeat
 	 * property of a `background` option type.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @return array CSS background-repeat properties.
 	 */
@@ -325,7 +325,7 @@ function themeblvd_recognized_background_repeat() {
  * Sanitize background-repeat property of option
  * type, `background`.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  string $input  Original value.
  * @return string $output Sanitized value.
@@ -347,7 +347,7 @@ function themeblvd_sanitize_background_repeat( $value ) {
 	 * item from the array returned from
 	 * themeblvd_recognized_background_repeat().
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @param string Value for CSS background-repeat property.
 	 */
@@ -358,7 +358,7 @@ function themeblvd_sanitize_background_repeat( $value ) {
 /**
  * Get accepted CSS background-position properties.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @see themeblvd_sanitize_background_position()
  *
@@ -370,7 +370,7 @@ function themeblvd_recognized_background_position() {
 	 * Filters what can be used for the background-position
 	 * property of a `background` option type.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @return array CSS background-position properties.
 	 */
@@ -392,7 +392,7 @@ function themeblvd_recognized_background_position() {
  * Sanitize background-position property of option
  * type, `background`.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  string $input  Original value.
  * @return string $output Sanitized value.
@@ -414,7 +414,7 @@ function themeblvd_sanitize_background_position( $value ) {
 	 * item from the array returned from
 	 * themeblvd_recognized_background_position().
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @param string Value for CSS background-position property.
 	 */
@@ -425,7 +425,7 @@ function themeblvd_sanitize_background_position( $value ) {
 /**
  * Get accepted CSS background-attachment properties.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @see themeblvd_sanitize_background_attachment()
  *
@@ -441,7 +441,7 @@ function themeblvd_recognized_background_attachment() {
 	 * the frontend, which obviously isn't actually done with
 	 * the CSS background-attachment property.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @return array CSS background-attachment properties.
 	 */
@@ -457,7 +457,7 @@ function themeblvd_recognized_background_attachment() {
  * Sanitize background-attachment property of option
  * type, `background`.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  string $input  Original value.
  * @return string $output Sanitized value.
@@ -479,7 +479,7 @@ function themeblvd_sanitize_background_attachment( $value ) {
 	 * item from the array returned from
 	 * themeblvd_recognized_background_attachment().
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @param string Value for CSS background-attachment property.
 	 */
@@ -490,7 +490,7 @@ function themeblvd_sanitize_background_attachment( $value ) {
 /**
  * Get accepted CSS background-size properties.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @see themeblvd_sanitize_background_size()
  *
@@ -502,7 +502,7 @@ function themeblvd_recognized_background_size() {
 	 * Filters what can be used for the background-size
 	 * property of a `background` option type.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array CSS background-size properties.
 	 */
@@ -521,7 +521,7 @@ function themeblvd_recognized_background_size() {
  * Sanitize background-size property of option
  * type, `background`.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $input  Original value.
  * @return string $output Sanitized value.
@@ -543,7 +543,7 @@ function themeblvd_sanitize_background_size( $value ) {
 	 * item from the array returned from
 	 * themeblvd_recognized_background_size().
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string Value for CSS background-size property.
 	 */
@@ -554,7 +554,7 @@ function themeblvd_sanitize_background_size( $value ) {
 /**
  * Sanitize option type, `typography`.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  array $input {
  *     Original value.
@@ -591,7 +591,7 @@ function themeblvd_sanitize_typography( $input ) {
 		 * Filters the font-size CSS property for within
 		 * a `typography` option type.
 		 *
-		 * @since @@name-framework 2.2.0
+		 * @since Theme_Blvd 2.2.0
 		 *
 		 * @see themeblvd_sanitize_font_size()
 		 *
@@ -607,7 +607,7 @@ function themeblvd_sanitize_typography( $input ) {
 		 * Filters the font-face CSS property for within
 		 * a `typography` option type.
 		 *
-		 * @since @@name-framework 2.2.0
+		 * @since Theme_Blvd 2.2.0
 		 *
 		 * @see themeblvd_sanitize_font_face()
 		 *
@@ -623,7 +623,7 @@ function themeblvd_sanitize_typography( $input ) {
 		 * Filters the font-style CSS property for within
 		 * a `typography` option type.
 		 *
-		 * @since @@name-framework 2.2.0
+		 * @since Theme_Blvd 2.2.0
 		 *
 		 * @see themeblvd_sanitize_font_style()
 		 *
@@ -639,7 +639,7 @@ function themeblvd_sanitize_typography( $input ) {
 		 * Filters the font-weight CSS property for within
 		 * a `typography` option type.
 		 *
-		 * @since @@name-framework 2.2.0
+		 * @since Theme_Blvd 2.2.0
 		 *
 		 * @see themeblvd_sanitize_font_weight()
 		 *
@@ -687,7 +687,7 @@ function themeblvd_sanitize_typography( $input ) {
 /**
  * Get accepted CSS font-size properties.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @see themeblvd_sanitize_font_size()
  *
@@ -701,7 +701,7 @@ function themeblvd_recognized_font_sizes() {
 	 * Filters the array of accepted font sizes for
 	 * the `typography` option type.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @param array $sizes Simple array of accepted integers.
 	 */
@@ -717,7 +717,7 @@ function themeblvd_recognized_font_sizes() {
  * Sanitize font-size property of option
  * type, `typography`.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  int|string $input  Original value.
  * @return int        $output Sanitized value.
@@ -740,7 +740,7 @@ function themeblvd_sanitize_font_size( $input ) {
 	 * The value should be unitless, meaning
 	 * like `16`, instead of `16px`, `16em`, etc.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string Unitless value for CSS font-size property.
 	 */
@@ -751,7 +751,7 @@ function themeblvd_sanitize_font_size( $input ) {
 /**
  * Get accepted CSS font-style properties.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @see themeblvd_sanitize_font_style()
  *
@@ -763,7 +763,7 @@ function themeblvd_recognized_font_styles() {
 	 * Filters the array of accepted font styles for
 	 * the `typography` option type.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @param array Font styles.
 	 */
@@ -780,7 +780,7 @@ function themeblvd_recognized_font_styles() {
  * Sanitize font-style property of option
  * type, `typography`.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  string $input  Original value.
  * @return string $output Sanitized value.
@@ -798,7 +798,7 @@ function themeblvd_sanitize_font_style( $value ) {
 	 * font-style property for a `typography`
 	 * type option.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @param string Value for CSS font-style property.
 	 */
@@ -809,7 +809,7 @@ function themeblvd_sanitize_font_style( $value ) {
 /**
  * Get accepted CSS font-weight properties.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @see themeblvd_sanitize_font_weight()
  *
@@ -821,7 +821,7 @@ function themeblvd_recognized_font_weights() {
 	 * Filters the array of accepted font weights for
 	 * the `typography` option type.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array Font weights.
 	 */
@@ -843,7 +843,7 @@ function themeblvd_recognized_font_weights() {
  * Sanitize font-weight property of option
  * type, `typography`.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $input  Original value.
  * @return string $output Sanitized value.
@@ -861,7 +861,7 @@ function themeblvd_sanitize_font_weight( $value ) {
 	 * font-weight property for a `typography`
 	 * type option.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string Value for CSS font-weight property.
 	 */
@@ -872,7 +872,7 @@ function themeblvd_sanitize_font_weight( $value ) {
 /**
  * Get accepted CSS font-family properties.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @see themeblvd_sanitize_font_face()
  *
@@ -888,7 +888,7 @@ function themeblvd_recognized_font_faces() {
 	 * frontend will handle the CSS font-family properly
 	 * differently.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @param array Font names.
 	 */
@@ -914,7 +914,7 @@ function themeblvd_recognized_font_faces() {
  * Sanitize font-weight property of option
  * type, `typography`.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  string $input  Original value.
  * @return string $output Sanitized value.
@@ -932,7 +932,7 @@ function themeblvd_sanitize_font_face( $value ) {
 	 * font-family property for a `typography`
 	 * type option.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @param string Value for CSS font-weight property.
 	 */
@@ -948,7 +948,7 @@ function themeblvd_sanitize_font_face( $value ) {
  * example would denote three colums, 1/3
  * width each.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  string $input  Original value.
  * @return string         Sanitized value.
@@ -965,7 +965,7 @@ function themeblvd_sanitize_columns( $input ) {
  * This option type is primarily used to setup the
  * site branding logo on the theme options page.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  ** @param  array $input {
  *     Original value.
@@ -1055,7 +1055,7 @@ function themeblvd_sanitize_logo( $input ) {
  * area with either a widget area, content from a post,
  * content from the current post, or raw input.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  array $input {
  *     Original value.
@@ -1133,7 +1133,7 @@ function themeblvd_sanitize_content( $input ) {
  * Theme Blvd Widget Areas plugin, for selecting
  * where a custom widget area should be applied.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  array  $input        Original value.
  * @param  string $sidebar_slug Current sidebar slug.
@@ -1294,7 +1294,7 @@ function themeblvd_sanitize_conditionals( $input, $sidebar_slug = null, $sidebar
  * These are options that use wp_editor() to give
  * a content editor to the user.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  string $input  Original value.
  * @return string $output Sanitized value.
@@ -1314,7 +1314,7 @@ function themeblvd_sanitize_editor( $input ) {
 /**
  * Sanitize option type, `gradient`.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $input  Original value.
  * @return string $output Sanitized value.
@@ -1346,7 +1346,7 @@ function themeblvd_sanitize_gradient( $input ) {
  * This option is used to create a specifically
  * a custom-colored button block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array $input {
  *     Original value.
@@ -1418,7 +1418,7 @@ function themeblvd_sanitize_button( $input ) {
  * This option type is used to set the coordinates,
  * latitude and longitude for a Google Map marker.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array $input {
  *     Original value.

@@ -15,9 +15,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 /*------------------------------------------------------*/
@@ -27,21 +27,21 @@
 /**
  * Current framework version.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  */
 define( 'TB_FRAMEWORK_VERSION', '2.8.0' );
 
 /**
  * Absolute file path to framework directory.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  */
 define( 'TB_FRAMEWORK_DIRECTORY', get_template_directory() . '/framework' );
 
 /**
  * URI to framework directory.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  */
 define( 'TB_FRAMEWORK_URI', get_template_directory_uri() . '/framework' );
 
@@ -523,7 +523,7 @@ add_action( 'after_signup_form', 'themeblvd_after_signup_form' );
  * Fires for intervening between framework
  * running and API being established.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  */
 do_action( 'themeblvd_intervene' );
 
@@ -533,7 +533,7 @@ do_action( 'themeblvd_intervene' );
  *
  * @hooked themeblvd_load_theme_textdomain - 10
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  */
 do_action( 'themeblvd_localize' );
 
@@ -543,7 +543,7 @@ do_action( 'themeblvd_localize' );
  *
  * @hooked themeblvd_api_init - 10
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  */
 do_action( 'themeblvd_api' );
 

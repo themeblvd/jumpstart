@@ -4,16 +4,16 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 /**
  * Determine if header top bar displays any
  * content to display.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array $include  Elements to check for.
  * @return bool  $has_info Whether we've got any info to show in header.
@@ -97,7 +97,7 @@ function themeblvd_has_header_info( $include = array() ) {
 	 * Filters if header top bar displays any
 	 * content to display.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param bool  $has_info Whether we've got any info to show in header.
 	 * @param array $include  Elements to check for.
@@ -114,7 +114,7 @@ function themeblvd_has_header_info( $include = array() ) {
  * 1. `themeblvd_the_content` - 10
  * 2. `widget_text` - 10
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string Copyright text.
  * @return string Copyright text with attributes replaced.
@@ -142,7 +142,7 @@ function themeblvd_footer_copyright_helpers( $text ) {
 /**
  * Whether to display floating shopping cart.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @return bool Whether to display floating shopping cart.
  */
@@ -156,7 +156,7 @@ function themeblvd_do_cart() {
 	 * theme supports WooCommerce and WooCommerce
 	 * is installed, this will be filtered to TRUE.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param bool Whether to display floating shopping cart.
 	 */
@@ -167,7 +167,7 @@ function themeblvd_do_cart() {
 /**
  * Whether to display theme language selector.
  *
- * @since @@name-framework 2.5.1
+ * @since Theme_Blvd 2.5.1
  */
 function themeblvd_do_lang_selector() {
 
@@ -179,7 +179,7 @@ function themeblvd_do_lang_selector() {
 	 * theme supports WPML and WPML is installed,
 	 * this will be filtered to TRUE.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param bool Whether to display theme language selector.
 	 */
@@ -190,7 +190,7 @@ function themeblvd_do_lang_selector() {
 /**
  * Whether to display floating search bar.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @return bool $do Whether to display floating search.
  */
@@ -212,7 +212,7 @@ function themeblvd_do_floating_search() {
 	 * is an end-user option to determine this from
 	 * the theme options.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param bool $do Whether to display floating search.
 	 */
@@ -224,7 +224,7 @@ function themeblvd_do_floating_search() {
  * Whether to use scroll effects with
  * supported elements.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @return bool $do Whether to use scroll effects.
  */
@@ -250,7 +250,7 @@ function themeblvd_do_scroll_effects() {
 	 * Filters whether to use scroll effects
 	 * with supported elements.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @return bool $do Whether to use scroll effects.
 	 */
@@ -261,7 +261,7 @@ function themeblvd_do_scroll_effects() {
 /**
  * Whether to display the sticky header.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @return bool $do Whether to display the sticky header.
  */
@@ -287,7 +287,7 @@ function themeblvd_do_sticky() {
 	 * Filters whether to display the sticky
 	 * header.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @return bool $do Whether to display the sticky header.
 	 */
@@ -298,7 +298,7 @@ function themeblvd_do_sticky() {
 /**
  * Whether to display the hidden side panel.
  *
- * @since @@name-framework 2.6.0
+ * @since Theme_Blvd 2.6.0
  *
  * @return bool $do Whether to display the hidden side panel.
  */
@@ -335,7 +335,7 @@ function themeblvd_do_side_panel() {
 	 * this filter to add other circumstances to
 	 * trigger it.
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 *
 	 * @return bool $do Whether to display the hidden side panel.
 	 */
@@ -351,7 +351,7 @@ function themeblvd_do_side_panel() {
  * it in the middle. A nice look for readable, open
  * blog posts, for example.
  *
- * @since @@name-framework 2.6.0
+ * @since Theme_Blvd 2.6.0
  *
  * @return bool $do Whether to apply condensed full-width content.
  */
@@ -393,7 +393,7 @@ function themeblvd_do_fw_narrow() {
 	 * it in the middle. A nice look for readable, open
 	 * blog posts, for example.
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 *
 	 * @return bool $do Whether to apply condensed full-width content.
 	 */
@@ -405,7 +405,7 @@ function themeblvd_do_fw_narrow() {
  * Whether popout images wider than content,
  * when condensed content is enabled.
  *
- * @since @@name-framework 2.6.0
+ * @since Theme_Blvd 2.6.0
  *
  * @return bool $do Whether to popout images.
  */
@@ -423,7 +423,7 @@ function themeblvd_do_img_popout() {
 	 * Filters whether popout images wider than content,
 	 * when condensed content is enabled.
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 *
 	 * @param bool $do Whether to popout images.
 	 */
@@ -442,7 +442,7 @@ function themeblvd_do_img_popout() {
  * 4. `hidden-lg`
  * 5. `hidden-xl`
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param  array  $hide  Devices to be hidden on, like `array( 'xs', `sm` )`.
  * @return string $class CSS class(es) separated by spaces.
@@ -467,7 +467,7 @@ function themeblvd_responsive_visibility_class( $hide ) {
 	/**
 	 * Filters responsive visisbility class(es).
 	 *
-	 * @since @@name-framework 2.1.0
+	 * @since Theme_Blvd 2.1.0
 	 *
 	 * @param string $class CSS class(es) separated by spaces.
 	 * @param array  $hide  Devices to be hidden on, like `array( 'xs', `sm` )`.
@@ -487,7 +487,7 @@ function themeblvd_responsive_visibility_class( $hide ) {
  * This function is filtered onto:
  * 1. `template_include` - 10
  *
- * @since @@name-framework 2.2.1
+ * @since Theme_Blvd 2.2.1
  *
  * @param  string $template Current custom page template file location.
  * @return string $template Location of template file to be used.
@@ -523,7 +523,7 @@ function themeblvd_private_page( $template ) {
 	 * template_builder.php is not included in this
 	 * list.
 	 *
-	 * @since @@name-framework 2.2.1
+	 * @since Theme_Blvd 2.2.1
 	 *
 	 * @param array Page templates.
 	 */
@@ -629,7 +629,7 @@ function themeblvd_password_form( $output ) {
  * the main sidebar layout, not generally for
  * columns.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  string $column       Which column to retrieve class for, `left`, `right`, or `content`.
  * @return string $column_class The class to be used in grid system.
@@ -721,7 +721,7 @@ function themeblvd_get_column_class( $column ) {
 	 * Filters the CSS class used for a column
 	 * in the main sidebar layout.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @param string $class  CSS class.
 	 * @param string $column Which column to retrieve class for, `left`, `right`, or `content`.
@@ -739,7 +739,7 @@ function themeblvd_get_column_class( $column ) {
  * This function is filtered onto:
  * 1. `themeblvd_column_class` - 10
  *
- * @since @@name-framework 2.4.0
+ * @since Theme_Blvd 2.4.0
  *
  * @param string $class Current sidebar layout column class
  */
@@ -751,7 +751,7 @@ function themeblvd_column_class_legacy( $class ) {
 	 *
 	 * Stacking points: `xs`, `sm`, `md`, `lg` or `xl`
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string Stacking point, `xs`, `sm`, `md`, `lg` or `xl`.
 	 */
@@ -765,7 +765,7 @@ function themeblvd_column_class_legacy( $class ) {
  * Get social media sources and their respective
  * names.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @return array $sources All social media sources.
  */
@@ -822,8 +822,8 @@ function themeblvd_get_social_media_sources() {
 	 * This filter is deprecated, use use
 	 * `themeblvd_social_media_sources` instead!
 	 *
-	 * @since @@name-framework 2.0.0
-	 * @deprecated @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.0.0
+	 * @deprecated Theme_Blvd 2.5.0
 	 *
 	 * @param array $sources All social media sources.
 	 */
@@ -833,7 +833,7 @@ function themeblvd_get_social_media_sources() {
 	 * Filters the available sources for setting
 	 * up contact buttons.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $sources All social media sources.
 	 */

@@ -13,8 +13,8 @@
  *
  * @author    Jason Bobich <info@themeblvd.com>
  * @copyright 2009-2017 Theme Blvd
- * @package   @@name-package
- * @since     @@name-package 2.0.0
+ * @package   Jump_Start
+ * @since     Jump_Start 2.0.0
  */
 
 /**
@@ -25,7 +25,7 @@ include_once( get_template_directory() . '/inc/theme-updates.php' );
 /**
  * Global configuration, enable theme bases.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param  array $config Configuration settings from framework.
  * @return array $config Modified configuration settings.
@@ -52,7 +52,7 @@ if ( themeblvd_supports( 'admin', 'base' ) ) {
 /**
  * Setup theme bases admin.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  */
 function jumpstart_bases() {
 
@@ -61,7 +61,7 @@ function jumpstart_bases() {
 		/**
 		 * Filters the theme bases added by the theme.
 		 *
-		 * @since @@name-package 2.0.0
+		 * @since Jump_Start 2.0.0
 		 *
 		 * @param array Theme bases being added.
 		 */
@@ -200,7 +200,7 @@ add_action( 'wp_enqueue_scripts', 'jumpstart_css', 20 );
  * to tell them their saved theme options don't match
  * the theme base they've selected.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  */
 function jumpstart_base_check() {
 
@@ -237,7 +237,7 @@ add_action( 'themeblvd_before', 'jumpstart_base_check' );
  * Add Jump Start Homepage to sample layouts of
  * Layout Builder plugin.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param  array $layouts All sample layouts.
  * @return array $layouts Modified sample layouts.

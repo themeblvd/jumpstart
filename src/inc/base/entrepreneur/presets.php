@@ -4,14 +4,14 @@
  *
  * @author    Jason Bobich <info@themeblvd.com>
  * @copyright 2009-2017 Theme Blvd
- * @package   @@name-package
- * @since     @@name-package 2.1.1
+ * @package   Jump_Start
+ * @since     Jump_Start 2.1.1
  */
 
 /**
  * Get option presets.
  *
- * @since @@name-package 2.1.1
+ * @since Jump_Start 2.1.1
  *
  * @param  string $preset Optional preset style to retrieve.
  * @return array  $args   All preset styles or specific preset if $preset specified.
@@ -29,7 +29,7 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 	 * Filters predefined hex color values
 	 * used in Entrepreneur theme base.
 	 *
-	 * @since @@name-package 2.1.1
+	 * @since Jump_Start 2.1.1
 	 *
 	 * @param $hex array Color values.
 	 */
@@ -457,7 +457,7 @@ function jumpstart_ent_get_presets( $preset = '' ) {
 	 * Filters the preset styles added by the
 	 * Entrepreneur base.
 	 *
-	 * @since @@name-package 2.1.1
+	 * @since Jump_Start 2.1.1
 	 *
 	 * @param array $args   All presets added.
 	 * @param array $colors Color names and hex values.

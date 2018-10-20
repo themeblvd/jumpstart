@@ -4,16 +4,16 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.3.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.3.0
  */
 
 /**
  * Generate the HTML output to link up with our
  * JavaScript for various media upload option types.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param  array $args {
  *     Arguments for uploader.
@@ -315,7 +315,7 @@ function themeblvd_media_uploader( $args ) {
 	 * Filters the data-* attributes passed to the
 	 * WordPress media uploader.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param array  $data Data attributes.
 	 * @param string $type Option type.

@@ -4,15 +4,15 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.7.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.7.0
  */
 
 /**
  * Add sidebar location.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param string $id   ID of location.
  * @param string $name Name of location.
@@ -30,7 +30,7 @@ function themeblvd_add_sidebar_location( $id, $name, $type, $desc = '' ) {
 /**
  * Remove sidebar location.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param string $id ID of location.
  */
@@ -45,7 +45,7 @@ function themeblvd_remove_sidebar_location( $id ) {
 /**
  * Get finalized sidebar locations.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  */
 function themeblvd_get_sidebar_locations() {
 
@@ -58,7 +58,7 @@ function themeblvd_get_sidebar_locations() {
 /**
  * Get the user-friendly name for a sidebar location.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string $location ID of sidebar location.
  * @return string $name     Name of sidebar location.
@@ -87,7 +87,7 @@ function themeblvd_get_sidebar_location_name( $location ) {
  * this function will output the widgets for that
  * widget area using WordPress's dynamic_sidebar function.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param string $location the location for the sidebar.
  */

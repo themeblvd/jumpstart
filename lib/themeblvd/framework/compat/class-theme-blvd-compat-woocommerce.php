@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
@@ -16,21 +16,21 @@
  * meaning it can only be instantiated in
  * one instance.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Compat_WooCommerce {
 
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	private static $instance = null;
 
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return Theme_Blvd_Compat_WooCommerce A single instance of this class.
 	 */
@@ -49,7 +49,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	/**
 	 * Constructor. Hook everything in.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -119,7 +119,7 @@ class Theme_Blvd_Compat_WooCommerce {
 		 * Filters whether the theme adds custom WooCommerce
 		 * thumbnail sizes.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param bool Whether to let theme modify WooCommerce images sizes.
 		 */
@@ -305,7 +305,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	/**
 	 * Get current WooCommerce version.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return int Current WooCommerce version, like `2.0.0`.
 	 */
@@ -327,7 +327,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is hooked to:
 	 * 1. `add_theme_support` - 5
 	 *
-	 * @since @@name-framework 2.6.5
+	 * @since Theme_Blvd 2.6.5
 	 */
 	public function add_theme_support() {
 
@@ -351,7 +351,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `body_class` - 10
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param  array $class Current classes for <body>.
 	 * @return array $class Modified classes for <body>.
@@ -371,7 +371,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is hooked to:
 	 * 1. `wp_enqueue_scripts` - 15
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function assets() {
 
@@ -403,7 +403,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `themeblvd_framework_stylesheets` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  array $deps Stylesheets the theme framework depends on.
 	 * @return array $deps Modified stylesheets the theme framework depends on.
@@ -430,7 +430,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `wc_get_template_part` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $template File location for template file.
 	 * @param  string $slug     Slug of the filename from "{$slug}-{$name}.php".
@@ -455,7 +455,7 @@ class Theme_Blvd_Compat_WooCommerce {
 				 * 2. `themeblvd_woocommerce_list_template`
 				 * 3. `themeblvd_woocommerce_catalog_template`
 				 *
-				 * @since @@name-framework 2.5.0
+				 * @since Theme_Blvd 2.5.0
 				 *
 				 * @param string Location of templat file.
 				 */
@@ -488,7 +488,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `woocommerce_locate_template` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $template      File location for template file.
 	 * @param  string $template_name Name of template, like `content-foo.php`.
@@ -520,7 +520,7 @@ class Theme_Blvd_Compat_WooCommerce {
 		 * to override them from your child theme in the normal
 		 * way, you can unset() them from this array.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param array $override WooCommerce template files the theme overrides.
 		 */
@@ -545,7 +545,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is hooked to:
 	 * 1. `wp` - 11
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 */
 	public function thumb_epic() {
 
@@ -598,7 +598,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `themeblvd_frontend_config_header` - 10
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param  string $header Website header setting.
 	 * @return string $header Modified website header setting.
@@ -629,7 +629,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `woocommerce_product_settings` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  array $options Options for WooCommerce settings page.
 	 * @return array $options Modified options for WooCommerce settings page.
@@ -642,7 +642,7 @@ class Theme_Blvd_Compat_WooCommerce {
 		 * Filters whether the theme adds custom WooCommerce
 		 * thumbnail sizes.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param bool Whether to let theme modify WooCommerce images sizes.
 		 */
@@ -662,7 +662,7 @@ class Theme_Blvd_Compat_WooCommerce {
 		 * Filters the options removed by the theme
 		 * from the WooCommerce settings page.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param array $remove Basic indexed array of option keys to be removed.
 		 */
@@ -691,7 +691,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is hooked to:
 	 * 1. `woocommerce_before_single_product_summary` - 5
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function product_open() {
 
@@ -708,7 +708,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is hooked to:
 	 * 1. `woocommerce_after_single_product_summary` - 1
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function product_close() {
 
@@ -724,7 +724,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `woocommerce_sale_flash` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  $input  Original HTML for notice.
 	 * @return $output Modified HTML for notice.
@@ -744,7 +744,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `woocommerce_sale_price_html` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  $input  Original HTML for notice.
 	 * @return $output Modified HTML for notice.
@@ -768,7 +768,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `woocommerce_get_availability` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $args Arguments WooCommerce uses to build availability notice.
 	 */
@@ -798,7 +798,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `comment_class` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  array  $classes    An array of comment classes.
 	 * @param  string $class      A comma-separated list of additional classes added to the list.
@@ -825,7 +825,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `themeblvd_frontend_config_post_id` - 10
 	 *
-	 * @since @@name-framework 2.5.1
+	 * @since Theme_Blvd 2.5.1
 	 *
 	 * @param  int $post_id ID of current post.
 	 * @return int $post_id ID of current post.
@@ -849,7 +849,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is hoooked to:
 	 * 1. `wp` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function set_atts() {
 
@@ -890,7 +890,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is hooked to:
 	 * 1. `woocommerce_before_shop_loop` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function loop_open() {
 
@@ -908,7 +908,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is hooked to:
 	 * 1. `woocommerce_before_shop_loop` - 15
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function loop_header_start() {
 
@@ -925,7 +925,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is hooked to:
 	 * 1. `woocommerce_before_shop_loop` - 40
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function loop_header_end() {
 
@@ -939,7 +939,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is hooked to:
 	 * 1. `woocommerce_after_shop_loop` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function loop_close() {
 
@@ -954,7 +954,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is hooked to:
 	 * 1. `woocommerce_before_shop_loop_item` - 5
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function loop_product_open() {
 
@@ -969,7 +969,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is hooked to:
 	 * 1. `woocommerce_after_shop_loop_item` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function loop_product_close() {
 
@@ -984,7 +984,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is hooked to:
 	 * 1. `woocommerce_before_shop_loop_item_title` - 20
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function show_product_image() {
 
@@ -998,7 +998,7 @@ class Theme_Blvd_Compat_WooCommerce {
 		 * Filters whether the theme adds custom WooCommerce
 		 * thumbnail sizes.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param bool Whether to let theme modify WooCommerce images sizes.
 		 */
@@ -1054,7 +1054,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `themeblvd_pre_breadcrumb_parts` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @see themeblvd_get_breadcrumb_parts()
 	 *
@@ -1162,7 +1162,7 @@ class Theme_Blvd_Compat_WooCommerce {
 				 * added to the start of the breadcrumbs being added
 				 * throughout WooCommerce pages.
 				 *
-				 * @since @@name-framework 2.5.0
+				 * @since Theme_Blvd 2.5.0
 				 *
 				 * @param bool Whether to add "Shop" page to breadcrumbs.
 				 */
@@ -1198,7 +1198,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `loop_shop_per_page` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string|int $num Number of products per page.
 	 * @return int        $num Modified number of products per page.
@@ -1232,7 +1232,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is hooked to:
 	 * 1. `woocommerce_after_single_product_summary` - 15
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function up_sell() {
 
@@ -1240,7 +1240,7 @@ class Theme_Blvd_Compat_WooCommerce {
 		 * Filters the arguments used for the theme's
 		 * custom display of product upsells.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param array {
 		 *     Upsell arguments.
@@ -1276,7 +1276,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is hooked to:
 	 * 1. `themeblvd_content_bottom` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function cross_sell() {
 
@@ -1286,7 +1286,7 @@ class Theme_Blvd_Compat_WooCommerce {
 			 * Filters the arguments used for the theme's
 			 * custom display of product cross sells.
 			 *
-			 * @since @@name-framework 2.5.0
+			 * @since Theme_Blvd 2.5.0
 			 *
 			 * @param array {
 			 *     Upsell arguments.
@@ -1337,7 +1337,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * 7. `shortcode_atts_related_products` - 10
 	 * 8. `shortcode_atts_top_rated_products` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  array $out   The output array of shortcode attributes.
 	 * @param  array $pairs The supported attributes and their defaults.
@@ -1377,7 +1377,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `shortcode_atts_product_categories` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  array $out   The output array of shortcode attributes.
 	 * @param  array $pairs The supported attributes and their defaults.
@@ -1413,7 +1413,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * in `shortcode_set_view()`, and reset everything
 	 * back. Function is called in loop-end.php.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function shortcode_reset_view() {
 
@@ -1446,7 +1446,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `get_product_search_form` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $html HTML for search form.
 	 * @param string       Modified HTML for search form.
@@ -1469,7 +1469,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `woocommerce_add_message` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $message Notice message.
 	 * @return string $message Modified notice message.
@@ -1490,7 +1490,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `themeblvd_sidebar_layout` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $layout Current sidebar layout.
 	 * @return string $layout Modified sidebar layout.
@@ -1521,7 +1521,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `loop_shop_columns` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  int $cols Current number of columns.
 	 * @return int $cols Modified number of columns.
@@ -1551,7 +1551,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 *
 	 * The shop view can be `grid`, `list` or `catalog`.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function loop_view() {
 
@@ -1583,7 +1583,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is filtered onto:
 	 * 1. `themeblvd_do_cart` - 10
 	 *
-	 * @since @@name-framework 2.6.1
+	 * @since Theme_Blvd 2.6.1
 	 *
 	 * @return bool Whether to display the floating shopping cart.
 	 */
@@ -1606,7 +1606,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is hooked to:
 	 * 1. `themeblvd_floating_cart` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function cart() {
 
@@ -1621,7 +1621,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * This method is hooked to:
 	 * 1. `themeblvd_after` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function add_cart() {
 
@@ -1641,7 +1641,7 @@ class Theme_Blvd_Compat_WooCommerce {
 	 * without a page refresh, as items are added
 	 * to the cart.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  array $fragments Fragements used for WooCommerce cart Ajax.
 	 * @return array $fragments Modified fragements used for WooCommerce cart Ajax.

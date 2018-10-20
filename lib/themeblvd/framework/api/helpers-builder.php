@@ -4,15 +4,15 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.7.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.7.0
  */
 
 /**
  * Get all core elements of Layout Builder.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  */
 function themeblvd_get_core_elements() {
 
@@ -30,7 +30,7 @@ function themeblvd_get_core_elements() {
  * Setup all core theme options of framework, which can
  * then be altered at the theme level.
  *
- * @since @@name-framework 2.2.1
+ * @since Theme_Blvd 2.2.1
  */
 function themeblvd_get_registered_elements() {
 
@@ -48,7 +48,7 @@ function themeblvd_get_registered_elements() {
  * Get layout builder's elements after new elements
  * have been given a chance to be added at the theme-level.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  */
 function themeblvd_get_elements() {
 
@@ -65,7 +65,7 @@ function themeblvd_get_elements() {
 /**
  * Check if element is currently registered.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param  string $element_id ID of element type to check for.
  * @return bool               If element exists or not.
@@ -85,7 +85,7 @@ function themeblvd_is_element( $element_id ) {
 /**
  * Add element to layout builder.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param array $args {
  *     All arguments to pass through.
@@ -133,7 +133,7 @@ function themeblvd_add_builder_element( $args, $element_name = null, $query_type
 /**
  * Remove element from layout builder.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param string $element_id ID of element to remove.
  */
@@ -152,7 +152,7 @@ function themeblvd_remove_builder_element( $element_id ) {
 /**
  * Add sample layout to layout builder.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param string $layout_id      Unique ID of sample layout
  * @param string $layout_name    Name of the sample layout
@@ -175,7 +175,7 @@ function themeblvd_add_sample_layout( $layout_id, $layout_name, $preview, $sideb
 /**
  * Remove sample layout from layout builder.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param string $element_id ID of element to remove
  */

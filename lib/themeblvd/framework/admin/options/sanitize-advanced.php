@@ -14,9 +14,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.7.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.7.0
  */
 
 /**
@@ -28,7 +28,7 @@
  * Sortable option. For more documentation, see:
  * framework/admin/options/class-theme-blvd-sortable-options.php
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array $input  Original value.
  * @return array $output Sanitized value.
@@ -83,7 +83,7 @@ function themeblvd_sanitize_bars( $input ) {
  * Sortable option. For more documentation, see:
  * framework/admin/options/class-theme-blvd-sortable-options.php
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array $input  Original value.
  * @return array $output Sanitized value.
@@ -155,7 +155,7 @@ function themeblvd_sanitize_buttons( $input ) {
  * Sortable option. For more documentation, see:
  * framework/admin/options/class-theme-blvd-sortable-options.php
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array $input  Original value.
  * @return array $output Sanitized value.
@@ -203,7 +203,7 @@ function themeblvd_sanitize_datasets( $input ) {
  * Sortable option. For more documentation, see:
  * framework/admin/options/class-theme-blvd-sortable-options.php
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array $input  Original value.
  * @return array $output Sanitized value.
@@ -269,7 +269,7 @@ function themeblvd_sanitize_locations( $input ) {
  * Sortable option. For more documentation, see:
  * framework/admin/options/class-theme-blvd-sortable-options.php
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array $input  Original value.
  * @return array $output Sanitized value.
@@ -376,7 +376,7 @@ function themeblvd_sanitize_price_cols( $input ) {
  * Sortable option. For more documentation, see:
  * framework/admin/options/class-theme-blvd-sortable-options.php
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $input  Original value.
  * @return string $output Sanitized value.
@@ -425,7 +425,7 @@ function themeblvd_sanitize_sectors( $input ) {
  * Sortable option. For more documentation, see:
  * framework/admin/options/class-theme-blvd-sortable-options.php
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @see themeblvd_get_social_media_sources()
  *
@@ -479,7 +479,7 @@ function themeblvd_sanitize_social_media( $input ) {
  * Sortable option. For more documentation, see:
  * framework/admin/options/class-theme-blvd-sortable-options.php
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @see themeblvd_get_share_sources()
  *
@@ -522,7 +522,7 @@ function themeblvd_sanitize_share( $input ) {
  * Sortable option. For more documentation, see:
  * framework/admin/options/class-theme-blvd-sortable-options.php
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array $input  Original value.
  * @return array $output Sanitized value.
@@ -657,7 +657,7 @@ function themeblvd_sanitize_slider( $input ) {
  * Sortable option. For more documentation, see:
  * framework/admin/options/class-theme-blvd-sortable-options.php
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array $input  Original value.
  * @return array $output Sanitized value.
@@ -766,7 +766,7 @@ function themeblvd_sanitize_logos( $input ) {
  * Sortable option. For more documentation, see:
  * framework/admin/options/class-theme-blvd-sortable-options.php
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array $input  Original value.
  * @return array $output Sanitized value.
@@ -796,7 +796,7 @@ function themeblvd_sanitize_tabs( $input ) {
 				 *
 				 * @see themeblvd_sanitize_content()
 				 *
-				 * @since @@name-framework 2.2.0
+				 * @since Theme_Blvd 2.2.0
 				 *
 				 * @param array Arguments for display content.
 				 */
@@ -816,7 +816,7 @@ function themeblvd_sanitize_tabs( $input ) {
  * Sortable option. For more documentation, see:
  * framework/admin/options/class-theme-blvd-sortable-options.php
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array $input  Original value.
  * @return array $output Sanitized value.
@@ -885,7 +885,7 @@ function themeblvd_sanitize_testimonials( $input ) {
  * Sortable option. For more documentation, see:
  * framework/admin/options/class-theme-blvd-sortable-options.php
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array $input  Original value.
  * @return array $output Sanitized value.
@@ -973,7 +973,7 @@ function themeblvd_sanitize_text_blocks( $input ) {
  * Sortable option. For more documentation, see:
  * framework/admin/options/class-theme-blvd-sortable-options.php
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array $input  Original value.
  * @return array $output Sanitized value.

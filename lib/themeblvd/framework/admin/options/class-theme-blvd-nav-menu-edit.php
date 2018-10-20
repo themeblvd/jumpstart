@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 if ( class_exists( 'Walker_Nav_Menu_Edit' ) ) {
@@ -14,7 +14,7 @@ if ( class_exists( 'Walker_Nav_Menu_Edit' ) ) {
 	/**
 	 * Modifications to the Appearance > Menus screen.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	class Theme_Blvd_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 

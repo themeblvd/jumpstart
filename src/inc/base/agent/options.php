@@ -4,14 +4,14 @@
  *
  * @author    Jason Bobich <info@themeblvd.com>
  * @copyright 2009-2017 Theme Blvd
- * @package   @@name-package
- * @since     @@name-package 2.1.0
+ * @package   Jump_Start
+ * @since     Jump_Start 2.1.0
  */
 
 /**
  * Add theme options to framework.
  *
- * @since @@name-package 2.1.0
+ * @since Jump_Start 2.1.0
  */
 function jumpstart_ag_options() {
 
@@ -331,7 +331,7 @@ function jumpstart_ag_options() {
 	 * Filters the options added by the Agent base
 	 * to the theme options page.
 	 *
-	 * @since @@name-package 2.1.0
+	 * @since Jump_Start 2.1.0
 	 *
 	 * @param array Options added.
 	 */

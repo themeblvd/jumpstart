@@ -10,9 +10,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 			/*
@@ -33,7 +33,7 @@
 				 *
 				 * @hooked themeblvd_main_bottom_default - 10
 				 *
-				 * @since @@name-framework 2.0.0
+				 * @since Theme_Blvd 2.0.0
 				 */
 				do_action( 'themeblvd_main_bottom' );
 
@@ -43,7 +43,7 @@
 				 *
 				 * @hooked themeblvd_main_end_default - 10
 				 *
-				 * @since @@name-framework 2.0.0
+				 * @since Theme_Blvd 2.0.0
 				 */
 				do_action( 'themeblvd_main_end' );
 
@@ -54,7 +54,7 @@
 			 *
 			 * @hooked themeblvd_footer_default - 10
 			 *
-			 * @since @@name-framework 2.7.0
+			 * @since Theme_Blvd 2.7.0
 			 */
 			do_action( 'themeblvd_footer' );
 			?>
@@ -74,7 +74,7 @@
 	 * @hooked themeblvd_side_panel - 10
 	 * @hooked themeblvd_mobile_panel - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	do_action( 'themeblvd_after' );
 	?>

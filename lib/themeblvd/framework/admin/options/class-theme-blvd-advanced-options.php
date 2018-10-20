@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
@@ -24,14 +24,14 @@
  * types of sortable options. See the Theme_Blvd_Sortable_Option
  * abstract for more documentation on sortable options.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Advanced_Options {
 
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 * @var Theme_Blvd_Advanced_Options
 	 */
 	private static $instance = null;
@@ -41,7 +41,7 @@ class Theme_Blvd_Advanced_Options {
 	 * These are available types, not instantiated
 	 * objects.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 * @var array
 	 */
 	private $reference = array();
@@ -49,7 +49,7 @@ class Theme_Blvd_Advanced_Options {
 	/**
 	 * An array of all option type objects.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 * @var array
 	 */
 	private $types = array();
@@ -57,7 +57,7 @@ class Theme_Blvd_Advanced_Options {
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return Theme_Blvd_Advanced_Options A single instance of this class.
 	 */
@@ -77,7 +77,7 @@ class Theme_Blvd_Advanced_Options {
 	 * Class constructor. Stores library of option
 	 * types to instance.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	private function __construct() {
 
@@ -104,7 +104,7 @@ class Theme_Blvd_Advanced_Options {
 	 * Create an advanced option type instance and
 	 * store it.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $type Type of option.
 	 */
@@ -185,7 +185,7 @@ class Theme_Blvd_Advanced_Options {
 	/**
 	 * Get a stored instance of an option type object.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string       $type Type of option.
 	 * @return Theme_Blvd_*       Instantiated object for type.
@@ -203,7 +203,7 @@ class Theme_Blvd_Advanced_Options {
 	/**
 	 * Check if an option type exists.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $type Type of option.
 	 * @return bool         Whether option type exists.
@@ -218,7 +218,7 @@ class Theme_Blvd_Advanced_Options {
 	 * Check if an options type is one of our sortable
 	 * ones.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $type Type of option.
 	 * @return bool         Whether option is sortable.

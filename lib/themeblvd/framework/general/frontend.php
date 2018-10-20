@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 /**
@@ -15,7 +15,7 @@
  * This function is hooked to:
  * 1. `after_setup_theme` - 1001
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  */
 function themeblvd_frontend_init() {
 
@@ -44,7 +44,7 @@ function themeblvd_frontend_init() {
  * unified system where the template parts are
  * consistently filtered.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param string $type Type of template part to get.
  */
@@ -56,7 +56,7 @@ function themeblvd_get_template_part( $type ) {
 	 * Filters the first $slug paramter passed to
 	 * get_template_part().
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string       Template part slug.
 	 * @param string $type Type of template part.
@@ -67,7 +67,7 @@ function themeblvd_get_template_part( $type ) {
 	 * Filters the first $slug paramter passed to
 	 * get_template_part().
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param string       Name of specialised template.
 	 * @param string $type Type of template part.
@@ -85,8 +85,8 @@ function themeblvd_get_template_part( $type ) {
  * Get second $name parameter for uses of
  * get_template_part().
  *
- * @since @@name-framework 2.0.0
- * @deprecated @@name-framework 2.7.0
+ * @since Theme_Blvd 2.0.0
+ * @deprecated Theme_Blvd 2.7.0
  *
  * @param string $type Type of template part to get.
  */
@@ -108,7 +108,7 @@ function themeblvd_get_part( $type ) {
  * template files to return the values setup in the
  * frontend initialization.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string $key       Optinal. Key to retrieve from frontend configuration array.
  * @param  string $secondary Optional. Key to retrieve from array, requiring to traverse one level deeper.
@@ -125,8 +125,8 @@ function themeblvd_config( $key = '', $secondary = '' ) {
 /**
  * Display CSS class for current sidebar layout.
  *
- * @since @@name-framework 2.0.0
- * @deprecated @@name-framework 2.7.0
+ * @since Theme_Blvd 2.0.0
+ * @deprecated Theme_Blvd 2.7.0
  */
 function themeblvd_sidebar_layout_class() {
 
@@ -153,7 +153,7 @@ function themeblvd_sidebar_layout_class() {
  * and retreived with themeblvd_get_att() from files
  * included with WP's get_template_part().
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  array $atts  Attributes to be merged with global attributes.
  * @param  bool  $flush Whether or not to flush previous attributes before merging.
@@ -175,7 +175,7 @@ function themeblvd_set_atts( $atts, $flush = false ) {
  * to set an individual attribute along with
  * creating a new variable.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  string $key   Template attributes key.
  * @param  mixed  $value New value to store.
@@ -192,7 +192,7 @@ function themeblvd_set_att( $key, $value ) {
 /**
  * Remove a single global template attributes.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @param string $key Template attributes key.
  */
@@ -210,7 +210,7 @@ function themeblvd_remove_att( $key ) {
  * Retrieves a single attribute set with
  * themeblvd_set_atts() or themeblvd_set_att().
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  string $key Template attributes key.
  * @return mixed       Template attribute value.
@@ -230,7 +230,7 @@ function themeblvd_get_att( $key ) {
  * displaying secondary post loops within pages
  * and posts.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @return array Parameters formatted for WP_Query.
  */
@@ -249,7 +249,7 @@ function themeblvd_get_second_query() {
  * displaying secondary post loops within pages
  * and posts.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param  array|string $args Arguments to parse into query.
  * @param  string       $type Type of secondary query, `blog`, `list`, `grid` or `showcase`.
@@ -266,7 +266,7 @@ function themeblvd_set_second_query( $args, $type ) {
 /**
  * Setup arguments to pass to WP_Query.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  array  $options Settings for generating query.
  * @param  string $type    Type of posts being displayed.
@@ -336,7 +336,7 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
 				 * Filters whether to force a maximum posts per
 				 * page on grid post displays.
 				 *
-				 * @since @@name-framework 2.3.0
+				 * @since Theme_Blvd 2.3.0
 				 *
 				 * @param bool Whether to force posts per page on grids.
 				 */
@@ -372,7 +372,7 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
 			 * Note: This is presented to the end user as
 			 * input asking for a comma-separated list of pages.
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since Theme_Blvd 2.0.0
 			 *
 			 * @param array Post types.
 			 */
@@ -526,7 +526,7 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
 	 * Filters the generated post arguments for
 	 * many elements.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param array  $args    Parameters for WP_Query.
 	 * @param array  $options Settings for generating query.
@@ -564,7 +564,7 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
  *
  * `themeblvd_was( 'page_template', 'template_foo.php' )`
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param  string $type   The primary type of WP page being checked for.
  * @param  string $helper A secondary param if allowed with $type.
@@ -584,7 +584,7 @@ function themeblvd_was( $type, $helper = '' ) {
  * This function is filtered onto:
  * 1. `body_class` - 10
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  array $class Current body classes.
  * @return array $class Modified body classes.
@@ -791,7 +791,7 @@ function themeblvd_body_class( $class ) {
 	 * Filters the <body> classes, after the theme
 	 * has added to them.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param array  $class   CSS classes.
 	 * @param string $browser Current user agent.
@@ -808,7 +808,7 @@ if ( ! function_exists( 'themeblvd_include_scripts' ) ) {
 	 * This function is hooked to:
 	 * 1. `wp_enqueue_scripts` - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	function themeblvd_include_scripts() {
 
@@ -898,7 +898,7 @@ if ( ! function_exists( 'themeblvd_include_scripts' ) ) {
 			 *
 			 * @see themeblvd_get_icon_class()
 			 *
-			 * @since @@name-framework 2.7.1
+			 * @since Theme_Blvd 2.7.1
 			 *
 			 * @param bool Whether shim is included.
 			 */
@@ -1038,7 +1038,7 @@ if ( ! function_exists( 'themeblvd_include_styles' ) ) {
 	 * This function is hooked to:
 	 * 1. `wp_enqueue_scripts` - 10
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_include_styles() {
 
@@ -1131,7 +1131,7 @@ if ( ! function_exists( 'themeblvd_include_styles' ) ) {
  * This function is filtered onto:
  * 1. `the_content_more_link` - 10
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  string $more_link_element Read More link element.
  * @param  string $more_link_text    Read More text.
@@ -1146,7 +1146,7 @@ function themeblvd_read_more_link( $read_more, $more_link_text ) {
 	 *
 	 * @see themeblvd_button()
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @param array Arguments to split into parameters to themeblvd_button().
 	 */

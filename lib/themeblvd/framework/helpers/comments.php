@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 /**
@@ -15,7 +15,7 @@
  *
  * @see wp_list_comments()
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @return array $args Arguments prepared for wp_list_comments().
  */
@@ -27,7 +27,7 @@ function themeblvd_get_comment_list_args() {
 	 *
 	 * @see wp_list_comments()
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @param array $args Arguments prepared for wp_list_comments().
 	 */
@@ -50,7 +50,7 @@ function themeblvd_get_comment_list_args() {
  *
  * @see comment_form()
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @return array $args Arguments prepared for comment_form().
  */
@@ -62,7 +62,7 @@ function themeblvd_get_comment_form_args() {
 	 *
 	 * @see comment_form()
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @param array $args Arguments prepared for comment_form().
 	 */
@@ -125,7 +125,7 @@ function themeblvd_comment_form_fields( $fields ) {
  * So, this extends further up than simply having the
  * comments for a post closed.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @return bool $show Whether to show comments.
  */
@@ -189,7 +189,7 @@ function themeblvd_show_comments() {
 	 *
 	 * @see themeblvd_show_comments()
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @return bool $show Whether to show comments.
 	 */
@@ -205,7 +205,7 @@ function themeblvd_show_comments() {
  * strings, this function has to avoid using _n(),
  * which might looks seemingly weird, at first glance.
  *
- * @since @@name-framework 2.5.2
+ * @since Theme_Blvd 2.5.2
  *
  * @return string $output Comments title.
  */
@@ -241,7 +241,7 @@ function themeblvd_get_comments_title() {
 	 * Filters the comment section title, used in the
 	 * comments.php template.
 	 *
-	 * @since @@name-framework 2.5.2
+	 * @since Theme_Blvd 2.5.2
 	 *
 	 * @param string $output Comments title.
 	 * @param string $num    Number of comments.
@@ -254,7 +254,7 @@ function themeblvd_get_comments_title() {
  * Display comment section title, used in the
  * comments.php template.
  *
- * @since @@name-framework 2.5.2
+ * @since Theme_Blvd 2.5.2
  */
 function themeblvd_comments_title() {
 

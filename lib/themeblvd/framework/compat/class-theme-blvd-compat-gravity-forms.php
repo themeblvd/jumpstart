@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
@@ -16,21 +16,21 @@
  * meaning it can only be instantiated in
  * one instance.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Compat_Gravity_Forms {
 
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	private static $instance = null;
 
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return Theme_Blvd_Compat_Gravity_Forms A single instance of this class.
 	 */
@@ -49,7 +49,7 @@ class Theme_Blvd_Compat_Gravity_Forms {
 	/**
 	 * Constructor. Hook everything in.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -69,7 +69,7 @@ class Theme_Blvd_Compat_Gravity_Forms {
 	 * This method is filtered onto:
 	 * 1. `wp_enqueue_scripts` - 15
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function assets() {
 
@@ -105,7 +105,7 @@ class Theme_Blvd_Compat_Gravity_Forms {
 	 * This method is filtered onto:
 	 * 1. `body_class` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  array $class Current CSS classes on <body>.
 	 * @return array $class Modified CSS classes on <body>.
@@ -131,7 +131,7 @@ class Theme_Blvd_Compat_Gravity_Forms {
 	 * This method is filtered onto:
 	 * 1. `gform_validation_message` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $message Original validation message.
 	 * @return string $message Modified validation message.
@@ -155,7 +155,7 @@ class Theme_Blvd_Compat_Gravity_Forms {
 	 * This method is filtered onto:
 	 * 1. `gform_confirmation` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $message Original validation message.
 	 * @return string $message Modified validation message.

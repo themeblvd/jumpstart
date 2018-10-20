@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
@@ -16,7 +16,7 @@
  * This function is hooked to:
  * 1. `after_setup_theme` - 10
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_plugin_compat() {
 
@@ -71,7 +71,7 @@ function themeblvd_plugin_compat() {
  * Get all plugins that the framework provides
  * compatibility for.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  bool  $options Whether to pull only plugins utilizing theme options.
  * @return array $plugins Plugin slugs we're providing compatiblity for.
@@ -99,7 +99,7 @@ function themeblvd_get_compat( $options = false ) {
 	 * Filters the array of plugin slugs for compatible
 	 * third-party plugins.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $plugins Plugin slugs we're providing compatiblity for.
 	 * @param bool  $options Whether to pull only plugins utilizing theme options.
@@ -117,7 +117,7 @@ function themeblvd_get_compat( $options = false ) {
  * third-party plugin, in order to see if it's
  * currently active.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param string $plugin Plugin slug to check.
  * @param bool           Whether plugin is currently active.

@@ -4,15 +4,15 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.7.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.7.0
  */
 
 /**
  * Get filepath to theme base.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $base Theme base identifier.
  * @return string $path Filepath of base directory.
@@ -25,7 +25,7 @@ function themeblvd_get_base_path( $base ) {
 	 * Filters the filepath to where a theme base
 	 * is located.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $path Filepath of base directory.
 	 * @param string $base Theme base identifier.
@@ -37,7 +37,7 @@ function themeblvd_get_base_path( $base ) {
 /**
  * Get url to theme base.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $base Theme base identifier.
  * @return string URI of base directory.
@@ -50,7 +50,7 @@ function themeblvd_get_base_uri( $base ) {
 	 * Filters the URL to where a theme base is
 	 * located.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $url  URL of base directory.
 	 * @param string $base Theme base identifier.
@@ -64,7 +64,7 @@ function themeblvd_get_base_uri( $base ) {
 /**
  * Get default theme base.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @return string Theme base identifier.
  */
@@ -76,7 +76,7 @@ function themeblvd_get_default_base() {
 	 * This gets used for the theme base, when
 	 * none has been set.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string Theme base identifer.
 	 */
@@ -87,7 +87,7 @@ function themeblvd_get_default_base() {
 /**
  * Get current theme base.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @return string Theme base identifier.
  */
@@ -101,7 +101,7 @@ function themeblvd_get_base() {
 	/**
 	 * Filters the current theme base.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string Theme base identifier.
 	 */

@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 /**
@@ -16,7 +16,7 @@
  * will make retrieving the post ID much more
  * efficient.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @uses $wpdb
  *
@@ -90,7 +90,7 @@ function themeblvd_post_id_by_name( $slug, $post_type = null ) {
  * This function is filtered onto:
  * 1. `post_class` - 10
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array $class Post class(es).
  * @return array $class Modified post class(es).
@@ -121,7 +121,7 @@ function themeblvd_post_class( $class ) {
  * might look like "31 years ago" instead of
  * "September 17, 1986".
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  int    $post_id ID of post.
  * @return string $output  Time ago string.
@@ -139,7 +139,7 @@ function themeblvd_get_time_ago( $post_id = 0 ) {
 	/**
 	 * Filters the time ago verbiage.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array Text strings.
 	 */
@@ -243,7 +243,7 @@ function themeblvd_get_time_ago( $post_id = 0 ) {
 /**
  * Get all post display modes.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @return array Post display modes.
  */
@@ -257,7 +257,7 @@ function themeblvd_get_modes() {
 	 * options, where a post display type needs
 	 * to be selected.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array Post display modes.
 	 */
@@ -273,7 +273,7 @@ function themeblvd_get_modes() {
 /**
  * Get social media share sources.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @return array $sources All sharing sources.
  */
@@ -295,7 +295,7 @@ function themeblvd_get_share_sources() {
 	 * Filters the available sources for setting
 	 * up contact buttons to share a post URL.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $sources All sharing sources.
 	 */
@@ -309,7 +309,7 @@ function themeblvd_get_share_sources() {
  * These get used when outputting the buttons
  * to share the URL for a post.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @return array $sources Share button patterns.
  */
@@ -379,7 +379,7 @@ function themeblvd_get_share_patterns() {
 	 * posts and allow website visitors to share the
 	 * current URL of that post.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array $sources Share button patterns.
 	 */

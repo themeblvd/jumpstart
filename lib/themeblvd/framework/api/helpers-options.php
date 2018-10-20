@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.7.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.7.0
  */
 
 /**
@@ -16,7 +16,7 @@
  * Realistically, it doesn't have much use unless an old
  * plugin is still using it.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @return array All raw API options before they've been formatted into theme options.
  */
@@ -32,7 +32,7 @@ function themeblvd_get_core_options() {
  * Get formatted options. Note that options will not be
  * formatted until after WP's after_setup_theme hook.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @return array All formatted theme options.
  */
@@ -47,7 +47,7 @@ function themeblvd_get_formatted_options() {
 /**
  * Get theme setting value.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string       $primary   The primary ID of the option.
  * @param  string       $secondary Optional secondary ID to traverse deeper into arrays.
@@ -64,7 +64,7 @@ function themeblvd_get_option( $primary, $secondary = null, $default = null ) {
 	 * Filters an individual theme setting returned from
 	 * saved theme options.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @param string|array $setting   Setting value.
 	 * @param string       $primary   Primary ID of option.
@@ -82,7 +82,7 @@ function themeblvd_get_option( $primary, $secondary = null, $default = null ) {
  * in a theme, but maybe the settings haven't been re-saved
  * by the user.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $option_id ID of the option to check for.
  * @return bool              Whether option exists.
@@ -102,7 +102,7 @@ function themeblvd_has_option( $option_id ) {
 /**
  * Add theme options tab.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param string $tab_id   ID of tab to add.
  * @param string $tab_name Name of the tab to add.
@@ -119,7 +119,7 @@ function themeblvd_add_option_tab( $tab_id, $tab_name, $top = false ) {
 /**
  * Remove theme options tab.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param string $tab_id ID of tab to add.
  */
@@ -134,7 +134,7 @@ function themeblvd_remove_option_tab( $tab_id ) {
 /**
  * Add theme options section.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param string $tab_id       ID of tab section will be located in
  * @param string $section_id   ID of new section
@@ -161,7 +161,7 @@ function themeblvd_add_option_section( $tab_id, $section_id, $section_name, $sec
 /**
  * Remove theme options section.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param string $tab_id     ID of tab that section to remove belongs to
  * @param string $section_id ID of section to remove
@@ -177,7 +177,7 @@ function themeblvd_remove_option_section( $tab_id, $section_id ) {
 /**
  * Add theme option.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param string $tab_id     ID of tab to add option to.
  * @param string $section_id ID of section to add to.
@@ -204,7 +204,7 @@ function themeblvd_add_option( $tab_id, $section_id, $option_id, $option ) {
 /**
  * Remove theme option.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param string $tab_id     ID of tab to add option to.
  * @param string $section_id ID of section to add to.
@@ -221,7 +221,7 @@ function themeblvd_remove_option( $tab_id, $section_id, $option_id ) {
 /**
  * Remove theme option.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param string $tab_id     ID of tab to add option to
  * @param string $section_id ID of section to add to
@@ -249,7 +249,7 @@ function themeblvd_edit_option( $tab_id, $section_id, $option_id, $att, $value )
  * This is can be filtered with "themeblvd_option_id". See
  * the get_option_id() method of the Theme_Blvd_Options_API class.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  */
 function themeblvd_get_option_name() {
 
@@ -267,7 +267,7 @@ function themeblvd_get_option_name() {
  * returned. You must call themeblvd_add_saniziation() before
  * calling this function on the frontend.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  array $options  Options formatted for internal options framework.
  * @return array $defaults Default values from options.
@@ -301,7 +301,7 @@ function themeblvd_get_option_defaults( $options ) {
 /**
  * Add option presets.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args {
  *     @type string $id      ID of presets section.
@@ -324,7 +324,7 @@ function themeblvd_add_option_presets( $args ) {
  *
  * @link https://codex.wordpress.org/Roles_and_Capabilities
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param  string $page Module ID to check
  * @return string $capability  WordPress capability for current admin module.
@@ -336,7 +336,7 @@ function themeblvd_admin_module_cap( $page ) {
 	 *
 	 * @link https://codex.wordpress.org/Roles_and_Capabilities
 	 *
-	 * @since @@name-framework 2.1.0
+	 * @since Theme_Blvd 2.1.0
 	 *
 	 * @param array {
 	 *     Admin page with capabilities.
@@ -370,7 +370,7 @@ function themeblvd_admin_module_cap( $page ) {
 /**
  * Get transparent textures.
  *
- * @since @@name-framework 2.0.5
+ * @since Theme_Blvd 2.0.5
  *
  * @return array $textures Transparent textures.
  */
@@ -381,7 +381,7 @@ function themeblvd_get_textures() {
 	 * transparent texture images are located
 	 * within the theme.
 	 *
-	 * @since @@name-framework 2.0.5
+	 * @since Theme_Blvd 2.0.5
 	 *
 	 * @param string URL path.
 	 */
@@ -1018,7 +1018,7 @@ function themeblvd_get_textures() {
 	 * other backgrounds in different scenarios setup
 	 * from the admin.
 	 *
-	 * @since @@name-framework 2.0.5
+	 * @since Theme_Blvd 2.0.5
 	 *
 	 * @param array $textures Transparent textures.
 	 */
@@ -1029,7 +1029,7 @@ function themeblvd_get_textures() {
 /**
  * Get color choices.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  bool  $bootstrap Whether to include Bootstrap colors or not.
  * @param  bool  $custom    Whether to include custom selection.
@@ -1100,7 +1100,7 @@ function themeblvd_colors( $bootstrap = true, $custom = true, $default = true ) 
 	/**
 	 * Filters the framework preset color choices.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param array $colors    Color choices.
 	 * @param bool  $bootstrap Whether to include Bootstrap colors or not.
@@ -1119,7 +1119,7 @@ function themeblvd_colors( $bootstrap = true, $custom = true, $default = true ) 
  * to assign custom sidebars to specific pages
  * of a website.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @return array $conditionals Conditional assignments.
  */
@@ -1290,7 +1290,7 @@ function themeblvd_conditionals_config() {
 	 * Filters the data used to setup WordPress
 	 * conditional assignment options.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @return array $conditionals Conditional assignments.
 	 */
@@ -1306,7 +1306,7 @@ function themeblvd_conditionals_config() {
  * with the description appearing below, in a
  * given options interface instance.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @return array $types All option types to display as full-width.
  */
@@ -1322,7 +1322,7 @@ function themeblvd_get_full_width_option_types() {
 	 * controls will be stretched full-width of the options
 	 * panel, with the description falling below.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param array All option types to display as full-width.
 	 */
@@ -1350,7 +1350,7 @@ function themeblvd_get_full_width_option_types() {
  * option interfaces with `editor` type
  * option.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @param bool $do Whether to allow rich editing.
  */
@@ -1372,7 +1372,7 @@ function themeblvd_do_rich_editing() {
 	 * options will be rendered as a standard
 	 * <textarea>.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param bool $do Whether to allow rich editing.
 	 */

@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 /**
@@ -19,7 +19,7 @@
  * This function is filtered onto:
  * 1. `wp_link_pages_args` - 10
  *
- * @since @@name-framework 2.2.1
+ * @since Theme_Blvd 2.2.1
  *
  * @param  array $args Default arguments from wp_link_pages().
  * @return array $args Modified arguments for wp_link_pages().
@@ -54,7 +54,7 @@ function themeblvd_link_pages_args( $args ) {
  * This function is filtered onto:
  * 1. `wp_link_pages_link` - 10
  *
- * @since @@name-framework 2.2.1
+ * @since Theme_Blvd 2.2.1
  *
  * @param  string $link Markup of individual link to be filtered.
  * @param  int    $num  Page number of link being filtered.
@@ -68,7 +68,7 @@ function themeblvd_link_pages_link( $link, $num ) {
 	 * Filters the frontend framework button color
 	 * for the pagination buttons of wp_link_pages().
 	 *
-	 * @since @@name-framework 2.2.1
+	 * @since Theme_Blvd 2.2.1
 	 *
 	 * @param string       Button color.
 	 * @param string $link Markup of individual link to be filtered.
@@ -80,7 +80,7 @@ function themeblvd_link_pages_link( $link, $num ) {
 	 * Filters the frontend framework button size
 	 * for the pagination buttons of wp_link_pages().
 	 *
-	 * @since @@name-framework 2.2.1
+	 * @since Theme_Blvd 2.2.1
 	 *
 	 * @param string       Button size.
 	 * @param string $link Markup of individual link to be filtered.
@@ -120,7 +120,7 @@ function themeblvd_link_pages_link( $link, $num ) {
  *
  * @see themeblvd_get_breadcrumbs_trail()
  *
- * @since @@name-framework 2.2.1
+ * @since Theme_Blvd 2.2.1
  *
  * @param  array $args {
  *     Breadcrumb arguments.
@@ -384,7 +384,7 @@ function themeblvd_get_breadcrumb_parts( $args ) {
 	 * link is added to the start or the page number
 	 * is added to the end.
 	 *
-	 * @since @@name-framework 2.2.1
+	 * @since Theme_Blvd 2.2.1
 	 *
 	 * @param array $parts Breadcrumbs parts.
 	 * @param array $args {
@@ -413,7 +413,7 @@ function themeblvd_get_breadcrumb_parts( $args ) {
 	 * link is added to the start and the page number
 	 * has been added to the end.
 	 *
-	 * @since @@name-framework 2.2.1
+	 * @since Theme_Blvd 2.2.1
 	 *
 	 * @param array       Breadcrumbs parts.
 	 * @param array $args {
@@ -433,7 +433,7 @@ function themeblvd_get_breadcrumb_parts( $args ) {
 /**
  * Whether breadcrumbs should display.
  *
- * @since @@name-framework 2.2.1
+ * @since Theme_Blvd 2.2.1
  *
  * @return bool $show Whether breadcrumbs should display.
  */
@@ -483,7 +483,7 @@ function themeblvd_show_breadcrumbs() {
 	/**
 	 * Filters whether breadcrumbs should display.
 	 *
-	 * @since @@name-framework 2.2.1
+	 * @since Theme_Blvd 2.2.1
 	 *
 	 * @param bool   $show    Whether breadcrumbs should display.
 	 * @param string $display String represention of display before converted to boolean.
@@ -496,7 +496,7 @@ function themeblvd_show_breadcrumbs() {
  * Get parent category attributes. Used in
  * building breadcrumbs.
  *
- * @since @@name-framework 2.2.1
+ * @since Theme_Blvd 2.2.1
  *
  * @param  int   $id   ID of closest category parent.
  * @param  array $used Any categories in our chain that we've already used.
@@ -512,7 +512,7 @@ function themeblvd_get_category_parents( $id, $used = array() ) {
  * Get parent term attributes. Used with
  * building breadcrumbs.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param  int   $id    ID of closest category parent.
  * @param  array $used  Any categories in our chain that we've already used.
@@ -556,7 +556,7 @@ function themeblvd_get_term_parents( $id, $taxonomy = 'category', $used = array(
  *
  * @see themeblvd_get_pagination()
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param  int   $pages Number of pages.
  * @param  int   $range Range for paginated buttons, helpful for many pages.
@@ -652,7 +652,7 @@ function themeblvd_get_pagination_parts( $pages = 0, $range = 2 ) {
 	 *
 	 * @see themeblvd_get_pagination()
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param array $parts Parts to construct pagination.
 	 * @param int   $pages Number of pages.
@@ -672,7 +672,7 @@ function themeblvd_get_pagination_parts( $pages = 0, $range = 2 ) {
  *
  * @see themeblvd_get_refine_search_menu()
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_get_search_types() {
 
@@ -720,7 +720,7 @@ function themeblvd_get_search_types() {
  * JavaScript filtered post loop, to be triggered
  * from the menu outputted with themeblvd_filter_nav().
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $tax     Taxonomy we're sorting the showcase by.
  * @param  int    $post_id ID of current post.
@@ -756,7 +756,7 @@ function themeblvd_get_filter_val( $tax = 'category', $post_id = 0 ) {
 	 * Filters CSS classes to be used with JavaScript
 	 * filtering navigation on posts.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $value   Value to get used in HTML, like `filter-{$value}"`.
 	 * @param string $tax     Taxonomy we're sorting the showcase by.
@@ -770,7 +770,7 @@ function themeblvd_get_filter_val( $tax = 'category', $post_id = 0 ) {
  * Get the "hamburger" style button, generally
  * used for opening menus.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @param  string|array $class  CSS class added to button.
  * @return string       $output Final HTML output.
@@ -799,7 +799,7 @@ function themeblvd_get_menu_toggle( $class = '' ) {
 	 * Filters the HTML output for the "hamburger"
 	 * mobile menu toggle button.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param array Final HTML output.
 	 */
@@ -815,7 +815,7 @@ function themeblvd_get_menu_toggle( $class = '' ) {
 	 * Filters the "hamburger" style button, generally
 	 * used for opening menus.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string $class  CSS class added to button.
 	 * @param string $output Final HTML output.

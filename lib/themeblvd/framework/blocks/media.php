@@ -4,16 +4,16 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
  * Get the featured image of a post, taking into account
  * framework featured image linking.
  *
- * @since @@name-framework 2.0.0 (re-written in 2.5.0)
+ * @since Theme_Blvd 2.0.0 (re-written in 2.5.0)
  *
  * @param  string $size Optional. Image crop size.
  * @param  array  $args {
@@ -52,7 +52,7 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 		 * This is an attempt to avoid ever pulling `full` in
 		 * case the user uploaded a ridiculously large image.
 		 *
-		 * @since @@name-framework 2.7.0
+		 * @since Theme_Blvd 2.7.0
 		 *
 		 * @param string Image crop size.
 		 */
@@ -64,7 +64,7 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 	 * Filters the default arguments for a featured
 	 * image.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array Default arguments used for themeblvd_get_post_thumbnail().
 	 */
@@ -170,7 +170,7 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 	 * Filters the class attached to the <img> tag of a
 	 * featured image.
 	 *
-	 * @since @@name-framework 2.4.0
+	 * @since Theme_Blvd 2.4.0
 	 *
 	 * @param string $class Image class.
 	 * @param int           Post ID.
@@ -263,7 +263,7 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 			 * Filters the arguments used to wrap a featured
 			 * image in a link, which leads to a lightbox.
 			 *
-			 * @since @@name-framework 2.3.0
+			 * @since Theme_Blvd 2.3.0
 			 *
 			 * @param array Arguments passed to themeblvd_get_link_to_lightbox().
 			 * @param int   Post ID.
@@ -306,7 +306,7 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
 	 * function allows for additional features like
 	 * adding links, placeholders, and disabling srcset.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param string $output Final HTML output for thumbnail.
 	 * @param array  $args   Additional arguments for thumbnail.
@@ -327,7 +327,7 @@ function themeblvd_get_post_thumbnail( $size = '', $args = array() ) {
  * it will attempt to pull the first gallery instance
  * found within the content of the post.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param  string $gallery Gallery shortcode instance, like `[gallery ids="1,2,3"]`.
  * @param  array  $args {
@@ -355,7 +355,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 	 * Filters the default arguments for a gallery
 	 * slider.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param array Default argument passed to themeblvd_get_simple_slider().
 	 */
@@ -453,7 +453,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 		 * Filters the default crop size for gallery slider
 		 * images, when none is passed.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param string $crop Crop size name, like `thumbnail` or `slider-x-large`.
 		 */
@@ -511,7 +511,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 	 * Filters the final HTML output for a gallery
 	 * slider block.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param int    $post_id ID of current post.
@@ -541,7 +541,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 /**
  * Display a gallery slider block.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param string $gallery Gallery shortcode instance, like `[gallery ids="1,2,3"]`.
  * @param array  $args    Block arguments, see themeblvd_get_gallery_slider() docs.
@@ -559,7 +559,7 @@ function themeblvd_gallery_slider( $gallery = '', $args = array() ) {
  * which passes some preset arguments to condense the
  * look of the slider for smaller situations.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param string $gallery Gallery shortcode instance, like `[gallery ids="1,2,3"]`.
  * @param array  $args    Slider arguments; see docs for themeblvd_get_gallery_slider().
@@ -570,7 +570,7 @@ function themeblvd_get_mini_gallery_slider( $gallery = '', $args = array() ) {
 	 * Filters the default arguments used for a mini
 	 * gallery slider.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param array Arguments passed to themeblvd_get_gallery_slider().
 	 */
@@ -590,7 +590,7 @@ function themeblvd_get_mini_gallery_slider( $gallery = '', $args = array() ) {
 /**
  * Display a mini gallery slider block.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param string $gallery Gallery shortcode instance, like `[gallery ids="1,2,3"]`.
  * @param array  $args    Slider arguments; see docs for themeblvd_get_gallery_slider().
@@ -604,7 +604,7 @@ function themeblvd_mini_gallery_slider( $gallery = '', $args = array() ) {
 /**
  * Get a simple slider block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $images Images for slider.
  * @param  array  $args {
@@ -662,7 +662,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 	 * Note: This filter is applied AFTER default arguments
 	 * have been merged with wp_parse_args().
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array Arguments used to build simple slider.
 	 */
@@ -1028,7 +1028,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 	 * Filters the final HTML output for a simple slider
 	 * block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -1062,7 +1062,7 @@ function themeblvd_get_simple_slider( $images, $args = array() ) {
 /**
  * Display a simple slider block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $images Images for slider.
  * @param array $args   Block arguments, see themeblvd_get_simple_slider() docs.
@@ -1076,7 +1076,7 @@ function themeblvd_simple_slider( $images, $args = array() ) {
 /**
  * Get an image block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $img_atts {
  *     Image attributes.
@@ -1299,7 +1299,7 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 	 * Filters the final HTML output for an image
 	 * block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output   Final HTML output.
 	 * @param string $img      HTML for the <img> before being wrapped in a link.
@@ -1330,7 +1330,7 @@ function themeblvd_get_image( $img_atts, $args = array() ) {
 /**
  * Display an image block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $img_atts Image attributes, see themeblvd_get_image() docs.
  * @param array $args     Additional block arguments, see themeblvd_get_image() docs.
@@ -1344,7 +1344,7 @@ function themeblvd_image( $img_atts, $args = array() ) {
 /**
  * Get a video block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $video_url URL to video, compatible with WordPress's oEmbed.
  * @param  array  $args      Block arguments, currently not used.
@@ -1368,7 +1368,7 @@ function themeblvd_get_video( $video_url, $args = array() ) {
 	/**
 	 * Filters the final HTML output for a video block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output    Final HTML output.
 	 * @param string $video_url URL to video, compatible with WordPress's oEmbed.
@@ -1381,7 +1381,7 @@ function themeblvd_get_video( $video_url, $args = array() ) {
 /**
  * Display a video block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param string $video_url URL to video, compatible with WordPress's oEmbed.
  * @param array  $args      Block arguments, currently not used.

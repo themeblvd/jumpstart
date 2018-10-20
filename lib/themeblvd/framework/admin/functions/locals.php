@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 /**
@@ -16,7 +16,7 @@
  * This function allows to have all of the framework's
  * common admin localized text strings in once place.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string $type   Type of set, js or customizer_js.
  * @return array  $locals Filtered array of localized text strings
@@ -72,7 +72,7 @@ function themeblvd_get_admin_locals( $type ) {
 	 * Filter localization strings printed to
 	 * admin JavaScript.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param array $locals Array of text strings.
 	 */

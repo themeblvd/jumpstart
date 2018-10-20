@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
@@ -15,7 +15,7 @@
  * Note: While you can have multiple triggers, it'll work
  * best if there is only one floating search bar on the site.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args   Block arguments, but not currently used.
  * @return string $output Final HTML output for block.
@@ -38,7 +38,7 @@ function themeblvd_get_floating_search( $args = array() ) {
 	 * Filters the final HTML output for a floating
 	 * searchform block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args   Block arguments, but not currently used.
@@ -54,7 +54,7 @@ function themeblvd_get_floating_search( $args = array() ) {
  * website. And by default, it's hooked to
  * `themeblvd_after` at priority 10.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, but not currently used.
  */
@@ -72,7 +72,7 @@ function themeblvd_floating_search( $args = array() ) {
  * Get the floating shopping cart block, which
  * shows in a modal.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -90,7 +90,7 @@ function themeblvd_get_cart_popup( $args = array() ) {
 	 * Filters the default arguments for the floating
 	 * shopping cart block, which shows in a modal.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  array  $args {
 	 *     Default block arguments.
@@ -152,7 +152,7 @@ function themeblvd_get_cart_popup( $args = array() ) {
 	 *
 	 * @hooked Theme_Blvd_Compat_WooCommerce::cart - 10 - (If WooCommerce is activated)
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $args {
 	 *     Block arguments.
@@ -179,7 +179,7 @@ function themeblvd_get_cart_popup( $args = array() ) {
 	 * Filters the final HTML output for the floating
 	 * shopping cart block, which shows in a modal.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -199,7 +199,7 @@ function themeblvd_get_cart_popup( $args = array() ) {
  * Display the floating shopping cart block,
  * which shows in a modal.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_cart_popup() docs.
  */
@@ -212,7 +212,7 @@ function themeblvd_cart_popup( $args = array() ) {
 /**
  * Get header text.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $text   Text to display; when left blank, pulls from `header_text` theme option.
  * @param  array  $args {
@@ -235,7 +235,7 @@ function themeblvd_get_header_text( $text = '', $args = array() ) {
 	/**
 	 * Filters the raw header text.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $text Raw header text.
 	 */
@@ -266,7 +266,7 @@ function themeblvd_get_header_text( $text = '', $args = array() ) {
 	 * Filters the final header text output, with
 	 * wrapping markup.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param string $text   Raw header text.
@@ -278,7 +278,7 @@ function themeblvd_get_header_text( $text = '', $args = array() ) {
 /**
  * Display header text.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param string $text Text to display; when left blank, pulls from `header_text` theme option.
  */
@@ -291,7 +291,7 @@ function themeblvd_header_text( $text = '', $args = array() ) {
 /**
  * Get a group of text blocks.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $blocks Text blocks to display in group.
  * @param  array  $args {
@@ -458,7 +458,7 @@ function themeblvd_get_text_blocks( $blocks, $args = array() ) {
 	 * Filters the final HTML output for a group
 	 * of text blocks.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $blocks Text blocks to display in group.
@@ -473,7 +473,7 @@ function themeblvd_get_text_blocks( $blocks, $args = array() ) {
 /**
  * Display a group of text blocks.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $blocks Text blocks to display in group.
  * @param array $args   Text block group arguments, see themeblvd_get_text_blocks() docs.
@@ -487,7 +487,7 @@ function themeblvd_text_blocks( $blocks, $args = array() ) {
 /**
  * Get an animated loader block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @return string $output Final HTML output for block.
  */
@@ -507,7 +507,7 @@ function themeblvd_get_loader() {
 	 * Filters the final HTML output for an animated
 	 * loader block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 */
@@ -518,7 +518,7 @@ function themeblvd_get_loader() {
 /**
  * Display an animated loader block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_loader() {
 

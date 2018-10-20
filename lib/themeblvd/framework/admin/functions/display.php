@@ -4,15 +4,15 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 /**
  * Generates a table for a custom post type.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string $post_type Post type ID.
  * @param  array  $columns   Columns for table.
@@ -257,7 +257,7 @@ function themeblvd_post_table( $post_type, $columns ) {
  * because it's a custom addition to the options
  * interface module and it's pretty lengthy.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string $type   Type of use, standard or element.
  * @param  string $id     Unique ID for option.
@@ -410,7 +410,7 @@ function themeblvd_columns_option( $type, $id, $name, $val ) {
  * because it's a custom addition to the optionframework
  * module and it's pretty lengthy.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string $id      Unique ID for option.
  * @param  string $name    Prefix for form name value.
@@ -698,7 +698,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
  * Create accordion panel for selecting conditional
  * assignments.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string $id     Unique ID for option.
  * @param  string $name   Prefix for form name value.
@@ -1057,7 +1057,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 				 * But disabling the option here can prevent the end-user
 				 * from every being able to configure it in the first place.
 				 *
-				 * @since @@name-framework 2.0.0
+				 * @since Theme_Blvd 2.0.0
 				 *
 				 * @param bool Whether eval() option gets inserted.
 				 */
@@ -1119,7 +1119,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
  * because it's a custom addition to the optionframework
  * module and it's pretty lengthy.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string $id     Unique ID for option.
  * @param  string $name   Prefix for form name value.
@@ -1340,7 +1340,7 @@ function themeblvd_logo_option( $id, $name, $val ) {
 /**
  * Generates option for configuring a button.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $id     Unique ID for option.
  * @param  string $name   Prefix for form name value.
@@ -1533,7 +1533,7 @@ function themeblvd_button_option( $id, $name, $val ) {
  * inserted into out Hi-jacked "Page Attributes"
  * meta box.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string $layout Current custom layout.
  * @return string $output HTML to output.
@@ -1597,7 +1597,7 @@ function themeblvd_custom_layout_dropdown( $layout = null ) {
  * Outputs icon browser in hidden modal window that can
  * be accessed by other options.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Options for setting up icon browser.
  */
@@ -1649,7 +1649,7 @@ function themeblvd_icon_browser( $args = array() ) {
 											 * By default, this value will be structured with a Font
 											 * Awesome style class and icon class, like `fas fa-user`.
 											 *
-											 * @since @@name-framework 2.7.4
+											 * @since Theme_Blvd 2.7.4
 											 *
 											 * @param string $icon_value Icon value.
 											 * @param string $icon       Icon name.
@@ -1665,7 +1665,7 @@ function themeblvd_icon_browser( $args = array() ) {
 												/**
 												 * Filters the HTML output for icons in the icon browser.
 												 *
-												 * @since @@name-framework 2.7.4
+												 * @since Theme_Blvd 2.7.4
 												 *
 												 * @param string $icon       Icon HTML output.
 												 * @param string $icon_value Icon value.
@@ -1725,7 +1725,7 @@ function themeblvd_icon_browser( $args = array() ) {
  * Outputs post browser in hidden modal window that can
  * be accessed by other options.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Options for setting up post browser (currently not being used for anything).
  */
@@ -1783,7 +1783,7 @@ function themeblvd_post_browser( $args = array() ) {
  * Ajax action function for searching posts and
  * displaying table of results.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_ajax_post_browser() {
 
@@ -1851,7 +1851,7 @@ add_action( 'wp_ajax_themeblvd_post_browser', 'themeblvd_ajax_post_browser' );
  * Outputs texture browser in hidden modal window that can
  * be accessed by other options.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Options for setting up texture browser (currently not being used for anything).
  */
@@ -1961,7 +1961,7 @@ function themeblvd_texture_browser( $args = array() ) {
  * Dispay set of preset option values user can click
  * to populate part of the a options page.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args         Options for displaying preset style selections.
  * @param  string $option_name  Prefix for all field name attributes (currently not used).
@@ -2053,7 +2053,7 @@ function themeblvd_display_presets( $args, $option_name = '' ) {
  * This function is hooked to:
  * 1. `themeblvd_options_footer_text` - 10
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  */
 function themeblvd_options_footer_text_default() {
 
@@ -2064,7 +2064,7 @@ function themeblvd_options_footer_text_default() {
 	/**
 	 * Filter changelog URL.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param string URL to changelog.
 	 * @param string Template slug retrieved from get_template().

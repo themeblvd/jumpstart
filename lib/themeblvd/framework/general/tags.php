@@ -7,16 +7,16 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 /**
  * Display at the top of the content of most
  * template files.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  */
 function themeblvd_content_top() {
 
@@ -26,7 +26,7 @@ function themeblvd_content_top() {
 	 *
 	 * @hooked themeblvd_archive_info - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	do_action( 'themeblvd_content_top' );
 
@@ -36,7 +36,7 @@ function themeblvd_content_top() {
  * Display at the bottom of the content of most
  * template files.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  */
 function themeblvd_content_bottom() {
 
@@ -44,7 +44,7 @@ function themeblvd_content_bottom() {
 	 * Fires at the bottom of the content of most
 	 * template files.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	do_action( 'themeblvd_content_bottom' );
 
@@ -54,7 +54,7 @@ function themeblvd_content_bottom() {
  * Display meta info for a post, in the `blog`
  * post display.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  */
 function themeblvd_blog_meta() {
 
@@ -66,7 +66,7 @@ function themeblvd_blog_meta() {
 	 * the post title with information like the post
 	 * format, publish data, author, etc.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	do_action( 'themeblvd_blog_meta' );
 
@@ -76,7 +76,7 @@ function themeblvd_blog_meta() {
  * Display the sub meta below the post content
  * in the `blog` post display.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_blog_sub_meta() {
 
@@ -91,7 +91,7 @@ function themeblvd_blog_sub_meta() {
 	 *
 	 * @hooked themeblvd_blog_sub_meta_default - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	do_action( 'themeblvd_blog_sub_meta' );
 
@@ -101,7 +101,7 @@ function themeblvd_blog_sub_meta() {
  * Display meta info for a post, in the `grid`
  * post display.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_grid_meta() {
 
@@ -115,7 +115,7 @@ function themeblvd_grid_meta() {
 	 *
 	 * @hooked themeblvd_grid_meta_default - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	do_action( 'themeblvd_grid_meta' );
 
@@ -125,7 +125,7 @@ function themeblvd_grid_meta() {
  * Display meta info for a post, in a list
  * of search results.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_search_meta() {
 
@@ -139,7 +139,7 @@ function themeblvd_search_meta() {
 	 *
 	 * @hooked themeblvd_search_meta_default - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	do_action( 'themeblvd_search_meta' );
 
@@ -151,7 +151,7 @@ function themeblvd_search_meta() {
  *
  * @see themeblvd_get_post_thumbnail()
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param string $size Optional. Image crop size.
  * @param array  $args Optional. See themeblvd_get_post_thumbnail().
@@ -189,7 +189,7 @@ function themeblvd_the_post_thumbnail( $size = '', $args = array() ) {
 	 *
 	 * @hooked themeblvd_the_post_thumbnail_default - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param string $size Optional. Image crop size.
 	 * @param array  $args Optional. See themeblvd_get_post_thumbnail().
@@ -202,7 +202,7 @@ function themeblvd_the_post_thumbnail( $size = '', $args = array() ) {
  * Display the content for a post, within the
  * `blog` post display type.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param string $type Type of content, `content` or `excerpt`.
  */
@@ -214,7 +214,7 @@ function themeblvd_blog_content( $type ) {
 	 *
 	 * @hooked themeblvd_blog_content_default - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	do_action( 'themeblvd_blog_content', $type );
 
@@ -225,7 +225,7 @@ function themeblvd_blog_content( $type ) {
  * of a single post, before the comments
  * display.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  */
 function themeblvd_single_footer() {
 
@@ -235,7 +235,7 @@ function themeblvd_single_footer() {
 	 *
 	 * @hooked themeblvd_single_footer_default - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	do_action( 'themeblvd_single_footer' );
 }
@@ -244,7 +244,7 @@ function themeblvd_single_footer() {
  * Display immediately following the content
  * of a page, before the comments display.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  */
 function themeblvd_page_footer() {
 
@@ -252,7 +252,7 @@ function themeblvd_page_footer() {
 	 * Fires below the content of a page, but
 	 * before the comments.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	do_action( 'themeblvd_page_footer' );
 
@@ -262,7 +262,7 @@ function themeblvd_page_footer() {
  * Display HTML class for the main website
  * top bar.
  *
- * @since @@name-framework 2.6.0
+ * @since Theme_Blvd 2.6.0
  */
 function themeblvd_header_top_class() {
 
@@ -272,7 +272,7 @@ function themeblvd_header_top_class() {
 	 * Filters the CSS classes used with the main
 	 * website top bar.
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 *
 	 * @param array $class CSS classes.
 	 */
@@ -288,7 +288,7 @@ function themeblvd_header_top_class() {
 	 * Filters the full HTML output of the CSS classes
 	 * for the main website top bar.
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 *
 	 * @param string $output HTML output CSS classes.
 	 * @param array  $class  CSS classes.
@@ -301,7 +301,7 @@ function themeblvd_header_top_class() {
  * Display HTML class for the main website
  * header.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_header_class() {
 
@@ -321,7 +321,7 @@ function themeblvd_header_class() {
 	 * Filters the CSS classes used with the main
 	 * website header.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $class CSS classes.
 	 */
@@ -337,7 +337,7 @@ function themeblvd_header_class() {
 	 * Filters the full HTML output of the CSS classes
 	 * for the main website header.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output HTML output CSS classes.
 	 * @param array  $class  CSS classes.
@@ -350,7 +350,7 @@ function themeblvd_header_class() {
  * Display HTML class for the mobile website
  * header.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  */
 function themeblvd_mobile_header_class() {
 
@@ -360,7 +360,7 @@ function themeblvd_mobile_header_class() {
 	 * Filters the CSS classes used with the mobile
 	 * website header.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param array $class CSS classes.
 	 */
@@ -376,7 +376,7 @@ function themeblvd_mobile_header_class() {
 	 * Filters the full HTML output of the CSS classes
 	 * for the mobile website header.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string $output HTML output CSS classes.
 	 * @param array  $class  CSS classes.
@@ -389,7 +389,7 @@ function themeblvd_mobile_header_class() {
  * Display HTML class for the sticky website
  * header.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  */
 function themeblvd_sticky_class() {
 
@@ -399,7 +399,7 @@ function themeblvd_sticky_class() {
 	 * Filters the CSS classes used with the sticky
 	 * website header.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param array $class CSS classes.
 	 */
@@ -415,7 +415,7 @@ function themeblvd_sticky_class() {
 	 * Filters the full HTML output of the CSS classes
 	 * for the sticky website header.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string $output HTML output CSS classes.
 	 * @param array  $class  CSS classes.
@@ -428,7 +428,7 @@ function themeblvd_sticky_class() {
  * Display HTML class for the main website
  * content wrapper.
  *
- * @since @@name-framework 2.5.1
+ * @since Theme_Blvd 2.5.1
  */
 function themeblvd_main_class() {
 
@@ -458,7 +458,7 @@ function themeblvd_main_class() {
 	 * Filters the CSS classes used with the main
 	 * website content wrapper.
 	 *
-	 * @since @@name-framework 2.5.1
+	 * @since Theme_Blvd 2.5.1
 	 *
 	 * @param array $class CSS classes.
 	 */
@@ -474,7 +474,7 @@ function themeblvd_main_class() {
 	 * Filters the full HTML output of the CSS classes
 	 * for the main website content wrapper.
 	 *
-	 * @since @@name-framework 2.5.1
+	 * @since Theme_Blvd 2.5.1
 	 *
 	 * @param string $output HTML output CSS classes.
 	 * @param array  $class  CSS classes.
@@ -487,7 +487,7 @@ function themeblvd_main_class() {
  * Display HTML class for main website
  * footer.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_footer_class() {
 
@@ -502,7 +502,7 @@ function themeblvd_footer_class() {
 	 * Filters the CSS classes used with the main
 	 * website footer.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $class CSS classes.
 	 */
@@ -518,7 +518,7 @@ function themeblvd_footer_class() {
 	 * Filters the full HTML output of the CSS classes
 	 * for the main website footer.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output HTML output CSS classes.
 	 * @param array  $class  CSS classes.
@@ -531,7 +531,7 @@ function themeblvd_footer_class() {
  * Display HTML class for main website
  * footer.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  */
 function themeblvd_copyright_class() {
 
@@ -552,7 +552,7 @@ function themeblvd_copyright_class() {
 	 * Filters the CSS classes used with the website
 	 * copyright at the bottom of the footer.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param array $class CSS classes.
 	 */
@@ -568,7 +568,7 @@ function themeblvd_copyright_class() {
 	 * Filters the full HTML output of the CSS classes
 	 * for website copyright at the bottom of the footer.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string $output HTML output CSS classes.
 	 * @param array  $class  CSS classes.
@@ -581,7 +581,7 @@ function themeblvd_copyright_class() {
  * Display HTML class for the hidden
  * side panel.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  */
 function themeblvd_side_panel_class() {
 
@@ -591,7 +591,7 @@ function themeblvd_side_panel_class() {
 	 * Filters the CSS classes used with the
 	 * hidden side panel.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param array $class CSS classes.
 	 */
@@ -607,7 +607,7 @@ function themeblvd_side_panel_class() {
 	 * Filters the full HTML output of the CSS classes
 	 * for the hidden side panel.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string $output HTML output CSS classes.
 	 * @param array  $class  CSS classes.
@@ -620,7 +620,7 @@ function themeblvd_side_panel_class() {
  * Display HTML class for the hidden
  * side panel.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  */
 function themeblvd_mobile_panel_class() {
 
@@ -645,7 +645,7 @@ function themeblvd_mobile_panel_class() {
 	 * but may be extended in the future.
 	 * @TODO Issue #185.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string $location Location of mobile menu, `left` or `right`.
 	 */
@@ -657,7 +657,7 @@ function themeblvd_mobile_panel_class() {
 	 * Filters the CSS classes used with the
 	 * hidden mobile panel.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $class CSS classes.
 	 */
@@ -673,7 +673,7 @@ function themeblvd_mobile_panel_class() {
 	 * Filters the full HTML output of the CSS classes
 	 * for the hidden mobile panel.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string $output HTML output CSS classes.
 	 * @param array  $class  CSS classes.
@@ -686,7 +686,7 @@ function themeblvd_mobile_panel_class() {
  * Display HTML class for the searchform
  * from get_searchform()
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  */
 function themeblvd_searchform_class() {
 
@@ -706,7 +706,7 @@ function themeblvd_searchform_class() {
 	 * Filters the CSS classes used with the
 	 * searchform from get_searchform().
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param array $class CSS classes.
 	 */
@@ -722,7 +722,7 @@ function themeblvd_searchform_class() {
 	 * Filters the full HTML output of the CSS classes
 	 * for searchform from get_searchform().
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string $output HTML output CSS classes.
 	 * @param array  $class  CSS classes.

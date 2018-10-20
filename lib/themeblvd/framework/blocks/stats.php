@@ -4,15 +4,15 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
  * Get a chart block, using chart.js script.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $type Type of chart, `pie`, `line` or `graph`.
  * @param  array  $args {
@@ -183,7 +183,7 @@ function themeblvd_get_chart( $type, $args ) {
 	 * Filters the final HTML output for a chart
 	 * block, using chart.js script.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param string $type Type of chart, `pie`, `line` or `graph`.
@@ -211,7 +211,7 @@ function themeblvd_get_chart( $type, $args ) {
 /**
  * Display a chart block, using chart.js script.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param string $type Type of chart, `pie`, `line` or `graph`.
  * @param array  $args Block arguments, see themeblvd_get_chart() docs.
@@ -225,7 +225,7 @@ function themeblvd_chart( $type, $args ) {
 /**
  * Get a milestone block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -296,7 +296,7 @@ function themeblvd_get_milestone( $args ) {
 	 * Filters the final HTML output for a foo
 	 * block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -315,7 +315,7 @@ function themeblvd_get_milestone( $args ) {
 /**
  * Display a milestone block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_milestone() docs.
  */
@@ -327,7 +327,7 @@ function themeblvd_milestone( $args ) {
  * Get a milestone percentage block, as a
  * pie chart.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -420,7 +420,7 @@ function themeblvd_get_milestone_ring( $args ) {
 	 * Filters the final HTML output for a foo
 	 * block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -444,7 +444,7 @@ function themeblvd_get_milestone_ring( $args ) {
  * Display a milestone percentage block, as a
  * pie chart.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_milestone_ring() docs.
  */
@@ -457,7 +457,7 @@ function themeblvd_milestone_ring( $args ) {
 /**
  * Get an individual progress bar block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -553,7 +553,7 @@ function themeblvd_get_progress_bar( $args ) {
 	 * Filters the final HTML output for an
 	 * individual progress bar block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -573,7 +573,7 @@ function themeblvd_get_progress_bar( $args ) {
 /**
  * Display an individual progress bar block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_progress_bar() docs.
  */
@@ -586,7 +586,7 @@ function themeblvd_progress_bar( $args ) {
 /**
  * Get a set of progress bars.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args {
  *     Block arguments.
@@ -617,7 +617,7 @@ function themeblvd_get_progress_bars( $args ) {
 	 * Filters the final HTML output for a set
 	 * of progress bars.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -633,7 +633,7 @@ function themeblvd_get_progress_bars( $args ) {
 /**
  * Display a set of progress bars.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Arguments for progress bars
  */

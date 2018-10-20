@@ -8,9 +8,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.7.1
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.7.1
  */
 
 if ( ! function_exists( 'themeblvd_responsive_menu_toggle' ) ) {
@@ -40,8 +40,8 @@ if ( ! function_exists( 'themeblvd_responsive_menu_toggle' ) ) {
  * Display custom slider from Theme Blvd
  * Sliders plugin.
  *
- * @since @@name-framework 2.0.0
- * @deprecated @@name-framework 2.5.0
+ * @since Theme_Blvd 2.0.0
+ * @deprecated Theme_Blvd 2.5.0
  *
  * @param string $slider Slug of custom-built slider to use.
  */

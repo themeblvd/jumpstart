@@ -4,8 +4,8 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @since      @@name-package 2.2.1
+ * @package    Jump_Start
+ * @since      Jump_Start 2.2.1
  */
 
 /**
@@ -14,7 +14,7 @@
  * This class was adapted from EDD_SL_Theme_Updater
  * by Easy Digital Downloads.
  *
- * @since @@name-package 2.2.1
+ * @since Jump_Start 2.2.1
  */
 class Jump_Start_Updater {
 
@@ -43,7 +43,7 @@ class Jump_Start_Updater {
 	/**
 	 * Constructor.
 	 *
-	 * @since @@name-package 2.2.1
+	 * @since Jump_Start 2.2.1
 	 *
 	 * @param array $items Saved license items.
 	 * @param array $args {
@@ -119,7 +119,7 @@ class Jump_Start_Updater {
 	/**
 	 * Set license key for Jump Start theme.
 	 *
-	 * @since @@name-package 2.2.1
+	 * @since Jump_Start 2.2.1
 	 *
 	 * @param array $items   Saved items from license management page.
 	 * @param array $license Manually feed license key.
@@ -145,7 +145,7 @@ class Jump_Start_Updater {
 	/**
 	 * Set extensions.
 	 *
-	 * @since @@name-package 2.2.1
+	 * @since Jump_Start 2.2.1
 	 *
 	 * @param array $items Saved items from license management page.
 	 */
@@ -192,7 +192,7 @@ class Jump_Start_Updater {
 	 * Hooks in the "major upgrade" update nag at the
 	 * top of the WordPress admin.
 	 *
-	 * @since @@name-package 2.2.1
+	 * @since Jump_Start 2.2.1
 	 */
 	public function load_theme_update_nag() {
 
@@ -204,7 +204,7 @@ class Jump_Start_Updater {
 		 * that stays on the screen. This filter will
 		 * get rid of that.
 		 *
-		 * @since @@name-package 2.2.2
+		 * @since Jump_Start 2.2.2
 		 *
 		 * @param bool Whether the nag displays.
 		 */
@@ -220,7 +220,7 @@ class Jump_Start_Updater {
 	 * Displays the "major upgrade" update nag at the
 	 * top of the WordPress admin.
 	 *
-	 * @since @@name-package 2.2.1
+	 * @since Jump_Start 2.2.1
 	 */
 	public function theme_update_nag() {
 
@@ -268,7 +268,7 @@ class Jump_Start_Updater {
 	/**
 	 * Update the theme update transient.
 	 *
-	 * @since @@name-package 2.2.1
+	 * @since Jump_Start 2.2.1
 	 */
 	function theme_update_transient( $value ) {
 
@@ -287,7 +287,7 @@ class Jump_Start_Updater {
 	/**
 	 * Delete the theme update transient.
 	 *
-	 * @since @@name-package 2.2.1
+	 * @since Jump_Start 2.2.1
 	 */
 	function delete_theme_update_transient() {
 
@@ -298,7 +298,7 @@ class Jump_Start_Updater {
 	/**
 	 * Check if a theme update is available.
 	 *
-	 * @since @@name-package 2.2.1
+	 * @since Jump_Start 2.2.1
 	 */
 	function check_theme_update() {
 
@@ -362,7 +362,7 @@ class Jump_Start_Updater {
 	 * This information only gets added if this is
 	 * deemed to be a "major upgrade".
 	 *
-	 * @since @@name-package 2.2.1
+	 * @since Jump_Start 2.2.1
 	 *
 	 * @param  array $themes Array of themes.
 	 * @return array $themes Maybe modified array of themes.
@@ -413,7 +413,7 @@ class Jump_Start_Updater {
 	 * Determine if the current update is considered
 	 * a "major upgrade".
 	 *
-	 * @since @@name-package 2.2.1
+	 * @since Jump_Start 2.2.1
 	 *
 	 * @param  string      $current_version Current installed version.
 	 * @param  string      $new_version     New version available.
@@ -458,7 +458,7 @@ class Jump_Start_Updater {
 	/**
 	 * Check for plugin updates.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @uses api_request()
 	 *
@@ -557,7 +557,7 @@ class Jump_Start_Updater {
 	 * information. But instead, we'll just remove the
 	 * links all together to make plugin management easier.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @param  array  $plugin_meta An array of the plugin's metadata, including the version, author,
 	 *                             author URI, and plugin URI.
@@ -594,7 +594,7 @@ class Jump_Start_Updater {
 	 * Swaps in the default plugin update row with our
 	 * custom ones.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 */
 	public function load_plugin_update_nag() {
 
@@ -612,7 +612,7 @@ class Jump_Start_Updater {
 	 * Show update nofication row -- needed for multisite subsites,
 	 * because WP won't tell you otherwise!
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @param  string $shortname Internal shortname used for plugin.
 	 * @return object            Cached version data.
@@ -690,7 +690,7 @@ class Jump_Start_Updater {
 	/**
 	 * Get the cached version information for a plugin.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @param  string $shortname Internal shortname used for plugin.
 	 * @return object            Cached version data.
@@ -715,7 +715,7 @@ class Jump_Start_Updater {
 	/**
 	 * Set the cached version information for a plugin.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @param string $shortname Internal shortname used for plugin.
 	 * @param string $value     JSON response to be cached.

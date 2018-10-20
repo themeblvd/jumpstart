@@ -4,16 +4,16 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 /**
  * Gather all assignments for posts into a single
  * array organized by post ID.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  array $posts       All posts from WP's get_posts().
  * @return array $assignments Assignments from all posts organized by ID.
@@ -84,7 +84,7 @@ function themeblvd_get_assignment_conflicts( $posts ) {
  * This function is hooked to:
  * 1. `admin_init` - 10
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  */
 function themeblvd_clear_options() {
 
@@ -116,7 +116,7 @@ function themeblvd_clear_options() {
 /**
  * Get background selection types.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $context Context in which BG is being applied.
  * @return array  $types   Background types to select from.
@@ -151,7 +151,7 @@ function themeblvd_get_bg_types( $context = 'section' ) {
 	 * selected from when setting up display options
 	 * in different contexts.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $types Types of backgrounds.
 	 */
@@ -163,7 +163,7 @@ function themeblvd_get_bg_types( $context = 'section' ) {
  * Generates array to be used in a select option
  * type of the options framework.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string $type   Type of <select> to prepare.
  * @return array  $select Items prepared for <select>.

@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.7.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.7.0
  */
 
 /**
@@ -15,8 +15,8 @@
  * This function is deprecated and will no longer
  * actually do anything.
  *
- * @since @@name-framework 2.1.0
- * @deprecated @@name-framework 2.7.0
+ * @since Theme_Blvd 2.1.0
+ * @deprecated Theme_Blvd 2.7.0
  *
  * @param string $slider_id       ID for new slider type.
  * @param string $slider_name     Name for new slider type.
@@ -43,8 +43,8 @@ function themeblvd_add_slider( $slider_id, $slider_name, $slide_types, $media_po
  * This function is deprecated and will no longer
  * actually do anything.
  *
- * @since @@name-framework 2.3.0
- * @deprecated @@name-framework 2.7.0
+ * @since Theme_Blvd 2.3.0
+ * @deprecated Theme_Blvd 2.7.0
  *
  * @param string $slider_id ID for slider type to remove.
  */
@@ -62,8 +62,8 @@ function themeblvd_remove_slider( $slider_id ) {
 /**
  * Add custom stylesheet
  *
- * @since @@name-framework 2.1.0
- * @deprecated @@name-framework 2.2.0
+ * @since Theme_Blvd 2.1.0
+ * @deprecated Theme_Blvd 2.2.0
  *
  * @param string $handle ID for this stylesheet.
  * @param string $src    URL to stylesheet.
@@ -85,8 +85,8 @@ function themeblvd_add_stylesheet( $handle, $src, $level = 4, $ver = null, $medi
 /**
  * Remove custom stylesheet
  *
- * @since @@name-framework 2.1.0
- * @deprecated @@name-framework 2.2.0
+ * @since Theme_Blvd 2.1.0
+ * @deprecated Theme_Blvd 2.2.0
  *
  * @param string $handle ID for this stylesheet
  */
@@ -102,8 +102,8 @@ function themeblvd_remove_stylesheet( $handle ) {
 /**
  * Print out styles.
  *
- * @since @@name-framework 2.1.0
- * @deprecated @@name-framework 2.2.0
+ * @since Theme_Blvd 2.1.0
+ * @deprecated Theme_Blvd 2.2.0
  *
  * @param int $level Level to apply stylesheets - 1, 2, 3, 4
  */

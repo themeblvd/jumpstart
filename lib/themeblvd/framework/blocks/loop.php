@@ -4,15 +4,15 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
  * Display secondary post loops.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args {
  *     Post loop arguments.
@@ -655,7 +655,7 @@ function themeblvd_loop( $args = array() ) {
 	 * Fires after all global attributes have been set
 	 * with themeblvd_set_att().
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $args All post loop arguments, see docs for themeblvd_loop().
 	 */
@@ -738,7 +738,7 @@ function themeblvd_loop( $args = array() ) {
 		 * Filters the query arguments for secondary post loops,
 		 * which are passed to WP_Query.
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 *
 		 * @param array  $query_args Query arguments passed to WP_Query.
 		 * @param array  $args       Original arguments for post loop; see docs for themeblvd_loop().
@@ -856,7 +856,7 @@ function themeblvd_loop( $args = array() ) {
 	 * Filters the wrapping CSS classes for a secondary
 	 * post loop.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param array  $class   CSS classes to add to wrapping markup.
 	 * @param array  $args    Original arguments for post loop; see docs for themeblvd_loop().
@@ -884,7 +884,7 @@ function themeblvd_loop( $args = array() ) {
 		 * page information at the top, before the posts loop
 		 * displays.
 		 *
-		 * @since @@name-framework 2.7.0
+		 * @since Theme_Blvd 2.7.0
 		 *
 		 * @param array       Page templates to show page info before post loop.
 		 * @param array $args Original arguments for post loop; see docs for themeblvd_loop().
@@ -936,7 +936,7 @@ function themeblvd_loop( $args = array() ) {
 		 * Fires before the loop starts and before the HTML
 		 * has been opened.
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 *
 		 * @param array $args Original arguments for post loop; see docs for themeblvd_loop().
 		 */
@@ -984,7 +984,7 @@ function themeblvd_loop( $args = array() ) {
 		 * Fires before the loop has started, but after HTML has
 		 * been opened.
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 *
 		 * @param array $args Original arguments for post loop; see docs for themeblvd_loop().
 		 */
@@ -1077,7 +1077,7 @@ function themeblvd_loop( $args = array() ) {
 		 * Fires after the loop has ended, but before HTML has
 		 * been closed.
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 *
 		 * @param array $args Original arguments for post loop; see docs for themeblvd_loop().
 		 */
@@ -1088,7 +1088,7 @@ function themeblvd_loop( $args = array() ) {
 		/**
 		 * Fires after the loop has ended and HTML has been closed.
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 *
 		 * @param array $args Original arguments for post loop; see docs for themeblvd_loop().
 		 */
@@ -1129,7 +1129,7 @@ function themeblvd_loop( $args = array() ) {
  * This function is called in the default top-level
  * WordPress template files.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_the_loop() {
 
@@ -1209,7 +1209,7 @@ function themeblvd_the_loop() {
 	 * themeblvd_loop() for more on how to format this
 	 * $args array.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $args Arguments passed to themeblvd_loop().
 	 */
@@ -1227,7 +1227,7 @@ function themeblvd_the_loop() {
  * using a page template that displays the secondary
  * posts loop.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $template Type of page template, `blog`, `list`, `grid`, or `showcase`.
  * @return array  $args     Arguments passed to themeblvd_loop().
@@ -1268,7 +1268,7 @@ function themeblvd_get_template_loop_args( $template ) {
 	 * Filters the arguments passed to themeblvd_loop()
 	 * for secondary loop page templates.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $args    Arguments passed to themeblvd_loop().
 	 * @param int   $page_ID ID of current top-level page with template being displayed.
@@ -1280,7 +1280,7 @@ function themeblvd_get_template_loop_args( $template ) {
 /**
  * Get a post grid slider block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -1350,7 +1350,7 @@ function themeblvd_get_grid_slider( $args ) {
 	 * Filters arguments supplied to WP_Query when getting
 	 * posts for a post slider.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array  $query Query arguments for WP_Query.
 	 * @param array  $args  Original arguments passed to themeblvd_get_grid_slider().
@@ -1379,7 +1379,7 @@ function themeblvd_get_grid_slider( $args ) {
 		/**
 		 * Fires before the post loop of a post grid slider.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param array $args Original arguments passed to themeblvd_get_grid_slider().
 		 */
@@ -1430,7 +1430,7 @@ function themeblvd_get_grid_slider( $args ) {
 		/**
 		 * Fires after the post loop of a post grid slider.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param array $args Original arguments passed to themeblvd_get_grid_slider().
 		 */
@@ -1446,7 +1446,7 @@ function themeblvd_get_grid_slider( $args ) {
 	 * Filters the final HTML output for a post grid
 	 * slider block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -1466,7 +1466,7 @@ function themeblvd_get_grid_slider( $args ) {
 /**
  * Display a grid slider block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_grid_slider() docs.
  */
@@ -1486,7 +1486,7 @@ function themeblvd_grid_slider( $args ) {
  * array data that will be understand by the simple
  * slider block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -1638,8 +1638,8 @@ function themeblvd_get_post_slider( $args ) {
 	 * and is now deprecated. Use `themeblvd_posts_args`
 	 * filter instead.
 	 *
-	 * @since @@name-framework 2.0.0
-	 * @deprecated @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.0.0
+	 * @deprecated Theme_Blvd 2.5.0
 	 *
 	 * @param array $query_args Query arguments passed to WP_Query.
 	 * @param array $args       Original arguments for post slider; see docs for themeblvd_get_post_slider().
@@ -1650,7 +1650,7 @@ function themeblvd_get_post_slider( $args ) {
 	 * Filters the query arguments for secondary post loops,
 	 * which are passed to WP_Query.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param array  $query_args Query arguments passed to WP_Query.
 	 * @param array  $args       Original arguments for post slider; see docs for themeblvd_get_post_slider().
@@ -1722,7 +1722,7 @@ function themeblvd_get_post_slider( $args ) {
 							 * Filters the arguments used for the post meta info
 							 * for post slider style #1.
 							 *
-							 * @since @@name-framework 2.5.0
+							 * @since Theme_Blvd 2.5.0
 							 *
 							 * @param array Arguments passed to themeblvd_get_meta().
 							 */
@@ -1740,7 +1740,7 @@ function themeblvd_get_post_slider( $args ) {
 							 * Filters the arguments used for the post meta info
 							 * for post slider style #2.
 							 *
-							 * @since @@name-framework 2.5.0
+							 * @since Theme_Blvd 2.5.0
 							 *
 							 * @param array Arguments passed to themeblvd_get_meta().
 							 */
@@ -1766,7 +1766,7 @@ function themeblvd_get_post_slider( $args ) {
 							 * Filters the arguments used for the post meta info
 							 * for post slider style #3.
 							 *
-							 * @since @@name-framework 2.5.0
+							 * @since Theme_Blvd 2.5.0
 							 *
 							 * @param array Arguments passed to themeblvd_get_meta().
 							 */
@@ -1881,7 +1881,7 @@ function themeblvd_get_post_slider( $args ) {
 	 * Filters the final HTML output for a post
 	 * slider block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args   Block arguments; see docs for themeblvd_get_post_slider().
@@ -1893,7 +1893,7 @@ function themeblvd_get_post_slider( $args ) {
 /**
  * Display a post slider block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_post_slider() docs.
  */
@@ -1906,7 +1906,7 @@ function themeblvd_post_slider( $args ) {
 /**
  * Get a mini post list block.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param  string|array $query  Query parameters and other arguments to sneak in.
  * @param  string|bool  $thumb  Thumbnail display size (not image crop), `small`, `smaller`, `smallest`; use FALSE to display no thumbnails.
@@ -1984,7 +1984,7 @@ function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = 
 	 * Filters the final HTML output for a mini post
 	 * list block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string       $output Final HTML output.
 	 * @param string|array $query  Query parameters and other arguments to sneak in.
@@ -1998,7 +1998,7 @@ function themeblvd_get_mini_post_list( $query = '', $thumb = 'smaller', $meta = 
 /**
  * Display a mini post list block.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param string|array $query Query parameters and other arguments to sneak in.
  * @param string|bool  $thumb Thumbnail display size (not image crop), `small`, `smaller`, `smallest`; use FALSE to display no thumbnails.
@@ -2013,7 +2013,7 @@ function themeblvd_mini_post_list( $query = '', $thumb = 'smaller', $meta = true
 /**
  * Get a mini post grid block.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param  string|array $query   Query parameters and other arguments to sneak in.
  * @param  string       $align   Alignment of images, `left`, `right` or `center`.
@@ -2121,7 +2121,7 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 	 * Filters the final HTML output for a mini post
 	 * grid block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string      $output Final HTML output.
 	 * @param string      $align   Alignment of images, `left`, `right` or `center`.
@@ -2135,7 +2135,7 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 /**
  * Display a mini post grid block.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param string|array $query   Query parameters and other arguments to sneak in.
  * @param string       $align   Alignment of images, `left`, `right` or `center`.
@@ -2172,7 +2172,7 @@ function themeblvd_get_small_post_list( $args = array() ) {
 	 * Filters the final HTML output for a small post
 	 * list block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args   Block arguments; see docs for themeblvd_get_small_post_list().
@@ -2197,7 +2197,7 @@ function themeblvd_small_post_list( $args = array() ) {
 /**
  * Get a small post grid block.
  *
- * @since @@name-framework 2.6.0
+ * @since Theme_Blvd 2.6.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -2281,7 +2281,7 @@ function themeblvd_get_small_post_grid( $args = array() ) {
 	 * Filters the final HTML output for a small post
 	 * grid block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args   Block arguments; see docs for themeblvd_get_small_post_grid().
@@ -2293,7 +2293,7 @@ function themeblvd_get_small_post_grid( $args = array() ) {
 /**
  * Display a small post grid block.
  *
- * @since @@name-framework 2.6.0
+ * @since Theme_Blvd 2.6.0
  *
  * @param array $args Block arguments, see themeblvd_get_small_post_grid() docs.
  */

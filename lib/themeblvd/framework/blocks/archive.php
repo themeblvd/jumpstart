@@ -5,9 +5,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.7.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.7.0
  */
 
 /**
@@ -16,7 +16,7 @@
  * This info box displays the title and description
  * for the first page of taxonomy term archives.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @return string $output Final HTML output for block.
  */
@@ -69,7 +69,7 @@ function themeblvd_get_tax_info() {
 	 * Taxonomy info boxes get printed at the top
 	 * of the first page of taxonomy archives.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string       Name of taxonomy term of archive.
 	 * @param object $term Taxonomy term data.
@@ -91,7 +91,7 @@ function themeblvd_get_tax_info() {
 		 * Taxonomy info boxes get printed at the top
 		 * of the first page of taxonomy archives.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param string       Name of taxonomy term of archive.
 		 * @param object $term Taxonomy term data.
@@ -111,7 +111,7 @@ function themeblvd_get_tax_info() {
 	 * Taxonomy info boxes get printed at the top
 	 * of the first page of taxonomy archives.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string       CSS classes for info box like `foo bar baz`.
 	 * @param object $term Taxonomy term data.
@@ -131,7 +131,7 @@ function themeblvd_get_tax_info() {
 	 * Taxonomy info boxes get printed at the top
 	 * of the first page of taxonomy archives.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param object $term   Taxonomy term data.
@@ -146,7 +146,7 @@ function themeblvd_get_tax_info() {
  * This info box displays the title and description
  * for the first page of taxonomy term archives.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_tax_info() {
 
@@ -161,7 +161,7 @@ function themeblvd_tax_info() {
  * and contact icons for the author of an author
  * posts archive or a single post.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  object $user    Author user data.
  * @param  string $context Where the author box is displaying, `single` or `archive`.
@@ -177,7 +177,7 @@ function themeblvd_get_author_info( $user, $context = 'single' ) {
 	 * first page of author archives and the bottom
 	 * of single posts (if enabled).
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param int             Size of gravatar for get_avatar(), like `70`.
 	 * @param object $user    Author user data.
@@ -201,7 +201,7 @@ function themeblvd_get_author_info( $user, $context = 'single' ) {
 	 * first page of author archives and the bottom
 	 * of single posts (if enabled).
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string          CSS classes for info box like `foo bar baz`.
 	 * @param object $user    Author user data.
@@ -223,7 +223,7 @@ function themeblvd_get_author_info( $user, $context = 'single' ) {
 	 * first page of author archives and the bottom
 	 * of single posts (if enabled).
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string          Post author name.
 	 * @param object $user    Author user data.
@@ -259,7 +259,7 @@ function themeblvd_get_author_info( $user, $context = 'single' ) {
 		 * first page of author archives and the bottom
 		 * of single posts (if enabled).
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param string          CSS classes for info box like `foo bar baz`.
 		 * @param object $user    Author user data.
@@ -372,7 +372,7 @@ function themeblvd_get_author_info( $user, $context = 'single' ) {
 	 * first page of author archives and the bottom
 	 * of single posts (if enabled).
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output  Final HTML output.
 	 * @param object $user    Author user data.
@@ -388,7 +388,7 @@ function themeblvd_get_author_info( $user, $context = 'single' ) {
  * This info box displays the title and description
  * for the first page of taxonomy term archives.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param object $user    Author user data.
  * @param string $context Where the author box is displaying, `single` or `archive`.
@@ -403,7 +403,7 @@ function themeblvd_author_info( $user, $context = 'single' ) {
  * Get a post type navigation block, used to
  * refine search results.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_get_refine_search_menu() {
 
@@ -486,7 +486,7 @@ function themeblvd_get_refine_search_menu() {
 	 * Filters a post type navigation block, used to
 	 * refine search results.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $types  Post types present in search results.
@@ -499,7 +499,7 @@ function themeblvd_get_refine_search_menu() {
  * Display a post type navigation block, used to
  * refine search results.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_refine_search_menu() {
 

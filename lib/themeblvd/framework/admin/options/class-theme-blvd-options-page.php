@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.2.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.2.0
  */
 
 /**
@@ -20,7 +20,7 @@
  * This class incorporates the options interface system,
  * which is actually separate. See themeblvd_option_fields().
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param string $id      A unique ID for this admin page
  * @param array  $options Options for admin page
@@ -31,7 +31,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * ID that the options panel is going to be saved under.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 * @var array
 	 */
 	public $id;
@@ -39,7 +39,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Options for the panel.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 * @var array
 	 */
 	public $options;
@@ -47,7 +47,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Arguments to pass into admin page function.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 * @var array
 	 */
 	public $args;
@@ -56,7 +56,7 @@ class Theme_Blvd_Options_Page {
 	 * If sanitization has run yet or not when saving
 	 * options.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var bool
 	 */
 	private $sanitized = false;
@@ -64,7 +64,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Whether options page has code editor modal.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 * @var array
 	 */
 	public $code_editors = array();
@@ -72,7 +72,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Whether options page has vector icon browser
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 * @var bool
 	 */
 	public $icon_browser = false;
@@ -80,7 +80,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Whether options page has post ID browser
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 * @var bool
 	 */
 	public $find_post_id = false;
@@ -88,7 +88,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Whether options page has texture browser
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 * @var bool
 	 */
 	public $textures = false;
@@ -96,7 +96,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Whether options page needs google maps
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 * @var bool
 	 */
 	public $gmap = false;
@@ -104,7 +104,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * URL to importer, if enabled
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 * @var string
 	 */
 	public $importer_url = '';
@@ -112,7 +112,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Class constructor.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @param string $id      A unique ID for this admin page.
 	 * @param array  $options Options for admin page.
@@ -286,7 +286,7 @@ class Theme_Blvd_Options_Page {
 	 * This set of options will all be registered under one
 	 * option in a single multi-dimensional array.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 */
 	public function register() {
 
@@ -301,7 +301,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Add the menu page.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 */
 	public function add_page() {
 
@@ -328,7 +328,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Enqueue CSS for options page.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 */
 	public function load_styles() {
 
@@ -348,7 +348,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Enqueue JavaScript for options page.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 */
 	public function load_scripts() {
 
@@ -460,7 +460,7 @@ class Theme_Blvd_Options_Page {
 	 *
 	 * Nonces are provided using the settings_fields()
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 */
 	public function admin_page() {
 
@@ -470,7 +470,7 @@ class Theme_Blvd_Options_Page {
 		 * The filter name isn't all too logical in this circumstance,
 		 * but has been around since the beginning; so it must remain!
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 *
 		 * @param array Settings from database for entire options page.
 		 */
@@ -538,7 +538,7 @@ class Theme_Blvd_Options_Page {
 			 * can ensure the "Plugins" tab is shown by making sure
 			 * "plugins-installed" class is filtered on here.
 			 *
-			 * @since @@name-framework 2.5.0
+			 * @since Theme_Blvd 2.5.0
 			 *
 			 * @param string $class CSS class used on wrapping DIV.
 			 * @param string $id    Unique ID for this options page.
@@ -620,7 +620,7 @@ class Theme_Blvd_Options_Page {
 						 *
 						 * @hooked themeblvd_options_footer_text_default - 10
 						 *
-						 * @since @@name-framework 2.2.0
+						 * @since Theme_Blvd 2.2.0
 						 */
 						do_action( 'themeblvd_options_footer_text' );
 						?>
@@ -638,7 +638,7 @@ class Theme_Blvd_Options_Page {
 					 *
 					 * @hooked null
 					 *
-					 * @since @@name-framework 2.2.0
+					 * @since Theme_Blvd 2.2.0
 					 *
 					 * @param string Type of framework admin page.
 					 */
@@ -659,7 +659,7 @@ class Theme_Blvd_Options_Page {
 	 * This runs after the submit/reset button has been clicked and
 	 * validates the inputted data.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @param  array $input Input from submitted form.
 	 * @return array $clean Sanitized options from submitted form.
@@ -856,7 +856,7 @@ class Theme_Blvd_Options_Page {
 				 * These filter names vary by the type of option, and
 				 * the framework hooks all sanitization here by default.
 				 *
-				 * @since @@name-framework 2.0.0
+				 * @since Theme_Blvd 2.0.0
 				 *
 				 * @see themeblvd_add_sanitization()
 				 *
@@ -989,7 +989,7 @@ class Theme_Blvd_Options_Page {
 		 * Filters all data one last time before it's actually passed
 		 * to the database.
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param array $clean Settings being passed to the database.
 		 * @param array $input The original data submitted from the form.
@@ -1001,7 +1001,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Hook in hidden icon browser modal.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function add_icon_browser() {
 
@@ -1019,7 +1019,7 @@ class Theme_Blvd_Options_Page {
 	 * Display the actual icon browser, hooked to
 	 * `in_admin_header` from the previous method.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @see themeblvd_icon_browser()
 	 */
@@ -1038,7 +1038,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Hook in hidden post browser modal.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @see themeblvd_post_browser()
 	 */
@@ -1057,7 +1057,7 @@ class Theme_Blvd_Options_Page {
 	/**
 	 * Hook in hidden texture browser modal.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @see themeblvd_texture_browser()
 	 */

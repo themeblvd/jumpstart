@@ -18,15 +18,15 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 /**
  * Add page and post meta boxes.
  *
- * @since @@name-framework 2.0.1
+ * @since Theme_Blvd 2.0.1
  */
 function themeblvd_add_meta_boxes() {
 
@@ -123,7 +123,7 @@ function themeblvd_add_meta_boxes() {
 /**
  * Build and filter data for meta box, "Post Options."
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @return $setup All data passed to Theme_Blvd_Meta_Box.
  */
@@ -302,7 +302,7 @@ function setup_themeblvd_post_meta() {
 	 * class when creating the object for the "Post Options"
 	 * meta box.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param array $setup {
 	 *     All data for meta box.
@@ -328,7 +328,7 @@ function setup_themeblvd_post_meta() {
 /**
  * Build and filter data for meta box, "Page Options."
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @return $setup All data passed to Theme_Blvd_Meta_Box.
  */
@@ -441,7 +441,7 @@ function setup_themeblvd_page_meta() {
 	 * class when creating the object for the "Page Options"
 	 * meta box.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param array $setup {
 	 *     All data for meta box.
@@ -467,7 +467,7 @@ function setup_themeblvd_page_meta() {
 /**
  * Build and filter data for meta box, "Theme Layout."
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @return $setup All data passed to Theme_Blvd_Meta_Box.
  */
@@ -547,7 +547,7 @@ function setup_themeblvd_layout_meta() {
 	 * class when creating the object for the "Theme Layout"
 	 * meta box.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $setup {
 	 *     All data for meta box.
@@ -573,7 +573,7 @@ function setup_themeblvd_layout_meta() {
 /**
  * Build and filter data for meta box, "Post Template Options."
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @return $setup All data passed to Theme_Blvd_Meta_Box.
  */
@@ -667,7 +667,7 @@ function setup_themeblvd_pto_meta() {
 	 * class when creating the object for the "Post Template
 	 * Options" meta box.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $setup {
 	 *     All data for meta box.

@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.1.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.1.0
  */
 
 /**
@@ -16,7 +16,7 @@
  * framework's common localized text strings
  * in once place.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  */
 function themeblvd_get_all_locals() {
 
@@ -136,7 +136,7 @@ function themeblvd_get_all_locals() {
 	/**
 	 * Filters all frontend text strings.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param array Frontend text strings.
 	 */
@@ -147,7 +147,7 @@ function themeblvd_get_all_locals() {
 /**
  * Get a frontend text string.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string $id   Key for $locals array.
  * @return string $text Localized and filtered text string.
@@ -172,7 +172,7 @@ function themeblvd_get_local( $id ) {
  * Get JavaScript localized strings for
  * themeblvd.js.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  */
 function themeblvd_get_js_locals() {
 
@@ -280,7 +280,7 @@ function themeblvd_get_js_locals() {
 	 * This will be the viewport size where the mobile
 	 * header is displayed and desktop header is hidden.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string|int Viewport size, like `991`.
 	 */
@@ -312,7 +312,7 @@ function themeblvd_get_js_locals() {
 		 * Filters the offset for scroll to JavaScript
 		 * functionality.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param int|string Number of pixels, like `50`.
 		 */
@@ -336,7 +336,7 @@ function themeblvd_get_js_locals() {
 	 * Filters the offset for scroll to JavaScript
 	 * functionality.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string CSS value, like `20px`.
 	 */
@@ -355,7 +355,7 @@ function themeblvd_get_js_locals() {
 	 * link to #tab_{ID OF TAB} and that tab will
 	 * automatically open.
 	 *
-	 * @since @@name-framework 2.4.4
+	 * @since Theme_Blvd 2.4.4
 	 *
 	 * @param bool Whether deeplinking is enabled.
 	 */
@@ -381,7 +381,7 @@ function themeblvd_get_js_locals() {
 	 * Filters localized text strings that get
 	 * printed with themeblvd.js.
 	 *
-	 * @since @@name-framework 2.2.0
+	 * @since Theme_Blvd 2.2.0
 	 *
 	 * @param array $locals Localization text strings.
 	 */

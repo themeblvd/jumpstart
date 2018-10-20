@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 /**
@@ -23,7 +23,7 @@
  * 5. A classic grid key for tenths - grid_tenth_{1-10}
  * 6. An integer from 1-6, representing the number of equal-width columns
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param string|int $key   Grid key, see above.
  * @return string    $class Column class.
@@ -157,7 +157,7 @@ function themeblvd_grid_class( $key, $stack = 'sm' ) {
 	 * Filters the grid class generated for a
 	 * column.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string     $class Column class.
 	 * @param string|int $key   Grid key, see themeblvd_grid_class() docs.
@@ -172,7 +172,7 @@ function themeblvd_grid_class( $key, $stack = 'sm' ) {
  * through framework option belongs to a 12-column
  * or 10-column grid system.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $widths Widths of columns combined with underscore, like `1/2_1/4_1/4`.
  * @return string         Grid system, `12` or `10`.
@@ -218,7 +218,7 @@ function themeblvd_grid_type( $widths ) {
  * For example, given `col-sm-3` would return
  * `1/4`.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $class    Grid class, like `col-sm-3`.
  * @return string $fraction Fraction, like `1/4`.
@@ -273,7 +273,7 @@ function themeblvd_grid_fraction( $class ) {
  * Get the greatest common denomimator between
  * two numbers.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  int $a First number.
  * @param  int $b Second number.
@@ -316,7 +316,7 @@ function themeblvd_gcd( $a, $b ) {
 /**
  * Get the HTML to open a row of a grid.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Row arguments.
@@ -356,7 +356,7 @@ function themeblvd_get_open_row( $args = array() ) {
 	/**
 	 * Filters the HTML to open a row of a grid.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output to open row.
 	 * @param array  $args {
@@ -374,7 +374,7 @@ function themeblvd_get_open_row( $args = array() ) {
 /**
  * Display the HTML to open a row of a grid.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param array $args Row arguments, see themeblvd_get_open_row() docs.
  */
@@ -387,7 +387,7 @@ function themeblvd_open_row( $args = array() ) {
 /**
  * Get the markup to close a row of a grid.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Row arguments.
@@ -415,7 +415,7 @@ function themeblvd_get_close_row( $args = array() ) {
 	/**
 	 * Filters the HTML to close a row of a grid.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output to close row.
 	 * @param array  $args {
@@ -433,7 +433,7 @@ function themeblvd_get_close_row( $args = array() ) {
 /**
  * Display the HTML to close a row of a grid.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param array $args Row arguments, see themeblvd_get_close_row() docs.
  */
@@ -447,7 +447,7 @@ function themeblvd_close_row( $args = array() ) {
  * Get a guess for the maximum width of an
  * element.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array|string $args {
  *     Array of element max-width arguments, or single string representing context.

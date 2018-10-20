@@ -7,9 +7,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.7.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.7.0
  */
 
 /**
@@ -24,7 +24,7 @@
  * 4. `comments`  Number of post comments, if has comments.
  * 5. `category`  Post's category or portfolio item's portfolio.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -53,7 +53,7 @@ function themeblvd_get_meta( $args = array() ) {
 	 * Filters the FontAwesome icons used for each
 	 * of the $include items within a post meta block.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param array {
 	 *     Icon names used.
@@ -306,7 +306,7 @@ function themeblvd_get_meta( $args = array() ) {
 	 * Filters the final HTML output for a meta
 	 * info block for a post
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -328,7 +328,7 @@ function themeblvd_get_meta( $args = array() ) {
  * Get (or display) a list of categories for the
  * current post in the loop.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  bool   $echo   Whether to echo $output; if FALSE, will return $output.
  * @return string $output Final HTML output for block.
@@ -357,7 +357,7 @@ function themeblvd_blog_cats( $echo = true ) {
 	 * Filters the final HTML output for a post's
 	 * categories.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param string         ID of current post in the loop.
@@ -380,7 +380,7 @@ function themeblvd_blog_cats( $echo = true ) {
  * Get (or display) a list of tags for the current
  * post in the loop.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  bool   $echo   Whether to echo $output; if FALSE, will return $output.
  * @return string $output Final HTML output for block.
@@ -408,7 +408,7 @@ function themeblvd_blog_tags( $echo = true ) {
 	 * Filters the final HTML output for a post's
 	 * tags.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param string         ID of current post in the loop.
@@ -431,7 +431,7 @@ function themeblvd_blog_tags( $echo = true ) {
  * Get (or display) the share buttons for the
  * current post in the loop.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  bool   $echo   Whether to echo $output; if FALSE, will return $output.
  * @return string $output Final HTML output for block.
@@ -530,7 +530,7 @@ function themeblvd_blog_share( $echo = true ) {
 	 * Filters the final HTML output for a post's
 	 * share buttons.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output  Final HTML output.
 	 * @param string          ID of current post in the loop.
@@ -557,7 +557,7 @@ function themeblvd_blog_share( $echo = true ) {
  * term. The taxonomy used for this is passed
  * in from the $args.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -582,7 +582,7 @@ function themeblvd_get_related_posts( $args = array() ) {
 	 * Filters the default arguments for related
 	 * posts blocks.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $args {
 	 *     Block arguments.
@@ -664,7 +664,7 @@ function themeblvd_get_related_posts( $args = array() ) {
 		 * Filters the generated query for retrieving
 		 * related posts from WP_Query.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param array       Query parameters to pass to WP_Query.
 		 * @param array $args {
@@ -718,7 +718,7 @@ function themeblvd_get_related_posts( $args = array() ) {
 	 * Filters the final HTML output for a related
 	 * posts block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -745,7 +745,7 @@ function themeblvd_get_related_posts( $args = array() ) {
 /**
  * Display related posts
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_related_posts() docs.
  */
@@ -759,7 +759,7 @@ function themeblvd_related_posts( $args = array() ) {
  * Get a date block, which can replace a featured
  * image on posts lists.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param int $post_id ID of current post.
  */
@@ -789,7 +789,7 @@ function themeblvd_get_date_block( $post_id = 0 ) {
 	 * Filters a date block, which can replace a featured
 	 * image on posts lists.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output  Final HTML output.
 	 * @param int    $post_id ID of current post.
@@ -802,7 +802,7 @@ function themeblvd_get_date_block( $post_id = 0 ) {
  * Display a date block, which can replace a featured
  * image on posts lists.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param int $post_id ID of current post.
  */
@@ -820,7 +820,7 @@ function themeblvd_date_block( $post_id = 0 ) {
  * post showcase, to display when a featurd image
  * is hovered on.
  *
- * @since @@name-framework 2.6.0
+ * @since Theme_Blvd 2.6.0
  *
  * @param int    $post_id ID of current post.
  * @param string $tax     Taxonomy to pull current term from.
@@ -857,7 +857,7 @@ function themeblvd_get_item_info( $post_id = 0, $tax = '' ) {
 	 * Filters the taxonomy used to determine the
 	 * item info subtitle.
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 *
 	 * @param string $tax       Taxonomy being used to get terms for.
 	 * @param string $post_type Post typ of current post.
@@ -873,7 +873,7 @@ function themeblvd_get_item_info( $post_id = 0, $tax = '' ) {
 	 * the featured image is hovered on in a post
 	 * showcase.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string            Subtitle text to display below title.
 	 * @param int    $post_id   ID of current post.
@@ -910,7 +910,7 @@ function themeblvd_get_item_info( $post_id = 0, $tax = '' ) {
 	 * info block, which contains the title and
 	 * a taxonomy term.
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 *
 	 * @param string $output  Final HTML output.
 	 * @param int    $post_id ID of current post.
@@ -924,7 +924,7 @@ function themeblvd_get_item_info( $post_id = 0, $tax = '' ) {
  * Display the title and taxonomy term of a
  * post.
  *
- * @since @@name-framework 2.6.0
+ * @since Theme_Blvd 2.6.0
  */
 function themeblvd_item_info( $post_id = 0, $tax = '' ) {
 

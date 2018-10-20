@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 /**
@@ -15,7 +15,7 @@
  * This function is hooked to:
  * 1. `themeblvd_api` - 10
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  */
 function themeblvd_api_init() {
 
@@ -40,7 +40,7 @@ function themeblvd_api_init() {
  * The global configuration determines which
  * features are supported throughout the theme.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @return array $setup Framework features.
  */
@@ -122,7 +122,7 @@ function themeblvd_setup() {
 	 *
 	 * @link http://dev.themeblvd.com/tutorial/managing-framework-features/
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param array $setup Framework features.
 	 */
@@ -136,7 +136,7 @@ function themeblvd_setup() {
  *
  * @see themeblvd_setup()
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string $group   Top-level group key in configuration array.
  * @param  string $feature Second-level feature key in confiration array.
@@ -165,7 +165,7 @@ function themeblvd_supports( $group, $feature ) {
  * This function is filteres onto:
  * 1. `themeblvd_sidebar_layout` - 10
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param string $sidebar_layout Sidebar layout identifier, like `full_width`.
  */
@@ -179,7 +179,7 @@ function themeblvd_wpmultisite_signup_sidebar_layout( $sidebar_layout ) {
 		 * Filters the sidebar layout used with the
 		 * multisite signup page.
 		 *
-		 * @since @@name-framework 2.1.0
+		 * @since Theme_Blvd 2.1.0
 		 *
 		 * @param string Sidebar layout identifier, like `full_width`.
 		 */
@@ -197,7 +197,7 @@ function themeblvd_wpmultisite_signup_sidebar_layout( $sidebar_layout ) {
  * This function is hooked to:
  * 1. `after_setup_theme` - 10
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  */
 function themeblvd_register_navs() {
 
@@ -219,7 +219,7 @@ function themeblvd_register_navs() {
 	 * Filters the navigation menu locations
 	 * registered by the theme.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param array Navigation menu locations.
 	 */
@@ -236,7 +236,7 @@ function themeblvd_register_navs() {
  * This function is hooked to:
  * 1. `after_setup_theme` - 10
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  */
 function themeblvd_add_theme_support() {
 
@@ -269,7 +269,7 @@ function themeblvd_add_theme_support() {
  * This function is hooked to:
  * 1. `wp_before_admin_bar_render` - 10
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  */
 function themeblvd_admin_menu_bar() {
 
@@ -292,7 +292,7 @@ function themeblvd_admin_menu_bar() {
 	 * Filters the URLs to framework admin pages,
 	 * used in the admin bar.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param array Admin page URL's.
 	 */
@@ -353,7 +353,7 @@ function themeblvd_admin_menu_bar() {
 /**
  * Get all sidebar layouts.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @return array $layouts Sidebar layouts.
  */
@@ -365,7 +365,7 @@ function themeblvd_sidebar_layouts() {
 	 *
 	 * Stacking points: `xs`, `sm`, `md`, `lg` or `xl`
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string Stacking point, `xs`, `sm`, `md`, `lg` or `xl`.
 	 */
@@ -431,7 +431,7 @@ function themeblvd_sidebar_layouts() {
 	/**
 	 * Filters the sidebar layouts setup.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param array  Sidebar layouts.
 	 * @param string Stacking point, `xs`, `sm`, `md`, `lg` or `xl`.
@@ -446,7 +446,7 @@ function themeblvd_sidebar_layouts() {
  * This function is hooked to:
  * 1. `themeblvd_localize` - 10
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  */
 function themeblvd_load_theme_textdomain() {
 

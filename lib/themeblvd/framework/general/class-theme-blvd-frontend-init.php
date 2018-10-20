@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
@@ -16,14 +16,14 @@
  * meaning it can only be instantiated in
  * one instance.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Frontend_Init {
 
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var Theme_Blvd_Frontend_Init
 	 */
 	private static $instance = null;
@@ -31,7 +31,7 @@ class Theme_Blvd_Frontend_Init {
 	/**
 	 * Template parts for get_template_part().
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var array
 	 */
 	private $template_parts = array();
@@ -39,7 +39,7 @@ class Theme_Blvd_Frontend_Init {
 	/**
 	 * Mode of framework, `list` or `grid`.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var string
 	 */
 	private $mode = 'blog';
@@ -47,7 +47,7 @@ class Theme_Blvd_Frontend_Init {
 	/**
 	 * Configuration array for page being loaded.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var array
 	 */
 	private $config = array();
@@ -55,7 +55,7 @@ class Theme_Blvd_Frontend_Init {
 	/**
 	 * Store template attributes.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var array
 	 */
 	private $atts = array();
@@ -63,7 +63,7 @@ class Theme_Blvd_Frontend_Init {
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @return Theme_Blvd_Frontend_Init A single instance of this class.
 	 */
@@ -82,7 +82,7 @@ class Theme_Blvd_Frontend_Init {
 	/**
 	 * Constructor. Hook everything in.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	public function __construct() {
 
@@ -109,7 +109,7 @@ class Theme_Blvd_Frontend_Init {
 	 * This method is hooked to:
 	 * 1. `pre_get_posts` - 5
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	public function set_template_parts() {
 
@@ -130,7 +130,7 @@ class Theme_Blvd_Frontend_Init {
 		 * value cooresponds to the template file from the theme,
 		 * which is used.
 		 *
-		 * @since @@name-framework 2.2.0
+		 * @since Theme_Blvd 2.2.0
 		 *
 		 * @param array Template part slugs.
 		 */
@@ -196,7 +196,7 @@ class Theme_Blvd_Frontend_Init {
 	 * This method is hooked to:
 	 * 1. `pre_get_posts` - 5
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param WP_Query $q The WP_Query instance (passed by reference).
 	 */
@@ -222,7 +222,7 @@ class Theme_Blvd_Frontend_Init {
 			 * compatibility. It existed before the end-user
 			 * theme option did.
 			 *
-			 * @since @@name-framework 2.3.0
+			 * @since Theme_Blvd 2.3.0
 			 *
 			 * @param string $mode Post display mode, `blog`, `list`, `grid` or `showcase`.
 			 */
@@ -307,7 +307,7 @@ class Theme_Blvd_Frontend_Init {
 		 * Filters the post display mode of for all
 		 * scenarios.
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param string   $mode Post display mode, `blog`, `list`, `grid` or `showcase`.
 		 * @param WP_Query $q    The WP_Query instance (passed by reference).
@@ -322,7 +322,7 @@ class Theme_Blvd_Frontend_Init {
 	 * This method is hooked to:
 	 * 1. `wp` - 5
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	public function set_config() {
 
@@ -363,7 +363,7 @@ class Theme_Blvd_Frontend_Init {
 		/**
 		 * Filters the theme's stored primary post ID.
 		 *
-		 * @since @@name-framework 2.2.0
+		 * @since Theme_Blvd 2.2.0
 		 *
 		 * @param int $id Current primary post ID.
 		 */
@@ -618,7 +618,7 @@ class Theme_Blvd_Frontend_Init {
 			 * following `themeblvd_sidebar_layout` filter, but
 			 * it was created before that one existed.
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since Theme_Blvd 2.0.0
 			 *
 			 * @param string $sidebar_layout Sidebar layout, like `sidebar_right`.
 			 */
@@ -643,7 +643,7 @@ class Theme_Blvd_Frontend_Init {
 		 * 5. `double_sidebar_left`
 		 * 6. `double_sidebar_right`
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param string $sidebar_layout Sidebar layout, like `sidebar_right`.
 		 */
@@ -698,7 +698,7 @@ class Theme_Blvd_Frontend_Init {
 			 * Theme Blvd Widget Areas plugin to apply custom
 			 * sidebars.
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since Theme_Blvd 2.0.0
 			 *
 			 * @param string $sidebar_id        Sidebar ID, like `my-sidebar`.
 			 * @param array  $custom_sidebars   Array of WP_Post objects for tb_sidebar posts.
@@ -786,7 +786,7 @@ class Theme_Blvd_Frontend_Init {
 		 * circumstances, where no `_tb_layout_header` meta
 		 * exists, like a WordPress archive, for example.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param string $header Display style for header, `default`, `suck_up` or `hide`.
 		 * @param int    $id     Current post ID, if this is a single page or post.
@@ -833,7 +833,7 @@ class Theme_Blvd_Frontend_Init {
 			 * logo inputted by the end-user, which is used to
 			 * aid in displaying the transparent header.
 			 *
-			 * @since @@name-framework 2.5.0
+			 * @since Theme_Blvd 2.5.0
 			 *
 			 * @param int    $addend   Height of header excluding logo.
 			 * @param string $viewport Viewport range this applies to.
@@ -845,7 +845,7 @@ class Theme_Blvd_Frontend_Init {
 			 * been added to the $addend, which is used to aid in
 			 * displaying the transparent header.
 			 *
-			 * @since @@name-framework 2.5.0
+			 * @since Theme_Blvd 2.5.0
 			 *
 			 * @param int    Height of the header.
 			 * @param string Display context, `desktop` or `tablet`.
@@ -892,7 +892,7 @@ class Theme_Blvd_Frontend_Init {
 		/**
 		 * Filters the primary frontend configuration.
 		 *
-		 * @since @@name-framework 2.2.0
+		 * @since Theme_Blvd 2.2.0
 		 *
 		 * @param array $config {
 		 *     Configuration arguments.
@@ -924,7 +924,7 @@ class Theme_Blvd_Frontend_Init {
 	/**
 	 * Get template part(s).
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param  string       $part Optional. Specific part to pull from $template_parts.
 	 * @return string|array       All template parts or specific template part.
@@ -950,7 +950,7 @@ class Theme_Blvd_Frontend_Init {
 	/**
 	 * Get current post display mode.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @return string $mode Current theme mode, `blog`, `list`, `grid` or `showcase`.
 	 */
@@ -966,7 +966,7 @@ class Theme_Blvd_Frontend_Init {
 	 * To use this method, it's easiest to just use the
 	 * `themeblvd_config()` wrapper function.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param  string $key       Optinal. Key to retrieve from frontend configuration array.
 	 * @param  string $secondary Optional. Key to retrieve from array, requiring to traverse one level deeper.
@@ -999,7 +999,7 @@ class Theme_Blvd_Frontend_Init {
 	/**
 	 * Get template attributes.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @return array $atts Template attributes.
 	 */
@@ -1016,7 +1016,7 @@ class Theme_Blvd_Frontend_Init {
 	 * This method is hooked to:
 	 * 1. `wp_head` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function debug() {
 
@@ -1024,7 +1024,7 @@ class Theme_Blvd_Frontend_Init {
 		 * Filters whether debug info shows in source
 		 * code.
 		 *
-		 * @since @@name-framework 2.7.0
+		 * @since Theme_Blvd 2.7.0
 		 *
 		 * @param bool Whether debug info shows.
 		 */
@@ -1133,7 +1133,7 @@ class Theme_Blvd_Frontend_Init {
 		 * This action hook is useful for adding custom
 		 * debug info.
 		 *
-		 * @since @@name-framework 2.6.4
+		 * @since Theme_Blvd 2.6.4
 		 */
 		do_action( 'themeblvd_debug_info' );
 
@@ -1154,7 +1154,7 @@ class Theme_Blvd_Frontend_Init {
 	 * This method is filtered onto:
 	 * 1. `body_class` - 10
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param  array $classes Current body classes.
 	 * @return array $classes Modified body classes.
@@ -1199,7 +1199,7 @@ class Theme_Blvd_Frontend_Init {
 	 * This method is hooked to:
 	 * 1. `wp` - 10
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	public function atts_init() {
 
@@ -1268,7 +1268,7 @@ class Theme_Blvd_Frontend_Init {
 			 * Filters the initial, global template attributes
 			 * set for a single post.
 			 *
-			 * @since @@name-framework 2.3.0
+			 * @since Theme_Blvd 2.3.0
 			 *
 			 * @param array Template attributes.
 			 */
@@ -1287,7 +1287,7 @@ class Theme_Blvd_Frontend_Init {
 		 * displaying above the content (i.e. "epic thumbnails")
 		 * is supported.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param array Post types supporting epic thumbnails.
 		 */
@@ -1387,7 +1387,7 @@ class Theme_Blvd_Frontend_Init {
 	 * To easily utilize this method, you can use the
 	 * wrapper function `themeblvd_set_atts()`.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param  array $atts  Attributes to be merged with global attributes.
 	 * @param  bool  $flush Whether or not to flush previous attributes before merging.
@@ -1415,7 +1415,7 @@ class Theme_Blvd_Frontend_Init {
 	 * To easily utilize this method, you can use the
 	 * wrapper function `themeblvd_set_att()`.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param  string $key   Template attributes key.
 	 * @param  mixed  $value New value to store.
@@ -1435,7 +1435,7 @@ class Theme_Blvd_Frontend_Init {
 	 * To easily utilize this method, you can use the
 	 * wrapper function `themeblvd_remove_att()`.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $key Template attributes key.
 	 */
@@ -1451,7 +1451,7 @@ class Theme_Blvd_Frontend_Init {
 	 * To easily utilize this method, you can use the
 	 * wrapper function `themeblvd_get_att()`.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param  string $key Template attributes key.
 	 * @return mixed       Template attribute value.

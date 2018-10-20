@@ -4,8 +4,8 @@
  *
  * @author    Jason Bobich <info@themeblvd.com>
  * @copyright 2009-2017 Theme Blvd
- * @package   @@name-package
- * @since     @@name-package 2.0.0
+ * @package   Jump_Start
+ * @since     Jump_Start 2.0.0
  */
 
 /**
@@ -22,7 +22,7 @@ include_once( themeblvd_get_base_path( 'entrepreneur' ) . '/presets.php' );
  * Height of the header. Used with "suck up"
  * feature.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @return int $height Height of header area.
  */
@@ -60,7 +60,7 @@ add_filter( 'themeblvd_top_height', 'jumpstart_ent_top_height' );
 /**
  * Include Google fonts, if needed.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  */
 function jumpstart_ent_include_fonts() {
 
@@ -82,7 +82,7 @@ add_action( 'wp_head', 'jumpstart_ent_include_fonts', 5 );
  * This generate output string to pass to
  * wp_add_inline_style().
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  */
 function jumpstart_ent_css() {
 
@@ -928,7 +928,7 @@ function jumpstart_ent_css() {
 	 * Filters final printed inline CSS output
 	 * for Entrepreneur theme base.
 	 *
-	 * @since @@name-package 2.0.0
+	 * @since Jump_Start 2.0.0
 	 *
 	 * @param string $print CSS output.
 	 */
@@ -947,7 +947,7 @@ add_action( 'wp_enqueue_scripts', 'jumpstart_ent_css', 25 );
  * Only trigger default header info top bar,
  * if there's header text saved.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  */
 function themeblvd_ent_has_header_info() {
 
@@ -965,7 +965,7 @@ function themeblvd_ent_has_header_info() {
 	 * Filters whether top bar of header should
 	 * show in Entrepreneur theme base.
 	 *
-	 * @since @@name-package 2.0.0
+	 * @since Jump_Start 2.0.0
 	 *
 	 * @param bool $return Whether to show top bar or not.
 	 */
@@ -983,7 +983,7 @@ add_action( 'themeblvd_header_addon', 'themeblvd_header_menu_default' );
 /**
  * Header menu addons.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param  string $items Current output for WordPress menu.
  * @param  array  $args  Arguments for WordPress menu.
@@ -1079,7 +1079,7 @@ add_filter( 'wp_nav_menu_items', 'jumpstart_ent_menu_addon', 10, 2 );
 /**
  * Add CSS classes to <body>.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param  array $class WordPress classes to add to body.
  * @return array $class Modified WordPress classes to add to body.
@@ -1103,7 +1103,7 @@ add_filter( 'body_class', 'jumpstart_ent_body_class' );
  * Add CSS classes to sticky header panel for
  * color brightness.
  *
- * @since @@name-package 2.1.0
+ * @since Jump_Start 2.1.0
  *
  * @param  array $class Classes to add to sticky header.
  * @return array $class Modified classes to add to sticky header.
@@ -1130,7 +1130,7 @@ add_filter( 'themeblvd_sticky_class', 'jumpstart_ent_sticky_class' );
 /**
  * Add CSS classes to header.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param  array $class Classes to add to header.
  * @return array $class Modified classes to add to header.
@@ -1186,7 +1186,7 @@ add_filter( 'themeblvd_mobile_header_breakpoint', 'jumpstart_mobile_header_break
 /**
  * Add CSS classes to header top bar.
  *
- * @since @@name-package 2.1.0
+ * @since Jump_Start 2.1.0
  *
  * @param  array $class Classes to add to top bar.
  * @return array $class Modified classes to add to top bar.
@@ -1239,7 +1239,7 @@ add_filter( 'themeblvd_copyright_contact_bar_args', 'jumpstart_copyright_contact
  * Filter args that get filtered in when all
  * sidebars are registered.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param  array  $args     Arguments passed to register_sidebar().
  * @param  array  $sidebar  Sidebar information from framework.

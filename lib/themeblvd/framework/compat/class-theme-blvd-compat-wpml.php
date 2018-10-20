@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
@@ -16,21 +16,21 @@
  * meaning it can only be instantiated in
  * one instance.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Compat_WPML {
 
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	private static $instance = null;
 
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return Theme_Blvd_Compat_WPML A single instance of this class.
 	 */
@@ -49,7 +49,7 @@ class Theme_Blvd_Compat_WPML {
 	/**
 	 * Constructor. Hook everything in.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -63,7 +63,7 @@ class Theme_Blvd_Compat_WPML {
 		 * Filters whether the theme's custom language
 		 * switcher gets added.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param bool Whether to implement the theme's custom language switcher.
 		 */
@@ -100,7 +100,7 @@ class Theme_Blvd_Compat_WPML {
 	 * This method is hooked to:
 	 * 1. `wp_enqueue_scripts` - 15
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function assets() {
 
@@ -122,7 +122,7 @@ class Theme_Blvd_Compat_WPML {
 	 * This method is filtered onto:
 	 * 1. `themeblvd_framework_stylesheets` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  array $deps Stylesheets the theme framework depends on.
 	 * @return array $deps Modified stylesheets the theme framework depends on.
@@ -137,7 +137,7 @@ class Theme_Blvd_Compat_WPML {
 	/**
 	 * Get custom language switcher block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return string $output Final HTML output for block.
 	 */
@@ -222,7 +222,7 @@ class Theme_Blvd_Compat_WPML {
 		 * Note: This funcionality can also be completely disabled
 		 * by filtering to `themeblvd_wpml_has_switcher` to FALSE.
 		 *
-		 * @since @@name-framework 2.7.0
+		 * @since Theme_Blvd 2.7.0
 		 *
 		 * @param string $output Final HTML for language switcher block.
 		 */
@@ -233,7 +233,7 @@ class Theme_Blvd_Compat_WPML {
 	/**
 	 * Get custom language switcher popup.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @return string $output Final HTML output for block.
 	 */
@@ -318,7 +318,7 @@ class Theme_Blvd_Compat_WPML {
 		 * Note: This funcionality can also be completely disabled
 		 * by filtering to `themeblvd_wpml_has_switcher` FALSE.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param string $output Final HTML for language switcher block.
 		 */
@@ -332,7 +332,7 @@ class Theme_Blvd_Compat_WPML {
 	 * This method is hooked to:
 	 * 1. `icl_language_selector` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function language_selector() {
 
@@ -346,7 +346,7 @@ class Theme_Blvd_Compat_WPML {
 	 * This method is hooked to:
 	 * 1. `themeblvd_after` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function language_popup() {
 
@@ -362,7 +362,7 @@ class Theme_Blvd_Compat_WPML {
 	 * This method is filtered onto:
 	 * 1. `themeblvd_do_lang_selector` - 10
 	 *
-	 * @since @@name-framework 2.5.1
+	 * @since Theme_Blvd 2.5.1
 	 *
 	 * @return bool Whether to display language switcher.
 	 */
@@ -392,7 +392,7 @@ class Theme_Blvd_Compat_WPML {
 	 * This method is hooked to:
 	 * 1. `wp_insert_post` - 10
 	 *
-	 * @since @@name-framework 2.6.3
+	 * @since Theme_Blvd 2.6.3
 	 *
 	 * @param int     $post_ID Post ID.
 	 * @param WP_Post $post    Post object.

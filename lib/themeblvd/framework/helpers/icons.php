@@ -4,15 +4,15 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.7.4
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.7.4
  */
 
 /**
  * Get the CSS classes for displaying an icon.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @param  string $icon  Icon name like `bolt` or instance like `fas fa-bolt`.
  * @param  array  $add   CSS classes to add.
@@ -76,7 +76,7 @@ function themeblvd_get_icon_class( $icon, $add = array() ) {
 				 * Filters the default fallback base class
 				 * used for icons.
 				 *
-				 * @since @@name-framework 2.7.0
+				 * @since Theme_Blvd 2.7.0
 				 *
 				 * @param string Default base class.
 				 */
@@ -93,7 +93,7 @@ function themeblvd_get_icon_class( $icon, $add = array() ) {
 	 * Filters the classes used for displaying a
 	 * generic icon.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param array  $class     CSS classes.
 	 * @param string $icon_name Determined name of icon, like `bolt`.
@@ -109,7 +109,7 @@ function themeblvd_get_icon_class( $icon, $add = array() ) {
 /**
  * Get the CSS classes for displaying an icon.
  *
- * @since @@name-framework 2.7.4
+ * @since Theme_Blvd 2.7.4
  *
  * @param  string $class  CSS classes for icon, like `fas fa-user`.
  * @param  string $atts   HTML attributes to add to icon, like `array( 'style' => 'color: #000' )`.
@@ -133,7 +133,7 @@ function themeblvd_get_icon( $class, $atts = array() ) {
 	/**
 	 * Filters the HTML output for an icon.
 	 *
-	 * @since @@name-framework 2.7.4
+	 * @since Theme_Blvd 2.7.4
 	 *
 	 * @param string $output Final icon HTML output.
 	 * @param string $class  CSS classes for icon, like `fas fa-user`.
@@ -146,7 +146,7 @@ function themeblvd_get_icon( $class, $atts = array() ) {
  * Get the icon name used for the icon linking to
  * the shopping cart.
  *
- * @since @@name-framework 2.7.4
+ * @since Theme_Blvd 2.7.4
  *
  * @return string Icon name.
  */
@@ -156,7 +156,7 @@ function themeblvd_get_shopping_cart_icon_name() {
 	 * Filters the icon name used for the icon linking to
 	 * the shopping cart.
 	 *
-	 * @since @@name-framework 2.7.4
+	 * @since Theme_Blvd 2.7.4
 	 *
 	 * @param string Icon name.
 	 */
@@ -168,7 +168,7 @@ function themeblvd_get_shopping_cart_icon_name() {
  * Get the general icon name used for the searchform
  * and linking to it.
  *
- * @since @@name-framework 2.7.4
+ * @since Theme_Blvd 2.7.4
  *
  * @return string Icon name.
  */
@@ -178,7 +178,7 @@ function themeblvd_get_search_icon_name() {
 	 * Filters the general icon name used for the searchform
 	 * and linking to it.
 	 *
-	 * @since @@name-framework 2.7.4
+	 * @since Theme_Blvd 2.7.4
 	 *
 	 * @param string Icon name.
 	 */
@@ -189,7 +189,7 @@ function themeblvd_get_search_icon_name() {
 /**
  * Get array of framework icons.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param  string $type  Type of icons to retrieve, `solid` or `brands`.
  * @return array  $icons Array of icons.
@@ -232,7 +232,7 @@ function themeblvd_get_icons( $type = 'solid' ) {
 	 * Filters the array of icons that the user can
 	 * select from in the icon browser.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param array $icons All icons found from fontawesome.css.
 	 */
@@ -243,7 +243,7 @@ function themeblvd_get_icons( $type = 'solid' ) {
 /**
  * Get icon types.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @return array $types Icon types.
  */
@@ -258,7 +258,7 @@ function themeblvd_get_icon_types() {
 	 * Filters the array of icons that the user can
 	 * select from in the icon browser.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param array $types Icon types.
 	 */
@@ -270,7 +270,7 @@ function themeblvd_get_icon_types() {
  * Get the URL to the data file used determine
  * which icons are included from FontAwesome.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @return string File URL, like `http://my-site.com/file.json`.
  */
@@ -281,7 +281,7 @@ function themeblvd_get_icon_data_file() {
 	 * determine which icons are included
 	 * from FontAwesome.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string File URL, like `http://my-site.com/file.json`.
 	 */
@@ -295,7 +295,7 @@ function themeblvd_get_icon_data_file() {
  * This data gets printed to allow the user to
  * filter quickly through available icons.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @return array $data Searchable icon data.
  */
@@ -338,7 +338,7 @@ function themeblvd_get_icon_search_data() {
 	/**
 	 * Filters the searchable icon data.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param array $data Searchable icon data.
 	 */
@@ -349,7 +349,7 @@ function themeblvd_get_icon_search_data() {
 /**
  * Get icon JavaScript file.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @return array $file {
  *     @type string $handle  Icon library handle.
@@ -373,7 +373,7 @@ function themeblvd_get_icon_js_file() {
 	 * JavaScript files, return an array of the file URL strings
 	 * instead of just a single string.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string|array $url JavaScript file URL(s), like `http://mysite.com/file.js`.
 	 */
@@ -397,7 +397,7 @@ function themeblvd_get_icon_js_file() {
 	 * trying to include a custom version of
 	 * FontAwesome with more styles or icons.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param array $file {
 	 *     @type string $handle  Icon library handle.

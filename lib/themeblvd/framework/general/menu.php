@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
@@ -17,7 +17,7 @@
  * navigation for things like mega menus and item
  * icons.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 
@@ -32,7 +32,7 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 	/**
 	 * Starts the list before the elements are added.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string   $output Passed by reference. Used to append additional content.
 	 * @param int      $depth  Depth of menu item. Used for padding.
@@ -123,7 +123,7 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 	/**
 	 * Ends the list of after the elements are added.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string   $output Passed by reference. Used to append additional content.
 	 * @param int      $depth  Depth of menu item. Used for padding.
@@ -171,7 +171,7 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 	/**
 	 * Starts the element output.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string   $output Passed by reference. Used to append additional content.
 	 * @param WP_Post  $item   Menu item data object.
@@ -241,7 +241,7 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 			/**
 			 * Filters the sub indicator menu icon name.
 			 *
-			 * @since @@name-framework 2.7.4
+			 * @since Theme_Blvd 2.7.4
 			 *
 			 * @param string            Icon name.
 			 * @param string $direction Direction indicator arrow should point to, like `down` or `right`.
@@ -251,7 +251,7 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 			/**
 			 * Filters the sub indicator menu icon HTML.
 			 *
-			 * @since @@name-framework 2.2.0
+			 * @since Theme_Blvd 2.2.0
 			 *
 			 * @param string            HTML output for icon. Default uses FontAwesome.
 			 * @param string $direction Direction indicator arrow should point to.
@@ -307,7 +307,7 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
 	/**
 	 * Ends the element output, if needed.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string   $output Passed by reference. Used to append additional content.
 	 * @param WP_Post  $item   Page data object. Not used.
@@ -349,7 +349,7 @@ class ThemeBlvd_Main_Menu_Walker extends Walker_Nav_Menu {
  * This function is filtered onto:
  * 1. `walker_nav_menu_start_el` - 10
  *
- * @since @@name-framework 2.4.3
+ * @since Theme_Blvd 2.4.3
  *
  * @param string  $item_output Initial menu item, like `<a href="{URL}">{Title}</a>`.
  * @param string  $item        Object for menu item post.
@@ -403,7 +403,7 @@ function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
 		 * Filters the link used to toggle menu items
 		 * in the desktop side menu.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param string Link HTML.
 		 */
@@ -497,7 +497,7 @@ function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
 		/**
 		 * Filters the HTML for a menu icon.
 		 *
-		 * @since @@name-framework 2.2.0
+		 * @since Theme_Blvd 2.2.0
 		 *
 		 * @param string $icon_output Final HTML for icon.
 		 * @param string $icon        Icon name extracted from `menu-icon-{name}`.
@@ -527,7 +527,7 @@ function themeblvd_nav_menu_start_el( $item_output, $item, $depth, $args ) {
  * This function is hooked to:
  * 1. `nav_menu_css_class` - 10
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array    $classes The CSS classes that are applied to the menu item's `<li>` element.
  * @param  WP_Post  $item    The current menu item.
@@ -547,8 +547,8 @@ function themeblvd_nav_menu_css_class( $classes, $item, $args = array(), $depth 
  * Display <select> menu, to replace main
  * navigation. Intended for mobile.
  *
- * @since @@name-framework 2.0.0
- * @deprecated @@name-framework 2.7.0
+ * @since Theme_Blvd 2.0.0
+ * @deprecated Theme_Blvd 2.7.0
  *
  * @param  string $location Location of wp nav menu to grab
  * @return string           Blank output.
@@ -570,7 +570,7 @@ function themeblvd_nav_menu_select( $location ) {
  * Get filtered arguments for wp_nav_menu(),
  * for different theme menu locations.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $location Menu location.
  * @return array  $args     Arguments to pass to wp_nav_menu().
@@ -599,7 +599,7 @@ function themeblvd_get_wp_nav_menu_args( $location = 'primary' ) {
 			 *
 			 * @link http://dev.themeblvd.com/tutorial/creating-a-custom-menu-for-mobile
 			 *
-			 * @since @@name-framework 2.5.0
+			 * @since Theme_Blvd 2.5.0
 			 *
 			 * @param string Menu location.
 			 */
@@ -620,7 +620,7 @@ function themeblvd_get_wp_nav_menu_args( $location = 'primary' ) {
 			 * Filters the theme's menu location used
 			 * for the footer navigation output.
 			 *
-			 * @since @@name-framework 2.5.0
+			 * @since Theme_Blvd 2.5.0
 			 *
 			 * @param string Menu location.
 			 */
@@ -646,7 +646,7 @@ function themeblvd_get_wp_nav_menu_args( $location = 'primary' ) {
 			 * panel, this is meant to display MORE
 			 * prominently of the two side menu locations.
 			 *
-			 * @since @@name-framework 2.5.0
+			 * @since Theme_Blvd 2.5.0
 			 *
 			 * @param string Menu location.
 			 */
@@ -671,7 +671,7 @@ function themeblvd_get_wp_nav_menu_args( $location = 'primary' ) {
 			 * panel, this is meant to display LESS
 			 * prominently of the two side menu locations.
 			 *
-			 * @since @@name-framework 2.5.0
+			 * @since Theme_Blvd 2.5.0
 			 *
 			 * @param string Menu location.
 			 */
@@ -683,7 +683,7 @@ function themeblvd_get_wp_nav_menu_args( $location = 'primary' ) {
 	 * Filters the arguments passed to wp_nav_menu(),
 	 * for a given theme menu location.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $args Arguments to pass to wp_nav_menu().
 	 */

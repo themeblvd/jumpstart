@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
@@ -15,7 +15,7 @@
  *
  * This is a singleton class, to be used once.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @see themeblvd_admin_init()
  */
@@ -24,21 +24,21 @@ class Theme_Blvd_Tax_Options {
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	private static $instance = null;
 
 	/**
 	 * Stored tax meta data.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	private $meta = array();
 
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return Theme_Blvd_Tax_Options A single instance of this class.
 	 */
@@ -57,7 +57,7 @@ class Theme_Blvd_Tax_Options {
 	/**
 	 * Constructor. Hook everything in.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -66,7 +66,7 @@ class Theme_Blvd_Tax_Options {
 		 * display options of the Theme_Blvd_Tax_Options
 		 * class are added to.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param array Taxonomy slugs.
 		 */
@@ -87,7 +87,7 @@ class Theme_Blvd_Tax_Options {
 	/**
 	 * Geta meta data value.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string  $tax     Taxonomy that the term belongs to.
 	 * @param  string  $term    Specific term for that taxonomy.
@@ -126,7 +126,7 @@ class Theme_Blvd_Tax_Options {
 	/**
 	 * Display options when editing term.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $tax  Taxonomy that the term belongs to.
 	 * @param string $term Specific term for that taxonomy.
@@ -238,7 +238,7 @@ class Theme_Blvd_Tax_Options {
 	/**
 	 * Save meta data for term edit page.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param int    $term_id  Term ID.
 	 * @param int    $tt_id    Term taxonomy ID.
@@ -290,7 +290,7 @@ class Theme_Blvd_Tax_Options {
  * Get tax meta. Provide a helper shell for the
  * frontend template files.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param string $tax     Taxonomy slug.
  * @param string $term    Term taxonomy slug.

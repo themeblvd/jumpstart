@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.3.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.3.0
  */
 
 /**
@@ -24,14 +24,14 @@
  * it sets up the default framework options which then
  * later get sent to the options system.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  */
 class Theme_Blvd_Options_API {
 
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var Theme_Blvd_Options_API
 	 */
 	private static $instance = null;
@@ -40,7 +40,7 @@ class Theme_Blvd_Options_API {
 	 * The options name associated with the the theme
 	 * options and settings. i.e. get_option( $option_id )
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var string
 	 */
 	private $option_id = '';
@@ -48,7 +48,7 @@ class Theme_Blvd_Options_API {
 	/**
 	 * Raw options modified along the way by client.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var array
 	 */
 	private $raw_options = array();
@@ -56,7 +56,7 @@ class Theme_Blvd_Options_API {
 	/**
 	 * Formatted options after client modifications.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var array
 	 */
 	private $formatted_options = array();
@@ -64,7 +64,7 @@ class Theme_Blvd_Options_API {
 	/**
 	 * Settings saved in the DB for the current site.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var array
 	 */
 	private $settings = array();
@@ -73,7 +73,7 @@ class Theme_Blvd_Options_API {
 	 * The arguments for the Theme Options page that'll
 	 * get passed through to Theme_Blvd_Options_Page class.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var array
 	 */
 	private $args = array();
@@ -81,7 +81,7 @@ class Theme_Blvd_Options_API {
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @return Theme_Blvd_Options_API A single instance of this class.
 	 */
@@ -100,7 +100,7 @@ class Theme_Blvd_Options_API {
 	/**
 	 * Constructor. Hook everything in and setup API.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	private function __construct() {
 
@@ -120,7 +120,7 @@ class Theme_Blvd_Options_API {
 	 * Set option name that options and settings will
 	 * be associated with.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $id Optional current ID to be applied.
 	 */
@@ -149,7 +149,7 @@ class Theme_Blvd_Options_API {
 		 * `themeblvd_option_id` which gets applied every
 		 * time an option ID is retrieved.
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param string $option_id ID options are saved to in the database.
 		 */
@@ -164,7 +164,7 @@ class Theme_Blvd_Options_API {
 	 * Note: The framework used to reference these as
 	 * "core options" before this class existed.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * Layout
 	 *  - Header
@@ -1719,7 +1719,7 @@ class Theme_Blvd_Options_API {
 		 * client mutator API methods, then this provides a way to
 		 * modify these raw options.
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param array $raw_options All core framework options before formatting.
 		 */
@@ -1735,7 +1735,7 @@ class Theme_Blvd_Options_API {
 	 * mutator is hooked in to the WP loading process at
 	 * after_setup_theme.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	public function set_formatted_options() {
 
@@ -1819,7 +1819,7 @@ class Theme_Blvd_Options_API {
 		 * Filters the core options before formatting, a second time
 		 * after some options have been removed (see just above).
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param array $raw_options All framework options before formatting.
 		 */
@@ -1883,7 +1883,7 @@ class Theme_Blvd_Options_API {
 			 * Basically, if you have an option that will be effected
 			 * from enabling post formats, you can add it to the list.
 			 *
-			 * @since @@name-framework 2.3.0
+			 * @since Theme_Blvd 2.3.0
 			 *
 			 * @param array $options An array of option ID strings that are effected by post formats.
 			 */
@@ -1899,7 +1899,7 @@ class Theme_Blvd_Options_API {
 		 * all options have been merged with options added through the
 		 * client API.
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param array $formatted_options All formatted options.
 		 */
@@ -1910,7 +1910,7 @@ class Theme_Blvd_Options_API {
 	/**
 	 * Set currently stored theme settings based on options.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param array $settings Optional current settings to be applied.
 	 */
@@ -1961,8 +1961,8 @@ class Theme_Blvd_Options_API {
 		 * Filters settings on frontend to be accessed from the single
 		 * array of all settings.
 		 *
-		 * @since @@name-framework 2.3.0
-		 * @deprecated @@name-framework 2.7.0
+		 * @since Theme_Blvd 2.3.0
+		 * @deprecated Theme_Blvd 2.7.0
 		 *
 		 * @param array $settings All theme settings for frontend.
 		 */
@@ -1972,7 +1972,7 @@ class Theme_Blvd_Options_API {
 		 * Filters settings on frontend to be accessed from the single
 		 * array of all settings.
 		 *
-		 * @since @@name-framework 2.7.0
+		 * @since Theme_Blvd 2.7.0
 		 *
 		 * @param array $settings All theme settings for frontend.
 		 */
@@ -1984,7 +1984,7 @@ class Theme_Blvd_Options_API {
 	 * Set $args to be used for Theme_Blvd_Options_Page
 	 * class instance for our main theme options page.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	public function set_args() {
 
@@ -2004,7 +2004,7 @@ class Theme_Blvd_Options_API {
 		 *
 		 * @see Theme_Blvd_Options_Page
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param array $settings All theme settings for frontend.
 		 */
@@ -2021,7 +2021,7 @@ class Theme_Blvd_Options_API {
 	 * in how data is saved, we can handle it once here, and
 	 * not worry aboutt it throughout the framework.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  array $settings All currently saved settings to check.
 	 * @return array $settings All saved settings, with any mods that were made.
@@ -2135,7 +2135,7 @@ class Theme_Blvd_Options_API {
 	/**
 	 * Add options panel tab.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $tab_id   ID of tab to add.
 	 * @param string $tab_name Name of the tab to add.
@@ -2177,7 +2177,7 @@ class Theme_Blvd_Options_API {
 	/**
 	 * Remove options panel tab.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $tab_id ID of tab to add.
 	 */
@@ -2190,7 +2190,7 @@ class Theme_Blvd_Options_API {
 	/**
 	 * Add section to an options panel tab.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $tab_id       ID of tab section will be located in.
 	 * @param string $section_id   ID of new section.
@@ -2262,7 +2262,7 @@ class Theme_Blvd_Options_API {
 	/**
 	 * Remove section from an options panel tab.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $tab_id     ID of tab that section to remove belongs to.
 	 * @param string $section_id ID of section to remove.
@@ -2276,7 +2276,7 @@ class Theme_Blvd_Options_API {
 	/**
 	 * Add option.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $tab_id     ID of tab to add option to.
 	 * @param string $section_id ID of section to add to.
@@ -2300,7 +2300,7 @@ class Theme_Blvd_Options_API {
 	/**
 	 * Remove option.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $tab_id     ID of tab to add option to.
 	 * @param string $section_id ID of section to add to.
@@ -2341,7 +2341,7 @@ class Theme_Blvd_Options_API {
 	/**
 	 * Edit option.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $tab_id     ID of tab to add option to.
 	 * @param string $section_id ID of section to add to.
@@ -2371,7 +2371,7 @@ class Theme_Blvd_Options_API {
 	 * Add set of preset option values user can populate
 	 * portion of form with.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $args {
 	 *     @type string $id      ID of presets section.
@@ -2443,7 +2443,7 @@ class Theme_Blvd_Options_API {
 	 * Set option name that options and settings will
 	 * be associated with.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @return string $option_id Option ID theme settings are stored to the database with.
 	 */
@@ -2455,7 +2455,7 @@ class Theme_Blvd_Options_API {
 		 * The option ID is used to retrieve the theme's
 		 * options like `get_option( $option_id )`.
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param string $option_id ID options are saved to in the database.
 		 */
@@ -2466,7 +2466,7 @@ class Theme_Blvd_Options_API {
 	/**
 	 * Get core options.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @return array $raw_options All options before formatting.
 	 */
@@ -2479,7 +2479,7 @@ class Theme_Blvd_Options_API {
 	/**
 	 * Get formatted options.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @return array $formatted_options All options after formatting.
 	 */
@@ -2493,7 +2493,7 @@ class Theme_Blvd_Options_API {
 	 * Get settings, or drill down and retrieve indiviual
 	 * settings.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param  string       $primary   Optional primary ID of the option.
 	 * @param  string       $secondary Optional $secondary ID to traverse deeper into arrays.
@@ -2554,7 +2554,7 @@ class Theme_Blvd_Options_API {
 	 * Get $args to be used for Theme_Blvd_Options_Page
 	 * class instance for our main theme options page.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @return array $args Arguments used to build theme options page.
 	 */

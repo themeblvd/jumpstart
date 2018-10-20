@@ -4,15 +4,15 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
  * Get a blockquote block.
  *
- * @since @@name-framework 2.4.0
+ * @since Theme_Blvd 2.4.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -121,7 +121,7 @@ function themeblvd_get_blockquote( $args ) {
 	 * Filters the final HTML output for a blockquote
 	 * block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -143,7 +143,7 @@ function themeblvd_get_blockquote( $args ) {
 /**
  * Display a blockquote block.
  *
- * @since @@name-framework 2.4.0
+ * @since Theme_Blvd 2.4.0
  *
  * @param array $args Block arguments, see themeblvd_get_blockquote() docs.
  */
@@ -156,7 +156,7 @@ function themeblvd_blockquote( $args ) {
 /**
  * Get formatted content.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $content Content to display.
  * @return string          Formatted content.
@@ -166,7 +166,7 @@ function themeblvd_get_content( $content ) {
 	/**
 	 * Filters formatted content.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @hooked array( $GLOBALS['wp_embed'], 'run_shortcode' ) - 8
 	 * @hooked array( $GLOBALS['wp_embed'], 'autoembed' ) - 8
@@ -186,7 +186,7 @@ function themeblvd_get_content( $content ) {
 /**
  * Display formatted content.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param string $content Content to display.
  */
@@ -199,7 +199,7 @@ function themeblvd_content( $content ) {
 /**
  * Get a content block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -289,7 +289,7 @@ function themeblvd_get_content_block( $args ) {
 	 * Filters the final HTML output for a content
 	 * block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -312,7 +312,7 @@ function themeblvd_get_content_block( $args ) {
 /**
  * Display a content block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_content_block() docs.
  */
@@ -325,7 +325,7 @@ function themeblvd_content_block( $args ) {
 /**
  * Get a headline block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -377,7 +377,7 @@ function themeblvd_get_headline( $args ) {
 	 * Filters the final HTML output for a headline
 	 * block.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -396,7 +396,7 @@ function themeblvd_get_headline( $args ) {
 /**
  * Display a headline block.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param array $args Block arguments, see themeblvd_get_headline() docs.
  */
@@ -412,7 +412,7 @@ function themeblvd_headline( $args ) {
  * The content from this can come from current
  * post, or inputted post slug or ID.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  int|string $post_id   Post ID or slug to pull content from.
  * @param  string     $post_type Optional. Post type of post to pull content from, which makes database retrieval more efficient.
@@ -455,7 +455,7 @@ function themeblvd_get_post_content( $post_id = 0, $post_type = '' ) {
  * The content from this can come from current
  * post, or inputted post slug or ID.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  int|string $post_id   Post ID or slug to pull content from.
  * @param  string     $post_type Optional. Post type of post to pull content from, which makes database retrieval more efficient.
@@ -473,7 +473,7 @@ function themeblvd_post_content( $post = 0, $post_type = '' ) {
  * to extend it and determine if the post title should
  * be wrapped in a link or not.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param  int    $post_id   Can feed in a post ID if outside the loop.
  * @param  bool   $foce_link Whether to force the title to link.
@@ -502,7 +502,7 @@ function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
 			 * Filters the icon name used in the title of a
 			 * "link" format post.
 			 *
-			 * @since @@name-framework 2.7.4
+			 * @since Theme_Blvd 2.7.4
 			 *
 			 * @param string Icon name.
 			 */
@@ -540,7 +540,7 @@ function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
 	 * Filters the get_the_title() wrapper, which accounts
 	 * for wrapping the title in a link or not.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $title The title of the post, wrapped in a link if necessary.
 	 * @param string $url   If a link, the URL to link to.
@@ -556,7 +556,7 @@ function themeblvd_get_the_title( $post_id = 0, $force_link = false ) {
  * to extend it and determine if the post title should
  * be wrapped in a link or not.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param  int    $post_id   Can feed in a post ID if outside the loop.
  * @param  bool   $foce_link Whether to force the title to link.
@@ -570,7 +570,7 @@ function themeblvd_the_title( $post_id = 0, $force_link = false ) {
 /**
  * Get the archive title.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @return string $title Archive title.
  */
@@ -582,7 +582,7 @@ function themeblvd_get_the_archive_title() {
 	 * Filters the archive title used for archive
 	 * banners and archive info boxes.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string Archive title.
 	 */
@@ -662,7 +662,7 @@ function themeblvd_get_the_archive_title() {
 /**
  * Display the archive title.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  */
 function themeblvd_the_archive_title() {
 
@@ -673,7 +673,7 @@ function themeblvd_the_archive_title() {
 /**
  * Get the archive banner image.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @param  array $image {
  *     Archive banner image arguments.
@@ -707,7 +707,7 @@ function themeblvd_get_the_archive_banner_image( $image = array() ) {
 	/**
 	 * Filters the archive banner image arguments.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param array $image {
 	 *     Archive banner image arguments.
@@ -749,7 +749,7 @@ function themeblvd_get_the_archive_banner_image( $image = array() ) {
 	/**
 	 * Filters the archive banner image.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $image {
@@ -769,7 +769,7 @@ function themeblvd_get_the_archive_banner_image( $image = array() ) {
 /**
  * Display the archive banner image.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @param  array {
  *     Archive banner image arguments.
@@ -790,7 +790,7 @@ function themeblvd_the_archive_banner_image( $image = array() ) {
 /**
  * Get a widget area block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $sidebar Sidebar ID to pull widgets from.
  * @param  string $context Context of how widget area is used, `element` or `block`.
@@ -818,7 +818,7 @@ function themeblvd_get_widgets( $sidebar, $context = 'element' ) {
 	 * Filters the final HTML output for a contextual
 	 * alert block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output  Final HTML output.
 	 * @param string $widgets Widget area output from dynamic_sidebar().
@@ -832,7 +832,7 @@ function themeblvd_get_widgets( $sidebar, $context = 'element' ) {
 /**
  * Display a widget area block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param string $sidebar Sidebar ID to pull widgets from.
  * @param string $context Context of how widget area is used, `element` or `block`.
@@ -854,7 +854,7 @@ function themeblvd_widgets( $sidebar, $context = 'element' ) {
  * can optionally be displayed above the secondary
  * posts loop.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @return string $output Final HTML output for block.
  */
@@ -912,7 +912,7 @@ function themeblvd_get_page_info() {
 	 * unified styling class (like `content-bg`) across
 	 * all similar info box elements.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string CSS classes, separated by spaces.
 	 */
@@ -939,7 +939,7 @@ function themeblvd_get_page_info() {
 	 * can optionally be displayed above the secondary
 	 * posts loop.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 */
@@ -958,7 +958,7 @@ function themeblvd_get_page_info() {
  * can optionally be displayed above the secondary
  * posts loop.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_page_info() {
 

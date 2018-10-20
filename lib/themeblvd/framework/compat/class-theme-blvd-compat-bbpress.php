@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
@@ -16,14 +16,14 @@
  * meaning it can only be instantiated in
  * one instance.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Compat_BBPress {
 
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	private static $instance = null;
 
@@ -31,14 +31,14 @@ class Theme_Blvd_Compat_BBPress {
 	 * Holds bbPress breadcrumbs, so that it can
 	 * be merged with framework breadcrumbs.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	private $crumbs = array();
 
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return Theme_Blvd_Compat_bbPress A single instance of this class.
 	 */
@@ -57,7 +57,7 @@ class Theme_Blvd_Compat_BBPress {
 	/**
 	 * Constructor. Hook everything in.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -150,7 +150,7 @@ class Theme_Blvd_Compat_BBPress {
 		 * Filters whether lead topic is applied to
 		 * bbPress.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param bool Whether bbPress's lead-topic is applied.
 		 */
@@ -170,7 +170,7 @@ class Theme_Blvd_Compat_BBPress {
 		 * Filters whether to add user's website URL to their
 		 * public bbPress profile.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param bool Whether bbPress's lead-topic is applied.
 		 */
@@ -191,7 +191,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * Enqueuing the stylesheet can be disabled from
 	 * Theme Options > Plugins > bbPress.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function assets() {
 
@@ -217,7 +217,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * This method is filtered onto:
 	 * 1. `body_class` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  array $class Current body classes from WordPress.
 	 * @return array $class Modified body classes.
@@ -253,7 +253,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * This method is filtered onto:
 	 * 1. `post_class` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @see post_class()
 	 *
@@ -299,7 +299,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * This method is filetered onto:
 	 * 1. `themeblvd_sidebar_layout` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $layout Sidebar layout for current page.
 	 * @return string $layout Modified sidebar layout for current page.
@@ -340,7 +340,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * 1. `bbp_get_single_forum_description` - 10
 	 * 2. `bbp_get_single_topic_description` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $output Description to output.
 	 * @param  array  $args   Arguments originally passed for description.
@@ -361,7 +361,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * 2. `bbp_register_topic_post_type` - 10
 	 * 3. `bbp_register_reply_post_type` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  array $args Arguments used to register post type.
 	 * @return array $args Modified arguments used to register post type.
@@ -385,7 +385,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * This method is filtered onto:
 	 * 1. `bbp_allow_search` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return bool Whether to allow bbPress forum-wide searching.
 	 */
@@ -407,7 +407,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * This method is filtered onto:
 	 * 1. `themeblvd_format_icon` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $icon        Icon name.
 	 * @param string $format      Post format of current post.
@@ -476,7 +476,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * This method is filtered onto:
 	 * 1. `bbp_get_breadcrumb` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $trail  Final HTML output of default bbPress breadcrumbs.
 	 * @param array  $crumbs Links used for the default bbPress breadcrumbs.
@@ -501,7 +501,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * This method is filtered onto:
 	 * 1. `themeblvd_pre_breadcrumb_parts` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @see themeblvd_get_breadcrumb_parts()
 	 *
@@ -627,7 +627,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * 2. `bbp_get_forum_pagination_links` - 10
 	 * 3. `bbp_get_search_pagination_links` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $input  HTML for bbPress pagination.
 	 * @return string $output Modified HTML for bbPress pagination.
@@ -693,7 +693,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * This method is filtered onto:
 	 * 1. `bbp_get_logout_link` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $input  HTML for bbPress logout link.
 	 * @return string $output Modified HTML for bbPress logout link.
@@ -740,7 +740,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * 3. `bbp_get_topic_author_link` - 10
 	 * 4. `bbp_get_reply_author_link` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $input HTML from bbPress.
 	 * @return string        Modifeid HTML sent back to bbPress.
@@ -769,7 +769,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * 1. `bbp_template_before_forums_index` - 10
 	 * 2. `bbp_template_before_single_forum` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function forum_subscribe() {
 
@@ -799,7 +799,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * 1. `bbp_after_get_topic_author_link_parse_args` - 10
 	 * 2. `bbp_after_get_reply_author_link_parse_args` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function author( $args ) {
 
@@ -822,7 +822,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * This method is filtered onto:
 	 * 1. `get_post_metadata` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @see get_metadata()
 	 *
@@ -851,7 +851,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * This method is hooked to:
 	 * 1. `bbp_template_before_lead_topic` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function lead_before() {
 
@@ -880,7 +880,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * This method is hooked to:
 	 * 1. `bbp_template_after_lead_topic` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function lead_after() {
 
@@ -926,7 +926,7 @@ class Theme_Blvd_Compat_BBPress {
 	 * This method is filtered onto:
 	 * 1. `bbp_get_displayed_user_field` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function user_website( $value, $field ) {
 
@@ -944,7 +944,7 @@ class Theme_Blvd_Compat_BBPress {
 			 * Filters the HTML output for the website link
 			 * added to a bbPress user's public profile.
 			 *
-			 * @since @@name-framework 2.5.0
+			 * @since Theme_Blvd 2.5.0
 			 *
 			 * @param string $link HTML for link.
 			 * @param string $url  URL used in link, like `http://google.com`.

@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
@@ -16,7 +16,7 @@
  * `block` it means it's a set of elements
  * within a column.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param string $section_id Section ID, where all of these elements exist.
  * @param array  $elements   All elements to disolay within section.
@@ -89,7 +89,7 @@ function themeblvd_elements( $section_id, $elements, $context = 'element', $max 
  *
  * @see themeblvd_elements()
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Element arguments.
@@ -127,7 +127,7 @@ function themeblvd_element( $args ) {
 	 * Filters the options passed for an individual
 	 * element from the layout builder.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param array $options Element options.
 	 */
@@ -141,7 +141,7 @@ function themeblvd_element( $args ) {
 	 * an individual element from the layout
 	 * builder.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param array $display Element display options.
 	 */
@@ -154,7 +154,7 @@ function themeblvd_element( $args ) {
 	 * Fires before the start of any custom layout
 	 * element's HTML output.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $id      Element ID.
 	 * @param string $options Element settings, different for each element type.
@@ -185,7 +185,7 @@ function themeblvd_element( $args ) {
 	 * Fires just within the start of any custom
 	 * layout element's HTML output.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $id      Element ID.
 	 * @param string $options Element settings, different for each element type.
@@ -572,7 +572,7 @@ function themeblvd_element( $args ) {
 	 * to avoid conflicts with element output filters.
 	 * Issue #322.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string $id      Element ID.
 	 * @param array  $options Element settings.
@@ -589,7 +589,7 @@ function themeblvd_element( $args ) {
 	 * Fires just before the end of any custom
 	 * layout element's HTML output.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $id      Element ID.
 	 * @param string $options Element settings, different for each element type.
@@ -613,7 +613,7 @@ function themeblvd_element( $args ) {
 	 * Fires after the end of any custom layout
 	 * element's HTML output.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $id      Element ID.
 	 * @param string $options Element settings, different for each element type.
@@ -635,7 +635,7 @@ function themeblvd_element( $args ) {
 /**
  * Get CSS classes for an indvidual element.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args  Element arguments. See docs for themeblvd_element().
  * @return string $class Element CSS class.
@@ -823,7 +823,7 @@ function themeblvd_get_element_class( $args ) {
 	 * Filters the CSS classes for a custom layout
 	 * element.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $class Element CSS classes.
 	 * @param string $type  Element type.
@@ -836,7 +836,7 @@ function themeblvd_get_element_class( $args ) {
 /**
  * Get CSS classes for an section of elements.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $id    Section ID.
  * @param  array  $args  Section data.
@@ -881,7 +881,7 @@ function themeblvd_get_section_class( $id, $data, $count ) {
 	 * Filters the CSS classes for a custom layout
 	 * section of elements.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $class Section CSS class.
 	 * @param array  $args  Section data.
@@ -897,7 +897,7 @@ function themeblvd_get_section_class( $id, $data, $count ) {
  * Note: This is NOT used for indvidual elements,
  * other than a `Columns` element.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $display Display settings.
  * @return string $class   Display CSS classes.
@@ -1002,7 +1002,7 @@ function themeblvd_get_display_class( $display ) {
 	 * Filters the display classes for sections
 	 * and columns.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $class   Display CSS classes.
 	 * @param array  $display Display settings.
@@ -1015,7 +1015,7 @@ function themeblvd_get_display_class( $display ) {
  * Get inline styles for a set of display
  * settings.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array        $display Display settings.
  * @param  string       $print   How to return the styles, use `inline` or `external`.
@@ -1262,7 +1262,7 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 	 * Filters the inline style parameters generated
 	 * for a section or column.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $params  Inline style parameters.
 	 * @param array $display Display settings.
@@ -1291,7 +1291,7 @@ function themeblvd_get_display_inline_style( $display, $print = 'inline' ) {
 /**
  * Dislay set of columns.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args {
  *     Arguments for column layout.
@@ -1546,7 +1546,7 @@ function themeblvd_columns( $args, $columns = null ) {
 /**
  * Get a hero unit slider.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Hero unit arguments.
@@ -1622,7 +1622,7 @@ function themeblvd_get_jumbotron_slider( $args ) {
 		 * Filters whether auto-rotations is automatically
 		 * disabled on true mobile devices.
 		 *
-		 * @since @@name-framework 2.7.4
+		 * @since Theme_Blvd 2.7.4
 		 *
 		 * @param bool Whether to disable.
 		 */
@@ -1727,7 +1727,7 @@ function themeblvd_get_jumbotron_slider( $args ) {
 	 * Filters the HTML output for a hero unit
 	 * slider.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -1748,7 +1748,7 @@ function themeblvd_get_jumbotron_slider( $args ) {
 /**
  * Display a hero unit slider.
  *
- * @since @@name-framework 2.4.2
+ * @since Theme_Blvd 2.4.2
  *
  * @param array $args Block arguments, see themeblvd_get_jumbotron_slider() docs.
  */
@@ -1771,7 +1771,7 @@ function themeblvd_jumbotron_slider( $args ) {
  * This function is filtered onto:
  * 1. `themeblvd_builder_section_start_count` - 10
  *
- * @since @@name-framework 2.5.2
+ * @since Theme_Blvd 2.5.2
  *
  * @param  int $count Number to start section count at.
  * @return int $count Modified number to start section count at.

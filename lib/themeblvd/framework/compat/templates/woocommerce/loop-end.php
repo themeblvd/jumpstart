@@ -5,7 +5,7 @@
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd
  * @link        http://themeblvd.com
- * @package     @@name-package
+ * @package     Jump_Start
  */
 
 $compat = Theme_Blvd_Compat_WooCommerce::get_instance();

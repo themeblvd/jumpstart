@@ -4,8 +4,8 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @since      @@name-package 2.2.1
+ * @package    Jump_Start
+ * @since      Jump_Start 2.2.1
  */
 
 /**
@@ -13,7 +13,7 @@
  * Jump Start and its extensions, which ultimately enable
  * in-dashboard updates.
  *
- * @since @@name-package 2.2.1
+ * @since Jump_Start 2.2.1
  */
 class Jump_Start_License_Admin {
 
@@ -21,7 +21,7 @@ class Jump_Start_License_Admin {
 	 * EDD store URL where EDD Software Licensing
 	 * is installed.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 * @var string
 	 */
 	private $remote_api_url;
@@ -29,7 +29,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Theme short name or slug.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 * @var string
 	 */
 	private $item_shortname;
@@ -37,7 +37,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Theme name.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 * @var string
 	 */
 	private $item_name;
@@ -47,7 +47,7 @@ class Jump_Start_License_Admin {
 	 * admin page and the option ID used to save
 	 * the license keys.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 * @var string
 	 */
 	private $screen_id;
@@ -56,7 +56,7 @@ class Jump_Start_License_Admin {
 	 * The hook suffix for the admin screen, regsitered
 	 * to WordPress.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 * @var string
 	 */
 	private $admin_screen_base;
@@ -64,7 +64,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Retrieved data from database, for admin page.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 * @var array
 	 */
 	private $data;
@@ -72,7 +72,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Registered extensions.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 * @var array
 	 */
 	private $extensions;
@@ -80,7 +80,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Constructor.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @param array $args {
 	 *     Admin arguments.
@@ -121,7 +121,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Registered extensions.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 */
 	public function register_extensions() {
 
@@ -135,7 +135,7 @@ class Jump_Start_License_Admin {
 		 * Extensions plugins can use class Jump_Start_Extension
 		 * class to register itself to work with this sytem.
 		 *
-		 * @since @@name-package 2.2.2
+		 * @since Jump_Start 2.2.2
 		 */
 		$this->extensions = apply_filters( 'jump_start_installed_extensions', array() );
 
@@ -144,7 +144,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Register settings.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 */
 	public function register_settings() {
 
@@ -160,7 +160,7 @@ class Jump_Start_License_Admin {
 	 * Check all saved licenses, once per day, when
 	 * license admin screen is loaded.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @param bool $force Whether to bypass cache and force the license check.
 	 */
@@ -216,7 +216,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Sanitize data and activate licenses.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @param  array $fields   Submitted form data.
 	 * @return array $settings Data to save.
@@ -284,7 +284,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Activate license.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @param array $license {
 	 *     @type string $item_name Product name at EDD store.
@@ -322,7 +322,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Deactivate a license.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @param array $license {
 	 *     @type string $item_name Product name at EDD store.
@@ -360,7 +360,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Check an individual licence.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @param array $item {
 	 *    @type string $item_name Item name.
@@ -412,7 +412,7 @@ class Jump_Start_License_Admin {
 	 * Add admin page, and hook in specific admin
 	 * screen actions.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 */
 	function add_page() {
 
@@ -434,7 +434,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Display the licence admin.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 */
 	function admin_page() {
 
@@ -446,7 +446,7 @@ class Jump_Start_License_Admin {
 	 * Display an individual license input within the
 	 * license management admin page.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @param array $args {
 	 *     @type string $item_name      Item name.
@@ -514,7 +514,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Get license info.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @param  string $item   Product and license info.
 	 * @return array  $status {
@@ -696,7 +696,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Retrieve stored data for admin page.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 */
 	public function set_data() {
 
@@ -709,7 +709,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Enqueue assets for admin page.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 */
 	public function assets() {
 
@@ -729,7 +729,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Get saved data for an individual license item.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @param  string $shortname Item shortname.
 	 * @return array  $item      Saved item data.
@@ -758,7 +758,7 @@ class Jump_Start_License_Admin {
 	 * Checks if this is currently our license
 	 * management admin screen.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @return bool Whether it's our admin screen.
 	 */
@@ -780,7 +780,7 @@ class Jump_Start_License_Admin {
 	 * Checks if a license is active, based on
 	 * saved data. No remote request here.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @param  array $item Saved license info and data.
 	 * @return bool        Whether it's our admin screen.
@@ -800,7 +800,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Get ID you to save to WordPress options table.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @return string Settings ID.
 	 */
@@ -813,7 +813,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Get item name.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @return string Item name.
 	 */
@@ -826,7 +826,7 @@ class Jump_Start_License_Admin {
 	/**
 	 * Get item shortname.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @return string Item shortname.
 	 */

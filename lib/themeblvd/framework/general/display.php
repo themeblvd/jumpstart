@@ -11,9 +11,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.2.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.2.0
  */
 
 if ( ! function_exists( 'themeblvd_widgets_above_header' ) ) {
@@ -25,7 +25,7 @@ if ( ! function_exists( 'themeblvd_widgets_above_header' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_before` - 20
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_widgets_above_header() {
 
@@ -42,7 +42,7 @@ if ( ! function_exists( 'themeblvd_header_default' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_header` - 10
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_header_default() {
 
@@ -52,7 +52,7 @@ if ( ! function_exists( 'themeblvd_header_default' ) ) {
 		 *
 		 * @hooked themeblvd_header_before_default - 10
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 */
 		do_action( 'themeblvd_header_before' );
 		?>
@@ -80,7 +80,7 @@ if ( ! function_exists( 'themeblvd_header_default' ) ) {
 		 *
 		 * @hooked themeblvd_epic_thumb - 10
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 */
 		do_action( 'themeblvd_header_after' );
 
@@ -95,7 +95,7 @@ if ( ! function_exists( 'themeblvd_header_top_default' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_header_top` - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	function themeblvd_header_top_default() {
 
@@ -178,7 +178,7 @@ if ( ! function_exists( 'themeblvd_header_content_default' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_header_content` - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	function themeblvd_header_content_default() {
 
@@ -208,7 +208,7 @@ if ( ! function_exists( 'themeblvd_header_content_default' ) ) {
 				 *
 				 * @hooked themeblvd_header_logo_default - 10
 				 *
-				 * @since @@name-framework 2.0.0
+				 * @since Theme_Blvd 2.0.0
 				 */
 				do_action( 'themeblvd_header_logo' );
 
@@ -216,7 +216,7 @@ if ( ! function_exists( 'themeblvd_header_content_default' ) ) {
 				 * Fires last within the main content of
 				 * the header.
 				 *
-				 * @since @@name-framework 2.0.0
+				 * @since Theme_Blvd 2.0.0
 				 */
 				do_action( 'themeblvd_header_addon' );
 				?>
@@ -237,7 +237,7 @@ if ( ! function_exists( 'themeblvd_header_logo_default' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_header_logo` - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	function themeblvd_header_logo_default() {
 
@@ -283,7 +283,7 @@ if ( ! function_exists( 'themeblvd_header_menu_default' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_header_main_menu` - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	function themeblvd_header_menu_default() {
 
@@ -293,7 +293,7 @@ if ( ! function_exists( 'themeblvd_header_menu_default' ) ) {
 		 * Fires before the main menu, before the
 		 * wrapping <nav>.
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 */
 		do_action( 'themeblvd_header_menu_before' );
 
@@ -315,7 +315,7 @@ if ( ! function_exists( 'themeblvd_header_menu_default' ) ) {
 					 * menu has been applied to the "Primary
 					 * Navigation" location.
 					 *
-					 * @since @@name-framework 2.0.0
+					 * @since Theme_Blvd 2.0.0
 					 */
 					do_action( 'themeblvd_header_menu_addon' );
 					?>
@@ -331,7 +331,7 @@ if ( ! function_exists( 'themeblvd_header_menu_default' ) ) {
 		 * Fires after the main menu, after the
 		 * wrapping <nav>.
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 */
 		do_action( 'themeblvd_header_menu_after' );
 
@@ -346,7 +346,7 @@ if ( ! function_exists( 'themeblvd_mobile_header' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_before` - 10
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_mobile_header() {
 
@@ -375,7 +375,7 @@ if ( ! function_exists( 'themeblvd_mobile_header_logo' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_mobile_header` - 10
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_mobile_header_logo() {
 
@@ -406,7 +406,7 @@ if ( ! function_exists( 'themeblvd_mobile_header_menu' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_mobile_header` - 20
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_mobile_header_menu() {
 
@@ -451,7 +451,7 @@ if ( ! function_exists( 'themeblvd_sticky_header' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_before` - 10
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_sticky_header() {
 
@@ -472,7 +472,7 @@ if ( ! function_exists( 'themeblvd_sticky_header_logo' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_sticky_header` - 10
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_sticky_header_logo() {
 
@@ -486,7 +486,7 @@ if ( ! function_exists( 'themeblvd_sticky_header_logo' ) ) {
 		 * Header* to configure a sticky header logo; so
 		 * we've got it here mainly for backwards compat.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param string Logo image URL, like `http://mysite.com/image.jpg`.
 		 */
@@ -534,7 +534,7 @@ if ( ! function_exists( 'themeblvd_sticky_header_menu' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_sticky_header` - 20
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_sticky_header_menu() {
 
@@ -559,7 +559,7 @@ if ( ! function_exists( 'themeblvd_epic_thumb' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_header_after` - 10
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 */
 	function themeblvd_epic_thumb() {
 
@@ -651,7 +651,7 @@ if ( ! function_exists( 'themeblvd_main_start_default' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_main_start` - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	function themeblvd_main_start_default() {
 
@@ -675,7 +675,7 @@ if ( ! function_exists( 'themeblvd_main_end_default' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_main_start` - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	function themeblvd_main_end_default() {
 
@@ -699,7 +699,7 @@ if ( ! function_exists( 'themeblvd_widgets_above_content' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_main_top` - 10
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_widgets_above_content() {
 
@@ -717,7 +717,7 @@ if ( ! function_exists( 'themeblvd_widgets_below_content' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_main_bottom` - 10
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_widgets_below_content() {
 
@@ -734,7 +734,7 @@ if ( ! function_exists( 'themeblvd_breadcrumbs_default' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_breadcrumbs` - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	function themeblvd_breadcrumbs_default() {
 
@@ -754,7 +754,7 @@ if ( ! function_exists( 'themeblvd_fixed_sidebars' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_sidebars` - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param string $position position of sidebar on page, left or right
 	 */
@@ -770,7 +770,7 @@ if ( ! function_exists( 'themeblvd_fixed_sidebars' ) ) {
 			 *
 			 * @hooked themeblvd_fixed_sidebar_before_default - 10
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since Theme_Blvd 2.0.0
 			 *
 			 * @param string $position Sidebar position, `left` or `right`.
 			 */
@@ -784,7 +784,7 @@ if ( ! function_exists( 'themeblvd_fixed_sidebars' ) ) {
 			 *
 			 * @hooked themeblvd_fixed_sidebar_after_default - 10
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since Theme_Blvd 2.0.0
 			 *
 			 * @param string $position Sidebar position, `left` or `right`.
 			 */
@@ -802,7 +802,7 @@ if ( ! function_exists( 'themeblvd_fixed_sidebars' ) ) {
 			 *
 			 * @hooked themeblvd_fixed_sidebar_before_default - 10
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since Theme_Blvd 2.0.0
 			 *
 			 * @param string $position Sidebar position, `left` or `right`.
 			 */
@@ -816,7 +816,7 @@ if ( ! function_exists( 'themeblvd_fixed_sidebars' ) ) {
 			 *
 			 * @hooked themeblvd_fixed_sidebar_after_default - 10
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since Theme_Blvd 2.0.0
 			 *
 			 * @param string $position Sidebar position, `left` or `right`.
 			 */
@@ -829,7 +829,7 @@ if ( ! function_exists( 'themeblvd_fixed_sidebars' ) ) {
 			 *
 			 * @hooked themeblvd_fixed_sidebar_before_default - 10
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since Theme_Blvd 2.0.0
 			 *
 			 * @param string $position Sidebar position, `left` or `right`.
 			 */
@@ -843,7 +843,7 @@ if ( ! function_exists( 'themeblvd_fixed_sidebars' ) ) {
 			 *
 			 * @hooked themeblvd_fixed_sidebar_after_default - 10
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since Theme_Blvd 2.0.0
 			 *
 			 * @param string $position Sidebar position, `left` or `right`.
 			 */
@@ -861,7 +861,7 @@ if ( ! function_exists( 'themeblvd_fixed_sidebars' ) ) {
 			 *
 			 * @hooked themeblvd_fixed_sidebar_before_default - 10
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since Theme_Blvd 2.0.0
 			 *
 			 * @param string $position Sidebar position, `left` or `right`.
 			 */
@@ -875,7 +875,7 @@ if ( ! function_exists( 'themeblvd_fixed_sidebars' ) ) {
 			 *
 			 * @hooked themeblvd_fixed_sidebar_after_default - 10
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since Theme_Blvd 2.0.0
 			 *
 			 * @param string $position Sidebar position, `left` or `right`.
 			 */
@@ -888,7 +888,7 @@ if ( ! function_exists( 'themeblvd_fixed_sidebars' ) ) {
 			 *
 			 * @hooked themeblvd_fixed_sidebar_before_default - 10
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since Theme_Blvd 2.0.0
 			 *
 			 * @param string $position Sidebar position, `left` or `right`.
 			 */
@@ -902,7 +902,7 @@ if ( ! function_exists( 'themeblvd_fixed_sidebars' ) ) {
 			 *
 			 * @hooked themeblvd_fixed_sidebar_after_default - 10
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since Theme_Blvd 2.0.0
 			 *
 			 * @param string $position Sidebar position, `left` or `right`.
 			 */
@@ -921,7 +921,7 @@ if ( ! function_exists( 'themeblvd_fixed_sidebar_before_default' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_fixed_sidebar_before` - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	function themeblvd_fixed_sidebar_before_default( $side ) {
 
@@ -941,7 +941,7 @@ if ( ! function_exists( 'themeblvd_fixed_sidebar_after_default' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_fixed_sidebar_after` - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	function themeblvd_fixed_sidebar_after_default() {
 
@@ -960,14 +960,14 @@ if ( ! function_exists( 'themeblvd_footer_default' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_footer` - 10
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_footer_default() {
 
 		/**
 		 * Fires before the footer.
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 */
 		do_action( 'themeblvd_footer_before' );
 		?>
@@ -1005,7 +1005,7 @@ if ( ! function_exists( 'themeblvd_footer_default' ) ) {
 		/**
 		 * Fires after the footer.
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 */
 		do_action( 'themeblvd_footer_after' );
 
@@ -1023,7 +1023,7 @@ if ( ! function_exists( 'themeblvd_footer_content_default' ) ) {
 	 *
 	 * @see themeblvd_columns()
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	function themeblvd_footer_content_default() {
 
@@ -1043,7 +1043,7 @@ if ( ! function_exists( 'themeblvd_footer_content_default' ) ) {
 			 *
 			 * @see themeblvd_columns()
 			 *
-			 * @since @@name-framework 2.5.0
+			 * @since Theme_Blvd 2.5.0
 			 *
 			 * @param array $args Arguments for themeblvd_columns().
 			 */
@@ -1085,7 +1085,7 @@ if ( ! function_exists( 'themeblvd_footer_sub_content_default' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_footer_sub_content` - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	function themeblvd_footer_sub_content_default() {
 
@@ -1103,7 +1103,7 @@ if ( ! function_exists( 'themeblvd_footer_sub_content_default' ) ) {
 					 * Filters the arguments used for the footer
 					 * copyright contact bar.
 					 *
-					 * @since @@name-framework 2.7.0
+					 * @since Theme_Blvd 2.7.0
 					 *
 					 * @param array Arguments passed to themeblvd_get_contact_bar().
 					 */
@@ -1126,7 +1126,7 @@ if ( ! function_exists( 'themeblvd_footer_sub_content_default' ) ) {
 					/**
 					 * Filters the footer copyright text.
 					 *
-					 * @since @@name-framework 2.0.0
+					 * @since Theme_Blvd 2.0.0
 					 *
 					 * @param string $output Final HTML output.
 					 */
@@ -1165,7 +1165,7 @@ if ( ! function_exists( 'themeblvd_widgets_below_footer' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_after` - 5
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_widgets_below_footer() {
 
@@ -1182,7 +1182,7 @@ if ( ! function_exists( 'themeblvd_side_panel' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_after` - 10
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 */
 	function themeblvd_side_panel() {
 
@@ -1204,7 +1204,7 @@ if ( ! function_exists( 'themeblvd_side_panel_menu' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_side_panel` - 10
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 */
 	function themeblvd_side_panel_menu() {
 
@@ -1222,7 +1222,7 @@ if ( ! function_exists( 'themeblvd_side_panel_sub_menu' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_side_panel` - 20
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 */
 	function themeblvd_side_panel_sub_menu() {
 
@@ -1240,7 +1240,7 @@ if ( ! function_exists( 'themeblvd_side_panel_contact' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_side_panel` - 30
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_side_panel_contact() {
 
@@ -1250,7 +1250,7 @@ if ( ! function_exists( 'themeblvd_side_panel_contact' ) ) {
 			 * Filters the arguments used for the side
 			 * panel contact bar.
 			 *
-			 * @since @@name-framework 2.7.0
+			 * @since Theme_Blvd 2.7.0
 			 *
 			 * @param array Arguments passed to themeblvd_get_contact_bar().
 			 */
@@ -1277,7 +1277,7 @@ if ( ! function_exists( 'themeblvd_mobile_panel' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_after` - 10
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_mobile_panel() {
 
@@ -1299,7 +1299,7 @@ if ( ! function_exists( 'themeblvd_mobile_panel_search' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_mobile_panel` - 10
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_mobile_panel_search() {
 
@@ -1324,7 +1324,7 @@ if ( ! function_exists( 'themeblvd_mobile_panel_menu' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_mobile_panel` - 20
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_mobile_panel_menu() {
 
@@ -1345,7 +1345,7 @@ if ( ! function_exists( 'themeblvd_mobile_panel_sub_menu' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_mobile_panel` - 30
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_mobile_panel_sub_menu() {
 
@@ -1373,7 +1373,7 @@ if ( ! function_exists( 'themeblvd_mobile_panel_contact' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_mobile_panel` - 40
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 */
 	function themeblvd_mobile_panel_contact() {
 
@@ -1393,7 +1393,7 @@ if ( ! function_exists( 'themeblvd_mobile_panel_contact' ) ) {
 			 * Filters the arguments used for the side
 			 * panel contact bar.
 			 *
-			 * @since @@name-framework 2.7.0
+			 * @since Theme_Blvd 2.7.0
 			 *
 			 * @param array Arguments passed to themeblvd_get_contact_bar().
 			 */
@@ -1426,7 +1426,7 @@ if ( ! function_exists( 'themeblvd_archive_info' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_content_top` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	function themeblvd_archive_info() {
 
@@ -1512,7 +1512,7 @@ if ( ! function_exists( 'themeblvd_archive_info' ) ) {
 			 * add a traditional archive title instead of the
 			 * theme's info boxes.
 			 *
-			 * @since @@name-framework 2.5.0
+			 * @since Theme_Blvd 2.5.0
 			 */
 			do_action( 'themeblvd_archive_info' );
 
@@ -1530,7 +1530,7 @@ if ( ! function_exists( 'themeblvd_single_footer_default' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_single_footer` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	function themeblvd_single_footer_default() {
 
@@ -1582,7 +1582,7 @@ if ( ! function_exists( 'themeblvd_blog_meta_default' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_meta` - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	function themeblvd_blog_meta_default() {
 
@@ -1602,7 +1602,7 @@ if ( ! function_exists( 'themeblvd_blog_meta_default' ) ) {
 		 *
 		 * @see themeblvd_get_meta()
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param array Arguments used for themeblvd_get_meta().
 		 */
@@ -1626,7 +1626,7 @@ if ( ! function_exists( 'themeblvd_grid_meta_default' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_grid_meta` - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	function themeblvd_grid_meta_default() {
 
@@ -1636,7 +1636,7 @@ if ( ! function_exists( 'themeblvd_grid_meta_default' ) ) {
 		 *
 		 * @see themeblvd_get_meta()
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param array Arguments used for themeblvd_get_meta().
 		 */
@@ -1662,7 +1662,7 @@ if ( ! function_exists( 'themeblvd_search_meta_default' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_search_meta` - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	function themeblvd_search_meta_default() {
 
@@ -1686,7 +1686,7 @@ if ( ! function_exists( 'themeblvd_search_meta_default' ) ) {
 		 *
 		 * @see themeblvd_get_meta()
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param array Arguments used for themeblvd_get_meta().
 		 */
@@ -1708,7 +1708,7 @@ if ( ! function_exists( 'themeblvd_blog_sub_meta_default' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_blog_sub_meta` - 10
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	function themeblvd_blog_sub_meta_default() {
 
@@ -1743,7 +1743,7 @@ if ( ! function_exists( 'themeblvd_the_post_thumbnail_default' ) ) {
 	 *
 	 * @see themeblvd_get_post_thumbnail()
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param string $size Image crop size.
 	 * @param array  $args Arguments for featured image, see themeblvd_get_post_thumbnail().
@@ -1770,7 +1770,7 @@ if ( ! function_exists( 'themeblvd_blog_content_default' ) ) {
 	 * This function is hooked to:
 	 * 1. `themeblvd_blog_content` - 10
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param string $type Type of content -- content or excerpt
 	 */
@@ -1782,7 +1782,7 @@ if ( ! function_exists( 'themeblvd_blog_content_default' ) ) {
 			 * Filters the "More Text" used when the_content()
 			 * is called in the `blog` post display.
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since Theme_Blvd 2.0.0
 			 *
 			 * @param string Read more text, like `Read More`.
 			 */
@@ -1797,7 +1797,7 @@ if ( ! function_exists( 'themeblvd_blog_content_default' ) ) {
 			 * excerpt and read more button in the `blog`
 			 * post display type.
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since Theme_Blvd 2.0.0
 			 *
 			 * @param array {
 			 *     Arguments for excerpt and read more button.
@@ -1865,7 +1865,7 @@ if ( ! function_exists( 'themeblvd_before_signup_form' ) ) {
 	 * This function is hooked to:
 	 * 1. `before_signup_form` - 10
 	 *
-	 * @since @@name-framework 2.1.0
+	 * @since Theme_Blvd 2.1.0
 	 */
 	function themeblvd_before_signup_form() {
 		?>
@@ -1896,7 +1896,7 @@ if ( ! function_exists( 'themeblvd_after_signup_form' ) ) {
 	 * This function is hooked to:
 	 * 1. `after_signup_form` - 10
 	 *
-	 * @since @@name-framework 2.1.0
+	 * @since Theme_Blvd 2.1.0
 	 */
 	function themeblvd_after_signup_form() {
 

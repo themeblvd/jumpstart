@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.6.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.6.0
  */
 
 /**
@@ -16,21 +16,21 @@
  * meaning it can only be instantiated in
  * one instance.
  *
- * @since @@name-framework 2.6.0
+ * @since Theme_Blvd 2.6.0
  */
 class Theme_Blvd_Compat_Subtitles {
 
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 */
 	private static $instance = null;
 
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 *
 	 * @return Theme_Blvd_Compat_Subtitles A single instance of this class.
 	 */
@@ -49,7 +49,7 @@ class Theme_Blvd_Compat_Subtitles {
 	/**
 	 * Constructor. Hook everything in.
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 */
 	public function __construct() {
 
@@ -91,7 +91,7 @@ class Theme_Blvd_Compat_Subtitles {
 	 * This method is filtered onto
 	 * `subtitle_view_supported` - 10
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 *
 	 * @param  bool $support Whether to display subtitle.
 	 * @return bool $support Whether to display subtitle.
@@ -116,7 +116,7 @@ class Theme_Blvd_Compat_Subtitles {
 	 * This method is hooked to:
 	 * `themeblvd_single_footer` - 10
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 */
 	public function single_footer() {
 
@@ -131,7 +131,7 @@ class Theme_Blvd_Compat_Subtitles {
 	 * This method is filtered onto:
 	 * `themeblvd_item_info_subtitle` - 10
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param  string $input   HTML output for item subtitle.
 	 * @param  int    $post_id Post ID.

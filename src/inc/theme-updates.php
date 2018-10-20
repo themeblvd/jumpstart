@@ -7,14 +7,14 @@
  *
  * @author    Jason Bobich <info@themeblvd.com>
  * @copyright 2009-2017 Theme Blvd
- * @package   @@name-package
- * @since     @@name-package 1.0.0
+ * @package   Jump_Start
+ * @since     Jump_Start 1.0.0
  */
 
 /**
  * Enable auto updates and license management.
  *
- * @since @@name-package 1.0.0
+ * @since Jump_Start 1.0.0
  */
 function jumpstart_updates_init() {
 
@@ -36,7 +36,7 @@ add_action( 'after_setup_theme', 'jumpstart_updates_init' );
 /**
  * Setup auto updates.
  *
- * @since @@name-package 1.0.0
+ * @since Jump_Start 1.0.0
  */
 function jumpstart_updates() {
 
@@ -92,7 +92,7 @@ function jumpstart_updates() {
 	/**
 	 * Filter changelog URL.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param string           Website URL to changelog.
 	 * @param string $template Template slug retrieved from get_template().
@@ -110,7 +110,7 @@ function jumpstart_updates() {
  * For auto updates, disable sslverify, which will
  * allow for older hosts to download update.
  *
- * @since @@name-package 2.1.3
+ * @since Jump_Start 2.1.3
  *
  * @param  array  $args An array of HTTP request arguments.
  * @param  string $url  The request URL.

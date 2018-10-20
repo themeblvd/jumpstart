@@ -13,9 +13,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.3.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.3.0
  */
 
 /**
@@ -27,14 +27,14 @@
  * Also, there are some handler methods to all locations
  * to be added and removed.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  */
 class Theme_Blvd_Sidebar_Handler {
 
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var Theme_Blvd_Sidebar_Handler
 	 */
 	private static $instance = null;
@@ -42,7 +42,7 @@ class Theme_Blvd_Sidebar_Handler {
 	/**
 	 * Core framework sidebar locations.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var array
 	 */
 	private $core_locations = array();
@@ -51,7 +51,7 @@ class Theme_Blvd_Sidebar_Handler {
 	 * Sidebar locations added through client
 	 * mutators.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var array
 	 */
 	private $client_locations = array();
@@ -59,7 +59,7 @@ class Theme_Blvd_Sidebar_Handler {
 	/**
 	 * Sidebar locations to remove.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var array
 	 */
 	private $remove_locations = array();
@@ -68,7 +68,7 @@ class Theme_Blvd_Sidebar_Handler {
 	 * Final array of sidebar locations. This combines
 	 * $core_elements and $client_elements. WP-Admin only.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var array
 	 */
 	private $locations = array();
@@ -76,7 +76,7 @@ class Theme_Blvd_Sidebar_Handler {
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @return Theme_Blvd_Sidebar_Handler A single instance of this class.
 	 */
@@ -95,7 +95,7 @@ class Theme_Blvd_Sidebar_Handler {
 	/**
 	 * Constructor. Hook everything in.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	private function __construct() {
 
@@ -120,7 +120,7 @@ class Theme_Blvd_Sidebar_Handler {
 	/**
 	 * Set core framework sidebar locations.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	private function set_core_locations() {
 
@@ -279,7 +279,7 @@ class Theme_Blvd_Sidebar_Handler {
 		 * Filters all data used to register the core location
 		 * widget areas.
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param array $core_locations Shared arguments for register_sidebar().
 		 */
@@ -291,7 +291,7 @@ class Theme_Blvd_Sidebar_Handler {
 	 * Set final sidebar locations. This sets the merged result
 	 * of core locations and client added locations.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	public function set_locations() {
 
@@ -313,7 +313,7 @@ class Theme_Blvd_Sidebar_Handler {
 		 * and client sidebar locations have been merged with
 		 * framework defaults.
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param array $locations All widget area locations.
 		 */
@@ -324,7 +324,7 @@ class Theme_Blvd_Sidebar_Handler {
 	/**
 	 * Add sidebar location.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $id   ID of location.
 	 * @param string $name Name of location.
@@ -374,7 +374,7 @@ class Theme_Blvd_Sidebar_Handler {
 	/**
 	 * Remove sidebar location.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $id ID of location to remove.
 	 */
@@ -387,7 +387,7 @@ class Theme_Blvd_Sidebar_Handler {
 	/**
 	 * Get core framework sidebar locations.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @return array $registered_elements
 	 */
@@ -400,7 +400,7 @@ class Theme_Blvd_Sidebar_Handler {
 	/**
 	 * Get added locations from client handler mutators.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @return array $registered_elements
 	 */
@@ -413,7 +413,7 @@ class Theme_Blvd_Sidebar_Handler {
 	/**
 	 * Get locations to be removed by client handler mutators.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @return array $registered_elements
 	 */
@@ -428,7 +428,7 @@ class Theme_Blvd_Sidebar_Handler {
 	 * of core locations and client added locations. This
 	 * is available after WP's "after_setup_theme" hook.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param  string $location_id  Optional ID of specific location to pull.
 	 * @return array  $locations    All locations or specific location.
@@ -455,7 +455,7 @@ class Theme_Blvd_Sidebar_Handler {
 	 *
 	 * Hooked to "after_setup_theme" at priority 1001.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	public function register() {
 
@@ -469,7 +469,7 @@ class Theme_Blvd_Sidebar_Handler {
 			 * Filters the arguments used in registering
 			 * the default "location" widget areas.
 			 *
-			 * @since @@name-framework 2.3.0
+			 * @since Theme_Blvd 2.3.0
 			 *
 			 * @param array  $args     Arguments passed to register_sidebar().
 			 * @param array  $sidebar  Sidebar information from framework.
@@ -485,7 +485,7 @@ class Theme_Blvd_Sidebar_Handler {
 			 * Blvd Widget Areas plugin, for creating custom
 			 * widget areas.
 			 *
-			 * @since @@name-framework 2.7.0
+			 * @since Theme_Blvd 2.7.0
 			 *
 			 * @param array  $args     Arguments passed to register_sidebar().
 			 * @param array  $sidebar  Sidebar information from framework.
@@ -502,7 +502,7 @@ class Theme_Blvd_Sidebar_Handler {
 	/**
 	 * Display sidebar.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $location Location ID for the sidebar to display.
 	 */
@@ -538,7 +538,7 @@ class Theme_Blvd_Sidebar_Handler {
 		 * Fires before a widget area's output
 		 * is started.
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param array $sidebar Current widget area configuration.
 		 */
@@ -548,7 +548,7 @@ class Theme_Blvd_Sidebar_Handler {
 		 * Fires before a widget area's output
 		 * is started.
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param array $sidebar Current widget area configuration.
 		 */
@@ -582,7 +582,7 @@ class Theme_Blvd_Sidebar_Handler {
 		 * Filters the CSS classes for to wrap a
 		 * widget area.
 		 *
-		 * @since @@name-framework 2.7.0
+		 * @since Theme_Blvd 2.7.0
 		 *
 		 * @param array  $class    CSS classes.
 		 * @param array  $sidebar  Current widget area configuration.
@@ -601,7 +601,7 @@ class Theme_Blvd_Sidebar_Handler {
 		 * Fires before just inside a widget
 		 * area.
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param array $sidebar Current widget area configuration.
 		 */
@@ -651,7 +651,7 @@ class Theme_Blvd_Sidebar_Handler {
 		 * Fires inside a widget area, just
 		 * before its closed.
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param array $sidebar Current widget area configuration.
 		 */
@@ -665,7 +665,7 @@ class Theme_Blvd_Sidebar_Handler {
 		 * Fires just outside a widget area,
 		 * after its closed.
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param array $sidebar Current widget area configuration.
 		 */
@@ -675,7 +675,7 @@ class Theme_Blvd_Sidebar_Handler {
 		 * Fires just outside a widget area,
 		 * after its closed.
 		 *
-		 * @since @@name-framework 2.3.0
+		 * @since Theme_Blvd 2.3.0
 		 *
 		 * @param array $sidebar Current widget area configuration.
 		 */

@@ -14,9 +14,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.2.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.2.0
  */
 
 /**
@@ -35,7 +35,7 @@
  * This function is hooked to:
  * 1. `admin_init` - 10
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  */
 function themeblvd_add_sanitization() {
 
@@ -107,7 +107,7 @@ function themeblvd_add_sanitization() {
  * `theme_version`     Current version of theme.
  * `theme_base`        Current active theme base.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $input Original value.
  * @param  array  $option {
@@ -164,7 +164,7 @@ function themeblvd_sanitize_hidden( $input, $option ) {
  * function getting applied to smaller pieces
  * of larger sanitization functions.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  string $input  Original value.
  * @return string $output Sanitized value.
@@ -199,7 +199,7 @@ function themeblvd_sanitize_text( $input ) {
  * function getting applied to smaller pieces
  * of larger sanitization functions.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  string $input  Original value.
  * @return string $output Sanitized value.
@@ -237,7 +237,7 @@ function themeblvd_sanitize_textarea( $input ) {
  * user didn't check the option. So if unchecked,
  * we'll pass back a string `0`.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  string $input  Original value.
  * @return string $output Sanitized value.
@@ -266,7 +266,7 @@ function themeblvd_sanitize_checkbox( $input ) {
  * to exist. So every value will be either a
  * `1` or `0` string.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  array $input  Original value.
  * @param  array $option {
@@ -317,7 +317,7 @@ function themeblvd_sanitize_multicheck( $input, $option ) {
  * slide element. Not to be confused with anythig
  * related to image sliders.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $input  Original value.
  * @return string $output Sanitized value.
@@ -334,7 +334,7 @@ function themeblvd_sanitize_slide( $input ) {
  *
  * This is used within themeblvd_sanitize_color().
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  string $hex Color hex value to check.
  * @return bool        Whether $hex is a valid hex color value.
@@ -372,7 +372,7 @@ function themeblvd_validate_hex( $hex ) {
  * framework v2.2.0 as themeblvd_sanitize_hex(),
  * but was later changed to themeblvd_sanitize_color().
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @param  string $input  Original value.
  * @return string $output Sanitized value.
@@ -383,7 +383,7 @@ function themeblvd_sanitize_color( $input ) {
 	 * Filters the default value returned when a
 	 * color hex was not formatted properly.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string Color hex value like `#000000`.
 	 */

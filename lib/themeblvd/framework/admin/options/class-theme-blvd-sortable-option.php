@@ -30,15 +30,15 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
  * Theme Blvd Sortable Option.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param bool $ajax Whether to add AJAX functionality.
  */
@@ -47,7 +47,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	/**
 	 * Options for each sortable element
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 * @var array
 	 */
 	private $options = array();
@@ -56,7 +56,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	 * Trigger option. This option's value will
 	 * get feed to the toggle's handle as its updated.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 * @var string
 	 */
 	private $trigger = '';
@@ -64,7 +64,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	/**
 	 * Text strings for managing items.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 * @var array
 	 */
 	protected $labels = array();
@@ -72,7 +72,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	/**
 	 * Current advanced option type. Set by child class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 * @var string
 	 */
 	protected $type = '';
@@ -80,7 +80,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	/**
 	 * Optional maximum number of sortable items.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 * @var int
 	 */
 	protected $max = 0;
@@ -88,7 +88,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	/**
 	 * Class constructor.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param bool $ajax Whether to add AJAX functionality.
 	 */
@@ -167,7 +167,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	 * want to add `'trigger' => true` - this specifies that this
 	 * option's current value will be used in sortable toggle handle.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array {
 	 *      Standard framework array of options, but
@@ -181,7 +181,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	 * Setup user-facing text strings, specific for sortable
 	 * option type. This is required by the child class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array {
 	 *      @type string $add                Text string to add item.
@@ -201,7 +201,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	 * This is a public method called on the instantiated
 	 * object, to actually display the entire sortable option.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $option_id   Unique ID for the option.
 	 * @param  string $option_name Prefix for all field name attributes.
@@ -271,7 +271,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	/**
 	 * Display the header.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $option_id   Unique ID for the option.
 	 * @param  string $option_name Prefix for all field name attributes.
@@ -287,7 +287,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	/**
 	 * Display the footer.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $option_id   Unique ID for the option.
 	 * @param  string $option_name Prefix for all field name attributes.
@@ -345,7 +345,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	 * for more information on passing an array of option
 	 * and which option types are supported.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $option_id   Unique ID for the option.
 	 * @param  string $item_id     Unique ID for the ndividual sortable item.
@@ -926,7 +926,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	/**
 	 * Get dispay for the handle of sortable item.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  array  $item   Saved settings for sortable item.
 	 * @return string $output HTML output for handle of sortable item.
@@ -946,7 +946,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	/**
 	 * Set default value for a new sortable item.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function get_default() {
 
@@ -975,7 +975,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	 * This gets used every time the user clicks to add
 	 * a new sortable item to the current set.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function add_item() {
 
@@ -999,7 +999,7 @@ abstract class Theme_Blvd_Sortable_Option {
  *
  * A set of progress bars.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Bars_Option extends Theme_Blvd_Sortable_Option {
 
@@ -1007,7 +1007,7 @@ class Theme_Blvd_Bars_Option extends Theme_Blvd_Sortable_Option {
 	 * Class constructor. Sets the specific option
 	 * type and runs the parent class's constructor.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -1023,7 +1023,7 @@ class Theme_Blvd_Bars_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Set of options, w/standard framework formatting.
 	 */
@@ -1075,7 +1075,7 @@ class Theme_Blvd_Bars_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Text strings shown to the end-user.
 	 */
@@ -1098,7 +1098,7 @@ class Theme_Blvd_Bars_Option extends Theme_Blvd_Sortable_Option {
  *
  * Group of buttons.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Buttons_Option extends Theme_Blvd_Sortable_Option {
 
@@ -1106,7 +1106,7 @@ class Theme_Blvd_Buttons_Option extends Theme_Blvd_Sortable_Option {
 	 * Class constructor. Sets the specific option
 	 * type and runs the parent class's constructor.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -1122,7 +1122,7 @@ class Theme_Blvd_Buttons_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Set of options, w/standard framework formatting.
 	 */
@@ -1227,7 +1227,7 @@ class Theme_Blvd_Buttons_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Text strings shown to the end-user.
 	 */
@@ -1250,7 +1250,7 @@ class Theme_Blvd_Buttons_Option extends Theme_Blvd_Sortable_Option {
  *
  * Values for a bar or line graph.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Datasets_Option extends Theme_Blvd_Sortable_Option {
 
@@ -1258,7 +1258,7 @@ class Theme_Blvd_Datasets_Option extends Theme_Blvd_Sortable_Option {
 	 * Class constructor. Sets the specific option
 	 * type and runs the parent class's constructor.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -1274,7 +1274,7 @@ class Theme_Blvd_Datasets_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Set of options, w/standard framework formatting.
 	 */
@@ -1313,7 +1313,7 @@ class Theme_Blvd_Datasets_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Text strings shown to the end-user.
 	 */
@@ -1336,7 +1336,7 @@ class Theme_Blvd_Datasets_Option extends Theme_Blvd_Sortable_Option {
  *
  * Location markers of Google Map.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Locations_Option extends Theme_Blvd_Sortable_Option {
 
@@ -1344,7 +1344,7 @@ class Theme_Blvd_Locations_Option extends Theme_Blvd_Sortable_Option {
 	 * Class constructor. Sets the specific option
 	 * type and runs the parent class's constructor.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -1360,7 +1360,7 @@ class Theme_Blvd_Locations_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Set of options, w/standard framework formatting.
 	 */
@@ -1421,7 +1421,7 @@ class Theme_Blvd_Locations_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Text strings shown to the end-user.
 	 */
@@ -1444,7 +1444,7 @@ class Theme_Blvd_Locations_Option extends Theme_Blvd_Sortable_Option {
  *
  * Columns of a pricing table.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 
@@ -1452,7 +1452,7 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 	 * Class constructor. Sets the specific option
 	 * type and runs the parent class's constructor.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -1470,7 +1470,7 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Set of options, w/standard framework formatting.
 	 */
@@ -1640,7 +1640,7 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Text strings shown to the end-user.
 	 */
@@ -1663,7 +1663,7 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
  *
  * Sectors of a pie chart.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Sectors_Option extends Theme_Blvd_Sortable_Option {
 
@@ -1671,7 +1671,7 @@ class Theme_Blvd_Sectors_Option extends Theme_Blvd_Sortable_Option {
 	 * Class constructor. Sets the specific option
 	 * type and runs the parent class's constructor.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -1687,7 +1687,7 @@ class Theme_Blvd_Sectors_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Set of options, w/standard framework formatting.
 	 */
@@ -1726,7 +1726,7 @@ class Theme_Blvd_Sectors_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Text strings shown to the end-user.
 	 */
@@ -1749,7 +1749,7 @@ class Theme_Blvd_Sectors_Option extends Theme_Blvd_Sortable_Option {
  *
  * Group of share buttons for a post.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Share_Option extends Theme_Blvd_Sortable_Option {
 
@@ -1757,7 +1757,7 @@ class Theme_Blvd_Share_Option extends Theme_Blvd_Sortable_Option {
 	 * Class constructor. Sets the specific option
 	 * type and runs the parent class's constructor.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -1773,7 +1773,7 @@ class Theme_Blvd_Share_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Set of options, w/standard framework formatting.
 	 */
@@ -1805,7 +1805,7 @@ class Theme_Blvd_Share_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Text strings shown to the end-user.
 	 */
@@ -1828,7 +1828,7 @@ class Theme_Blvd_Share_Option extends Theme_Blvd_Sortable_Option {
  *
  * Social media buttons of a contact bar.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Social_Option extends Theme_Blvd_Sortable_Option {
 
@@ -1836,7 +1836,7 @@ class Theme_Blvd_Social_Option extends Theme_Blvd_Sortable_Option {
 	 * Class constructor. Sets the specific option
 	 * type and runs the parent class's constructor.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -1852,7 +1852,7 @@ class Theme_Blvd_Social_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Set of options, w/standard framework formatting.
 	 */
@@ -1900,7 +1900,7 @@ class Theme_Blvd_Social_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Text strings shown to the end-user.
 	 */
@@ -1923,7 +1923,7 @@ class Theme_Blvd_Social_Option extends Theme_Blvd_Sortable_Option {
  *
  * Images of a simple slider.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 
@@ -1931,7 +1931,7 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 	 * Class constructor. Sets the specific option
 	 * type and runs the parent class's constructor.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -1954,7 +1954,7 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 	/**
 	 * Display the footer.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  string $option_id   Unique ID for the option.
 	 * @param  string $option_name Prefix for all field name attributes.
@@ -1988,7 +1988,7 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 	/**
 	 * Get dispay for the handle of sortable item.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param  array  $item   Saved settings for sortable item.
 	 * @return string $output HTML output for handle of sortable item.
@@ -2021,7 +2021,7 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Set of options, w/standard framework formatting.
 	 */
@@ -2119,7 +2119,7 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Text strings shown to the end-user.
 	 */
@@ -2142,7 +2142,7 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function add_item() {
 
@@ -2177,7 +2177,7 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
  *
  * Group of logos.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Logos_Option extends Theme_Blvd_Slider_Option {
 
@@ -2185,7 +2185,7 @@ class Theme_Blvd_Logos_Option extends Theme_Blvd_Slider_Option {
 	 * Class constructor. Sets the specific option
 	 * type and runs the parent class's constructor.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -2201,7 +2201,7 @@ class Theme_Blvd_Logos_Option extends Theme_Blvd_Slider_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Set of options, w/standard framework formatting.
 	 */
@@ -2263,7 +2263,7 @@ class Theme_Blvd_Logos_Option extends Theme_Blvd_Slider_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Text strings shown to the end-user.
 	 */
@@ -2287,7 +2287,7 @@ class Theme_Blvd_Logos_Option extends Theme_Blvd_Slider_Option {
  *
  * Group of tabs in Tabs element.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Tabs_Option extends Theme_Blvd_Sortable_Option {
 
@@ -2295,7 +2295,7 @@ class Theme_Blvd_Tabs_Option extends Theme_Blvd_Sortable_Option {
 	 * Class constructor. Sets the specific option
 	 * type and runs the parent class's constructor.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -2311,7 +2311,7 @@ class Theme_Blvd_Tabs_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Set of options, w/standard framework formatting.
 	 */
@@ -2344,7 +2344,7 @@ class Theme_Blvd_Tabs_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Text strings shown to the end-user.
 	 */
@@ -2367,7 +2367,7 @@ class Theme_Blvd_Tabs_Option extends Theme_Blvd_Sortable_Option {
  *
  * Group of Testimonials in a testimonial slider.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Testimonials_Option extends Theme_Blvd_Sortable_Option {
 
@@ -2375,7 +2375,7 @@ class Theme_Blvd_Testimonials_Option extends Theme_Blvd_Sortable_Option {
 	 * Class constructor. Sets the specific option
 	 * type and runs the parent class's constructor.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -2391,7 +2391,7 @@ class Theme_Blvd_Testimonials_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Set of options, w/standard framework formatting.
 	 */
@@ -2448,7 +2448,7 @@ class Theme_Blvd_Testimonials_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Text strings shown to the end-user.
 	 */
@@ -2471,7 +2471,7 @@ class Theme_Blvd_Testimonials_Option extends Theme_Blvd_Sortable_Option {
  *
  * Text blocks of a Hero Unit element.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Text_Blocks_Option extends Theme_Blvd_Sortable_Option {
 
@@ -2479,7 +2479,7 @@ class Theme_Blvd_Text_Blocks_Option extends Theme_Blvd_Sortable_Option {
 	 * Class constructor. Sets the specific option
 	 * type and runs the parent class's constructor.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -2495,7 +2495,7 @@ class Theme_Blvd_Text_Blocks_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Set of options, w/standard framework formatting.
 	 */
@@ -2629,7 +2629,7 @@ class Theme_Blvd_Text_Blocks_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Text strings shown to the end-user.
 	 */
@@ -2652,7 +2652,7 @@ class Theme_Blvd_Text_Blocks_Option extends Theme_Blvd_Sortable_Option {
  *
  * Group of toggles in a Toggles element.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 class Theme_Blvd_Toggles_Option extends Theme_Blvd_Sortable_Option {
 
@@ -2660,7 +2660,7 @@ class Theme_Blvd_Toggles_Option extends Theme_Blvd_Sortable_Option {
 	 * Class constructor. Sets the specific option
 	 * type and runs the parent class's constructor.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function __construct() {
 
@@ -2676,7 +2676,7 @@ class Theme_Blvd_Toggles_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Set of options, w/standard framework formatting.
 	 */
@@ -2722,7 +2722,7 @@ class Theme_Blvd_Toggles_Option extends Theme_Blvd_Sortable_Option {
 	 * See further documentation for corresponding method
 	 * in abstract class.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @return array Text strings shown to the end-user.
 	 */

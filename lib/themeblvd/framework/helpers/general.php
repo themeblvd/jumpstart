@@ -4,16 +4,16 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 /**
  * Print a warning on the screen, for deprecated
  * functions.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param string $function    Name of deprectated function.
  * @param string $version     Framework version function was deprecated.
@@ -72,7 +72,7 @@ function themeblvd_deprecated_function( $function, $version, $replacement = null
  * Remove trailing space or character from
  * a string.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string $string Current string to check.
  * @param  string $char   Character to remove from end of string.
@@ -107,7 +107,7 @@ function themeblvd_remove_trailing_char( $string, $char = ' ' ) {
  * some file we're trying to display is accessible,
  * like a video URL, for example.
  *
- * @since @@name-framework 2.6.0
+ * @since Theme_Blvd 2.6.0
  *
  * @param  string $url URL to a file.
  * @return bool        Whether the https status is 200.
@@ -133,7 +133,7 @@ function themeblvd_is_200( $url ) {
 /**
  * Check if we're using a certain version of IE.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array $versions Version of IE to check for.
  * @return bool            Whether or not this is the specified version of IE.
@@ -168,7 +168,7 @@ function themeblvd_is_ie( $versions = array( '8' ) ) {
  * 2. `widget_text` - 10
  * 3. `themeblvd_header_text` - 10
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $str Content string.
  * @return string $str Content string with icons added.
@@ -205,7 +205,7 @@ function themeblvd_do_fa( $str ) {
 			 * Filters the HTML used to add FontAwesome
 			 * icons within themeblvd_do_fa().
 			 *
-			 * @since @@name-framework 2.5.0
+			 * @since Theme_Blvd 2.5.0
 			 *
 			 * @param string            Icon output HTML.
 			 * @param string $icon_name Icon name.
@@ -253,7 +253,7 @@ function themeblvd_do_fa( $str ) {
 /**
  * Compress a chunk of code to output.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string $buffer Text to compress.
  * @return array  $buffer Compressed text.
@@ -278,7 +278,7 @@ function themeblvd_compress( $buffer ) {
  * When used it makes it easier for us to keep track
  * of where its hooked so it can be removed, if needed.
  *
- * @since @@name-framework 2.6.0
+ * @since Theme_Blvd 2.6.0
  */
 function themeblvd_return_false() {
 
@@ -294,7 +294,7 @@ function themeblvd_return_false() {
  * When used it makes it easier for us to keep track
  * of where its hooked so it can be removed, if needed.
  *
- * @since @@name-framework 2.6.0
+ * @since Theme_Blvd 2.6.0
  */
 function themeblvd_return_true() {
 
@@ -305,7 +305,7 @@ function themeblvd_return_true() {
 /**
  * Get site's home url.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @return string Home URL.
  */
@@ -324,7 +324,7 @@ function themeblvd_get_home_url() {
 	/**
 	 * Filters the home URL.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $url URL to website home.
 	 */
@@ -335,7 +335,7 @@ function themeblvd_get_home_url() {
 /**
  * Display site's home url.
  *
- * @since @@name-framework 2.5.2
+ * @since Theme_Blvd 2.5.2
  */
 function themeblvd_home_url() {
 
@@ -350,7 +350,7 @@ function themeblvd_home_url() {
  * theme's sanitization functions and displaying
  * custom HTML from theme elements.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @return array $themeblvd_tags Allowed tags.
  */
@@ -395,7 +395,7 @@ function themeblvd_allowed_tags() {
 	 * Filters the theme's allowed HTML tags, when
 	 * HTML is passed through theme elements.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param array $themeblvd_tags Allowed tags.
 	 */
@@ -408,7 +408,7 @@ function themeblvd_allowed_tags() {
  *
  * @see themeblvd_allowed_tags()
  *
- * @since @@name-framework 2.5.2
+ * @since Theme_Blvd 2.5.2
  *
  * @param  array  $input Content to sanitize.
  * @return string        Content that's been sanitized.
@@ -419,7 +419,7 @@ function themeblvd_kses( $input ) {
 	 * Filters whether user-inputted HTML is
 	 * sanitized.
 	 *
-	 * @since @@name-framework 2.5.2
+	 * @since Theme_Blvd 2.5.2
 	 *
 	 * @param bool Whether user-inputted HTML is sanitized.
 	 */
@@ -436,7 +436,7 @@ function themeblvd_kses( $input ) {
 /**
  * Check if script debugging is enabled.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @return bool Whether script debugging is enabled.
  */

@@ -2,7 +2,7 @@
 /**
  * Template for displaying the license admin page.
  *
- * @since @@name-package 2.2.2
+ * @since Jump_Start 2.2.2
  */
 ?>
 <div class="wrap jumpstart-license-admin">

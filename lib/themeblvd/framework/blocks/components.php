@@ -4,15 +4,15 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
  * Get a contextual alert block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -68,7 +68,7 @@ function themeblvd_get_alert( $args, $content = '' ) {
 	 * Filters the final HTML output for a contextual
 	 * alert block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -87,7 +87,7 @@ function themeblvd_get_alert( $args, $content = '' ) {
 /**
  * Display a contextual alert block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array  $args    Block arguments, see themeblvd_get_alert() docs.
  * @param string $content Content for alert.
@@ -101,7 +101,7 @@ function themeblvd_alert( $args, $content = '' ) {
 /**
  * Get a divider block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -274,7 +274,7 @@ function themeblvd_get_divider( $args = array() ) {
 	 * Filters the final HTML output for a divider
 	 * block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param string $type   The type of divider, `dashed`, `shadow`, `solid`, `thick-solid`, `thick-dashed`, `double-solid`, `double-dashed`.
@@ -302,7 +302,7 @@ function themeblvd_get_divider( $args = array() ) {
 /**
  * Display a divider block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_divider() docs.
  */
@@ -315,7 +315,7 @@ function themeblvd_divider( $args = array() ) {
 /**
  * Get a Google Map block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array $args {
  *     Block arguments.
@@ -530,7 +530,7 @@ function themeblvd_get_map( $args ) {
 	 * pull information from, in order to communicate
 	 * and build a map with the Google Maps API.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -559,7 +559,7 @@ function themeblvd_get_map( $args ) {
 /**
  * Display a Google Map block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_map() docs.
  */
@@ -572,7 +572,7 @@ function themeblvd_map( $args ) {
 /**
  * Get an icon box block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array $args {
  *     Block arguments.
@@ -752,7 +752,7 @@ function themeblvd_get_icon_box( $args ) {
 	 * Filters the final HTML output for an icon box
 	 * block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -780,7 +780,7 @@ function themeblvd_get_icon_box( $args ) {
 /**
  * Display an icon box block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_icon_box() docs.
  */
@@ -793,7 +793,7 @@ function themeblvd_icon_box( $args ) {
 /**
  * Get hero unit block.
  *
- * @since @@name-framework 2.4.2
+ * @since Theme_Blvd 2.4.2
  *
  * @param  array $args {
  *     Block arguments.
@@ -1034,7 +1034,7 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
 	 * Filters the final HTML output for an icon box
 	 * block.
 	 *
-	 * @since @@name-framework 2.4.2
+	 * @since Theme_Blvd 2.4.2
 	 *
 	 * @param string $output   Final HTML output.
 	 * @param array  $args {
@@ -1077,7 +1077,7 @@ function themeblvd_get_jumbotron( $args, $content = '' ) {
 /**
  * Display hero unit block.
  *
- * @since @@name-framework 2.4.2
+ * @since Theme_Blvd 2.4.2
  *
  * @param array  $args    Block arguments, see themeblvd_get_jumbotron() docs.
  * @param string $content Inner content, if not passed in as content blocks from $args['blocks'].
@@ -1091,7 +1091,7 @@ function themeblvd_jumbotron( $args, $content = '' ) {
 /**
  * Get a logos block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -1305,7 +1305,7 @@ function themeblvd_get_logos( $args ) {
 	 * Filters the final HTML output for a logos
 	 * block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -1330,7 +1330,7 @@ function themeblvd_get_logos( $args ) {
 /**
  * Display a logos block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_logos() docs.
  */
@@ -1343,7 +1343,7 @@ function themeblvd_logos( $args ) {
 /**
  * Get a panel block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -1427,7 +1427,7 @@ function themeblvd_get_panel( $args, $content = '' ) {
 	 * Filters the final HTML output for a panel
 	 * block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -1450,7 +1450,7 @@ function themeblvd_get_panel( $args, $content = '' ) {
 /**
  * Display a panel block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array  $args    Block arguments, see themeblvd_get_panel() docs.
  * @param string $content Content for panel.
@@ -1465,7 +1465,7 @@ function themeblvd_panel( $args, $content = '' ) {
  * Get a promo box block, formally known as a
  * slogan block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -1710,7 +1710,7 @@ function themeblvd_get_slogan( $args ) {
 	 * Filters the final HTML output for a promo box
 	 * block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -1744,7 +1744,7 @@ function themeblvd_get_slogan( $args ) {
  * Display a promo box block, formally known as a
  * slogan block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_slogan() docs.
  */
@@ -1757,7 +1757,7 @@ function themeblvd_slogan( $args ) {
 /**
  * Get a tabs block.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string $id Unique ID for this tabs block.
  * @param  array  $args {
@@ -1816,7 +1816,7 @@ function themeblvd_get_tabs( $id, $args ) {
 	 * link to #tab_{ID OF TAB} and that tab will
 	 * automatically open.
 	 *
-	 * @since @@name-framework 2.4.4
+	 * @since Theme_Blvd 2.4.4
 	 *
 	 * @param bool Whether deeplinking is enabled.
 	 */
@@ -1942,7 +1942,7 @@ function themeblvd_get_tabs( $id, $args ) {
 	 * Filters the final HTML output for a tabs
 	 * block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -1962,7 +1962,7 @@ function themeblvd_get_tabs( $id, $args ) {
 /**
  * Display a tabs block.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param string $id   Unique ID for this tabs block.
  * @param array  $args Block arguments, see themeblvd_get_tabs() docs.
@@ -1976,7 +1976,7 @@ function themeblvd_tabs( $id, $args ) {
 /**
  * Get a team member block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -2059,7 +2059,7 @@ function themeblvd_get_team_member( $args ) {
 	 * Filters the final HTML output for a team
 	 * member block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -2079,7 +2079,7 @@ function themeblvd_get_team_member( $args ) {
 /**
  * Display a team member block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_team_member() docs.
  */
@@ -2092,7 +2092,7 @@ function themeblvd_team_member( $args ) {
 /**
  * Get a testimonial block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -2160,7 +2160,7 @@ function themeblvd_get_testimonial( $args ) {
 			 * Filters the icon used to represent a testimonial
 			 * author, when an image is not supplied.
 			 *
-			 * @since @@name-framework 2.7.4
+			 * @since Theme_Blvd 2.7.4
 			 *
 			 * @param string Icon name.
 			 */
@@ -2235,7 +2235,7 @@ function themeblvd_get_testimonial( $args ) {
 	 * Filters the final HTML output for a contextual
 	 * alert block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -2258,7 +2258,7 @@ function themeblvd_get_testimonial( $args ) {
 /**
  * Display a testimonial block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_testimonial() docs.
  */
@@ -2271,7 +2271,7 @@ function themeblvd_testimonial( $args ) {
 /**
  * Get a testimonial slider block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -2384,7 +2384,7 @@ function themeblvd_get_testimonial_slider( $args ) {
 	 * Filters the final HTML output for a testimonial
 	 * slider block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -2405,7 +2405,7 @@ function themeblvd_get_testimonial_slider( $args ) {
 /**
  * Display a testimonial slider block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_testimonial_slider() docs.
  */
@@ -2419,7 +2419,7 @@ function themeblvd_testimonial_slider( $args ) {
 /**
  * Get an individual toggle.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -2447,7 +2447,7 @@ function themeblvd_get_toggle( $args ) {
 	/**
 	 * Filters the color of the toggle.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string       Color class.
 	 * @param array  $args {
@@ -2494,7 +2494,7 @@ function themeblvd_get_toggle( $args ) {
 	 * If you'd like to get really specific with the icon style,
 	 * you can pass specific FA classes like `fal fa-plus-circle`.
 	 *
-	 * @since @@name-framework 2.7.4
+	 * @since Theme_Blvd 2.7.4
 	 *
 	 * @param array {
 	 *     Icon names or classes.
@@ -2547,7 +2547,7 @@ function themeblvd_get_toggle( $args ) {
 	 * Filters the final HTML output for an individual
 	 * toggle.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -2568,7 +2568,7 @@ function themeblvd_get_toggle( $args ) {
 /**
  * Display an individual toggle.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_toggle() docs.
  */
@@ -2585,7 +2585,7 @@ function themeblvd_toggle( $args ) {
  * themeblvd_get_toggle() to return the output
  * for each individual toggle.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param string $id Unique ID for toggles block.
  * @param array  $args {
@@ -2648,7 +2648,7 @@ function themeblvd_get_toggles( $id, $args ) {
 	 * Filters the final HTML output for a toggles
 	 * block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -2666,7 +2666,7 @@ function themeblvd_get_toggles( $id, $args ) {
 /**
  * Display set of toggles.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param string $id   Unique ID for toggles block.
  * @param array  $args Block arguments, see themeblvd_get_toggles() docs.
@@ -2680,7 +2680,7 @@ function themeblvd_toggles( $id, $args ) {
 /**
  * Get a pricing table block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $cols Data for each column of pricing table.
  * @param  array  $args {
@@ -2923,7 +2923,7 @@ function themeblvd_get_pricing_table( $cols, $args ) {
 				 * Filters the target attribute of a button in a
 				 * pricing table column.
 				 *
-				 * @since @@name-framework 2.5.0
+				 * @since Theme_Blvd 2.5.0
 				 *
 				 * @param string Link target attribute like `_self` or `_blank`.
 				 */
@@ -2958,7 +2958,7 @@ function themeblvd_get_pricing_table( $cols, $args ) {
 	 * Filters the final HTML output for a pricing
 	 * table block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $cols Data for each column of pricing table.
@@ -2976,7 +2976,7 @@ function themeblvd_get_pricing_table( $cols, $args ) {
 /**
  * Display a pricing table block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $cols Data for each column of pricing table.
  * @param array $args Block arguments, see themeblvd_get_pricing_table() docs.

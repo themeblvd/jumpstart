@@ -4,8 +4,8 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @since      @@name-package 2.2.2
+ * @package    Jump_Start
+ * @since      Jump_Start 2.2.2
  */
 
 /**
@@ -15,7 +15,7 @@
  * plugins to integrate into the theme's licence
  * admin page.
  *
- * @since @@name-package 2.2.2
+ * @since Jump_Start 2.2.2
  */
 class Jump_Start_Extension {
 
@@ -29,7 +29,7 @@ class Jump_Start_Extension {
 	/**
 	 * Constructor.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @param array $args {
 	 *     Extension arguments.
@@ -67,7 +67,7 @@ class Jump_Start_Extension {
 	/**
 	 * Registers the extension with Jump Start.
 	 *
-	 * @since @@name-package 2.2.2
+	 * @since Jump_Start 2.2.2
 	 *
 	 * @param  array $extensions Current extentsions.
 	 * @return array             Modified extensions.

@@ -4,15 +4,15 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.2.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.2.0
  */
 
 /**
  * Get a featured image link.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  int    $post_id  ID of post to pull meta data from.
  * @param  int    $thumb_id ID of attachment post set as featured image.
@@ -148,8 +148,8 @@ function themeblvd_get_post_thumbnail_link( $post_id = 0, $thumb_id = 0, $link =
 	 * Note: This filter is deprecated; use
 	 * `themeblvd_post_thumbnail_link` instead.
 	 *
-	 * @since @@name-framework 2.2.0
-	 * @deprecated @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.2.0
+	 * @deprecated Theme_Blvd 2.5.0
 	 *
 	 * @param string $class    CSS class(es), like `foo bar baz`.
 	 * @param int    $post_id  Post ID.
@@ -161,7 +161,7 @@ function themeblvd_get_post_thumbnail_link( $post_id = 0, $thumb_id = 0, $link =
 	 * Filters the link parameters for a featured
 	 * image.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array  $params {
 	 *     Link arguments.
@@ -182,7 +182,7 @@ function themeblvd_get_post_thumbnail_link( $post_id = 0, $thumb_id = 0, $link =
 /**
  * Get the icon used for a thumbnail link.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @param  string $type Type of thumbnail link, `image`, `video`, `post` or `external`.
  * @return array  $icon Final HTML output for icon.
@@ -222,7 +222,7 @@ function themeblvd_get_thumbnail_link_icon( $type = '' ) {
 	 * Filters the icon name used for a thumbnail
 	 * link icon.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string $icon_name Icon name.
 	 * @param string $type      Icon type.
@@ -238,7 +238,7 @@ function themeblvd_get_thumbnail_link_icon( $type = '' ) {
 	 * Filters the output for the icon used in
 	 * a thumbnail link.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string $icon      Final HTML output for icon.
 	 * @param string $type      Type of thumbnail link, `image`, `video`, `post` or `external`.
@@ -256,7 +256,7 @@ function themeblvd_get_thumbnail_link_icon( $type = '' ) {
  * function provides an alternative placeholder
  * display when a featured image doesn't exist.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args {
  *     Placeholder arguments.
@@ -339,7 +339,7 @@ function themeblvd_get_media_placeholder( $args = array() ) {
  * This will take some HTML and wrap it in
  * a link (<a>) to a lightbox.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param  array  $args {
  *     Lightox link arguments.
@@ -440,7 +440,7 @@ function themeblvd_get_link_to_lightbox( $args ) {
 	 * Filters the CSS classes used for a lightbox
 	 * link.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param array  $class CSS classes for lightbox link.
 	 * @param array  $args {
@@ -473,7 +473,7 @@ function themeblvd_get_link_to_lightbox( $args ) {
 	 * Filters the link properties for a lightbox
 	 * link.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param array  $props Properties to get added to lightbox <a> link tag.
 	 * @param array  $args {
@@ -518,7 +518,7 @@ function themeblvd_get_link_to_lightbox( $args ) {
 	 * Filters final HTML output for a lightbox
 	 * link.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -545,7 +545,7 @@ function themeblvd_get_link_to_lightbox( $args ) {
 /**
  * Display a lightbox link.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param array $args Lightbox link arguments, see themeblvd_get_link_to_lightbox() docs.
  */
@@ -568,7 +568,7 @@ function themeblvd_link_to_lightbox( $args ) {
  * 4. `custom`        Display custom title (and optional tagline) as logo.
  * 5. `image`         Display image as logo.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $logo {
  *     Logo arguments.
@@ -750,7 +750,7 @@ function themeblvd_get_logo( $logo = array(), $trans = false ) {
 					 * Filters the `srcset` attribute used with the
 					 * main website logo.
 					 *
-					 * @since @@name-framework 2.5.0
+					 * @since Theme_Blvd 2.5.0
 					 *
 					 * @param string $srcset Value formatted for HTML srcset parameter.
 					 * @param array  $logo {
@@ -779,7 +779,7 @@ function themeblvd_get_logo( $logo = array(), $trans = false ) {
 					 * Filters the `sizes` attribute used with the
 					 * main website logo. Blank by default.
 					 *
-					 * @since @@name-framework 2.5.0
+					 * @since Theme_Blvd 2.5.0
 					 *
 					 * @param string $srcset Value formatted for HTML srcset parameter.
 					 * @param array  $logo {
@@ -818,7 +818,7 @@ function themeblvd_get_logo( $logo = array(), $trans = false ) {
 	/**
 	 * Filters the main site logo output.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $logo {
@@ -842,7 +842,7 @@ function themeblvd_get_logo( $logo = array(), $trans = false ) {
 /**
  * Get a background slider.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $id       Unique ID for background slider.
  * @param  array  $images   Images for background slider.
@@ -874,7 +874,7 @@ function themeblvd_get_bg_slideshow( $id, $images, $parallax = false ) {
 	 * Filters the milliseconds between transitions
 	 * for a background slider.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param int|string Background slider interval in milliseconds, like `5000`.
 	 */
@@ -950,7 +950,7 @@ function themeblvd_get_bg_slideshow( $id, $images, $parallax = false ) {
 	 * Filters the HTML output for a background
 	 * slider.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output   Final HTML output.
 	 * @param string $id       Unique ID for background slider.
@@ -964,7 +964,7 @@ function themeblvd_get_bg_slideshow( $id, $images, $parallax = false ) {
 /**
  * Display a background slider.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $id       Unique ID for background slider.
  * @param  array  $images   Images for background slider.
@@ -979,7 +979,7 @@ function themeblvd_bg_slideshow( $id, $images, $parallax = false ) {
 /**
  * Get a background parallax image.
  *
- * @since @@name-framework 2.5.1
+ * @since Theme_Blvd 2.5.1
  *
  * @param  array $display Display settings from custom layout.
  */
@@ -1078,7 +1078,7 @@ function themeblvd_get_bg_parallax( $display ) {
 	/**
 	 * Filters a background parallax image.
 	 *
-	 * @since @@name-framework 2.5.1
+	 * @since Theme_Blvd 2.5.1
 	 *
 	 * @param string $output  Final HTML output.
 	 * @param array  $display Display settings from custom layout.
@@ -1090,7 +1090,7 @@ function themeblvd_get_bg_parallax( $display ) {
 /**
  * Display a background parallax image.
  *
- * @since @@name-framework 2.5.1
+ * @since Theme_Blvd 2.5.1
  *
  * @param array $display Display settings from custom layout.
  */
@@ -1103,7 +1103,7 @@ function themeblvd_bg_parallax( $display ) {
 /**
  * Get a background shade.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @param array $display Display settings from custom layout.
  */
@@ -1123,7 +1123,7 @@ function themeblvd_get_bg_shade( $display ) {
 	/**
 	 * Filters a background shade.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string $output  Final HTML output.
 	 * @param array  $display Display settings from custom layout.
@@ -1135,7 +1135,7 @@ function themeblvd_get_bg_shade( $display ) {
 /**
  * Display a background shade.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @param array $display Display settings from custom layout.
  */
@@ -1148,7 +1148,7 @@ function themeblvd_bg_shade( $display ) {
 /**
  * Get a background video.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $video {
  *     Video arguments.
@@ -1219,7 +1219,7 @@ function themeblvd_get_bg_video( $video ) {
 			 *
 			 * ... So those can be added to the <video> tag.
 			 *
-			 * @since @@name-framework 2.5.0
+			 * @since Theme_Blvd 2.5.0
 			 *
 			 * @param array Video types.
 			 */
@@ -1260,7 +1260,7 @@ function themeblvd_get_bg_video( $video ) {
 				 * Filters the arguments used to embed a
 				 * background video from YouTube API.
 				 *
-				 * @since @@name-framework 2.5.0
+				 * @since Theme_Blvd 2.5.0
 				 *
 				 * @param array        Video arguments for YouTube API.
 				 * @param array $video {
@@ -1341,7 +1341,7 @@ function themeblvd_get_bg_video( $video ) {
 			 * Filters the arguments used to embed a
 			 * background video from Vimeo API.
 			 *
-			 * @since @@name-framework 2.5.0
+			 * @since Theme_Blvd 2.5.0
 			 *
 			 * @param array        Video arguments for Vimeo API.
 			 * @param array $video {
@@ -1387,7 +1387,7 @@ function themeblvd_get_bg_video( $video ) {
 	/**
 	 * Filters a background video.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string $output  Final HTML output.
 	 * @param array  $video {
@@ -1406,7 +1406,7 @@ function themeblvd_get_bg_video( $video ) {
 /**
  * Display a background video.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_bg_video( $video ) {
 

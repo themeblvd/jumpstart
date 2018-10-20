@@ -4,8 +4,8 @@
  *
  * @author    Jason Bobich <info@themeblvd.com>
  * @copyright 2009-2017 Theme Blvd
- * @package   @@name-package
- * @since     @@name-package 2.1.0
+ * @package   Jump_Start
+ * @since     Jump_Start 2.1.0
  */
 
 /**
@@ -21,7 +21,7 @@ include_once( themeblvd_get_base_path( 'agent' ) . '/presets.php' );
 /**
  * Include Google fonts, if needed.
  *
- * @since @@name-package 2.1.0
+ * @since Jump_Start 2.1.0
  */
 function jumpstart_ag_include_fonts() {
 
@@ -44,7 +44,7 @@ add_action( 'wp_head', 'jumpstart_ag_include_fonts', 5 );
  * This generate output string to pass to
  * wp_add_inline_style().
  *
- * @since @@name-package 2.1.0
+ * @since Jump_Start 2.1.0
  *
  * @return string $print CSS code to print.
  */
@@ -504,7 +504,7 @@ function jumpstart_ag_css() {
 	 * Filters final printed inline CSS output
 	 * for Agent theme base.
 	 *
-	 * @since @@name-package 2.1.0
+	 * @since Jump_Start 2.1.0
 	 *
 	 * @param string $print CSS output.
 	 */
@@ -522,7 +522,7 @@ add_action( 'wp_enqueue_scripts', 'jumpstart_ag_css', 25 );
 /**
  * Add CSS classes to <body>.
  *
- * @since @@name-package 2.1.0
+ * @since Jump_Start 2.1.0
  *
  * @param  array $class WordPress classes to add to body.
  * @return array $class Modified WordPress classes to add to body.
@@ -545,7 +545,7 @@ add_filter( 'body_class', 'jumpstart_ag_body_class' );
 /**
  * Add CSS classes to header.
  *
- * @since @@name-package 2.1.0
+ * @since Jump_Start 2.1.0
  *
  * @param  array $class CSS classes being added to theme header.
  * @return array $class Modified CSS classes being added to theme header.
@@ -620,14 +620,14 @@ remove_action( 'themeblvd_header_menu', 'themeblvd_header_menu_default' );
  * Custom menu callback with header toolbar
  * added.
  *
- * @since @@name-package 2.1.0
+ * @since Jump_Start 2.1.0
  */
 function jumpstart_ag_header_menu() {
 
 	/**
 	 * Fires before the primary navigation.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	do_action( 'themeblvd_header_menu_before' );
 
@@ -691,7 +691,7 @@ function jumpstart_ag_header_menu() {
 			 * Fires just after the main menu, within
 			 * the main menu's <nav> wrapper.
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since Theme_Blvd 2.0.0
 			 */
 			do_action( 'themeblvd_header_menu_addon' );
 			?>
@@ -704,7 +704,7 @@ function jumpstart_ag_header_menu() {
 	/**
 	 * Fires after the primary navigation.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	do_action( 'themeblvd_header_menu_after' );
 
@@ -727,7 +727,7 @@ add_filter( 'themeblvd_mobile_panel_contact_bar_args', 'jumpstart_panel_contact_
  * Add CSS class to sticky header panel for
  * color brightness.
  *
- * @since @@name-package 2.1.0
+ * @since Jump_Start 2.1.0
  *
  * @param  array $class CSS classes being added.
  * @return array $class Modified CSS classes being added.
@@ -768,7 +768,7 @@ add_filter( 'themeblvd_copyright_contact_bar_args', 'jumpstart_copyright_contact
  * Height of the header, not including the logo.
  * Used with "suck up" feature.
  *
- * @since @@name-package 2.1.0
+ * @since Jump_Start 2.1.0
  *
  * @param int    $addend   Height of header excluding logo.
  * @param string $viewport Viewport range this applies to.
@@ -783,7 +783,7 @@ add_filter( 'themeblvd_top_height_addend', 'jumpstart_ag_top_height_addend', 10,
 /**
  * More narrow sidebars.
  *
- * @since @@name-package 2.1.0
+ * @since Jump_Start 2.1.0
  *
  * @param  array  $layouts All layouts and their configurations.
  * @param  string $stack   The stacking point for the main grid system.
@@ -810,7 +810,7 @@ add_filter( 'themeblvd_sidebar_layouts', 'jumpstart_ag_sidebar_layouts', 9, 2 );
  * Filter args that get filtered in when sidebars
  * are registered.
  *
- * @since @@name-package 2.1.0
+ * @since Jump_Start 2.1.0
  */
 function themeblvd_ag_sidebar_args( $args, $sidebar, $location ) {
 

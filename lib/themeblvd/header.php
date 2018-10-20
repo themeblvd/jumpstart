@@ -10,9 +10,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 ?><!DOCTYPE html>
 
@@ -34,7 +34,7 @@
 	 * @hooked themeblvd_mobile_header - 10
 	 * @hooked themeblvd_widgets_above_header - 20
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 */
 	do_action( 'themeblvd_before' );
 	?>
@@ -49,7 +49,7 @@
 			 *
 			 * @hooked themeblvd_header_default - 10
 			 *
-			 * @since @@name-framework 2.7.0
+			 * @since Theme_Blvd 2.7.0
 			 */
 			do_action( 'themeblvd_header' );
 
@@ -58,7 +58,7 @@
 			 *
 			 * @hooked themeblvd_breadcrumbs_default - 10
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since Theme_Blvd 2.0.0
 			 */
 			do_action( 'themeblvd_breadcrumbs' );
 
@@ -80,7 +80,7 @@
 				 *
 				 * @hooked themeblvd_main_start_default - 10
 				 *
-				 * @since @@name-framework 2.0.0
+				 * @since Theme_Blvd 2.0.0
 				 */
 				do_action( 'themeblvd_main_start' );
 
@@ -88,7 +88,7 @@
 				 * Fires just inside the main content
 				 * wrapper.
 				 *
-				 * @since @@name-framework 2.0.0
+				 * @since Theme_Blvd 2.0.0
 				 */
 				do_action( 'themeblvd_main_top' );
 
@@ -98,6 +98,6 @@
 			 * Fires just before the sidebar layout
 			 * is started.
 			 *
-			 * @since @@name-framework 2.0.0
+			 * @since Theme_Blvd 2.0.0
 			 */
 			do_action( 'themeblvd_before_layout' );

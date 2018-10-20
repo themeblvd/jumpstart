@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 /**
@@ -16,14 +16,14 @@
  * This function is hooked to:
  * 1. `after_setup_theme` - 1001
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  */
 function themeblvd_admin_init() {
 
 	/**
 	 * Filters whether framework message displays.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param bool Whether framework welcome message displays.
 	 */
@@ -114,7 +114,7 @@ function themeblvd_admin_init() {
  * This function is hooked to:
  * 1. `after_setup_theme` - 10
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  */
 function themeblvd_plugins() {
 
@@ -197,7 +197,7 @@ function themeblvd_plugins() {
  * This function is hooked to:
  * 1. `admin_init` - 10
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  */
 function themeblvd_update_version() {
 
@@ -215,7 +215,7 @@ function themeblvd_update_version() {
  * This function is hooked to:
  * 1. `admin_enqueue_scripts` - 10
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  */
 function themeblvd_admin_enqueue() {
 
@@ -327,7 +327,7 @@ function themeblvd_admin_enqueue() {
  * meant to be called from other functions hooked to
  * admin_enqueue_scripts.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @param string $type Type of assets to load, `styles` or 'scripts'.
  */

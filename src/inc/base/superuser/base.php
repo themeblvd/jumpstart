@@ -4,8 +4,8 @@
  *
  * @author    Jason Bobich <info@themeblvd.com>
  * @copyright 2009-2017 Theme Blvd
- * @package   @@name-package
- * @since     @@name-package 2.0.0
+ * @package   Jump_Start
+ * @since     Jump_Start 2.0.0
  */
 
 /**
@@ -21,7 +21,7 @@ include_once( themeblvd_get_base_path( 'superuser' ) . '/presets.php' );
 /**
  * Include Google fonts, if needed.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  */
 function jumpstart_su_include_fonts() {
 
@@ -42,7 +42,7 @@ add_action( 'wp_head', 'jumpstart_su_include_fonts', 5 );
  * Generate output string to pass to
  * wp_add_inline_style().
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  */
 function jumpstart_su_css() {
 
@@ -1018,7 +1018,7 @@ function jumpstart_su_css() {
 	 * Filters final printed inline CSS output
 	 * for Super User theme base.
 	 *
-	 * @since @@name-package 2.0.0
+	 * @since Jump_Start 2.0.0
 	 *
 	 * @param string $print CSS output.
 	 */
@@ -1036,7 +1036,7 @@ add_action( 'wp_enqueue_scripts', 'jumpstart_su_css', 25 );
 /**
  * Add CSS classes to <body>.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param  array $class WordPress classes to add to body.
  * @return array $class Modified WordPress classes to add to body.
@@ -1072,7 +1072,7 @@ add_filter( 'body_class', 'jumpstart_su_body_class' );
  * Add CSS classes to sticky header panel for
  * color brightness.
  *
- * @since @@name-package 2.1.0
+ * @since Jump_Start 2.1.0
  *
  * @param  array $class Classes to add to sticky header.
  * @return array $class Modified classes to add to sticky header.
@@ -1102,7 +1102,7 @@ add_filter( 'themeblvd_sticky_class', 'jumpstart_su_sticky_class' );
 /**
  * Add CSS classes to header.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param  array $class Classes to add to header.
  * @return array $class Modified classes to add to header.
@@ -1167,7 +1167,7 @@ add_filter( 'themeblvd_mobile_header_breakpoint', 'jumpstart_mobile_header_break
 /**
  * Add CSS classes to header top bar.
  *
- * @since @@name-package 2.1.0
+ * @since Jump_Start 2.1.0
  *
  * @param  array $class Classes to add to top bar.
  * @return array $class Modified classes to add to top bar.
@@ -1220,7 +1220,7 @@ add_filter( 'themeblvd_copyright_contact_bar_args', 'jumpstart_copyright_contact
  * Height of the header, not including the logo.
  * Used with "suck up" feature.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param int $addend Height of header excluding logo.
  * @param string $viewport Viewport range this applies to.
@@ -1296,7 +1296,7 @@ add_filter( 'themeblvd_top_height_addend', 'jumpstart_su_top_height_addend', 10,
  * it from the themeblvd_header action, and move
  * to the themeblvd_header_addon action.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  */
 function jumpstart_su_header_info() {
 
@@ -1315,7 +1315,7 @@ add_action( 'wp', 'jumpstart_su_header_info' );
  * Add header text, search, and social icons to
  * header content area.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  */
 function jumpstart_su_header_addon() {
 
@@ -1429,7 +1429,7 @@ function jumpstart_su_header_addon() {
 /**
  * Add floating search to main menu.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param  string $items Current output for WordPress menu.
  * @param  array  $args  Arguments for WordPress menu.
@@ -1455,7 +1455,7 @@ add_filter( 'wp_nav_menu_items', 'jumpstart_su_nav_search', 10, 2 );
  * Make sure floating search outputs in header if user
  * selected it for main menu.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param  bool $do Whether to show floating search popup.
  * @return bool $do Whether to show floating search popup.
@@ -1477,7 +1477,7 @@ add_filter( 'themeblvd_do_floating_search', 'jumpstart_su_do_floating_search' );
  * Filter args that get filtered in when all
  * sidebars are registered.
  *
- * @since @@name-package 2.0.0
+ * @since Jump_Start 2.0.0
  *
  * @param  array  $args     Arguments passed to register_sidebar().
  * @param  array  $sidebar  Sidebar information from framework.

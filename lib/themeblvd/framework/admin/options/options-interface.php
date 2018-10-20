@@ -4,16 +4,16 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.2.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.2.0
  */
 
 /**
  * Generates the options fields that are used in
  * forms for internal options framework.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  *
  * @param  string  $option_name Prefix for all field name attributes.
  * @param  array   $options     All options to show in form.
@@ -1066,8 +1066,8 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 						'id'      => '',
 						'src'     => '',
 						'title'   => '',
-						'alt'     => '', // @since @@name-framework 2.7.0
-						'caption' => '', // @since @@name-framework 2.7.0
+						'alt'     => '', // @since Theme_Blvd 2.7.0
+						'caption' => '', // @since Theme_Blvd 2.7.0
 						'crop'    => '',
 					) );
 
@@ -1150,13 +1150,13 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 				$current = wp_parse_args( $current, array(
 					'size'        => '0px',
 					'style'       => '',
-					'weight'      => '400', // @since @@name-framework 2.5.0
+					'weight'      => '400', // @since Theme_Blvd 2.5.0
 					'face'        => '',
-					'color'       => '',    // @since @@name-framework 2.5.0
+					'color'       => '',    // @since Theme_Blvd 2.5.0
 					'google'      => '',
-					'typekit'     => '',    // @since @@name-framework 2.6.0
-					'typekit_kit' => '',    // @since @@name-framework 2.6.0
-					'custom'      => '',    // @since @@name-framework 2.7.0
+					'typekit'     => '',    // @since Theme_Blvd 2.6.0
+					'typekit_kit' => '',    // @since Theme_Blvd 2.6.0
+					'custom'      => '',    // @since Theme_Blvd 2.7.0
 				) );
 
 				// Add font-size selection to output.
@@ -1411,10 +1411,10 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 
 				$current = wp_parse_args( $current, array(
 					'image'         => '',
-					'image_id'      => '', // @since @@name-framework 2.7.0
-					'image_title'   => '', // @since @@name-framework 2.7.0
-					'image_alt'     => '', // @since @@name-framework 2.7.0
-					'image_caption' => '', // @since @@name-framework 2.7.0
+					'image_id'      => '', // @since Theme_Blvd 2.7.0
+					'image_title'   => '', // @since Theme_Blvd 2.7.0
+					'image_alt'     => '', // @since Theme_Blvd 2.7.0
+					'image_caption' => '', // @since Theme_Blvd 2.7.0
 					'color'         => '',
 		            'image'         => '',
 		            'repeat'        => '',
@@ -2047,7 +2047,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					 * Filters the plugins used with TinyMCE in the rich
 					 * text editor (visual tab).
 					 *
-					 * @since @@name-framework 2.7.2
+					 * @since Theme_Blvd 2.7.2
 					 *
 					 * @param array Plugins.
 					 */
@@ -2062,7 +2062,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					 * Filters the toolbars added to the rich text
 					 * editor (visual tab).
 					 *
-					 * @since @@name-framework 2.7.2
+					 * @since Theme_Blvd 2.7.2
 					 *
 					 * @param array {
 					 *     @type array $toolbar1 Buttons for first-level toolbar.
@@ -2550,7 +2550,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 		 * the database, you must filter on a sanitization function
 		 * to `themeblvd_sanitize_{type}`.
 		 *
-		 * @since @@name-framework 2.2.0
+		 * @since Theme_Blvd 2.2.0
 		 *
 		 * @param string $output      All HTML for options page, up to this point.
 		 * @param array  $option      Data for current option in loop.

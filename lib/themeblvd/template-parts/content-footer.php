@@ -7,9 +7,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.7.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.7.0
  */
 ?>
 <footer id="colophon" <?php themeblvd_footer_class(); ?>>
@@ -20,7 +20,7 @@
 		/**
 		 * Fires above the footer content.
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 */
 		do_action( 'themeblvd_footer_above' );
 
@@ -32,7 +32,7 @@
 		 *
 		 * @hooked themeblvd_footer_content_default - 10
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 */
 		do_action( 'themeblvd_footer_content' );
 
@@ -45,7 +45,7 @@
 		 *
 		 * @hooked themeblvd_footer_sub_content_default - 10
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 */
 		do_action( 'themeblvd_footer_sub_content' );
 
@@ -58,7 +58,7 @@
 		 *
 		 * @hooked themeblvd_footer_below_default - 10
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 */
 		do_action( 'themeblvd_footer_below' );
 		?>

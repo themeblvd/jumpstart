@@ -4,16 +4,16 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 
 /**
  * Setup the admin page for theme bases at
  * Appearance > Theme Base.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array  $bases   All theme bases to select from.
  * @param string $default Default base when none exists in the database.
@@ -23,7 +23,7 @@ class Theme_Blvd_Bases {
 	/**
 	 * All theme bases to select from.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 * @var array
 	 */
 	private $bases = array();
@@ -31,7 +31,7 @@ class Theme_Blvd_Bases {
 	/**
 	 * Default base when none exists in the database.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 * @var string
 	 */
 	private $default = 'dev';
@@ -40,7 +40,7 @@ class Theme_Blvd_Bases {
 	 * Constructor. Hook to `admin_menu` to start process
 	 * of adding admin page.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array  $bases   All theme bases to select from.
 	 * @param string $default Default base when none exists in the database.
@@ -60,7 +60,7 @@ class Theme_Blvd_Bases {
 	/**
 	 * Add the menu page.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function add_page() {
 
@@ -77,7 +77,7 @@ class Theme_Blvd_Bases {
 	/**
 	 * Add CSS and JS for admin page.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function assets() {
 
@@ -110,7 +110,7 @@ class Theme_Blvd_Bases {
 	/**
 	 * Display admin page.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function admin_page() {
 

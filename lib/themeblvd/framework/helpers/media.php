@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 /**
@@ -16,7 +16,7 @@
  * This function is filtered onto:
  * 1. `image_size_names_choose` - 10
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @return array Framework's image sizes.
  */
@@ -39,7 +39,7 @@ function themeblvd_image_size_names_choose( $sizes ) {
 	 * theme to options in the WordPress admin
 	 * allowing user to select a crop size.
 	 *
-	 * @since @@name-framework 2.1.0
+	 * @since Theme_Blvd 2.1.0
 	 *
 	 * @param array Framework image sizes.
 	 */
@@ -56,7 +56,7 @@ function themeblvd_image_size_names_choose( $sizes ) {
  * FALSE, but if not return an icon type that
  * can be associated with it.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param  string $url  Link URL.
  * @return string $icon Type of URL, `image` or `video`, or FALSE if URL is not lightbox compatible.
@@ -106,7 +106,7 @@ function themeblvd_is_lightbox_url( $url ) {
 	 * If it is a valid lightbox URL, a type will be
 	 * returned.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $icon Type of URL, `image` or `video`, or FALSE if URL is not lightbox compatible.
 	 * @param string $url  Link URL that was originally checked.
@@ -119,7 +119,7 @@ function themeblvd_is_lightbox_url( $url ) {
  * Find all instances of image URL strings within
  * a text block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $str    Text string to search for images within.
  * @return array  $images All found image URLs in text block.
@@ -161,7 +161,7 @@ function themeblvd_get_img_urls( $str ) {
  * other feature of the framework requires these
  * image sizes, they can grab 'em.
  *
- * @since @@name-framework 2.2.0
+ * @since Theme_Blvd 2.2.0
  */
 function themeblvd_get_image_sizes( $size = '' ) {
 
@@ -169,7 +169,7 @@ function themeblvd_get_image_sizes( $size = '' ) {
 	 * Filters the maximum content width values
 	 * the theme sets to $GLOBALS['content_width'].
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param int Width value. Default 1200.
 	 */
@@ -262,7 +262,7 @@ function themeblvd_get_image_sizes( $size = '' ) {
 	 * Filters the image sizes the theme registers
 	 * with WordPress.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param array $sizes Image sizes.
 	 */
@@ -293,7 +293,7 @@ function themeblvd_get_image_sizes( $size = '' ) {
  * This function is hooked to:
  * 1. `after_setup_theme` - 10
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  */
 function themeblvd_add_image_sizes() {
 
@@ -315,7 +315,7 @@ function themeblvd_add_image_sizes() {
  * can be applied and removed as needed onto WordPress's
  * `editor_max_image_size`.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_editor_max_image_size() {
 
@@ -336,7 +336,7 @@ function themeblvd_editor_max_image_size() {
  * but still maintain the same aspect ratio, as each stack shares
  * a common downsize pattern.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array  $attachment Attachment from original call to get_attachment_image_src().
  * @param string $id         Original attachment ID.
@@ -437,7 +437,7 @@ function themeblvd_image_downsize( $attachment, $attachmen_id, $crop = 'tb_x_lar
  * This function is filtered onto:
  * 1. `img_caption_shortcode` - 10
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string $output  The caption output. Default empty.
  * @param  array  $attr    Attributes of the caption shortcode.
@@ -536,7 +536,7 @@ function themeblvd_img_caption_shortcode( $output, $attr, $content ) {
  * 1. `oembed_result` - 10
  * 2. `embed_oembed_html` - 10
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param string  $input  Constructed HTML for embed.
  * @param string  $url    Original embed URL.
@@ -611,7 +611,7 @@ function themeblvd_oembed_result( $input, $url ) {
  * This function is filtered onto:
  * 1. `wp_audio_shortcode` - 10
  *
- * @since @@name-framework 2.2.1
+ * @since Theme_Blvd 2.2.1
  *
  * @param  string $input <audio> tag HTML output.
  * @return string        Modified $input.
@@ -631,7 +631,7 @@ function themeblvd_audio_shortcode( $input ) {
  * determine if a parallax effect is going to
  * be applied.
  *
- * @since @@name-framework 2.5.1
+ * @since Theme_Blvd 2.5.1
  *
  * @param  array $display Display settings from custom layout.
  * @return bool           Whether to display with parallax effect.
@@ -676,7 +676,7 @@ function themeblvd_do_parallax( $display ) {
  * determine if a background shade is going
  * to be applied.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @param  array $display Display settings from custom layout.
  * @return bool           Whether to display with background shade.
@@ -713,7 +713,7 @@ function themeblvd_do_bg_shade( $display ) {
  * our supported video types, self-hosted HTML5,
  * Vimeo, or YouTube.
  *
- * @since @@name-framework 2.6.0
+ * @since Theme_Blvd 2.6.0
  *
  * @param array $video {
  *     Video arguments.

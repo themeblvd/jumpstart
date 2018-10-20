@@ -4,22 +4,22 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.3.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.3.0
  */
 
 /**
  * Add options to Appearance > Menus.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  */
 class Theme_Blvd_Menu_Options {
 
 	/**
 	 * A single instance of this class.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var Theme_Blvd_Menu_Options
 	 */
 	private static $instance = null;
@@ -27,7 +27,7 @@ class Theme_Blvd_Menu_Options {
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @return Theme_Blvd_Menu_Options A single instance of this class.
 	 */
@@ -46,7 +46,7 @@ class Theme_Blvd_Menu_Options {
 	/**
 	 * Constructor. Hook everything in.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	public function __construct() {
 
@@ -61,7 +61,7 @@ class Theme_Blvd_Menu_Options {
 	/**
 	 * Menus admin page scripts and styles.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $hook Admin page hook passed from WP's `admin_enqueue_scripts`.
 	 */
@@ -92,7 +92,7 @@ class Theme_Blvd_Menu_Options {
 	 * Include an extended version of WP's Walker_Nav_Menu_Edit
 	 * and apply it.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function walker() {
 
@@ -114,7 +114,7 @@ class Theme_Blvd_Menu_Options {
 	/**
 	 * Save the options we've added to the menu builder.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function save( $menu_id, $item_id, $args ) {
 

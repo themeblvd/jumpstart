@@ -7,9 +7,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.7.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.7.0
  */
 ?>
 <header id="branding" <?php themeblvd_header_class(); ?>>
@@ -25,7 +25,7 @@
 		 *
 		 * @hooked themeblvd_header_top_default - 10
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 */
 		do_action( 'themeblvd_header_top' );
 
@@ -35,7 +35,7 @@
 		 *
 		 * @hooked themeblvd_header_content_default - 10
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 */
 		do_action( 'themeblvd_header_content' );
 
@@ -44,7 +44,7 @@
 		 *
 		 * @hooked themeblvd_header_menu_default - 10
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 */
 		do_action( 'themeblvd_header_menu' );
 		?>

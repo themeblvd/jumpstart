@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.0.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.0.0
  */
 
 /**
@@ -15,7 +15,7 @@
  * Include external fonts from Google and Typekit.
  * Accepts unlimited amount of font arguments.
  *
- * @since @@name-framework 2.6.0
+ * @since Theme_Blvd 2.6.0
  */
 function themeblvd_include_fonts() {
 
@@ -115,7 +115,7 @@ function themeblvd_include_fonts() {
 			 * Filters the URL to include fonts from
 			 * Google Font Directory.
 			 *
-			 * @since @@name-framework 2.7.0
+			 * @since Theme_Blvd 2.7.0
 			 *
 			 * @param string $url      Full URL, like `https://fonts.googleapis.com/css?family=Foo`.
 			 * @param array  $g_fonts  Font data.
@@ -146,7 +146,7 @@ function themeblvd_include_fonts() {
  * property, given the value from a `typography`
  * type framework option.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  array  $option Value from a `typography` type framework option.
  * @return string $stack  Font name, to be used with CSS font-family property.
@@ -211,7 +211,7 @@ function themeblvd_get_font_face( $option ) {
 	 * property, given the value from a `typography`
 	 * type framework option.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param string $stack  Font name, to be used with CSS font-family property.
 	 * @param array  $option Value from a `typography` type framework option.
@@ -228,7 +228,7 @@ function themeblvd_get_font_face( $option ) {
  * property, given the value from a `typography`
  * type framework option.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param  array  $option Value from a `typography` type framework option.
  * @return string $size   Font size, to be used with CSS font-size property.
@@ -248,7 +248,7 @@ function themeblvd_get_font_size( $option ) {
 	 * property, given the value from a `typography`
 	 * type framework option.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $size   Font size, to be used with CSS font-size property.
 	 * @param array  $option Value from a `typography` type framework option.
@@ -264,7 +264,7 @@ function themeblvd_get_font_size( $option ) {
  * property, given the value from a `typography`
  * type framework option.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param  array  $option Value from a `typography` type framework option.
  * @return string $style  Font style, to be used with CSS font-style property.
@@ -287,7 +287,7 @@ function themeblvd_get_font_style( $option ) {
 	 * property, given the value from a `typography`
 	 * type framework option.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $style  Font style, to be used with CSS font-style property.
 	 * @param array  $option Value from a `typography` type framework option.
@@ -303,7 +303,7 @@ function themeblvd_get_font_style( $option ) {
  * property, given the value from a `typography`
  * type framework option.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param  array  $option Value from a `typography` type framework option.
  * @return string $weight Font weight, to be used with CSS font-weight property.
@@ -342,7 +342,7 @@ function themeblvd_get_font_weight( $option ) {
 	 * property, given the value from a `typography`
 	 * type framework option.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $weight Font weight, to be used with CSS font-style property.
 	 * @param array  $option Value from a `typography` type framework option.
@@ -358,7 +358,7 @@ function themeblvd_get_font_weight( $option ) {
  * property, given the value from a `typography`
  * type framework option.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $option   Value from a `typography` type framework option.
  * @return string $tranform Text transform value, to be used with CSS text-transform property.
@@ -381,7 +381,7 @@ function themeblvd_get_text_transform( $option ) {
 	 * property, given the value from a `typography`
 	 * type framework option.
 	 *
-	 * @since @@name-framework 2.5s.0
+	 * @since Theme_Blvd 2.5s.0
 	 *
 	 * @param string $weight Text transform value, to be used with CSS text-transform property.
 	 * @param array  $option Value from a `typography` type framework option.
@@ -397,7 +397,7 @@ function themeblvd_get_text_transform( $option ) {
  * Huge thank you to Oscar for providing this:
  * @link http://stackoverflow.com/questions/3015116/hex-code-brightness-php
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string $bg_color   Background color, like `#fff`.
  * @return string $text_color Text color, like `#000`.
@@ -423,7 +423,7 @@ function themeblvd_text_color( $bg_color ) {
 		 * Filters the deault dark text color when a
 		 * background is determined to be light.
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 *
 		 * @param string Color hex value, like `#000`.
 		 */
@@ -435,7 +435,7 @@ function themeblvd_text_color( $bg_color ) {
 		 * Filters the deault light text color when a
 		 * background is determined to be dark.
 		 *
-		 * @since @@name-framework 2.0.0
+		 * @since Theme_Blvd 2.0.0
 		 *
 		 * @param string Color hex value, like `#fff`.
 		 */
@@ -447,7 +447,7 @@ function themeblvd_text_color( $bg_color ) {
 	 * Filters the text color result, determined based
 	 * on the background color brightness.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @param string $text_color Text color, like `#000`.
 	 * @param string $bg_color   Background color, like `#fff`.
@@ -462,7 +462,7 @@ function themeblvd_text_color( $bg_color ) {
  * Huge thank you to Jonas John for providing this:
  * @link http://www.jonasjohn.de/snippets/php/darker-color.htm
  *
- * @since @@name-framework 2.0.5
+ * @since Theme_Blvd 2.0.5
  *
  * @param  string $color      Color hex to adjust, like `#000000`.
  * @param  int    $difference Amount to adjust color, like `20`.
@@ -513,7 +513,7 @@ function themeblvd_adjust_color( $color, $difference = 20, $direction = 'darken'
 	 * Filters an adjusted color hex to be brighter
 	 * or darker.
 	 *
-	 * @since @@name-framework 2.0.5
+	 * @since Theme_Blvd 2.0.5
 	 *
 	 * @param string $new_color  Adjusted color hex, like `#000000`.
 	 * @param string $color      Color hex to adjust, like `#000000`.
@@ -527,7 +527,7 @@ function themeblvd_adjust_color( $color, $difference = 20, $direction = 'darken'
 /**
  * Get an rgb() or rgba() value, given a color hex.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string $hex     Color hex value to convert, like `#000`.
  * @param  string $opacity Optional. Opacity value, like `0.5`, `1`, etc.
@@ -592,7 +592,7 @@ function themeblvd_get_rgb( $color, $opacity = '' ) {
 /**
  * Get class for buttons.
  *
- * @since @@name-framework 2.4.0
+ * @since Theme_Blvd 2.4.0
  *
  * @param  string $color Color of button.
  * @param  string $size  Size of button.
@@ -667,7 +667,7 @@ function themeblvd_get_button_class( $color = '', $size = '', $block = false ) {
 	 *
 	 * @see themeblvd_button()
 	 *
-	 * @since @@name-framework 2.4.0
+	 * @since Theme_Blvd 2.4.0
 	 *
 	 * @param string $class HTML Class to be outputted into button <a> HTML.
 	 * @param string $color Color of button.
@@ -680,7 +680,7 @@ function themeblvd_get_button_class( $color = '', $size = '', $block = false ) {
 /**
  * Get all CSS font stacks.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @return string $stacks CSS font stacks.
  */
@@ -704,7 +704,7 @@ function themeblvd_font_stacks() {
 	/**
 	 * Filters the CSS font stacks.
 	 *
-	 * @since @@name-framework 2.0.0
+	 * @since Theme_Blvd 2.0.0
 	 *
 	 * @return array $stacks CSS font stacks.
 	 */
@@ -715,7 +715,7 @@ function themeblvd_font_stacks() {
 /**
  * Get an individual transparent texture.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  string     $texture Texture identifier.
  * @return array|bool          Texture attributes, FALSE if texture doesn't exist.

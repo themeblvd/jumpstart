@@ -11,8 +11,8 @@
  *
  * @author    Jason Bobich <info@themeblvd.com>
  * @copyright 2009-2017 Theme Blvd
- * @package   @@name-package
- * @since     @@name-package 2.7.0
+ * @package   Jump_Start
+ * @since     Jump_Start 2.7.0
  */
 
 /**
@@ -26,7 +26,7 @@
  * Note: For the `typography` set options, the theme base
  * must pass in the $defaults.
  *
- * @since @@name-package 2.7.0
+ * @since Jump_Start 2.7.0
  *
  * @param  string $set      Type of option set, like `typography`, `buttons`, `widgets`, etc.
  * @param  array  $defaults Any custom default values.
@@ -607,7 +607,7 @@ function jumpstart_get_shared_options( $set, $defaults = array() ) {
  * Get styles output for shared sections used in
  * different theme bases.
  *
- * @since @@name-package 2.7.0
+ * @since Jump_Start 2.7.0
  *
  * @param  string $set    Type of option set to style, like `footer`.
  * @return string $output CSS output used with wp_add_inline_style().
@@ -812,7 +812,7 @@ function themeblvd_get_shared_style( $set ) {
 /**
  * Add CSS classes to mobile header.
  *
- * @since @@name-package 2.7.0
+ * @since Jump_Start 2.7.0
  *
  * @param  array $class CSS classes being added to mobile header.
  * @return array $class Modified CSS classes being added to mobile header.
@@ -828,7 +828,7 @@ function jumpstart_mobile_header_class( $class ) {
 /**
  * Add CSS classes to side panel and mobile menu.
  *
- * @since @@name-package 2.7.0
+ * @since Jump_Start 2.7.0
  *
  * @param  array $class CSS classes being added.
  * @return array $class Modified CSS classes being added.
@@ -844,7 +844,7 @@ function jumpstart_side_panel_class( $class ) {
 /**
  * Add CSS classes to footer.
  *
- * @since @@name-package 2.7.0
+ * @since Jump_Start 2.7.0
  *
  * @param  array $class CSS classes being added.
  * @return array $class Modified CSS classes being added.
@@ -879,7 +879,7 @@ function jumpstart_footer_class( $class ) {
  * Add CSS classes to site copyright at the
  * bottom of the footer.
  *
- * @since @@name-package 2.7.0
+ * @since Jump_Start 2.7.0
  *
  * @param  array $class CSS classes being added.
  * @return array $class Modified CSS classes being added.
@@ -903,7 +903,7 @@ function jumpstart_copyright_class( $class ) {
  * To use, filter onto:
  * `themeblvd_panel_contact_bar_args`
  *
- * @since @@name-package 2.7.0
+ * @since Jump_Start 2.7.0
  *
  * @param  array $args Arguments to pass to themeblvd_contact_bar().
  * @return array $args Modified arguments to pass to themeblvd_contact_bar().
@@ -926,7 +926,7 @@ function jumpstart_panel_contact_bar_args( $args ) {
  * To use, filter onto:
  * `themeblvd_copyright_contact_bar_args`
  *
- * @since @@name-package 2.7.0
+ * @since Jump_Start 2.7.0
  *
  * @param  array $args Arguments to pass to themeblvd_contact_bar().
  * @return array $args Modified arguments to pass to themeblvd_contact_bar().
@@ -959,7 +959,7 @@ function jumpstart_copyright_contact_bar_args( $args ) {
  * To use, filter onto:
  * `themeblvd_mobile_header_breakpoint`
  *
- * @since @@name-package 2.7.0
+ * @since Jump_Start 2.7.0
  *
  * @param  int $breakpoint Breakpoint, like `991`.
  * @return int $breakpoint Modified breakpoint, like `991`.

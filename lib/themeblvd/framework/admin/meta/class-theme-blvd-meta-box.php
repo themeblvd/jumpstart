@@ -4,9 +4,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.3.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.3.0
  */
 
 /**
@@ -16,7 +16,7 @@
  * It utilizes both the framework's option system and
  * WordPress's add_meta_box functionality.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @see themeblvd_add_meta_boxes()
  *
@@ -40,7 +40,7 @@ class Theme_Blvd_Meta_Box {
 	/**
 	 * Arguments to pass to add_meta_box().
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var array
 	 */
 	private $args;
@@ -48,7 +48,7 @@ class Theme_Blvd_Meta_Box {
 	/**
 	 * Options for meta box.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 * @var array
 	 */
 	private $options;
@@ -56,7 +56,7 @@ class Theme_Blvd_Meta_Box {
 	/**
 	 * Constructor. Hook in meta box to start the process.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param string $id      Unique ID for meta box.
 	 * @param array  $args    Setup array for meta box (see class docs).
@@ -83,7 +83,7 @@ class Theme_Blvd_Meta_Box {
 		/*
 		 * Backwards compat for older arguments.
 		 *
-		 * Prior to @@name-framework 2.7.0, $this->args['screen']
+		 * Prior to Theme_Blvd 2.7.0, $this->args['screen']
 		 * was named $this->args['page']; so we'll just make sure
 		 * that continues to work, if anyone's using it.
 		 */
@@ -129,7 +129,7 @@ class Theme_Blvd_Meta_Box {
 	 * Add any helper items needed to be outputted for
 	 * options being used in meta box.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 */
 	public function helpers() {
 
@@ -145,7 +145,7 @@ class Theme_Blvd_Meta_Box {
 	/**
 	 * Call WP's add_meta_box() for each post type.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	public function add() {
 
@@ -167,7 +167,7 @@ class Theme_Blvd_Meta_Box {
 	/**
 	 * Callback to display meta box.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 */
 	public function display() {
 
@@ -271,7 +271,7 @@ class Theme_Blvd_Meta_Box {
 	/**
 	 * Save meta data sent from meta box.
 	 *
-	 * @since @@name-framework 2.3.0
+	 * @since Theme_Blvd 2.3.0
 	 *
 	 * @param int $post_ID ID of post being saved.
 	 */

@@ -7,9 +7,9 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.7.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.7.0
  */
 ?>
 <div id="sticky-header" <?php themeblvd_sticky_class(); ?>>
@@ -23,7 +23,7 @@
 		 * @hooked themeblvd_sticky_header_logo - 10
 		 * @hooked themeblvd_sticky_header_menu - 20
 		 *
-		 * @since @@name-framework 2.7.0
+		 * @since Theme_Blvd 2.7.0
 		 */
 		do_action( 'themeblvd_sticky_header' );
 		?>

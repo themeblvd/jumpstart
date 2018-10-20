@@ -4,14 +4,14 @@
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
- * @package    @@name-package
- * @subpackage @@name-framework
- * @since      @@name-framework 2.5.0
+ * @package    Jump_Start
+ * @subpackage Theme_Blvd
+ * @since      Theme_Blvd 2.5.0
  */
 /**
  * Get a button block.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param  string $text        Text to show in button.
  * @param  string $color       Color class of button.
@@ -106,7 +106,7 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 	 * Filters the final HTML output for a contextual
 	 * alert block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output      Final HTML output.
 	 * @param string $text        Text to show in button.
@@ -128,7 +128,7 @@ function themeblvd_button( $text, $url, $color = 'default', $target = '_self', $
 /**
  * Get a group of buttons.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $buttons Buttons to include in group.
  * @param  array  $args {
@@ -262,7 +262,7 @@ function themeblvd_get_buttons( $buttons, $args = array() ) {
 	 * Filters the final HTML output for a group of
 	 * buttons.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $buttons Buttons to include in group.
@@ -279,7 +279,7 @@ function themeblvd_get_buttons( $buttons, $args = array() ) {
 /**
  * Display a group of buttons.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $buttons Buttons to include in group.
  * @param array $args Block arguments, see themeblvd_get_buttons() docs.
@@ -293,7 +293,7 @@ function themeblvd_buttons( $buttons, $args = array() ) {
 /**
  * Get a contact button bar block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $buttons {
  *     All links in contact bar.
@@ -328,7 +328,7 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 	/**
 	 * Filters the default arguments for a contact bar.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $args {
 	 *     Default arguments for a contact bar.
@@ -471,7 +471,7 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 				 * Filters the icon name used for icons used
 				 * in the contact bar.
 				 *
-				 * @since @@name-framework 2.7.4
+				 * @since Theme_Blvd 2.7.4
 				 *
 				 * @param string $icon Icon name.
 				 * @param string $type Original icon name before any alterations.
@@ -507,7 +507,7 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 	 * Filters the final HTML output for a contact
 	 * bar block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $buttons {
@@ -542,7 +542,7 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
  * set to TRUE if this contact bar is being displayed
  * in the header of the website.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param array $buttons All links in contact bar, see themeblvd_get_contact_bar() docs.
  * @param array $args    Block arguments, see themeblvd_get_contact_bar() docs.
@@ -568,7 +568,7 @@ function themeblvd_contact_bar( $buttons = array(), $args = array(), $trans = tr
  * Get a link to display the floating searchform
  * block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Link arguments.
@@ -586,7 +586,7 @@ function themeblvd_get_floating_search_trigger( $args = array() ) {
 	 * Filters the icon used to open the floating
 	 * search modal.
 	 *
-	 * @since @@name-framework 2.7.4
+	 * @since Theme_Blvd 2.7.4
 	 *
 	 * @param string Icon name.
 	 */
@@ -596,7 +596,7 @@ function themeblvd_get_floating_search_trigger( $args = array() ) {
 	 * Filters the default arguments for a link to
 	 * open a floating searchform.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array {
 	 *     Default link arguments.
@@ -630,7 +630,7 @@ function themeblvd_get_floating_search_trigger( $args = array() ) {
 	 * Filters the final HTML output for a link to display
 	 * the floating searchform block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output of link.
 	 * @param array  $args {
@@ -648,7 +648,7 @@ function themeblvd_get_floating_search_trigger( $args = array() ) {
  * Display a link to display the floating searchform
  * block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Link arguments, see themeblvd_get_floating_search_trigger() docs.
  */
@@ -661,7 +661,7 @@ function themeblvd_floating_search_trigger( $args = array() ) {
 /**
  * Get a link to display the mobile panel.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @param  array  $args {
  *     Link arguments.
@@ -676,7 +676,7 @@ function themeblvd_get_mobile_panel_trigger( $args = array() ) {
 	 * Filters the default arguments for a link to
 	 * open the mobile panel.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param array {
 	 *     Default link arguments.
@@ -704,7 +704,7 @@ function themeblvd_get_mobile_panel_trigger( $args = array() ) {
 	 * Filters the final HTML output for a link to
 	 * display the side panel
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string $output Final HTML output of link.
 	 * @param array  $args {
@@ -720,7 +720,7 @@ function themeblvd_get_mobile_panel_trigger( $args = array() ) {
 /**
  * Display a link to open the mobile panel.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @param array $args Link arguments, see themeblvd_get_mobile_panel_trigger() docs.
  */
@@ -733,7 +733,7 @@ function themeblvd_mobile_panel_trigger( $args = array() ) {
 /**
  * Get a link to display the side panel.
  *
- * @since @@name-framework 2.6.0
+ * @since Theme_Blvd 2.6.0
  *
  * @param  array  $args {
  *     Link arguments.
@@ -748,7 +748,7 @@ function themeblvd_get_side_trigger( $args = array() ) {
 	 * Filters the default arguments for a link to
 	 * open the side panel.
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 *
 	 * @param array {
 	 *     Default link arguments.
@@ -776,7 +776,7 @@ function themeblvd_get_side_trigger( $args = array() ) {
 	 * Filters the final HTML output for a link to
 	 * display the side panel
 	 *
-	 * @since @@name-framework 2.6.0
+	 * @since Theme_Blvd 2.6.0
 	 *
 	 * @param string $output Final HTML output of link.
 	 * @param array  $args {
@@ -792,7 +792,7 @@ function themeblvd_get_side_trigger( $args = array() ) {
 /**
  * Display a link to open the side panel.
  *
- * @since @@name-framework 2.6.0
+ * @since Theme_Blvd 2.6.0
  *
  * @param array $args Link arguments, see themeblvd_get_side_trigger() docs.
  */
@@ -806,7 +806,7 @@ function themeblvd_side_trigger( $args = array() ) {
  * Get a link to display the floating shopping
  * cart block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Link arguments.
@@ -835,7 +835,7 @@ function themeblvd_get_cart_popup_trigger( $args = array() ) {
 	 * Filters the default arguments used for the link
 	 * to the floating shopping cart modal.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array $args {
 	 *     Default link arguments.
@@ -905,7 +905,7 @@ function themeblvd_get_cart_popup_trigger( $args = array() ) {
 	 * that the floating shopping cart is disabled or
 	 * isn't working.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $url URL to the shopping cart page.
 	 */
@@ -925,7 +925,7 @@ function themeblvd_get_cart_popup_trigger( $args = array() ) {
 	 *
 	 * This number will get displayed with the link.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param int $count Total number of items currently in the cart.
 	 */
@@ -998,7 +998,7 @@ function themeblvd_get_cart_popup_trigger( $args = array() ) {
 	 * Filters a link to display the floating shopping
 	 * cart block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -1020,7 +1020,7 @@ function themeblvd_get_cart_popup_trigger( $args = array() ) {
  * Display a link to display the floating shopping
  * cart block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args See themeblvd_get_cart_popup_trigger() docs.
  */
@@ -1040,7 +1040,7 @@ function themeblvd_cart_popup_trigger( $args = array() ) {
  * using this function to display a button that just
  * always links to the shopping cart page.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_get_mobile_cart_link() {
 
@@ -1070,7 +1070,7 @@ function themeblvd_get_mobile_cart_link() {
 		/**
 		 * Filters the url to the shopping cart page.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param string $cart_url Shopping cart URL like `https://mysite.com/cart`.
 		 */
@@ -1079,7 +1079,7 @@ function themeblvd_get_mobile_cart_link() {
 		 * Filters the HTML for shopping cart icon in the
 		 * mobile header.
 		 *
-		 * @since @@name-framework 2.5.0
+		 * @since Theme_Blvd 2.5.0
 		 *
 		 * @param string Basic HTML For cart icon.
 		 */
@@ -1091,7 +1091,7 @@ function themeblvd_get_mobile_cart_link() {
 	 * Filters link to shopping cart page, intended for
 	 * mobile only.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output     Final HTML output.
 	 * @param string $cart_url   URL to shopping cart page, like `http://yoursite.com/cart`.
@@ -1104,7 +1104,7 @@ function themeblvd_get_mobile_cart_link() {
  * Display link to shopping cart page, intended for
  * mobile only.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  */
 function themeblvd_mobile_cart_link() {
 
@@ -1116,7 +1116,7 @@ function themeblvd_mobile_cart_link() {
  * Get a link to display the floating language
  * switcher block.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @param  array  $args {
  *     Link arguments.
@@ -1132,7 +1132,7 @@ function themeblvd_get_lang_popup_trigger( $args = array() ) {
 	 * Filters the icon used to open the floating
 	 * WPML language switcher.
 	 *
-	 * @since @@name-framework 2.7.4
+	 * @since Theme_Blvd 2.7.4
 	 *
 	 * @param string Icon name.
 	 */
@@ -1142,7 +1142,7 @@ function themeblvd_get_lang_popup_trigger( $args = array() ) {
 	 * Filters the default arguments for a link to
 	 * open a floating language switcher.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param array {
 	 *     Default link arguments.
@@ -1180,7 +1180,7 @@ function themeblvd_get_lang_popup_trigger( $args = array() ) {
 	 * Filters a link to display the floating language
 	 * switcher block.
 	 *
-	 * @since @@name-framework 2.7.0
+	 * @since Theme_Blvd 2.7.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -1198,7 +1198,7 @@ function themeblvd_get_lang_popup_trigger( $args = array() ) {
  * Display a link to display the floating language
  * switcher block.
  *
- * @since @@name-framework 2.7.0
+ * @since Theme_Blvd 2.7.0
  *
  * @param array $args Link arguments, see themeblvd_get_floating_search_trigger() docs.
  */
@@ -1211,7 +1211,7 @@ function themeblvd_lang_popup_trigger( $args = array() ) {
 /**
  * Get a pagination block.
  *
- * @since @@name-framework 2.3.0
+ * @since Theme_Blvd 2.3.0
  *
  * @param  int    $pages  Number of pages.
  * @param  int    $range  Range for paginated buttons, helpful for many pages.
@@ -1273,7 +1273,7 @@ function themeblvd_get_pagination( $pages = 0, $range = 2 ) {
 	 * to a pagination block, see themeblvd_get_pagination_parts()
 	 * and its filter.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $parts  Pagination parts retrieved from themeblvd_get_pagination_parts().
@@ -1287,7 +1287,7 @@ function themeblvd_get_pagination( $pages = 0, $range = 2 ) {
 /**
  * Display a pagination block.
  *
- * @since @@name-framework 2.0.0
+ * @since Theme_Blvd 2.0.0
  *
  * @param int $pages Number of pages.
  * @param int $range Range for paginated buttons, helpful for many pages.
@@ -1301,7 +1301,7 @@ function themeblvd_pagination( $pages = 0, $range = 2 ) {
 /**
  * Get a breadcrumbs block.
  *
- * @since @@name-framework 2.2.1
+ * @since Theme_Blvd 2.2.1
  *
  * @param  array  $args {
  *     Block arguments.
@@ -1320,7 +1320,7 @@ function themeblvd_get_breadcrumbs_trail( $args = array() ) {
 	 * Filters the default arguments for a breadcrumbs
 	 * block.
 	 *
-	 * @since @@name-framework 2.2.1
+	 * @since Theme_Blvd 2.2.1
 	 *
 	 * @param array Default arguments for breadcrumb blocks.
 	 */
@@ -1389,7 +1389,7 @@ function themeblvd_get_breadcrumbs_trail( $args = array() ) {
 	 * to a breadcrumbs block, see themeblvd_get_breadcrumb_parts()
 	 * and its filter.
 	 *
-	 * @since @@name-framework 2.2.1
+	 * @since Theme_Blvd 2.2.1
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args
@@ -1411,7 +1411,7 @@ function themeblvd_get_breadcrumbs_trail( $args = array() ) {
  * But how to unhook default breadcrumbs from running at all?
  * `remove_action( 'themeblvd_breadcrumbs', 'themeblvd_breadcrumbs_default' );`
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Breadcrumb arguments, see themeblvd_get_breadcrumbs_trail() docs.
  */
@@ -1435,7 +1435,7 @@ function themeblvd_the_breadcrumbs( $args = array() ) {
  * This function is currently used only for the "Simple
  * Contact" widget of the Theme Blvd Widget Pack plugin.
  *
- * @since @@name-framework 2.0.3
+ * @since Theme_Blvd 2.0.3
  *
  * @param  array  $args   Options setup from widget.
  * @return string $output Final HTML output for block.
@@ -1559,7 +1559,7 @@ function themeblvd_get_simple_contact( $args ) {
 	 * Filters the final HTML output for a simple
 	 * contact block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args   Options setup from widget.
@@ -1571,7 +1571,7 @@ function themeblvd_get_simple_contact( $args ) {
 /**
  * Display a simple contact block.
  *
- * @since @@name-framework 2.1.0
+ * @since Theme_Blvd 2.1.0
  *
  * @param array $args Options setup from widget.
  */
@@ -1584,7 +1584,7 @@ function themeblvd_simple_contact( $args ) {
 /**
  * Get slider directional navigation arrows.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -1652,7 +1652,7 @@ function themeblvd_get_slider_controls( $args = array() ) {
 	 * Filters the final HTML output for slider
 	 * directional navigation arrows
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -1672,7 +1672,7 @@ function themeblvd_get_slider_controls( $args = array() ) {
 /**
  * Display slider directional navigation arrows.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_slider_controls() docs.
  */
@@ -1686,7 +1686,7 @@ function themeblvd_slider_controls( $args = array() ) {
  * Get a button that scrolls to the top of
  * the page.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -1721,7 +1721,7 @@ function themeblvd_get_to_top( $args = array() ) {
 	 * Filters the final HTML output for a button
 	 * that scrolls to the top of the page.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -1745,7 +1745,7 @@ function themeblvd_get_to_top( $args = array() ) {
  * So if you're manually outputting the item,
  * use `echo themeblvd_get_to_top()` instead.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_to_top() docs.
  */
@@ -1763,7 +1763,7 @@ function themeblvd_to_top( $args = array() ) {
  * Get a button that scrolls to a specific
  * section on the page.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $args {
  *     Block arguments.
@@ -1801,7 +1801,7 @@ function themeblvd_get_to_section( $args = array() ) {
 	 * that scrolls to a specific section on
 	 * the page.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output Final HTML output.
 	 * @param array  $args {
@@ -1819,7 +1819,7 @@ function themeblvd_get_to_section( $args = array() ) {
  * Display a button that scrolls to a specific
  * section on the page.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array $args Block arguments, see themeblvd_get_to_section() docs.
  */
@@ -1832,7 +1832,7 @@ function themeblvd_to_section( $args = array() ) {
 /**
  * Get a post filtering navigation block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param  array  $posts Array of WP_Post objects for current loop.
  * @param  string $tax   Taxonomy to filter posts by.
@@ -1857,7 +1857,7 @@ function themeblvd_get_filter_nav( $posts, $tax = 'category', $args = array() ) 
 	 * Filters default arguments for a posts filtering
 	 * navigation block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array  $args {
 	 *     Block arguments.
@@ -1920,7 +1920,7 @@ function themeblvd_get_filter_nav( $posts, $tax = 'category', $args = array() ) 
 	 * Filters the final HTML output for a post
 	 * filtering navigation block.
 	 *
-	 * @since @@name-framework 2.5.0
+	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param array  $posts Array of WP_Post objects for current loop.
 	 * @param string $tax   Taxonomy to filter posts by.
@@ -1937,7 +1937,7 @@ function themeblvd_get_filter_nav( $posts, $tax = 'category', $args = array() ) 
 /**
  * Display a post filtering navigation block.
  *
- * @since @@name-framework 2.5.0
+ * @since Theme_Blvd 2.5.0
  *
  * @param array  $posts Array of WP_Post objects for current loop.
  * @param string $tax   Taxonomy to filter posts by.
