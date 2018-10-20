@@ -1,13 +1,27 @@
 const gulp = require('gulp');
+const remoteSrc = require('gulp-remote-src');
 const concat = require('gulp-concat');
 const replace = require('gulp-replace');
 const minifyjs = require('gulp-uglify');
 const rename = require('gulp-rename');
 
+// @TODO ['render-fontawesome-shim']
+
+/**
+ * Merge FontAwesome json.
+ */
+gulp.task('build-fontawesome-json', function() {
+  const faVersion = '5.4.1';
+
+  return remoteSrc(['icons.json'], {
+    base: `https://raw.githubusercontent.com/FortAwesome/Font-Awesome/${faVersion}/advanced-options/metadata/`
+  }).pipe(gulp.dest('../framework/admin/assets/data'));
+});
+
 /**
  * Build a custom FontAwesome JavaScript file.
  */
-gulp.task('build-fontawesome', function() {
+gulp.task('build-fontawesome', ['build-fontawesome-json'], function() {
   const dir = '../framework/assets/js';
 
   const src = [

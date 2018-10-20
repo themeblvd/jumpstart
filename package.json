@@ -23,6 +23,7 @@
     "gulp-clean": "latest",
     "gulp-clean-css": "latest",
     "gulp-concat": "latest",
+    "gulp-remote-src": "^0.4.3",
     "gulp-rename": "latest",
     "gulp-replace": "latest",
     "gulp-sass": "latest",
