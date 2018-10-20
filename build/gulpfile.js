@@ -5,12 +5,22 @@ const replace = require('gulp-replace');
 const minifyjs = require('gulp-uglify');
 const rename = require('gulp-rename');
 
-// @TODO ['render-fontawesome-shim']
+/**
+ * Merge FontAwesome v4 shim into theme.
+ */
+gulp.task('build-fontawesome-shim', function() {
+  const files = [
+    '../node_modules/@fortawesome/fontawesome-free/js/v4-shims.js',
+    '../node_modules/@fortawesome/fontawesome-free/js/v4-shims.min.js'
+  ];
+
+  return gulp.src(files).pipe(gulp.dest('../framework/assets/js/'));
+});
 
 /**
  * Merge FontAwesome json.
  */
-gulp.task('build-fontawesome-json', function() {
+gulp.task('build-fontawesome-json', ['build-fontawesome-shim'], function() {
   const faVersion = '5.4.1';
 
   return remoteSrc(['icons.json'], {
