@@ -75,7 +75,7 @@ function themeblvd_get_sidebar_location_name( $location ) {
 
 	}
 
-	return esc_html__( 'Floating Widget Area', '@@text-domain' );
+	return esc_html__( 'Floating Widget Area', 'jumpstart' );
 
 }
 

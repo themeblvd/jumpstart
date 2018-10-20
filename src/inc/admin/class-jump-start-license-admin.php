@@ -419,8 +419,8 @@ class Jump_Start_License_Admin {
 		if ( themeblvd_supports( 'admin', 'updates' ) && current_user_can( themeblvd_admin_module_cap( 'updates' ) ) ) {
 
 			$this->admin_screen_base = add_theme_page(
-				__( 'Theme License', '@@text-domain' ),
-				__( 'Theme License', '@@text-domain' ),
+				__( 'Theme License', 'jumpstart' ),
+				__( 'Theme License', 'jumpstart' ),
 				'manage_options',
 				$this->screen_id,
 				array( $this, 'admin_page' )
@@ -486,7 +486,7 @@ class Jump_Start_License_Admin {
 			printf(
 				'<input type="submit" class="button" name="%s" value="%s">',
 				esc_attr( $this->screen_id . '[deactivate_license_' . $args['item_shortname'] . ']' ),
-				__( 'Deactivate License', '@@text-domain' )
+				__( 'Deactivate License', 'jumpstart' )
 			);
 
 		}
@@ -528,7 +528,7 @@ class Jump_Start_License_Admin {
 
 		$status = array(
 			'class'   => 'license-empty',
-			'message' => __( 'The data has not been saved properly.', '@@text-domain' ),
+			'message' => __( 'The data has not been saved properly.', 'jumpstart' ),
 		);
 
 		if ( empty( $item['key'] ) ) {
@@ -537,7 +537,7 @@ class Jump_Start_License_Admin {
 
 			$status['message'] = sprintf(
 				// translators: 1. Item name
-				__( 'To receive updates, please enter your valid %s license key', '@@text-domain' ),
+				__( 'To receive updates, please enter your valid %s license key', 'jumpstart' ),
 				$item['item_name']
 			);
 
@@ -563,7 +563,7 @@ class Jump_Start_License_Admin {
 
 						$status['message'] = sprintf(
 							// translators: 1. expiration date, 2. URL to renew license
-							__( 'Your license key expired on %1$s. Please <a href="%2$s" target="_blank">renew your license key</a>.', '@@text-domain' ),
+							__( 'Your license key expired on %1$s. Please <a href="%2$s" target="_blank">renew your license key</a>.', 'jumpstart' ),
 							date_i18n( get_option( 'date_format' ), strtotime( $license->expires, current_time( 'timestamp' ) ) ),
 							'https://wpjumpstart.com/checkout/?edd_license_key=' . $item['key'] . '&utm_campaign=admin&utm_source=licenses&utm_medium=expired'
 						);
@@ -575,7 +575,7 @@ class Jump_Start_License_Admin {
 
 						$status['message'] = sprintf(
 							// translators: 1. URL to item support
-							__( 'Your license key has been disabled. Please <a href="%s" target="_blank">contact support</a> for more information.', '@@text-domain' ),
+							__( 'Your license key has been disabled. Please <a href="%s" target="_blank">contact support</a> for more information.', 'jumpstart' ),
 							'https://wpjumpstart.com/support'
 						);
 
@@ -586,7 +586,7 @@ class Jump_Start_License_Admin {
 
 						$status['message'] = sprintf(
 							// translators: 1. URL to account login
-							__( 'Invalid license. Please <a href="%s" target="_blank">visit your account page</a> and verify it.', '@@text-domain' ),
+							__( 'Invalid license. Please <a href="%s" target="_blank">visit your account page</a> and verify it.', 'jumpstart' ),
 							'https://wpjumpstart.com/customer-dashboard/?utm_campaign=admin&utm_source=licenses&utm_medium=missing'
 						);
 
@@ -598,7 +598,7 @@ class Jump_Start_License_Admin {
 
 						$status['message'] = sprintf(
 							// translators: 1. item name, 2. URL to account login
-							__( 'Your %1$s is not active for this URL. Please <a href="%2$s" target="_blank">visit your account page</a> to manage your license key URLs.', '@@text-domain' ),
+							__( 'Your %1$s is not active for this URL. Please <a href="%2$s" target="_blank">visit your account page</a> to manage your license key URLs.', 'jumpstart' ),
 							esc_html( $item['item_name'] ),
 							'https://wpjumpstart.com/customer-dashboard?utm_campaign=admin&utm_source=licenses&utm_medium=invalid'
 						);
@@ -610,7 +610,7 @@ class Jump_Start_License_Admin {
 
 						$status['message'] = sprintf(
 							// translators: 1. item name
-							__( 'This appears to be an invalid license key for %s.', '@@text-domain' ),
+							__( 'This appears to be an invalid license key for %s.', 'jumpstart' ),
 							esc_html( $item['item_name'] )
 						);
 
@@ -621,7 +621,7 @@ class Jump_Start_License_Admin {
 
 						$status['message'] = sprintf(
 							// translators: 1. URL to customer dashboard
-							__( 'Your license key has reached its activation limit. <a href="%s">View possible upgrades</a> now.', '@@text-domain' ),
+							__( 'Your license key has reached its activation limit. <a href="%s">View possible upgrades</a> now.', 'jumpstart' ),
 							'https://wpjumpstart.com/customer-dashboard?utm_campaign=admin&utm_source=licenses&utm_medium=no_activations_left'
 						);
 
@@ -630,18 +630,18 @@ class Jump_Start_License_Admin {
 					case 'license_not_activable':
 						$status['class'] = 'license-error';
 
-						$status['message'] = __( 'The key you entered belongs to a bundle, please use the product specific license key.', '@@text-domain' );
+						$status['message'] = __( 'The key you entered belongs to a bundle, please use the product specific license key.', 'jumpstart' );
 
 						break;
 
 					default:
 						$status['class'] = 'license-error';
 
-						$error = ! empty( $license->error ) ? $license->error : __( 'unknown_error', '@@text-domain' );
+						$error = ! empty( $license->error ) ? $license->error : __( 'unknown_error', 'jumpstart' );
 
 						$status['message'] = sprintf(
 							// translators: 1. license error, 2. link to item support
-							__( 'There was an error with this license key: %1$s. Please <a href="%2$s">contact our support team</a>.', '@@text-domain' ),
+							__( 'There was an error with this license key: %1$s. Please <a href="%2$s">contact our support team</a>.', 'jumpstart' ),
 							$error,
 							'https://wpjumpstart.com/support?utm_campaign=admin&utm_source=licenses&utm_medium=' . $error
 						);
@@ -659,7 +659,7 @@ class Jump_Start_License_Admin {
 
 				if ( 'lifetime' === $item['expires'] ) {
 
-					$status['message'] = __( 'License key never expires.', '@@text-domain' );
+					$status['message'] = __( 'License key never expires.', 'jumpstart' );
 
 				} else {
 
@@ -671,7 +671,7 @@ class Jump_Start_License_Admin {
 
 						$status['message'] = sprintf(
 							// translators: 1. license expiration date, 2. url to renew license
-							__( 'Your license key expires soon! It expires on %1$s. <a href="%2$s" target="_blank">Renew your license key</a>.', '@@text-domain' ),
+							__( 'Your license key expires soon! It expires on %1$s. <a href="%2$s" target="_blank">Renew your license key</a>.', 'jumpstart' ),
 							date_i18n( get_option( 'date_format' ), strtotime( $license->expires, current_time( 'timestamp' ) ) ),
 							'https://wpjumpstart.com/checkout/?edd_license_key=' . $item['key'] . '&utm_campaign=admin&utm_source=licenses&utm_medium=renew'
 						);
@@ -680,7 +680,7 @@ class Jump_Start_License_Admin {
 
 						$status['message'] = sprintf(
 							// translators: 1. license expiration date
-							__( 'Your license key expires on %s.', '@@text-domain' ),
+							__( 'Your license key expires on %s.', 'jumpstart' ),
 							date_i18n( get_option( 'date_format' ), $expiration )
 						);
 

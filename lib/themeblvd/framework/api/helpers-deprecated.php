@@ -32,7 +32,7 @@ function themeblvd_add_slider( $slider_id, $slider_name, $slide_types, $media_po
 		__FUNCTION__,
 		'2.7.0',
 		null,
-		__( 'The Theme Blvd Sliders plugin is no longer supported.' , '@@text-domain' )
+		__( 'The Theme Blvd Sliders plugin is no longer supported.' , 'jumpstart' )
 	);
 
 }
@@ -54,7 +54,7 @@ function themeblvd_remove_slider( $slider_id ) {
 		__FUNCTION__,
 		'2.7.0',
 		null,
-		__( 'The Theme Blvd Sliders plugin is no longer supported.' , '@@text-domain' )
+		__( 'The Theme Blvd Sliders plugin is no longer supported.' , 'jumpstart' )
 	);
 
 }
@@ -77,7 +77,7 @@ function themeblvd_add_stylesheet( $handle, $src, $level = 4, $ver = null, $medi
 		__FUNCTION__,
 		'2.2.0',
 		null,
-		__( 'Custom stylesheets should be enqueued via the WordPress wp_enqueu_scripts action hook. Alternatively, if you\'re using an old custom.css file for child theme CSS customization, you can also just move all that CSS code to your child theme\'s style.css.' , '@@text-domain' )
+		__( 'Custom stylesheets should be enqueued via the WordPress wp_enqueu_scripts action hook. Alternatively, if you\'re using an old custom.css file for child theme CSS customization, you can also just move all that CSS code to your child theme\'s style.css.' , 'jumpstart' )
 	);
 
 }

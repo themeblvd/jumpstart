@@ -123,10 +123,10 @@ function themeblvd_media_uploader( $args ) {
 	 * get modified below, depending the type.
 	 */
 	$data = array(
-		'title'     => __( 'Select Media', '@@text-domain' ),
-		'select'    => __( 'Select', '@@text-domain' ),
-		'upload'    => __( 'Upload', '@@text-domain' ),
-		'remove'    => __( 'Remove', '@@text-domain' ),
+		'title'     => __( 'Select Media', 'jumpstart' ),
+		'select'    => __( 'Select', 'jumpstart' ),
+		'upload'    => __( 'Upload', 'jumpstart' ),
+		'remove'    => __( 'Remove', 'jumpstart' ),
 		'send_back' => $args['send_back'],
 		'class'     => 'tb-modal-hide-settings',
 	);
@@ -134,13 +134,13 @@ function themeblvd_media_uploader( $args ) {
 	switch ( $type ) {
 
 		case 'slider':
-			$data['title'] = __( 'Slide Image', '@@text-domain' );
+			$data['title'] = __( 'Slide Image', 'jumpstart' );
 
-			$data['select'] = __( 'Use for Slide', '@@text-domain' );
+			$data['select'] = __( 'Use for Slide', 'jumpstart' );
 
-			$data['upload'] = __( 'Get Image', '@@text-domain' );
+			$data['upload'] = __( 'Get Image', 'jumpstart' );
 
-			$help = __( 'You must use the \'Get Image\' button to insert an image for this slide to ensure that a proper image ID is used. This is what the locked icon represents.', '@@text-domain' );
+			$help = __( 'You must use the \'Get Image\' button to insert an image for this slide to ensure that a proper image ID is used. This is what the locked icon represents.', 'jumpstart' );
 
 			$output .= '<span class="locked"><span></span>';
 
@@ -154,7 +154,7 @@ function themeblvd_media_uploader( $args ) {
 				$formfield,
 				$class,
 				esc_attr( $name ),
-				esc_attr__( 'Image ID', '@@text-domain' ),
+				esc_attr__( 'Image ID', 'jumpstart' ),
 				esc_attr( $args['value_id'] )
 			);
 
@@ -183,11 +183,11 @@ function themeblvd_media_uploader( $args ) {
 			break;
 
 		case 'video':
-			$data['title'] = __( 'Select Video', '@@text-domain' );
+			$data['title'] = __( 'Select Video', 'jumpstart' );
 
-			$data['select'] = __( 'Use Video', '@@text-domain' );
+			$data['select'] = __( 'Use Video', 'jumpstart' );
 
-			$data['upload'] = __( 'Get Video', '@@text-domain' );
+			$data['upload'] = __( 'Get Video', 'jumpstart' );
 
 			$output .= sprintf(
 				'<input id="%s" class="video-url upload%s" type="text" name="%s" value="%s" placeholder="%s" />',
@@ -195,7 +195,7 @@ function themeblvd_media_uploader( $args ) {
 				$class,
 				esc_attr( $name ),
 				esc_attr( $value ),
-				esc_attr__( 'Video URL', '@@text-domain' )
+				esc_attr__( 'Video URL', 'jumpstart' )
 			);
 
 			$output .= "\n";
@@ -203,9 +203,9 @@ function themeblvd_media_uploader( $args ) {
 			break;
 
 		case 'logo':
-			$data['title'] = __( 'Logo Image', '@@text-domain' );
+			$data['title'] = __( 'Logo Image', 'jumpstart' );
 
-			$data['select'] = __( 'Use for Logo', '@@text-domain' );
+			$data['select'] = __( 'Use for Logo', 'jumpstart' );
 
 			$width_name = str_replace( '[image]', '[image_width]', $name );
 
@@ -217,7 +217,7 @@ function themeblvd_media_uploader( $args ) {
 				$class,
 				esc_attr( $name ),
 				esc_attr( $value ),
-				esc_attr__( 'Image URL', '@@text-domain' )
+				esc_attr__( 'Image URL', 'jumpstart' )
 			);
 
 			$output .= "\n";
@@ -225,9 +225,9 @@ function themeblvd_media_uploader( $args ) {
 			break;
 
 		case 'logo_2x':
-			$data['title'] = __( 'Logo HiDPI Image', '@@text-domain' );
+			$data['title'] = __( 'Logo HiDPI Image', 'jumpstart' );
 
-			$data['select'] = __( 'Use for Logo', '@@text-domain' );
+			$data['select'] = __( 'Use for Logo', 'jumpstart' );
 
 			$output .= sprintf(
 				'<input id="%s" class="image-url upload%s" type="text" name="%s" value="%s" placeholder="%s" />',
@@ -235,7 +235,7 @@ function themeblvd_media_uploader( $args ) {
 				$class,
 				esc_attr( $name ),
 				esc_attr( $value ),
-				esc_attr__( 'URL for image twice the size of standard image', '@@text-domain' )
+				esc_attr__( 'URL for image twice the size of standard image', 'jumpstart' )
 			);
 
 			$output .= "\n";
@@ -243,9 +243,9 @@ function themeblvd_media_uploader( $args ) {
 			break;
 
 		case 'background':
-			$data['title'] = __( 'Select Background Image', '@@text-domain' );
+			$data['title'] = __( 'Select Background Image', 'jumpstart' );
 
-			$data['upload'] = __( 'Get Image', '@@text-domain' );
+			$data['upload'] = __( 'Get Image', 'jumpstart' );
 
 			$output .= sprintf(
 				'<input id="%s" class="image-url upload%s" type="text" name="%s" value="%s" placeholder="%s" />',
@@ -253,7 +253,7 @@ function themeblvd_media_uploader( $args ) {
 				$class,
 				esc_attr( $name ),
 				esc_attr( $value ),
-				esc_attr__( 'Image URL', '@@text-domain' )
+				esc_attr__( 'Image URL', 'jumpstart' )
 			);
 
 			$output .= "\n";
@@ -261,7 +261,7 @@ function themeblvd_media_uploader( $args ) {
 			break;
 
 		case 'media':
-			$data['select'] = __( 'Insert Media', '@@text-domain' );
+			$data['select'] = __( 'Insert Media', 'jumpstart' );
 
 			$data['class'] = '';
 
@@ -278,11 +278,11 @@ function themeblvd_media_uploader( $args ) {
 			break;
 
 		case 'advanced':
-			$data['title'] = __( 'Select Image', '@@text-domain' );
+			$data['title'] = __( 'Select Image', 'jumpstart' );
 
 			$data['class'] = str_replace( 'tb-modal-hide-settings', 'tb-modal-advanced-image', $data['class'] );
 
-			$data['select'] = __( 'Use Image', '@@text-domain' );
+			$data['select'] = __( 'Use Image', 'jumpstart' );
 
 			$output .= sprintf(
 				'<input id="%s" class="image-url upload%s" type="text" name="%s[src]" value="%s" placeholder="%s" />',
@@ -290,7 +290,7 @@ function themeblvd_media_uploader( $args ) {
 				$class,
 				esc_attr( $name ),
 				esc_attr( $args['value_src'] ),
-				esc_attr__( 'No image chosen', '@@text-domain' )
+				esc_attr__( 'No image chosen', 'jumpstart' )
 			);
 
 			$output .= "\n";
@@ -304,7 +304,7 @@ function themeblvd_media_uploader( $args ) {
 				$class,
 				esc_attr( $name ),
 				esc_attr( $value ),
-				esc_attr__( 'No file chosen', '@@text-domain' )
+				esc_attr__( 'No file chosen', 'jumpstart' )
 			);
 
 			$output .= "\n";
@@ -375,7 +375,7 @@ function themeblvd_media_uploader( $args ) {
 
 		$output .= sprintf(
 			'<span class="logo-label logo-width-label">%s</span>',
-			esc_html__( 'Width', '@@text-domain' )
+			esc_html__( 'Width', 'jumpstart' )
 		);
 
 		$output .= '</div>' . "\n";
@@ -394,7 +394,7 @@ function themeblvd_media_uploader( $args ) {
 
 		$output .= sprintf(
 			'<span class="logo-label logo-height-label">%s</span>',
-			esc_html__( 'Height', '@@text-domain' )
+			esc_html__( 'Height', 'jumpstart' )
 		);
 
 		$output .= "\n";
@@ -435,7 +435,7 @@ function themeblvd_media_uploader( $args ) {
 			}
 
 			// Standard generic output if it's not an image.
-			$title = esc_attr__( 'View File', '@@text-domain' );
+			$title = esc_attr__( 'View File', 'jumpstart' );
 
 			$output .= '<div class="no-image">' . "\n";
 

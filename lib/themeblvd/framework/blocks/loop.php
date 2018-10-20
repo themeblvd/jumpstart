@@ -1311,7 +1311,7 @@ function themeblvd_get_grid_slider( $args ) {
 
 	if ( ! $args['query'] ) {
 
-		return esc_html__( 'Error: No query supplied.', '@@text-domain' );
+		return esc_html__( 'Error: No query supplied.', 'jumpstart' );
 
 	}
 
@@ -2049,7 +2049,7 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 
 				return sprintf(
 					'<div class="alert alert-warning">%s<br /><code>[gallery ids="1,2,3"]</code></div>',
-					esc_html__( 'Oops! There aren\'t any ID\'s in your gallery shortcode. It should be formatted like:', '@@text-domain' )
+					esc_html__( 'Oops! There aren\'t any ID\'s in your gallery shortcode. It should be formatted like:', 'jumpstart' )
 				);
 
 			}
@@ -2057,7 +2057,7 @@ function themeblvd_get_mini_post_grid( $query = '', $align = 'left', $thumb = 's
 
 			return sprintf(
 				'<div class="alert alert-warning">%s</div>',
-				esc_html__( 'Oops! You used the gallery override for this mini post grid, but didn\'t use the [gallery] shortcode.', '@@text-domain' )
+				esc_html__( 'Oops! You used the gallery override for this mini post grid, but didn\'t use the [gallery] shortcode.', 'jumpstart' )
 			);
 
 		}

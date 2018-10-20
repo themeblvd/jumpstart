@@ -91,22 +91,22 @@ function jumpstart_ag_get_presets( $preset = '' ) {
 
 	$styles = array(
 		'style-1' => wp_parse_args( array(
-			'name'           => __( 'Style 1', '@@text-domain' ),
+			'name'           => __( 'Style 1', 'jumpstart' ),
 			'menu_placement' => 'center',
 			'header_stretch' => '1',
 		), $shared ),
 		'style-2' => wp_parse_args( array(
-			'name'           => __( 'Style 2', '@@text-domain' ),
+			'name'           => __( 'Style 2', 'jumpstart' ),
 			'menu_placement' => 'far',
 			'header_stretch' => '1',
 		), $shared ),
 		'style-3' => wp_parse_args( array(
-			'name'           => __( 'Style 3', '@@text-domain' ),
+			'name'           => __( 'Style 3', 'jumpstart' ),
 			'menu_placement' => 'center',
 			'header_stretch' => '0',
 		), $shared ),
 		'style-4' => wp_parse_args( array(
-			'name'           => __( 'Style 4', '@@text-domain' ),
+			'name'           => __( 'Style 4', 'jumpstart' ),
 			'menu_placement' => 'far',
 			'header_stretch' => '0',
 		), $shared ),
@@ -121,20 +121,20 @@ function jumpstart_ag_get_presets( $preset = '' ) {
 	 * @param $hex array Color values.
 	 */
 	$hex = apply_filters( 'jumpstart_ag_preset_colors', array(
-		'green'         => array( __( 'Green', '@@text-domain' ), '#4fba6f', '#4ca165' ),
-		'sea-green'     => array( __( 'Sea Green', '@@text-domain' ), '#18a185', '#268f77' ),
-		'blue'          => array( __( 'Blue', '@@text-domain' ), '#2880ba', '#3174a2' ),
-		'midnight-blue' => array( __( 'Midnight Blue', '@@text-domain' ), '#2c3e50', '#1a2836' ),
-		'purple'        => array( __( 'Purple', '@@text-domain' ), '#894b9d', '#7b478b' ),
-		'orange'        => array( __( 'Orange', '@@text-domain' ), '#d15627', '#b85128' ),
-		'red'           => array( __( 'Red', '@@text-domain' ), '#c03b2b', '#a93b2a' ),
-		'grey'          => array( __( 'Grey', '@@text-domain' ), '#7f8c8d', '#727e7e' ),
+		'green'         => array( __( 'Green', 'jumpstart' ), '#4fba6f', '#4ca165' ),
+		'sea-green'     => array( __( 'Sea Green', 'jumpstart' ), '#18a185', '#268f77' ),
+		'blue'          => array( __( 'Blue', 'jumpstart' ), '#2880ba', '#3174a2' ),
+		'midnight-blue' => array( __( 'Midnight Blue', 'jumpstart' ), '#2c3e50', '#1a2836' ),
+		'purple'        => array( __( 'Purple', 'jumpstart' ), '#894b9d', '#7b478b' ),
+		'orange'        => array( __( 'Orange', 'jumpstart' ), '#d15627', '#b85128' ),
+		'red'           => array( __( 'Red', 'jumpstart' ), '#c03b2b', '#a93b2a' ),
+		'grey'          => array( __( 'Grey', 'jumpstart' ), '#7f8c8d', '#727e7e' ),
 	) );
 
 	// Predefined colors.
 	$colors = array(
 		'dark'  => array(
-			'name'                   => __( 'Dark', '@@text-domain' ),
+			'name'                   => __( 'Dark', 'jumpstart' ),
 			'btn_color'              => '#1b1b1b',
 			'header_bg_color'        => '#101010',
 			'menu_drop_bg_color'     => '#202020',

@@ -203,15 +203,15 @@ function themeblvd_register_navs() {
 
 	// Setup nav menus
 	$menus = array(
-		'primary' => __( 'Primary Navigation', '@@text-domain' ),
-		'footer'  => __( 'Footer Navigation', '@@text-domain' ),
+		'primary' => __( 'Primary Navigation', 'jumpstart' ),
+		'footer'  => __( 'Footer Navigation', 'jumpstart' ),
 	);
 
 	if ( themeblvd_supports( 'display', 'side_panel' ) ) {
 
-		$menus['side'] = __( 'Primary Side Navigation', '@@text-domain' );
+		$menus['side'] = __( 'Primary Side Navigation', 'jumpstart' );
 
-		$menus['side_sub'] = __( 'Secondary Side Navigation', '@@text-domain' );
+		$menus['side_sub'] = __( 'Secondary Side Navigation', 'jumpstart' );
 
 	}
 
@@ -314,7 +314,7 @@ function themeblvd_admin_menu_bar() {
 
 			$wp_admin_bar->add_node( array(
 				'id'     => 'tb_theme_options',
-				'title'  => __( 'Theme Options', '@@text-domain' ),
+				'title'  => __( 'Theme Options', 'jumpstart' ),
 				'parent' => 'site-name',
 				'href'   => admin_url( $modules['options'] ),
 			) );
@@ -327,7 +327,7 @@ function themeblvd_admin_menu_bar() {
 
 			$wp_admin_bar->add_node( array(
 				'id'     => 'tb_builder',
-				'title'  => __( 'Templates', '@@text-domain' ),
+				'title'  => __( 'Templates', 'jumpstart' ),
 				'parent' => 'site-name',
 				'href'   => admin_url( $modules['builder'] ),
 			) );
@@ -341,7 +341,7 @@ function themeblvd_admin_menu_bar() {
 
 			$wp_admin_bar->add_node( array(
 				'id'     => 'tb_sidebars',
-				'title'  => __( 'Widget Areas', '@@text-domain' ),
+				'title'  => __( 'Widget Areas', 'jumpstart' ),
 				'parent' => 'site-name',
 				'href'   => admin_url( $modules['sidebars'] ),
 			) );
@@ -373,7 +373,7 @@ function themeblvd_sidebar_layouts() {
 
 	$layouts = array(
 		'full_width' => array(
-			'name'    => __( 'Full Width', '@@text-domain' ),
+			'name'    => __( 'Full Width', 'jumpstart' ),
 			'id'      => 'full_width',
 			'columns' => array(
 				'content' => "col-{$stack}-12",
@@ -382,7 +382,7 @@ function themeblvd_sidebar_layouts() {
 			),
 		),
 		'sidebar_right' => array(
-			'name'    => __( 'Sidebar Right', '@@text-domain' ),
+			'name'    => __( 'Sidebar Right', 'jumpstart' ),
 			'id'      => 'sidebar_right',
 			'columns' => array(
 				'content' => "col-{$stack}-8",
@@ -391,7 +391,7 @@ function themeblvd_sidebar_layouts() {
 			),
 		),
 		'sidebar_left' => array(
-			'name'    => __( 'Sidebar Left', '@@text-domain' ),
+			'name'    => __( 'Sidebar Left', 'jumpstart' ),
 			'id'      => 'sidebar_left',
 			'columns' => array(
 				'content' => "col-{$stack}-8",
@@ -400,7 +400,7 @@ function themeblvd_sidebar_layouts() {
 			),
 		),
 		'double_sidebar' => array(
-			'name'    => __( 'Double Sidebar', '@@text-domain' ),
+			'name'    => __( 'Double Sidebar', 'jumpstart' ),
 			'id'      => 'double_sidebar',
 			'columns' => array(
 				'content' => "col-{$stack}-6",
@@ -409,7 +409,7 @@ function themeblvd_sidebar_layouts() {
 			),
 		),
 		'double_sidebar_left' => array(
-			'name'    => __( 'Double Left Sidebars', '@@text-domain' ),
+			'name'    => __( 'Double Left Sidebars', 'jumpstart' ),
 			'id'      => 'double_sidebar_left',
 			'columns' => array(
 				'content' => "col-{$stack}-6",
@@ -418,7 +418,7 @@ function themeblvd_sidebar_layouts() {
 			),
 		),
 		'double_sidebar_right' => array(
-			'name'    => __( 'Double Right Sidebars', '@@text-domain' ),
+			'name'    => __( 'Double Right Sidebars', 'jumpstart' ),
 			'id'      => 'double_sidebar_right',
 			'columns' => array(
 				'content' => "col-{$stack}-6",
@@ -451,7 +451,7 @@ function themeblvd_sidebar_layouts() {
 function themeblvd_load_theme_textdomain() {
 
 	load_theme_textdomain(
-		'@@text-domain',
+		'jumpstart',
 		get_template_directory() . '/languages'
 	);
 

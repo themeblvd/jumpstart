@@ -107,7 +107,7 @@ function themeblvd_clear_options() {
 	add_settings_error(
 		$_POST['themeblvd_clear_options'] ,
 		'clear_defaults',
-		__( 'Options cleared from database.', '@@text-domain' ),
+		__( 'Options cleared from database.', 'jumpstart' ),
 		'themeblvd-error error'
 	);
 
@@ -124,12 +124,12 @@ function themeblvd_clear_options() {
 function themeblvd_get_bg_types( $context = 'section' ) {
 
 	$types = array(
-		'none'      => __( 'No background', '@@text-domain' ),
-		'color'     => __( 'Custom color', '@@text-domain' ),
-		'texture'   => __( 'Custom color + texture', '@@text-domain' ),
-		'image'     => __( 'Custom color + image', '@@text-domain' ),
-		'slideshow' => __( 'Custom image slideshow', '@@text-domain' ),
-		'video'     => __( 'Custom video', '@@text-domain' ),
+		'none'      => __( 'No background', 'jumpstart' ),
+		'color'     => __( 'Custom color', 'jumpstart' ),
+		'texture'   => __( 'Custom color + texture', 'jumpstart' ),
+		'image'     => __( 'Custom color + image', 'jumpstart' ),
+		'slideshow' => __( 'Custom image slideshow', 'jumpstart' ),
+		'video'     => __( 'Custom video', 'jumpstart' ),
 	);
 
 	if ( 'section' !== $context ) {
@@ -197,14 +197,14 @@ function themeblvd_get_select( $type, $force_single = false ) {
 				}
 			} else {
 
-				$select['null'] = __( 'No pages exist.', '@@text-domain' );
+				$select['null'] = __( 'No pages exist.', 'jumpstart' );
 
 			}
 
 			break;
 
 		case 'categories':
-			$select['all'] = __( '<strong>All Categories</strong>', '@@text-domain' );
+			$select['all'] = __( '<strong>All Categories</strong>', 'jumpstart' );
 
 			$categories = get_categories( array(
 				'hide_empty' => false,
@@ -266,8 +266,8 @@ function themeblvd_get_select( $type, $force_single = false ) {
 					 * in this instance.
 					 */
 					$name = str_replace(
-						__( 'Location:', '@@text-domain' ),
-						__( 'Default', '@@text-domain' ),
+						__( 'Location:', 'jumpstart' ),
+						__( 'Default', 'jumpstart' ),
 						$sidebar['name']
 					);
 
@@ -284,7 +284,7 @@ function themeblvd_get_select( $type, $force_single = false ) {
 
 			$atts = $GLOBALS['_wp_additional_image_sizes'];
 
-			$select['full'] = __( 'Full Size','@@text-domain' );
+			$select['full'] = __( 'Full Size','jumpstart' );
 
 			foreach ( $registered as $size ) {
 
@@ -327,15 +327,15 @@ function themeblvd_get_select( $type, $force_single = false ) {
 				// Crop mode message.
 				if ( $crop ) {
 
-					$crop_desc = __( 'hard crop', '@@text-domain' );
+					$crop_desc = __( 'hard crop', 'jumpstart' );
 
 				} elseif ( 9999 == $height ) {
 
-					$crop_desc = __( 'no height crop', '@@text-domain' );
+					$crop_desc = __( 'no height crop', 'jumpstart' );
 
 				} else {
 
-					$crop_desc = __( 'soft crop', '@@text-domain' );
+					$crop_desc = __( 'soft crop', 'jumpstart' );
 
 				}
 
@@ -360,11 +360,11 @@ function themeblvd_get_select( $type, $force_single = false ) {
 
 				$select = array(
 					'dark' => array(
-						'label'   => __( 'For Darker Background Color', '@@text-domain' ),
+						'label'   => __( 'For Darker Background Color', 'jumpstart' ),
 						'options' => array(),
 					),
 					'light' => array(
-						'label'   => __( 'For Lighter Background Color', '@@text-domain' ),
+						'label'   => __( 'For Lighter Background Color', 'jumpstart' ),
 						'options' => array(),
 					),
 				);

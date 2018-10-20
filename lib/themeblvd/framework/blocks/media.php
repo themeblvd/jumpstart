@@ -423,7 +423,7 @@ function themeblvd_get_gallery_slider( $gallery = '', $args = array() ) {
 
 			return sprintf(
 				'<div class="alert alert-warning"><p>%s</p></div>',
-				esc_html__( 'Oops! Couldn\'t find a gallery with one or more image attachments. Make sure to insert a gallery into the body of the post. Example: [gallery ids="1,2,3"]', '@@text-domain' )
+				esc_html__( 'Oops! Couldn\'t find a gallery with one or more image attachments. Make sure to insert a gallery into the body of the post. Example: [gallery ids="1,2,3"]', 'jumpstart' )
 			);
 
 		} else {

@@ -67,24 +67,24 @@ function jumpstart_bases() {
 		 */
 		$bases = apply_filters( 'themeblvd_bases', array(
 			'dev' => array(
-				'name' => __( 'Developer', '@@text-domain' ),
-				'desc' => __( 'If you\'re a developer looking to create a custom-designed child theme, this is the base for you.', '@@text-domain' ),
+				'name' => __( 'Developer', 'jumpstart' ),
+				'desc' => __( 'If you\'re a developer looking to create a custom-designed child theme, this is the base for you.', 'jumpstart' ),
 			),
 			'superuser' => array(
-				'name' => __( 'Super User', '@@text-domain' ),
-				'desc' => __( 'For the super user, this base builds on the default theme to give you more visual, user options.', '@@text-domain' ),
+				'name' => __( 'Super User', 'jumpstart' ),
+				'desc' => __( 'For the super user, this base builds on the default theme to give you more visual, user options.', 'jumpstart' ),
 			),
 			'agent' => array(
-				'name' => __( 'Agent', '@@text-domain' ),
-				'desc' => __( 'A modern and open, agency-style design with a bit less user options.', '@@text-domain' ),
+				'name' => __( 'Agent', 'jumpstart' ),
+				'desc' => __( 'A modern and open, agency-style design with a bit less user options.', 'jumpstart' ),
 			),
 			'entrepreneur' => array(
-				'name' => __( 'Entrepreneur', '@@text-domain' ),
-				'desc' => __( 'A more standard, corporate design with a lot of user options.', '@@text-domain' ),
+				'name' => __( 'Entrepreneur', 'jumpstart' ),
+				'desc' => __( 'A more standard, corporate design with a lot of user options.', 'jumpstart' ),
 			),
 			'executive' => array(
-				'name' => __( 'Executive', '@@text-domain' ),
-				'desc' => __( 'A more classic, corporate design with a lot of user options.', '@@text-domain' ),
+				'name' => __( 'Executive', 'jumpstart' ),
+				'desc' => __( 'A more classic, corporate design with a lot of user options.', 'jumpstart' ),
 			),
 		) );
 
@@ -227,7 +227,7 @@ function jumpstart_base_check() {
 			'style' => 'warning',
 			'class' => 'full',
 		),
-		__( 'Warning: Your saved theme options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', '@@text-domain' )
+		__( 'Warning: Your saved theme options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'jumpstart' )
 	);
 
 }
@@ -245,7 +245,7 @@ add_action( 'themeblvd_before', 'jumpstart_base_check' );
 function jumpstart_sample_layouts( $layouts ) {
 
 	$layouts['jumpstart-home'] = array(
-		'name'   => __( 'Jump Start: Home', '@@text-domain' ),
+		'name'   => __( 'Jump Start: Home', 'jumpstart' ),
 		'id'     => 'jumpstart-home',
 		'dir'    => get_template_directory() . '/inc/layouts/home/',
 		'uri'    => get_template_directory_uri() . '/inc/layouts/home/',

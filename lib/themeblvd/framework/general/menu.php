@@ -559,7 +559,7 @@ function themeblvd_nav_menu_select( $location ) {
 		__FUNCTION__,
 		'2.7.0',
 		null,
-		__( 'The &lt;select&gt; menu to replaces the main navigation on mobile is no longer supported.' , '@@text-domain' )
+		__( 'The &lt;select&gt; menu to replaces the main navigation on mobile is no longer supported.' , 'jumpstart' )
 	);
 
 	return '';

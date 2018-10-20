@@ -147,7 +147,7 @@ function themeblvd_get_meta( $args = array() ) {
 
 					$author_title = sprintf(
 						// translators: 1: post author's name
-						esc_html__( 'View all posts by %s', '@@text-domain' ),
+						esc_html__( 'View all posts by %s', 'jumpstart' ),
 						$author
 					);
 

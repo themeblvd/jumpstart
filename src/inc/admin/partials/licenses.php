@@ -10,7 +10,7 @@
 	<h2>
 		<?php
 		// translators: 1. item name
-		printf( __( '%s Licenses', '@@text-domain' ), $this->item_name );
+		printf( __( '%s Licenses', 'jumpstart' ), $this->item_name );
 		?>
 	</h2>
 
@@ -18,10 +18,10 @@
 		<?php
 		printf(
 			// translators: 1. item name, 2. extentions link URL, 3. extensions link title
-			__( 'Enter your license keys here to receive updates for %1$s and purchased <a href="%2$s" title="%3$s" target="_blank">extensions</a>.', '@@text-domain' ),
+			__( 'Enter your license keys here to receive updates for %1$s and purchased <a href="%2$s" title="%3$s" target="_blank">extensions</a>.', 'jumpstart' ),
 			$this->item_name,
 			'https://wpjumpstart.com/extensions?utm_campaign=admin&utm_source=licenses&utm_medium=description',
-			__( 'Browse Extensions', '@@text-domain' )
+			__( 'Browse Extensions', 'jumpstart' )
 		);
 		?>
 	</p>

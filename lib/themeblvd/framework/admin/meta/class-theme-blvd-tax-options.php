@@ -137,7 +137,7 @@ class Theme_Blvd_Tax_Options {
 		$layouts = themeblvd_sidebar_layouts();
 
 		$select_layouts = array(
-			'default' => __( 'Use default setting', '@@text-domain' ),
+			'default' => __( 'Use default setting', 'jumpstart' ),
 		);
 
 		foreach ( $layouts as $layout ) {
@@ -147,7 +147,7 @@ class Theme_Blvd_Tax_Options {
 		// Setup pst display modes to choose from.
 		$select_modes = array_merge(
 			array(
-				'default' => __( 'Use default setting', '@@text-domain' ),
+				'default' => __( 'Use default setting', 'jumpstart' ),
 			),
 			themeblvd_get_modes()
 		);
@@ -164,20 +164,20 @@ class Theme_Blvd_Tax_Options {
 
 			<th scope="row">
 				<label for="_tb_info">
-					<?php esc_html_e( 'Archive Info Box', '@@text-domain' ); ?>
+					<?php esc_html_e( 'Archive Info Box', 'jumpstart' ); ?>
 				</label>
 			</th>
 
 			<td>
 				<select name="_tb_info" id="_tb_info" class="postform">
-					<option value="default" <?php selected( $info, 'default' ); ?>><?php esc_html_e( 'Use default setting', '@@text-domain' ); ?></option>
-					<option value="show" <?php selected( $info, 'show' ); ?>><?php esc_html_e( 'Show', '@@text-domain' ); ?></option>
-					<option value="hide" <?php selected( $info, 'hide' ); ?>><?php esc_html_e( 'Hide', '@@text-domain' ); ?></option>
+					<option value="default" <?php selected( $info, 'default' ); ?>><?php esc_html_e( 'Use default setting', 'jumpstart' ); ?></option>
+					<option value="show" <?php selected( $info, 'show' ); ?>><?php esc_html_e( 'Show', 'jumpstart' ); ?></option>
+					<option value="hide" <?php selected( $info, 'hide' ); ?>><?php esc_html_e( 'Hide', 'jumpstart' ); ?></option>
 				</select>
 				<p class="description">
 					<?php
 					// translators: 1: slug of current taxonomy
-					printf( esc_html__( 'Select if you\'d like to display an info box with Name and Description of this %s at the top of its archives.', '@@text-domain' ), $taxonomy );
+					printf( esc_html__( 'Select if you\'d like to display an info box with Name and Description of this %s at the top of its archives.', 'jumpstart' ), $taxonomy );
 					?>
 				</p>
 			</td>
@@ -188,7 +188,7 @@ class Theme_Blvd_Tax_Options {
 
 			<th scope="row">
 				<label for="_tb_sidebar_layout">
-					<?php esc_html_e( 'Archive Sidebar Layout', '@@text-domain' ); ?>
+					<?php esc_html_e( 'Archive Sidebar Layout', 'jumpstart' ); ?>
 				</label>
 			</th>
 
@@ -201,7 +201,7 @@ class Theme_Blvd_Tax_Options {
 				<p class="description">
 					<?php
 					// translators: 1: slug of current taxonomy
-					printf( esc_html__( 'Select the sidebar layout used in displaying archives for this %s.', '@@text-domain' ), $taxonomy );
+					printf( esc_html__( 'Select the sidebar layout used in displaying archives for this %s.', 'jumpstart' ), $taxonomy );
 					?>
 				</p>
 			</td>
@@ -212,7 +212,7 @@ class Theme_Blvd_Tax_Options {
 
 			<th scope="row">
 				<label for="_tb_mode">
-					<?php esc_html_e( 'Archive Post Display', '@@text-domain' ); ?>
+					<?php esc_html_e( 'Archive Post Display', 'jumpstart' ); ?>
 				</label>
 			</th>
 
@@ -225,7 +225,7 @@ class Theme_Blvd_Tax_Options {
 				<p class="description">
 					<?php
 					// translators: 1: slug of current taxonomy
-					printf( esc_html__( 'Select how posts are displayed on archives for this %s.', '@@text-domain' ), $taxonomy );
+					printf( esc_html__( 'Select how posts are displayed on archives for this %s.', 'jumpstart' ), $taxonomy );
 					?>
 				</p>
 			</td>

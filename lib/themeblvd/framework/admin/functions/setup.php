@@ -179,7 +179,7 @@ function themeblvd_plugins() {
 	 * Setup arguments for plugin manager interface.
 	 */
 	$args = array(
-		'page_title' => __( 'Suggested Plugins', '@@text-domain' ),
+		'page_title' => __( 'Suggested Plugins', 'jumpstart' ),
 		'menu_slug'  => 'themeblvd-suggested-plugins',
 	);
 

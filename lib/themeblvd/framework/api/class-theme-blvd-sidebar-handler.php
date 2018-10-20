@@ -130,7 +130,7 @@ class Theme_Blvd_Sidebar_Handler {
 		$this->core_locations['sidebar_left'] = array(
 			'type' => 'fixed',
 			'location' => array(
-				'name' => __( 'Left Sidebar', '@@text-domain' ),
+				'name' => __( 'Left Sidebar', 'jumpstart' ),
 				'id'   => 'sidebar_left',
 			),
 			'assignments' => array(
@@ -142,8 +142,8 @@ class Theme_Blvd_Sidebar_Handler {
 				),
 			),
 			'args' => array(
-				'name'        => __( 'Location: Left Sidebar', '@@text-domain' ),
-				'description' => __( 'This is default placeholder for the "Left Sidebar" location.', '@@text-domain' ),
+				'name'        => __( 'Location: Left Sidebar', 'jumpstart' ),
+				'description' => __( 'This is default placeholder for the "Left Sidebar" location.', 'jumpstart' ),
 				'id'          => 'sidebar_left',
 			),
 		);
@@ -152,7 +152,7 @@ class Theme_Blvd_Sidebar_Handler {
 		$this->core_locations['sidebar_right'] = array(
 			'type' => 'fixed',
 			'location' => array(
-				'name' => __( 'Right Sidebar', '@@text-domain' ),
+				'name' => __( 'Right Sidebar', 'jumpstart' ),
 				'id'   => 'sidebar_right',
 			),
 			'assignments' => array(
@@ -164,8 +164,8 @@ class Theme_Blvd_Sidebar_Handler {
 				),
 			),
 			'args' => array(
-				'name'        => __( 'Location: Right Sidebar', '@@text-domain' ),
-				'description' => __( 'This is default placeholder for the "Right Sidebar" location.', '@@text-domain' ),
+				'name'        => __( 'Location: Right Sidebar', 'jumpstart' ),
+				'description' => __( 'This is default placeholder for the "Right Sidebar" location.', 'jumpstart' ),
 				'id'          => 'sidebar_right',
 			),
 		);
@@ -174,7 +174,7 @@ class Theme_Blvd_Sidebar_Handler {
 		$this->core_locations['ad_above_header'] = array(
 			'type' => 'collapsible',
 			'location' => array(
-				'name' => __( 'Above Header', '@@text-domain' ),
+				'name' => __( 'Above Header', 'jumpstart' ),
 				'id'   => 'ad_above_header',
 			),
 			'assignments' => array(
@@ -186,8 +186,8 @@ class Theme_Blvd_Sidebar_Handler {
 				),
 			),
 			'args' => array(
-				'name'        => __( 'Location: Above Header', '@@text-domain' ),
-				'description' => __( 'This is default placeholder for the "Above Header" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain' ),
+				'name'        => __( 'Location: Above Header', 'jumpstart' ),
+				'description' => __( 'This is default placeholder for the "Above Header" location, which is designed for banner ads, and so not all widgets will appear as expected.', 'jumpstart' ),
 				'id'          => 'ad_above_header',
 			),
 		);
@@ -196,7 +196,7 @@ class Theme_Blvd_Sidebar_Handler {
 		$this->core_locations['ad_above_content'] = array(
 			'type' => 'collapsible',
 			'location' => array(
-				'name' => __( 'Above Content', '@@text-domain' ),
+				'name' => __( 'Above Content', 'jumpstart' ),
 				'id'   => 'ad_above_content',
 			),
 			'assignments' => array(
@@ -208,8 +208,8 @@ class Theme_Blvd_Sidebar_Handler {
 				),
 			),
 			'args' => array(
-				'name'        => __( 'Location: Above Content', '@@text-domain' ),
-				'description' => __( 'This is default placeholder for the "Above Content" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain' ),
+				'name'        => __( 'Location: Above Content', 'jumpstart' ),
+				'description' => __( 'This is default placeholder for the "Above Content" location, which is designed for banner ads, and so not all widgets will appear as expected.', 'jumpstart' ),
 				'id'          => 'ad_above_content',
 			),
 		);
@@ -218,7 +218,7 @@ class Theme_Blvd_Sidebar_Handler {
 		$this->core_locations['ad_below_content'] = array(
 			'type' => 'collapsible',
 			'location' => array(
-				'name' => __( 'Below Content', '@@text-domain' ),
+				'name' => __( 'Below Content', 'jumpstart' ),
 				'id'   => 'ad_below_content',
 			),
 			'assignments' => array(
@@ -230,8 +230,8 @@ class Theme_Blvd_Sidebar_Handler {
 				),
 			),
 			'args' => array(
-				'name'        => __( 'Location: Below Content', '@@text-domain' ),
-				'description' => __( 'This is default placeholder for the "Below Content" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain' ),
+				'name'        => __( 'Location: Below Content', 'jumpstart' ),
+				'description' => __( 'This is default placeholder for the "Below Content" location, which is designed for banner ads, and so not all widgets will appear as expected.', 'jumpstart' ),
 				'id'          => 'ad_below_content',
 			),
 		);
@@ -240,7 +240,7 @@ class Theme_Blvd_Sidebar_Handler {
 		$this->core_locations['ad_below_footer'] = array(
 			'type' => 'collapsible',
 			'location' => array(
-				'name' => __( 'Below Footer', '@@text-domain' ),
+				'name' => __( 'Below Footer', 'jumpstart' ),
 				'id'   => 'ad_below_footer',
 			),
 			'assignments' => array(
@@ -252,8 +252,8 @@ class Theme_Blvd_Sidebar_Handler {
 				),
 			),
 			'args' => array(
-				'name'        => __( 'Location: Below Footer', '@@text-domain' ),
-				'description' => __( 'This is default placeholder for the "Below Footer" location, which is designed for banner ads, and so not all widgets will appear as expected.', '@@text-domain' ),
+				'name'        => __( 'Location: Below Footer', 'jumpstart' ),
+				'description' => __( 'This is default placeholder for the "Below Footer" location, which is designed for banner ads, and so not all widgets will appear as expected.', 'jumpstart' ),
 				'id'          => 'ad_below_footer',
 			),
 		);
@@ -337,7 +337,7 @@ class Theme_Blvd_Sidebar_Handler {
 
 			$desc = sprintf(
 				// translators: 1: name of sidebar location
-				__( 'This is default placeholder for the "%s" location.', '@@text-domain' ),
+				__( 'This is default placeholder for the "%s" location.', 'jumpstart' ),
 				$name
 			);
 
@@ -359,7 +359,7 @@ class Theme_Blvd_Sidebar_Handler {
 			),
 			'args' => array(
 				// translators: 1: name of sidebar location
-				'name'          => sprintf( __( 'Location: %s', '@@text-domain' ), $name ),
+				'name'          => sprintf( __( 'Location: %s', 'jumpstart' ), $name ),
 				'description'   => $desc,
 				'id'            => $id,
 				'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-inner">',
@@ -616,7 +616,7 @@ class Theme_Blvd_Sidebar_Handler {
 					case 'collapsible':
 						$message = sprintf(
 							// translators: 1: ID of widget area
-							__( 'This is a collapsible widget area with ID, %s, but you haven\'t put any widgets in it yet. Normally this wouldn\'t show at all when empty, but since you have assigned a custom widget area here and didn\'t put any widgets in it, you are seeing this message.', '@@text-domain' ),
+							__( 'This is a collapsible widget area with ID, %s, but you haven\'t put any widgets in it yet. Normally this wouldn\'t show at all when empty, but since you have assigned a custom widget area here and didn\'t put any widgets in it, you are seeing this message.', 'jumpstart' ),
 							$sidebar['id']
 						);
 						break;
@@ -624,7 +624,7 @@ class Theme_Blvd_Sidebar_Handler {
 					case 'fixed':
 						$message = sprintf(
 							// translators: 1: ID of widget area
-							__( 'This is a fixed sidebar with ID, %s, but you haven\'t put any widgets in it yet.', '@@text-domain' ),
+							__( 'This is a fixed sidebar with ID, %s, but you haven\'t put any widgets in it yet.', 'jumpstart' ),
 							$sidebar['id']
 						);
 						break;

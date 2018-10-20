@@ -121,8 +121,8 @@ class Theme_Blvd_Options_Page {
 	public function __construct( $id, $options, $args = null ) {
 
 		$this->args = wp_parse_args( $args, array(
-			'page_title'  => __( 'Theme Options', '@@text-domain' ),
-			'menu_title'  => __( 'Theme Options', '@@text-domain' ),
+			'page_title'  => __( 'Theme Options', 'jumpstart' ),
+			'menu_title'  => __( 'Theme Options', 'jumpstart' ),
 			'cap'         => themeblvd_admin_module_cap( 'options' ),
 			'menu_slug'   => '',
 			'icon'        => '',
@@ -245,7 +245,7 @@ class Theme_Blvd_Options_Page {
 					),
 					admin_url( 'themes.php' )
 				),
-				'cancel'   => __( 'Nothing to export. Theme Options have never been saved.', '@@text-domain' ),
+				'cancel'   => __( 'Nothing to export. Theme Options have never been saved.', 'jumpstart' ),
 			);
 
 			$export = new Theme_Blvd_Export_Options( $this->id, $args );
@@ -498,7 +498,7 @@ class Theme_Blvd_Options_Page {
 				add_settings_error(
 					$this->id,
 					'theme_base_error',
-					__( 'Your saved options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', '@@text-domain' ),
+					__( 'Your saved options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'jumpstart' ),
 					'themeblvd-error error'
 				);
 
@@ -575,9 +575,9 @@ class Theme_Blvd_Options_Page {
 
 						<div class="options-page-footer">
 
-							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', '@@text-domain' ); ?>" />
+							<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'jumpstart' ); ?>" />
 
-							<input type="submit" class="clear-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e( 'Delete options from the database.', '@@text-domain' ); ?>" value="<?php esc_attr_e( 'Clear Options', '@@text-domain' ); ?>" />
+							<input type="submit" class="clear-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e( 'Delete options from the database.', 'jumpstart' ); ?>" value="<?php esc_attr_e( 'Clear Options', 'jumpstart' ); ?>" />
 
 							<?php if ( $this->args['export'] ) : ?>
 
@@ -592,16 +592,16 @@ class Theme_Blvd_Options_Page {
 								);
 								?>
 
-								<a href="<?php echo esc_url( $url ); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e( 'Export options to XML file.', '@@text-domain' ); ?>">
-									<?php esc_attr_e( 'Export Options', '@@text-domain' ); ?>
+								<a href="<?php echo esc_url( $url ); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e( 'Export options to XML file.', 'jumpstart' ); ?>">
+									<?php esc_attr_e( 'Export Options', 'jumpstart' ); ?>
 								</a>
 
 							<?php endif; ?>
 
 							<?php if ( $this->args['import'] ) : ?>
 
-								<a href="<?php echo esc_url( $this->importer_url ); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e( 'Import options from XML file.', '@@text-domain' ); ?>">
-									<?php esc_attr_e( 'Import Options', '@@text-domain' ); ?>
+								<a href="<?php echo esc_url( $this->importer_url ); ?>" class="export-button button-secondary tb-tooltip-link" data-tooltip-text="<?php esc_attr_e( 'Import options from XML file.', 'jumpstart' ); ?>">
+									<?php esc_attr_e( 'Import Options', 'jumpstart' ); ?>
 								</a>
 
 							<?php endif; ?>
@@ -678,7 +678,7 @@ class Theme_Blvd_Options_Page {
 			add_settings_error(
 				$this->id,
 				'restore_defaults',
-				__( 'Default options restored.', '@@text-domain' ),
+				__( 'Default options restored.', 'jumpstart' ),
 				'themeblvd-error error'
 			);
 
@@ -969,7 +969,7 @@ class Theme_Blvd_Options_Page {
 			add_settings_error(
 				$this->id,
 				'save_options',
-				__( 'Options saved.', '@@text-domain' ),
+				__( 'Options saved.', 'jumpstart' ),
 				'themeblvd-updated updated'
 			);
 

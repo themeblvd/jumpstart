@@ -244,18 +244,18 @@ class Jump_Start_Updater {
 
 			$message = sprintf(
 				// translators: 1. theme name, 2 theme version, 3. "view the changelog" link, 4. "update responsibly" link
-				__( '<strong>%1$s %2$s</strong> is available. This is a major upgrade. Please %3$s for important details on this release and keep in mind that major upgrades may affect child theme customization. So use caution and %4$s.', '@@text-domain' ),
+				__( '<strong>%1$s %2$s</strong> is available. This is a major upgrade. Please %3$s for important details on this release and keep in mind that major upgrades may affect child theme customization. So use caution and %4$s.', 'jumpstart' ),
 				$theme->get( 'Name' ),
 				$new_version,
 				sprintf(
 					'<a href="%s" target="_blank">%s</a>',
 					esc_url( $this->changelog_url ) . '#' . $major_upgrade,
-					__( 'view the changelog', '@@text-domain' )
+					__( 'view the changelog', 'jumpstart' )
 				),
 				sprintf(
 					'<a href="%s" target="_blank">%s</a>',
 					'http://themeblvd.com/links/update-responsibly',
-					__( 'update responsibly', '@@text-domain' )
+					__( 'update responsibly', 'jumpstart' )
 				)
 			);
 
@@ -390,11 +390,11 @@ class Jump_Start_Updater {
 		// Build the message to add.
 		$message = sprintf(
 			// translators: 1. "update responsibly" link
-			__( 'This is a major upgrade that may affect child theme customization. Use caution and %s.', '@@text-domain' ),
+			__( 'This is a major upgrade that may affect child theme customization. Use caution and %s.', 'jumpstart' ),
 			sprintf(
 				'<a href="%s" target="_blank">%s</a>',
 				'http://themeblvd.com/links/update-responsibly',
-				__( 'update responsibly', '@@text-domain' )
+				__( 'update responsibly', 'jumpstart' )
 			)
 		);
 
@@ -653,7 +653,7 @@ class Jump_Start_Updater {
 
 			printf(
 				// translators: 1. item name, 2. item URL, 3. item's new version
-				__( 'There is a new version of %1$s available. View <a href="%2$s" target="_blank">version %3$s details</a>.', '@@text-domain' ),
+				__( 'There is a new version of %1$s available. View <a href="%2$s" target="_blank">version %3$s details</a>.', 'jumpstart' ),
 				$response->name,
 				$response->url,
 				$response->new_version
@@ -663,7 +663,7 @@ class Jump_Start_Updater {
 
 			printf(
 				// translators: 1. item name, 2. item URL, 3. item's new version, 4. update action URL, 5. link class and aria label
-				__( 'There is a new version of %1$s available. View <a href="%2$s" target="_blank">version %3$s details</a> or <a href="%4$s" %5$s>update now</a>.', '@@text-domain' ),
+				__( 'There is a new version of %1$s available. View <a href="%2$s" target="_blank">version %3$s details</a> or <a href="%4$s" %5$s>update now</a>.', 'jumpstart' ),
 				$response->name,
 				$response->url,
 				$response->new_version,

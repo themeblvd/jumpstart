@@ -65,8 +65,8 @@ class Theme_Blvd_Bases {
 	public function add_page() {
 
 		$admin_page = add_theme_page(
-			__( 'Theme Base', '@@text-domain' ),
-			__( 'Theme Base', '@@text-domain' ),
+			__( 'Theme Base', 'jumpstart' ),
+			__( 'Theme Base', 'jumpstart' ),
 			themeblvd_admin_module_cap( 'base' ),
 			get_template() . '-base',
 			array( $this, 'admin_page' )
@@ -127,7 +127,7 @@ class Theme_Blvd_Bases {
 
 					printf(
 						'<div class="updated"><p>%s</p></div>',
-						esc_html__( 'Theme base updated successfully.', '@@text-domain' )
+						esc_html__( 'Theme base updated successfully.', 'jumpstart' )
 					);
 
 				}
@@ -135,7 +135,7 @@ class Theme_Blvd_Bases {
 
 				printf(
 					'<div class="error"><p>%s</p></div>',
-					esc_html__( 'Security check failed. Couldn\'t update theme base.', '@@text-domain' )
+					esc_html__( 'Security check failed. Couldn\'t update theme base.', 'jumpstart' )
 				);
 
 			}
@@ -150,9 +150,9 @@ class Theme_Blvd_Bases {
 
 			printf(
 				'<div class="error"><p>%1$s</p><p><a href="%2$s">%3$s</a></p></div>',
-				esc_html__( 'Your saved options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', '@@text-domain' ),
+				esc_html__( 'Your saved options do not currently match the theme base you\'ve selected. Please configure and save your theme options page.', 'jumpstart' ),
 				esc_url( admin_url( 'themes.php?page=' . themeblvd_get_option_name() ) ),
-				esc_html__( 'Configure Theme Options', '@@text-domain' )
+				esc_html__( 'Configure Theme Options', 'jumpstart' )
 			);
 
 		}
@@ -164,8 +164,8 @@ class Theme_Blvd_Bases {
 
 		$confirm = sprintf(
 			'<h4>%1$s</h4><p>%2$s</p>',
-			esc_html__( 'Are you sure you want to change your theme base?', '@@text-domain' ),
-			esc_html__( 'This will effect your theme options, and you must re-save your theme options page after changing theme bases.', '@@text-domain' )
+			esc_html__( 'Are you sure you want to change your theme base?', 'jumpstart' ),
+			esc_html__( 'This will effect your theme options, and you must re-save your theme options page after changing theme bases.', 'jumpstart' )
 		);
 
 		if ( ! $current ) {
@@ -174,13 +174,13 @@ class Theme_Blvd_Bases {
 		?>
 		<div id="themeblvd-base-admin" class="wrap">
 
-			<h2><?php esc_html_e( 'Theme Base', '@@text-domain' ); ?></h2>
+			<h2><?php esc_html_e( 'Theme Base', 'jumpstart' ); ?></h2>
 
 			<p class="title-tagline">
 				<?php
 				printf(
 					// translators: 1: name of current theme
-					esc_html__( 'Select the %s theme base that\'s right for you.', '@@text-domain' ),
+					esc_html__( 'Select the %s theme base that\'s right for you.', 'jumpstart' ),
 					$theme->get( 'Name' )
 				);
 				?>
@@ -225,7 +225,7 @@ class Theme_Blvd_Bases {
 
 									<?php if ( $current !== $id ) : ?>
 										<a href="<?php echo esc_url( $url ); ?>" class="select-base" data-confirm="<?php echo $confirm; ?>">
-											<span><?php esc_html_e( 'Select Theme Base', '@@text-domain' ); ?></span>
+											<span><?php esc_html_e( 'Select Theme Base', 'jumpstart' ); ?></span>
 										</a>
 									<?php endif; ?>
 

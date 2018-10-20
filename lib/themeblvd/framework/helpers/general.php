@@ -39,7 +39,7 @@ function themeblvd_deprecated_function( $function, $version, $replacement = null
 
 			trigger_error( sprintf(
 				// translators: 1. deprecated function name, 2. version number, 3. additional message
-				esc_html__( '%1$s is deprecated since version %2$s of the Theme Blvd framework! %3$s', '@@text-domain' ),
+				esc_html__( '%1$s is deprecated since version %2$s of the Theme Blvd framework! %3$s', 'jumpstart' ),
 				$function,
 				$version,
 				esc_html( $message )
@@ -49,7 +49,7 @@ function themeblvd_deprecated_function( $function, $version, $replacement = null
 
 			trigger_error( sprintf(
 				// translators: 1. deprecated function name, 2. version number, 3. replacement function name
-				esc_html__( '%1$s is deprecated since version %2$s of the Theme Blvd framework! Use %3$s instead.', '@@text-domain' ),
+				esc_html__( '%1$s is deprecated since version %2$s of the Theme Blvd framework! Use %3$s instead.', 'jumpstart' ),
 				$function,
 				$version,
 				$replacement
@@ -59,7 +59,7 @@ function themeblvd_deprecated_function( $function, $version, $replacement = null
 
 			trigger_error( sprintf(
 				// translators: 1. deprecated function name, 2. version number
-				esc_html__( '%1$s is deprecated since version %2$s of the Theme Blvd framework with no alternative available.', '@@text-domain' ),
+				esc_html__( '%1$s is deprecated since version %2$s of the Theme Blvd framework with no alternative available.', 'jumpstart' ),
 				$function,
 				$version
 			) );

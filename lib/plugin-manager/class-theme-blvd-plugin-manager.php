@@ -293,25 +293,25 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 		private function set_args( $args = array() ) {
 
 			$this->args = wp_parse_args( $args, array(
-				'page_title'           => __( 'Suggested Plugins', '@@text-domain' ),
+				'page_title'           => __( 'Suggested Plugins', 'jumpstart' ),
 				// translators: 1: name of theme
-				'views_title'          => sprintf( __( 'Suggested by %s', '@@text-domain' ), $this->package['name'] ),
+				'views_title'          => sprintf( __( 'Suggested by %s', 'jumpstart' ), $this->package['name'] ),
 				// translators: 1: name of theme
-				'tab_title'            => sprintf( __( 'Suggested by %s', '@@text-domain' ), $this->package['name'] ),
+				'tab_title'            => sprintf( __( 'Suggested by %s', 'jumpstart' ), $this->package['name'] ),
 				// translators: 1: name of theme
-				'extended_title'       => sprintf( __( 'Suggested Plugins by %s', '@@text-domain' ), $this->package['name'] ),
+				'extended_title'       => sprintf( __( 'Suggested Plugins by %s', 'jumpstart' ), $this->package['name'] ),
 				'menu_title'           => '', // Takes on page_title, when left blank.
 				'parent_slug'          => 'themes.php',
 				'menu_slug'            => 'suggested-plugins',
 				'capability'           => 'install_plugins',
-				'nag_action'           => __( 'Manage suggested plugins', '@@text-domain' ),
-				'nag_dismiss'          => __( 'Dismiss this notice', '@@text-domain' ),
+				'nag_action'           => __( 'Manage suggested plugins', 'jumpstart' ),
+				'nag_dismiss'          => __( 'Dismiss this notice', 'jumpstart' ),
 				// translators: 1: name of theme
-				'nag_update'           => __( 'Not all of your active, suggested plugins are compatible with %s.', '@@text-domain' ),
+				'nag_update'           => __( 'Not all of your active, suggested plugins are compatible with %s.', 'jumpstart' ),
 				// translators: 1: name of theme, 2: number of suggested plugins
-				'nag_install_single'   => __( '%1$s suggests installing %2$s plugin.', '@@text-domain' ),
+				'nag_install_single'   => __( '%1$s suggests installing %2$s plugin.', 'jumpstart' ),
 				// translators: 1: name of theme, 2: number of suggested plugins
-				'nag_install_multiple' => __( '%1$s suggests installing %2$s plugins.', '@@text-domain' ),
+				'nag_install_multiple' => __( '%1$s suggests installing %2$s plugins.', 'jumpstart' ),
 				'child_theme'          => false,
 				'plugin_file'          => '',
 			));
@@ -401,8 +401,8 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 				'themeblvd-plugin-manager',
 				'pluginManagerSettings',
 				array(
-					'thirdParty'   => __( 'Only plugins from wordpress.org can be installed directly here.', '@@text-domain' ),
-					'notInstalled' => __( 'Plugin update skipped because it is not installed.', '@@text-domain' ),
+					'thirdParty'   => __( 'Only plugins from wordpress.org can be installed directly here.', 'jumpstart' ),
+					'notInstalled' => __( 'Plugin update skipped because it is not installed.', 'jumpstart' ),
 				)
 			);
 
@@ -460,7 +460,7 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 
 				<?php else : ?>
 
-					<p><?php esc_html_e( 'No suggested plugins given.', '@@text-domain' ); ?></p>
+					<p><?php esc_html_e( 'No suggested plugins given.', 'jumpstart' ); ?></p>
 
 				<?php endif; ?>
 
@@ -479,11 +479,11 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 		private function display_table_nav( $which ) {
 
 			$actions = array(
-				'install-selected'    => __( 'Install', '@@text-domain' ),
-				'activate-selected'   => __( 'Activate', '@@text-domain' ),
-				'deactivate-selected' => __( 'Deactivate', '@@text-domain' ),
-				'update-selected'     => __( 'Update', '@@text-domain' ),
-				'delete-selected'     => __( 'Delete', '@@text-domain' ),
+				'install-selected'    => __( 'Install', 'jumpstart' ),
+				'activate-selected'   => __( 'Activate', 'jumpstart' ),
+				'deactivate-selected' => __( 'Deactivate', 'jumpstart' ),
+				'update-selected'     => __( 'Update', 'jumpstart' ),
+				'delete-selected'     => __( 'Delete', 'jumpstart' ),
 			);
 
 			if ( 'top' === $which ) {
@@ -495,12 +495,12 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 				<div class="actions bulkactions">
 
 					<label for="bulk-action-selector-<?php echo esc_attr( $which ); ?>" class="screen-reader-text">
-						<?php esc_html_e( 'Select bulk action', '@@text-domain' ); ?>
+						<?php esc_html_e( 'Select bulk action', 'jumpstart' ); ?>
 					</label>
 
 					<select name="action-<?php echo $which; ?>" id="bulk-action-selector-<?php echo esc_attr( $which ); ?>">
 
-						<option value="-1"><?php esc_html_e( 'Bulk Actions', '@@text-domain' ); ?></option>
+						<option value="-1"><?php esc_html_e( 'Bulk Actions', 'jumpstart' ); ?></option>
 
 						<?php foreach ( $actions as $name => $title ) : ?>
 
@@ -511,7 +511,7 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 					</select>
 
 					<?php
-					submit_button( __( 'Apply', '@@text-domain' ), 'action', '', false,
+					submit_button( __( 'Apply', 'jumpstart' ), 'action', '', false,
 						array(
 							'id' => "do-action-$which",
 						)
@@ -542,25 +542,25 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 
 					<td id="cb" class="manage-column column-cb check-column">
 						<label class="screen-reader-text" for="cb-select-all-<?php echo $id; ?>">
-							<?php esc_html_e( 'Select All', '@@text-domain' ); ?>
+							<?php esc_html_e( 'Select All', 'jumpstart' ); ?>
 						</label>
 						<input id="cb-select-all-<?php echo $id; ?>" type="checkbox">
 					</td>
 
 					<th scope="col" class="manage-column column-name column-primary">
-						<?php esc_html_e( 'Plugin', '@@text-domain' ); ?>
+						<?php esc_html_e( 'Plugin', 'jumpstart' ); ?>
 					</th>
 
 					<th scope="col" class="manage-column column-compatible-version">
-						<?php esc_html_e( 'Compatible Version', '@@text-domain' ); ?>
+						<?php esc_html_e( 'Compatible Version', 'jumpstart' ); ?>
 					</th>
 
 					<th scope="col" class="manage-column column-installed-version">
-						<?php esc_html_e( 'Installed Version', '@@text-domain' ); ?>
+						<?php esc_html_e( 'Installed Version', 'jumpstart' ); ?>
 					</th>
 
 					<th scope="col" class="manage-column column-status">
-						<?php esc_html_e( 'Status', '@@text-domain' ); ?>
+						<?php esc_html_e( 'Status', 'jumpstart' ); ?>
 					</th>
 
 				</tr>
@@ -603,7 +603,7 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 					<label class="screen-reader-text" for="">
 						<?php
 						/* translators: 1: placeholder is name of plugin */
-						printf( __( 'Select %s', '@@text-domain' ), $plugin['name'] );
+						printf( __( 'Select %s', 'jumpstart' ), $plugin['name'] );
 						?>
 					</label>
 					<input type="checkbox" name="checked[]" value="<?php echo $plugin['slug']; ?>">
@@ -631,7 +631,7 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 					<?php if ( $plugin['current_version'] ) : ?>
 						<?php echo esc_html( $plugin['current_version'] ); ?>
 					<?php else : ?>
-						<?php esc_html_e( 'Not Installed', '@@text-domain' ); ?>
+						<?php esc_html_e( 'Not Installed', 'jumpstart' ); ?>
 					<?php endif; ?>
 				</td>
 
@@ -684,9 +684,9 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 
 				$actions['details'] = array(
 					'url'    => $plugin['url'],
-					'text'   => __( 'Details', '@@text-domain' ),
+					'text'   => __( 'Details', 'jumpstart' ),
 					// translators: 1: name of plugin
-					'label'  => sprintf( __( 'More Information about %s', '@@text-domain' ), $plugin['name'] ),
+					'label'  => sprintf( __( 'More Information about %s', 'jumpstart' ), $plugin['name'] ),
 					'target' => '_blank',
 					'nonce'  => null,
 				);
@@ -730,9 +730,9 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 
 					$actions['install'] = array(
 						'url'    => $url,
-						'text'   => __( 'Install', '@@text-domain' ),
+						'text'   => __( 'Install', 'jumpstart' ),
 						// translators: 1: name of plugin
-						'label'  => sprintf( __( 'Install %s', '@@text-domain' ), $plugin['name'] ),
+						'label'  => sprintf( __( 'Install %s', 'jumpstart' ), $plugin['name'] ),
 						'target' => '_self',
 						'nonce'  => null, // No nonce needed, using wp.updates.ajaxNonce.
 					);
@@ -741,9 +741,9 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 
 					$actions['install'] = array(
 						'url'    => $plugin['url'],
-						'text'   => __( 'Get Plugin', '@@text-domain' ),
+						'text'   => __( 'Get Plugin', 'jumpstart' ),
 						// translators: 1: name of plugin
-						'label'  => sprintf( __( 'Install %s', '@@text-domain' ), $plugin['name'] ),
+						'label'  => sprintf( __( 'Install %s', 'jumpstart' ), $plugin['name'] ),
 						'target' => '_blank',
 						'nonce'  => null,
 					);
@@ -765,9 +765,9 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 
 				$actions['activate'] = array(
 					'url'    => $url,
-					'text'   => __( 'Activate', '@@text-domain' ),
+					'text'   => __( 'Activate', 'jumpstart' ),
 					// translators: 1: name of plugin
-					'label'  => sprintf( __( 'Activate %s', '@@text-domain' ), $plugin['name'] ),
+					'label'  => sprintf( __( 'Activate %s', 'jumpstart' ), $plugin['name'] ),
 					'target' => '_self',
 				);
 
@@ -784,9 +784,9 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 
 				$actions['deactivate'] = array(
 					'url'    => $url,
-					'text'   => __( 'Deactivate', '@@text-domain' ),
+					'text'   => __( 'Deactivate', 'jumpstart' ),
 					// translators: 1: name of plugin
-					'label'  => sprintf( __( 'Deactivate %s', '@@text-domain' ), $plugin['name'] ),
+					'label'  => sprintf( __( 'Deactivate %s', 'jumpstart' ), $plugin['name'] ),
 					'target' => '_self',
 					'nonce'  => wp_create_nonce( 'plugin-activation_' . $plugin['slug'] ),
 				);
@@ -813,9 +813,9 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 
 				$actions['delete'] = array(
 					'url'    => $url,
-					'text'   => __( 'Delete', '@@text-domain' ),
+					'text'   => __( 'Delete', 'jumpstart' ),
 					// translators: 1: name of plugin
-					'label'  => sprintf( __( 'Delete %s', '@@text-domain' ), $plugin['name'] ),
+					'label'  => sprintf( __( 'Delete %s', 'jumpstart' ), $plugin['name'] ),
 					'target' => '_self',
 					'nonce'  => wp_create_nonce( 'delete-plugin_' . $plugin['slug'] ),
 				);
@@ -843,12 +843,12 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 					'url'    => $url,
 					'text'   => sprintf(
 						// translators: 1: new version of plugin
-						__( 'Update to %s', '@@text-domain' ),
+						__( 'Update to %s', 'jumpstart' ),
 						$plugin['new_version']
 					),
 					'label'  => sprintf(
 						// translators: 1: name of plugin, 2: new version of plugin
-						__( 'Update %1$s to version %2$s', '@@text-domain' ),
+						__( 'Update %1$s to version %2$s', 'jumpstart' ),
 						$plugin['name'],
 						$plugin['new_version']
 					),
@@ -859,7 +859,7 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 			} elseif ( 'not-installed' !== $plugin['status'] ) {
 
 				$actions['update'] = array(
-					'text' => __( 'Plugin is up-to-date', '@@text-domain' ),
+					'text' => __( 'Plugin is up-to-date', 'jumpstart' ),
 				);
 
 			}
@@ -932,19 +932,19 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 
 			switch ( $plugin['status'] ) {
 				case 'active':
-					esc_html_e( 'Active', '@@text-domain' );
+					esc_html_e( 'Active', 'jumpstart' );
 					break;
 
 				case 'incompatible':
-					esc_html_e( 'Incompatible', '@@text-domain' );
+					esc_html_e( 'Incompatible', 'jumpstart' );
 					break;
 
 				case 'inactive':
-					esc_html_e( 'Installed', '@@text-domain' );
+					esc_html_e( 'Installed', 'jumpstart' );
 					break;
 
 				default:
-					esc_html_e( 'Not Installed', '@@text-domain' );
+					esc_html_e( 'Not Installed', 'jumpstart' );
 			}
 
 		}
@@ -1193,7 +1193,7 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 
 				if ( 'activate' === $_REQUEST['action'] ) {
 
-					$message = __( 'Plugin activated.', '@@text-domain' );
+					$message = __( 'Plugin activated.', 'jumpstart' );
 
 				} elseif ( 'activate-selected' === $_REQUEST['action'] ) {
 
@@ -1205,18 +1205,18 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 							'%s plugin activated successfully.',
 							'%s plugins activated successfully.',
 							$num,
-							'@@text-domain'
+							'jumpstart'
 						),
 						$num
 					);
 
 				} elseif ( 'deactivate' === $_REQUEST['action'] ) {
 
-					$message = __( 'Plugin deactivated.', '@@text-domain' );
+					$message = __( 'Plugin deactivated.', 'jumpstart' );
 
 				} elseif ( 'deactivate-selected' === $_REQUEST['action'] ) {
 
-					$message = __( 'Plugins deactivated.', '@@text-domain' );
+					$message = __( 'Plugins deactivated.', 'jumpstart' );
 
 				}
 
@@ -1246,21 +1246,21 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 
 			if ( $do_bulk && empty( $_REQUEST['checked'] ) ) {
 
-				$error = __( 'No plugins were selected.', '@@text-domain' );
+				$error = __( 'No plugins were selected.', 'jumpstart' );
 
 			} elseif ( ! $do_bulk && empty( $_REQUEST['plugin'] ) ) {
 
-				$error = __( 'No plugin slug was given.', '@@text-domain' );
+				$error = __( 'No plugin slug was given.', 'jumpstart' );
 
 			} elseif ( ! current_user_can( 'update_plugins' ) ) {
 
-				$error = __( 'Sorry, you are not allowed to update plugins for this site.', '@@text-domain' );
+				$error = __( 'Sorry, you are not allowed to update plugins for this site.', 'jumpstart' );
 
 			} elseif ( ! $do_bulk && empty( $plugins_data[ $_REQUEST['plugin'] ] ) ) {
 
 				$error = sprintf(
 					// translators: 1: slug of plugin being activated
-					__( 'The plugin %s doesn\'t exist within the plugin manager\'s registered plugins.', '@@text-domain' ),
+					__( 'The plugin %s doesn\'t exist within the plugin manager\'s registered plugins.', 'jumpstart' ),
 					$_REQUEST['plugin']
 				);
 
@@ -1296,7 +1296,7 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 					}
 
 					if ( ! $plugins ) {
-						$error = __( 'No valid plugins given for bulk action.', '@@text-domain' );
+						$error = __( 'No valid plugins given for bulk action.', 'jumpstart' );
 					}
 				} else {
 
@@ -1328,7 +1328,7 @@ if ( ! class_exists( 'Theme_Blvd_Plugin_Manager' ) ) {
 
 					} else {
 
-						$error = __( 'None of the selected plugins could be activated. Make sure they are installed.', '@@text-domain' );
+						$error = __( 'None of the selected plugins could be activated. Make sure they are installed.', 'jumpstart' );
 
 					}
 				} elseif ( 'deactivate' === $_REQUEST['action'] || 'deactivate-selected' === $_REQUEST['action'] ) {

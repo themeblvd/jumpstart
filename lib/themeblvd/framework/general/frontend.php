@@ -96,7 +96,7 @@ function themeblvd_get_part( $type ) {
 		__FUNCTION__,
 		'2.7.0',
 		'themeblvd_get_template_part',
-		__( 'Instead of using themeblvd_get_part(), you should now use themeblvd_get_template_part() wrapper function to completely replace get_template_part() instance.' , '@@text-domain' )
+		__( 'Instead of using themeblvd_get_part(), you should now use themeblvd_get_template_part() wrapper function to completely replace get_template_part() instance.' , 'jumpstart' )
 	);
 
 }

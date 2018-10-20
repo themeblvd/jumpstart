@@ -145,22 +145,22 @@ function themeblvd_get_time_ago( $post_id = 0 ) {
 	 */
 	$locals = apply_filters(
 		'themeblvd_time_ago_locals', array(
-			'year'    => __( 'year', '@@text-domain' ),
-			'years'   => __( 'years', '@@text-domain' ),
-			'month'   => __( 'month', '@@text-domain' ),
-			'months'  => __( 'months', '@@text-domain' ),
-			'week'    => __( 'week', '@@text-domain' ),
-			'weeks'   => __( 'weeks', '@@text-domain' ),
-			'day'     => __( 'day', '@@text-domain' ),
-			'days'    => __( 'days', '@@text-domain' ),
-			'hour'    => __( 'hour', '@@text-domain' ),
-			'hours'   => __( 'hours', '@@text-domain' ),
-			'minute'  => __( 'minute', '@@text-domain' ),
-			'minutes' => __( 'minutes', '@@text-domain' ),
-			'second'  => __( 'second', '@@text-domain' ),
-			'seconds' => __( 'seconds', '@@text-domain' ),
-			'ago'     => __( 'ago', '@@text-domain' ),
-			'error'   => __( 'sometime', '@@text-domain' ),
+			'year'    => __( 'year', 'jumpstart' ),
+			'years'   => __( 'years', 'jumpstart' ),
+			'month'   => __( 'month', 'jumpstart' ),
+			'months'  => __( 'months', 'jumpstart' ),
+			'week'    => __( 'week', 'jumpstart' ),
+			'weeks'   => __( 'weeks', 'jumpstart' ),
+			'day'     => __( 'day', 'jumpstart' ),
+			'days'    => __( 'days', 'jumpstart' ),
+			'hour'    => __( 'hour', 'jumpstart' ),
+			'hours'   => __( 'hours', 'jumpstart' ),
+			'minute'  => __( 'minute', 'jumpstart' ),
+			'minutes' => __( 'minutes', 'jumpstart' ),
+			'second'  => __( 'second', 'jumpstart' ),
+			'seconds' => __( 'seconds', 'jumpstart' ),
+			'ago'     => __( 'ago', 'jumpstart' ),
+			'error'   => __( 'sometime', 'jumpstart' ),
 		)
 	);
 
@@ -262,10 +262,10 @@ function themeblvd_get_modes() {
 	 * @param array Post display modes.
 	 */
 	return apply_filters( 'themeblvd_modes', array(
-		'blog'     => __( 'Blog', '@@text-domain' ),
-		'list'     => __( 'List', '@@text-domain' ),
-		'grid'     => __( 'Grid', '@@text-domain' ),
-		'showcase' => __( 'Showcase', '@@text-domain' ),
+		'blog'     => __( 'Blog', 'jumpstart' ),
+		'list'     => __( 'List', 'jumpstart' ),
+		'grid'     => __( 'Grid', 'jumpstart' ),
+		'showcase' => __( 'Showcase', 'jumpstart' ),
 	) );
 
 }
@@ -280,15 +280,15 @@ function themeblvd_get_modes() {
 function themeblvd_get_share_sources() {
 
 	$sources = array(
-		'digg'      => __( 'Digg', '@@text-domain' ),
-		'email'     => __( 'Email', '@@text-domain' ),
-		'facebook'  => __( 'Facebook', '@@text-domain' ),
-		'google'    => __( 'Google+', '@@text-domain' ),
-		'linkedin'  => __( 'Linkedin', '@@text-domain' ),
-		'pinterest' => __( 'Pinterest', '@@text-domain' ),
-		'reddit'    => __( 'Reddit', '@@text-domain' ),
-		'tumblr'    => __( 'Tumblr', '@@text-domain' ),
-		'twitter'   => __( 'Twitter', '@@text-domain' ),
+		'digg'      => __( 'Digg', 'jumpstart' ),
+		'email'     => __( 'Email', 'jumpstart' ),
+		'facebook'  => __( 'Facebook', 'jumpstart' ),
+		'google'    => __( 'Google+', 'jumpstart' ),
+		'linkedin'  => __( 'Linkedin', 'jumpstart' ),
+		'pinterest' => __( 'Pinterest', 'jumpstart' ),
+		'reddit'    => __( 'Reddit', 'jumpstart' ),
+		'tumblr'    => __( 'Tumblr', 'jumpstart' ),
+		'twitter'   => __( 'Twitter', 'jumpstart' ),
 	);
 
 	/**
