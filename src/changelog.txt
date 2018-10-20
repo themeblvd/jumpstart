@@ -1,8 +1,8 @@
 # Jump Start Changelog
 
-## 2.2.6 - XX/XX/XXXX
+## 2.3.0 - XX/XX/XXXX
 
-* **Updated Theme Blvd framework to 2.7.6**
+* **Updated Theme Blvd framework to 2.8.0**
 * New: Basic WordPress 5+ editor (i.e. Gutenberg) compatibility.
 	* Moved "Sidebar Layout" option to "Theme Layout" meta box, for editing both Posts and Pages.
 	* Added styles for default Separator block.

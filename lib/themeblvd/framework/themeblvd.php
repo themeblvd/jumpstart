@@ -29,7 +29,7 @@
  *
  * @since @@name-framework 2.0.0
  */
-define( 'TB_FRAMEWORK_VERSION', '2.7.6' );
+define( 'TB_FRAMEWORK_VERSION', '2.8.0' );
 
 /**
  * Absolute file path to framework directory.
