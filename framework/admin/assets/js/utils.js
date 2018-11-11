@@ -1,4 +1,359 @@
 /**
+ * Admin Utilities
+ *
+ * This is file is required before running any
+ * other framework administration JavaScript files.
+ *
+ * @package Jump_Start
+ * @subpackage Theme_Blvd
+ * @license GPL-2.0+
+ */
+
+/**
+ * Global Theme Blvd admin object.
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @var {object}
+ */
+var themeblvd = {};
+
+/**
+ * Admin Utilities: Tools
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @param {jQuery} $     jQuery object.
+ * @param {object} admin Theme Blvd admin object.
+ */
+(function($, admin) {
+  /**
+   * Check if we're on a mobile device or not.
+   *
+   * @since Theme_Blvd 2.7.0
+   *
+   * @return {bool} Whether it's a mobile device or not.
+   */
+  admin.isMobile = function($body) {
+    if (!$body) {
+      $body = $('body');
+    }
+
+    if ($body.hasClass('mobile')) {
+      return true;
+    }
+
+    var agentCheck = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+
+    if (agentCheck) {
+      return true;
+    }
+
+    return false;
+  };
+})(jQuery, window.themeblvd);
+
+/**
+ * Admin Utilities: Confirmation Prompt
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @param {jQuery} $     jQuery object.
+ * @param {object} admin Theme Blvd admin object.
+ * @param {object} l10n  Localized admin text strings.
+ */
+(function($, admin, l10n) {
+  /**
+   * Sets up confirmation prompt.
+   *
+   * @since Theme_Blvd 2.7.0
+   *
+   * @param {string}      message         Message to user in confirmation prompt.
+   * @param {object}      args            Options for confirmation popup.
+   * @param {bool}        args.confirm    Whether to include Ok and Cancel buttons.
+   * @param {bool}        args.verify     Whether to include Yes and No buttons.
+   * @param {bool|string} args.input      Text input (can be true or string for default input value).
+   * @param {string}      args.inputDesc  Description for below input.
+   * @param {string}      args.textOk     Ok button text.
+   * @param {string}      args.textCancel Cancel button text.
+   * @param {string}      args.textYes    Yes button text.
+   * @param {string}      args.textNo     No button text.
+   * @param {string}      args.class      Optional CSS class to add to prompt.
+   * @param {function}    callback        Callback function once prompt is clicked.
+   */
+  admin.confirm = function(message, args, callback) {
+    var $body = $('body'),
+      $window = $(window),
+      $outer,
+      $inner,
+      $buttons;
+
+    args = $.extend(
+      {
+        confirm: false,
+        verify: false,
+        input: false,
+        inputDesc: '',
+        textOk: l10n.ok,
+        textCancel: l10n.cancel,
+        textYes: l10n.yes,
+        textNo: l10n.no,
+        className: ''
+      },
+      args
+    );
+
+    if (args.input_desc) {
+      // Backwards compatibility.
+      args.inputDesc = args.input_desc;
+    }
+
+    // Append initial output.
+
+    $body.append('<div class="themeblvd-confirm-overlay"></div>');
+
+    $body.append('<div class="themeblvd-confirm-outer"></div>');
+
+    $outer = $('.themeblvd-confirm-outer');
+
+    $outer.append('<div class="themeblvd-confirm-inner"></div>');
+
+    $inner = $('.themeblvd-confirm-inner');
+
+    $inner.append(message);
+
+    $outer.css(
+      'left',
+      ($window.width() - $outer.width()) / 2 + $window.scrollLeft() + 'px'
+    );
+
+    $outer.css('top', '100px').fadeIn(200);
+
+    // Add optional CSS class.
+
+    if (args.className) {
+      $outer.addClass(args.className);
+    }
+
+    // Append text input.
+
+    if (args.input) {
+      if ('string' == typeof args.input) {
+        $inner.append(
+          '<div class="themeblvd-confirm-input"><input type="text" class="themeblvd-confirm-text-box" t="themeblvd-confirm-text-box" value="' +
+            args.input +
+            '" /></div>'
+        );
+      } else if ('object' == typeof args.input) {
+        $inner.append(
+          $('<div class="themeblvd-confirm-input"></div>').append(args.input)
+        );
+      } else {
+        $inner.append(
+          '<div class="themeblvd-confirm-input"><input type="text" class="themeblvd-confirm-text-box" /></div>'
+        );
+      }
+
+      if (args.inputDesc) {
+        $outer
+          .find('.themeblvd-confirm-text-box')
+          .after('<label>' + args.inputDesc + '</label>');
+      }
+
+      $outer.find('.themeblvd-confirm-text-box').focus();
+    }
+
+    // Append buttons.
+
+    $inner.append('<div class="themeblvd-confirm-buttons"></div>');
+
+    $buttons = $('.themeblvd-confirm-buttons');
+
+    if (args.confirm || args.input) {
+      $buttons.append(
+        '<button class="button-primary" value="ok">' + args.textOk + '</button>'
+      );
+
+      $buttons.append(
+        '<button class="button-secondary" value="cancel">' +
+          args.textCancel +
+          '</button>'
+      );
+    } else if (args.verify) {
+      $buttons.append(
+        '<button class="button-primary" value="ok">' +
+          args.textYes +
+          '</button>'
+      );
+
+      $buttons.append(
+        '<button class="button-secondary" value="cancel">' +
+          args.textNo +
+          '</button>'
+      );
+    } else {
+      $buttons.append(
+        '<button class="button-primary" value="ok">' + args.textOk + '</button>'
+      );
+    }
+
+    $(document).on('keydown', function(event) {
+      if ($('.themeblvd-confirm-overlay').is(':visible')) {
+        if (13 == event.keyCode) {
+          $('.themeblvd-confirm-buttons > button[value="ok"]').trigger('click');
+        }
+
+        if (27 == event.keyCode) {
+          $('.themeblvd-confirm-buttons > button[value="cancel"]').trigger(
+            'click'
+          );
+        }
+      }
+    });
+
+    var inputText = $('.themeblvd-confirm-text-box').val();
+
+    $('.themeblvd-confirm-text-box').on('keyup', function() {
+      inputText = $(this).val();
+    });
+
+    $buttons.find('button').on('click', function() {
+      $('.themeblvd-confirm-overlay').remove();
+
+      $outer.remove();
+
+      if (callback) {
+        var buttonType = $(this).attr('value');
+
+        if ('ok' == buttonType) {
+          if (args.input) {
+            callback(inputText);
+          } else {
+            callback(true);
+          }
+        } else if ('cancel' == buttonType) {
+          callback(false);
+        }
+      }
+    });
+  };
+})(jQuery, window.themeblvd, themeblvdL10n);
+
+/**
+ * Confirmation prompt backwards compatibility.
+ *
+ * We're phasing out tbc_confirm() function in the
+ * process of adding all WP admin functionality to
+ * window.themeblvd.
+ *
+ * But since other plugins still may be using tbc_confirm(),
+ * we'll keep it as a wrapper for now.
+ *
+ * @since Theme_Blvd 2.0.0
+ * @deprecated Theme_Blvd 2.7.0
+ */
+function tbc_confirm(message, args, callback) {
+  window.themeblvd.confirm(message, args, callback);
+}
+
+/**
+ * Admin Utilities: jQuery Namespace
+ *
+ * Sets up the `themeblvd` jQuery namespace.
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @param {jQuery} $     jQuery object.
+ * @param {object} admin Theme Blvd admin object.
+ */
+(function($, admin) {
+  /**
+   * Adds all components as one item to the jQuery
+   * namespace.
+   *
+   * @since 1.0.0
+   *
+   * @param {string} component Component ID like `init` or `options`.
+   * @param {string} part      Sub component part, like `media-uploader`.
+   * @param {object} settings  Settings, if relevent.
+   */
+  $.fn.themeblvd = function(component, part, settings) {
+    var componentName = '',
+      partName = '';
+
+    if ('init' === component) {
+      component = 'setup';
+    }
+
+    /*
+     * To get object name, convert component name to
+     * camel case, i.e. `my-string` to `myString`.
+     */
+    if (component) {
+      componentName = component.replace(/-([a-z])/g, function(g) {
+        return g[1].toUpperCase();
+      });
+    }
+
+    if (part) {
+      partName = part.replace(/-([a-z])/g, function(g) {
+        return g[1].toUpperCase();
+      });
+    }
+
+    return this.each(function() {
+      if ('undefined' !== typeof admin[componentName]) {
+        if (part) {
+          if ('undefined' !== typeof admin[componentName][partName]) {
+            if ('undefined' !== typeof admin[componentName][partName]['init']) {
+              if (settings) {
+                admin[componentName][partName]['init'](this, settings);
+              } else {
+                admin[componentName][partName]['init'](this);
+              }
+            } else {
+              if (settings) {
+                admin[componentName][partName](this, settings);
+              } else {
+                admin[componentName][partName](this);
+              }
+            }
+          } else {
+            console.log(
+              'Theme Blvd admin component "' +
+                component +
+                '" is missing part "' +
+                part +
+                '."'
+            );
+          }
+        } else {
+          if ('undefined' !== typeof admin[componentName]['init']) {
+            if (settings) {
+              admin[componentName]['init'](this, settings);
+            } else {
+              admin[componentName]['init'](this);
+            }
+          } else {
+            if (settings) {
+              admin[componentName](this, settings);
+            } else {
+              admin[componentName](this);
+            }
+          }
+        }
+      } else {
+        console.log(
+          'Theme Blvd admin component "' + component + '" is missing.'
+        );
+      }
+    });
+  };
+})(jQuery, window.themeblvd);
+
+/**
  * Admin Utilities: Modals
  *
  * @since Theme_Blvd 2.7.0
@@ -568,3 +923,189 @@
     });
   };
 })(jQuery, window.themeblvd, themeblvdL10n);
+
+/**
+ * Admin Utilities: General UI Components
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @param {jQuery} $     jQuery object.
+ * @param {object} admin Theme Blvd admin object.
+ */
+(function($, admin) {
+  /**
+   * Sets up the general UI components called from
+   * the jQuery `themeblvd` namespace.
+   *
+   * @since Theme_Blvd 2.7.0
+   *
+   * @param {object} element this
+   */
+  admin.setup = function(element) {
+    var $element = $(element);
+
+    /**
+     * Toggle admin UI sidebar widgets.
+     *
+     * @since Theme_Blvd 2.0.0
+     */
+    $element.off('click.tb-widget');
+
+    $element.on(
+      'click.tb-widget',
+      '.widget-name-arrow, .block-widget-name-arrow',
+      function(event) {
+        event.preventDefault();
+
+        var $button = $(this),
+          type = 'widget',
+          closed = false;
+
+        if ($button.hasClass('block-widget-name-arrow')) {
+          type = 'block-widget';
+        }
+
+        if (
+          $button.closest('.' + type + '-name').hasClass(type + '-name-closed')
+        ) {
+          closed = true;
+        }
+
+        if (closed) {
+          // Show widget.
+
+          $button
+            .closest('.' + type)
+            .find('.' + type + '-content')
+            .show();
+
+          $button
+            .closest('.' + type)
+            .find('.' + type + '-name')
+            .removeClass(type + '-name-closed');
+
+          // Refresh any code editor options.
+          $button.closest('.' + type).themeblvd('options', 'code-editor');
+        } else {
+          // Close widget.
+
+          $button
+            .closest('.' + type)
+            .find('.' + type + '-content')
+            .hide();
+
+          $button
+            .closest('.' + type)
+            .find('.' + type + '-name')
+            .addClass(type + '-name-closed');
+        }
+      }
+    );
+
+    /**
+     * Setup help tooltips.
+     *
+     * @since Theme_Blvd 2.0.0
+     */
+    $element.on('click', '.tooltip-link', function(event) {
+      event.preventDefault();
+
+      admin.confirm($(this).attr('title'), { textOk: 'Ok' });
+    });
+
+    /**
+     * Delete item by HTML ID passed through
+     * link's href.
+     *
+     * @since Theme_Blvd 2.0.0
+     */
+    $element.on('click', '.delete-me', function(event) {
+      var $link = $(this),
+        item = $link.attr('href');
+
+      admin.confirm($link.attr('title'), { confirm: true }, function(response) {
+        if (response) {
+          $(item).remove();
+        }
+      });
+    });
+  };
+})(jQuery, window.themeblvd);
+
+/**
+ * Admin Utilities: Accordions
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @param {jQuery} $     jQuery object.
+ * @param {object} admin Theme Blvd admin object.
+ */
+(function($, admin) {
+  /**
+   * Sets up an admin accordion.
+   *
+   * @since Theme_Blvd 2.7.0
+   *
+   * @param {object} element this
+   */
+  admin.accordion = function(element) {
+    var $element = $(element);
+
+    $element.find('.element-content').hide();
+
+    $element.find('.element-content:first').show();
+
+    $element.find('.element-trigger:first').addClass('active');
+
+    $element.find('.element-trigger').on('click', function(event) {
+      event.preventDefault();
+
+      var $anchor = $(this);
+
+      if (!$anchor.hasClass('active')) {
+        $element.find('.element-content').hide();
+
+        $element.find('.element-trigger').removeClass('active');
+
+        $anchor.addClass('active');
+
+        $anchor.next('.element-content').show();
+      }
+    });
+  };
+})(jQuery, window.themeblvd);
+
+/**
+ * Admin Utilities: Widgets
+ *
+ * @since Theme_Blvd 2.7.0
+ *
+ * @param {jQuery} $     jQuery object.
+ * @param {object} admin Theme Blvd admin object.
+ */
+(function($, admin) {
+  /**
+   * Sets up an admin widget.
+   *
+   * These are mainly used for the elements of
+   * layout builder, to allow them to toggle
+   * open and closed.
+   *
+   * @since Theme_Blvd 2.7.0
+   *
+   * @param {object} element this
+   */
+  admin.widgets = function(element) {
+    var $element = $(element);
+
+    // Top-level widgets.
+    $element.find('.widget-content').hide();
+
+    $element.find('.widget-name').addClass('widget-name-closed');
+
+    // Inner widgets - i.e. blocks or elements within columns.
+    $element.find('.block-content').hide();
+
+    $element.find('.block-handle').addClass('block-handle-closed');
+  };
+})(jQuery, window.themeblvd);

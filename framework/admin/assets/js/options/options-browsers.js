@@ -3,124 +3,123 @@
  *
  * @param {jQuery} $ jQuery object.
  */
-( function( $ ) {
+(function($) {
+  $(document).ready(function($) {
+    /**
+     * Setup icon browser.
+     *
+     * @since Theme_Blvd 2.5.0
+     */
+    var $iconBrowser = $('.themeblvd-icon-browser');
 
-	$( document ).ready( function( $ ) {
+    $iconBrowser.themeblvd('options', 'setup');
 
-		/**
-		 * Setup icon browser.
-		 *
-		 * @since Theme_Blvd 2.5.0
-		 */
-		var $iconBrowser = $( '.themeblvd-icon-browser' );
+    $iconBrowser.themeblvd('options', 'bind');
 
-		$iconBrowser.themeblvd( 'options', 'setup' );
+    $iconBrowser.find('.select-icon').on('click', function(event) {
+      event.preventDefault();
 
-		$iconBrowser.themeblvd( 'options', 'bind' );
+      var $btn = $(this),
+        $browser = $btn.closest('.themeblvd-icon-browser'),
+        icon = $btn.data('icon'),
+        iconPreview = $btn.html();
 
-		$iconBrowser.find( '.select-icon' ).on( 'click', function( event ){
+      $browser.find('.select-icon').removeClass('selected');
 
-			event.preventDefault();
+      $btn.addClass('selected');
 
-			var $btn        = $( this ),
-				$browser    = $btn.closest( '.themeblvd-icon-browser' ),
-				icon        = $btn.data( 'icon' ),
-				iconPreview = $btn.html();
+      $browser.find('.icon-selection').val(icon);
 
-			$browser.find( '.select-icon' ).removeClass( 'selected' );
+      $browser.find('.icon-preview').html(iconPreview);
 
-			$btn.addClass( 'selected' );
+      $browser.find('.icon-text-preview').html(icon);
+    });
 
-			$browser.find( '.icon-selection' ).val( icon );
+    $iconBrowser.find('.icon-search-input').on('keyup', function(event) {
+      var value = $(this).val(),
+        results = [];
 
-			$browser
-				.find( '.icon-preview' )
-				.html( iconPreview );
+      if (!value) {
+        $iconBrowser.find('.select-icon').show();
+        return;
+      }
 
-			$browser
-				.find( '.icon-text-preview' )
-				.html( icon );
+      $iconBrowser.find('.select-icon').hide();
 
-		} );
+      if ('undefined' !== typeof themeblvdIconSearchData) {
+        $.each(themeblvdIconSearchData, function(name, terms) {
+          var i, term;
 
-		$iconBrowser.find( '.icon-search-input' ).on( 'keyup', function( event ) {
+          for (i = 0; i < terms.length; i++) {
+            term = terms[i];
 
-			var value   = $( this ).val(),
-				results = [];
+            if (0 === term.indexOf(value)) {
+              results.push('.icon-' + name);
 
-			if ( ! value ) {
-				$iconBrowser.find( '.select-icon' ).show();
-				return;
-			}
+              i = terms.length; // End loop.
+            }
+          }
+        });
+      }
 
-			$iconBrowser.find( '.select-icon' ).hide();
+      $iconBrowser.find(results.join()).show();
+    });
 
-			if ( 'undefined' !== typeof themeblvdIconSearchData ) {
+    /**
+     * Setup texture browser.
+     *
+     * @since Theme_Blvd 2.5.0
+     */
+    $('.themeblvd-texture-browser').themeblvd('options', 'setup');
 
-				$.each( themeblvdIconSearchData, function( name, terms ) {
+    $('.themeblvd-texture-browser').themeblvd('options', 'bind');
 
-					var i, term;
+    if ($.isFunction($.fn.wpColorPicker)) {
+      $('#texture-browser-perview-color').wpColorPicker({
+        change: function() {
+          $('.themeblvd-texture-browser .select-texture span').css(
+            'background-color',
+            $('#texture-browser-perview-color').val()
+          );
+        }
+      });
+    }
 
-					for ( i = 0; i < terms.length; i++ ) {
+    $('.themeblvd-texture-browser .wp-color-result').attr(
+      'title',
+      'Temporary Preview Color'
+    );
 
-						term = terms[ i ];
+    $('.themeblvd-texture-browser .select-texture span').css(
+      'background-color',
+      $('#texture-browser-perview-color').val()
+    );
 
-						if ( 0 === term.indexOf( value ) ) {
+    $('.themeblvd-texture-browser .select-texture').on('click', function(
+      event
+    ) {
+      event.preventDefault();
 
-							results.push( '.icon-' + name );
+      var $btn = $(this);
 
-							i = terms.length; // End loop.
+      $btn
+        .closest('.themeblvd-texture-browser')
+        .find('.select-texture')
+        .each(function() {
+          $(this).removeClass('selected');
+        });
 
-						}
-					}
+      $btn.addClass('selected');
 
-				} );
+      $btn
+        .closest('.themeblvd-texture-browser')
+        .find('.texture-selection')
+        .val($btn.data('texture'));
 
-			}
-
-			$iconBrowser.find( results.join() ).show();
-
-		} );
-
-		/**
-		 * Setup texture browser.
-		 *
-		 * @since Theme_Blvd 2.5.0
-		 */
-		$( '.themeblvd-texture-browser' ).themeblvd( 'options', 'setup' );
-
-		$( '.themeblvd-texture-browser' ).themeblvd( 'options', 'bind' );
-
-		if ( $.isFunction( $.fn.wpColorPicker ) ) {
-			$( '#texture-browser-perview-color' ).wpColorPicker( {
-				change: function() {
-					$( '.themeblvd-texture-browser .select-texture span' ).css( 'background-color', $( '#texture-browser-perview-color' ).val() );
-				}
-			} );
-		}
-
-		$( '.themeblvd-texture-browser .wp-color-result' ).attr( 'title', 'Temporary Preview Color' );
-
-		$( '.themeblvd-texture-browser .select-texture span' ).css( 'background-color', $( '#texture-browser-perview-color' ).val() );
-
-		$( '.themeblvd-texture-browser .select-texture' ).on( 'click', function( event ){
-
-			event.preventDefault();
-
-			var $btn = $( this );
-
-			$btn.closest( '.themeblvd-texture-browser' ).find( '.select-texture' ).each( function() {
-				$( this ).removeClass( 'selected' );
-			} );
-
-			$btn.addClass( 'selected' );
-
-			$btn.closest( '.themeblvd-texture-browser' ).find( '.texture-selection' ).val( $btn.data( 'texture' ) );
-
-			$btn.closest( '.themeblvd-texture-browser' ).find( '.current-texture' ).text( $btn.data( 'texture-name' ) );
-
-		} );
-
-	} );
-
-} )( jQuery );
+      $btn
+        .closest('.themeblvd-texture-browser')
+        .find('.current-texture')
+        .text($btn.data('texture-name'));
+    });
+  });
+})(jQuery);

@@ -13,30 +13,26 @@
  *
  * @param {jQuery} $ jQuery object.
  */
-( function( $ ) {
+(function($) {
+  $(document).ready(function($) {
+    // Setup options with $.fn.themeblvd namspace.
 
-	$( document ).ready( function( $ ) {
+    var $metaBoxes = $('.tb-meta-box');
 
-		// Setup options with $.fn.themeblvd namspace.
+    $metaBoxes.themeblvd('init');
 
-		var $metaBoxes = $( '.tb-meta-box' );
+    $metaBoxes.themeblvd('options', 'bind');
 
-		$metaBoxes.themeblvd( 'init' );
+    $metaBoxes.themeblvd('options', 'setup');
 
-		$metaBoxes.themeblvd( 'options', 'bind' );
+    $metaBoxes.themeblvd('options', 'media-uploader');
 
-		$metaBoxes.themeblvd( 'options', 'setup' );
+    $metaBoxes.themeblvd('options', 'editor');
 
-		$metaBoxes.themeblvd( 'options', 'media-uploader' );
+    $metaBoxes.themeblvd('options', 'code-editor');
 
-		$metaBoxes.themeblvd( 'options', 'editor' );
+    $metaBoxes.themeblvd('options', 'column-widths');
 
-		$metaBoxes.themeblvd( 'options', 'code-editor' );
-
-		$metaBoxes.themeblvd( 'options', 'column-widths' );
-
-		$metaBoxes.themeblvd( 'options', 'sortable' );
-
-	} );
-
-} )( jQuery );
+    $metaBoxes.themeblvd('options', 'sortable');
+  });
+})(jQuery);

@@ -16,214 +16,212 @@
  * @param {object} admin Theme Blvd admin object.
  * @param {object} l10n  Localized admin text strings.
  */
-( function( $, admin, l10n ) {
+(function($, admin, l10n) {
+  $(document).ready(function($) {
+    var $page = $('.tb-options-page'),
+      $options = $('.tb-options-js');
 
-	$( document ).ready( function( $ ) {
+    /**
+     * Determine the active tab and show it.
+     *
+     * If the user was previously on a tab before the
+     * page was re-loaded, that tab should display again.
+     *
+     * If no tab is saved in storage, then the first tab
+     * is shown.
+     *
+     * @since Theme_Blvd 2.2.0
+     */
+    var activeTab = '';
 
-		var $page    = $( '.tb-options-page' ),
-			$options = $( '.tb-options-js' );
+    if ('undefined' !== typeof localStorage) {
+      activeTab = localStorage.getItem('tb-active-tab');
+    }
 
-		/**
-		 * Determine the active tab and show it.
-		 *
-		 * If the user was previously on a tab before the
-		 * page was re-loaded, that tab should display again.
-		 *
-		 * If no tab is saved in storage, then the first tab
-		 * is shown.
-		 *
-		 * @since Theme_Blvd 2.2.0
-		 */
-		var activeTab = '';
+    var $activePane = $page.find(activeTab);
 
-		if ( 'undefined' !== typeof localStorage ) {
-			activeTab = localStorage.getItem( 'tb-active-tab' );
-		}
+    if ($activePane.length) {
+      $activePane.fadeIn();
+    } else {
+      $page.find('.group:first').fadeIn();
+    }
 
-		var $activePane = $page.find( activeTab );
+    var $activeTab = $page.find(activeTab + '-tab');
 
-		if ( $activePane.length ) {
-			$activePane.fadeIn();
-		} else {
-			$page.find( '.group:first' ).fadeIn();
-		}
+    if ($activeTab.length) {
+      $activeTab.addClass('nav-tab-active');
+    } else {
+      $page.find('.nav-tab-wrapper a:first').addClass('nav-tab-active');
+    }
 
-		var $activeTab = $page.find( activeTab + '-tab' );
+    /**
+     * Handles swapping between option panes from
+     * clicking main navigation tabs.
+     *
+     * @since Theme_Blvd 2.2.0
+     */
+    $page.find('.nav-tab-wrapper a').on('click', function(event) {
+      event.preventDefault();
 
-		if ( $activeTab.length ) {
-			$activeTab.addClass( 'nav-tab-active' );
-		} else {
-			$page.find( '.nav-tab-wrapper a:first' ).addClass( 'nav-tab-active' );
-		}
+      var $tab = $(this),
+        $pane = $($tab.attr('href'));
 
-		/**
-		 * Handles swapping between option panes from
-		 * clicking main navigation tabs.
-		 *
-		 * @since Theme_Blvd 2.2.0
-		 */
-		$page.find( '.nav-tab-wrapper a' ).on( 'click', function( event ) {
+      $('.nav-tab-wrapper a').removeClass('nav-tab-active');
 
-			event.preventDefault();
+      $tab.addClass('nav-tab-active').trigger('blur');
 
-			var $tab  = $( this ),
-				$pane = $( $tab.attr( 'href' ) );
+      if ('undefined' !== typeof localStorage) {
+        localStorage.setItem('tb-active-tab', $tab.attr('href'));
+      }
 
-			$( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
+      $page.find('.group').hide();
 
-			$tab.addClass( 'nav-tab-active' ).trigger( 'blur' );
+      $pane.fadeIn();
 
-			if ( 'undefined' !== typeof localStorage ) {
-				localStorage.setItem( 'tb-active-tab', $tab.attr( 'href' ) );
-			}
+      // Refresh any code editors in this tab.
+      $pane.themeblvd('options', 'code-editor');
+    });
 
-			$page.find( '.group' ).hide();
+    /**
+     * Handles displaying option sections that were
+     * found in local storage.
+     *
+     * In other words, if a user had an option section
+     * already open before refreshing the page, it will
+     * open back up again.
+     *
+     * @since Theme_Blvd 2.2.0
+     */
+    $page.find('.postbox').each(function() {
+      var $postbox = $(this);
 
-			$pane.fadeIn();
+      if (
+        'undefined' !== typeof localStorage &&
+        localStorage.getItem('tb-section-' + $postbox.attr('id'))
+      ) {
+        $postbox
+          .removeClass('closed')
+          .find('.inner-section-content')
+          .show();
 
-			// Refresh any code editors in this tab.
-			$pane.themeblvd( 'options', 'code-editor' );
+        // Refresh any code editor options
+        $postbox.themeblvd('options', 'code-editor');
+      }
+    });
 
-		} );
+    /**
+     * Handles toggling the display of option
+     * sections.
+     *
+     * @since Theme_Blvd 2.2.0
+     */
+    $page.find('.postbox > .section-toggle').on('click', function(event) {
+      event.preventDefault();
 
-		/**
-		 * Handles displaying option sections that were
-		 * found in local storage.
-		 *
-		 * In other words, if a user had an option section
-		 * already open before refreshing the page, it will
-		 * open back up again.
-		 *
-		 * @since Theme_Blvd 2.2.0
-		 */
-		$page.find( '.postbox' ).each( function() {
+      var $toggle = $(this),
+        $postbox = $toggle.closest('.postbox');
 
-			var $postbox = $( this );
+      if ($postbox.hasClass('closed')) {
+        $postbox
+          .removeClass('closed')
+          .find('.inner-section-content')
+          .show();
 
-			if ( 'undefined' !== typeof localStorage && localStorage.getItem( 'tb-section-' + $postbox.attr( 'id' ) ) ) {
+        if ('undefined' !== typeof localStorage) {
+          localStorage.setItem('tb-section-' + $postbox.attr('id'), true);
+        }
 
-				$postbox.removeClass( 'closed' ).find( '.inner-section-content' ).show();
+        // Refresh any code editor options.
+        $postbox.themeblvd('options', 'code-editor');
+      } else {
+        $postbox
+          .addClass('closed')
+          .find('.inner-section-content')
+          .hide();
 
-				// Refresh any code editor options
-				$postbox.themeblvd( 'options', 'code-editor' );
+        if ('undefined' !== typeof localStorage) {
+          localStorage.removeItem('tb-section-' + $postbox.attr('id'));
+        }
+      }
+    });
 
-			}
+    /**
+     * Handles applying a preset style to the theme
+     * options page.
+     *
+     * @since Theme_Blvd 2.6.1
+     */
+    $page.find('.tb-presets a').on('click', function(event) {
+      event.preventDefault();
 
-		} );
+      var $link = $(this);
+      $form = $link.closest('form');
 
-		/**
-		 * Handles toggling the display of option
-		 * sections.
-		 *
-		 * @since Theme_Blvd 2.2.0
-		 */
-		$page.find( '.postbox > .section-toggle' ).on( 'click', function( event ) {
+      admin.confirm(l10n.preset, { confirm: true }, function(response) {
+        if (response) {
+          $form
+            .append(
+              '<input name="_tb_set_preset" value="' +
+                $link.data('set') +
+                '" type="hidden" />'
+            )
+            .submit();
+        }
+      });
+    });
 
-			event.preventDefault();
+    /**
+     * Handles clearing all options from the database, for
+     * the given options page.
+     *
+     * @since Theme_Blvd 2.2.0
+     */
+    $page.find('.clear-button').on('click', function(event) {
+      event.preventDefault();
 
-			var $toggle  = $( this ),
-				$postbox = $toggle.closest( '.postbox' );
+      admin.confirm(
+        '<h3>' + l10n.clear_title + '</h3>' + l10n.clear,
+        { confirm: true },
+        function(response) {
+          if (response) {
+            var $form = $page.find('#tb-options-page-form'),
+              optionID = $form.find('input[name="option_page"]').val();
 
-			if ( $postbox.hasClass( 'closed' ) ) {
-
-				$postbox.removeClass( 'closed' ).find( '.inner-section-content' ).show();
-
-				if ( 'undefined' !== typeof localStorage ) {
-					localStorage.setItem( 'tb-section-' + $postbox.attr( 'id' ), true );
-				}
-
-				// Refresh any code editor options.
-				$postbox.themeblvd( 'options', 'code-editor' );
-
-			} else {
-
-				$postbox.addClass( 'closed' ).find( '.inner-section-content' ).hide();
-
-				if ( 'undefined' !== typeof localStorage ) {
-					localStorage.removeItem( 'tb-section-' + $postbox.attr( 'id' ) );
-				}
-
-			}
-
-		} );
-
-		/**
-		 * Handles applying a preset style to the theme
-		 * options page.
-		 *
-		 * @since Theme_Blvd 2.6.1
-		 */
-		$page.find( '.tb-presets a' ).on( 'click', function( event ) {
-
-			event.preventDefault();
-
-			var $link = $( this );
-				$form = $link.closest( 'form' );
-
-			admin.confirm( l10n.preset, { 'confirm': true }, function( response ) {
-
-				if ( response ) {
-
-					$form.append( '<input name="_tb_set_preset" value="' + $link.data( 'set' ) + '" type="hidden" />' ).submit();
-
-				}
-
-			} );
-
-		} );
-
-		/**
-		 * Handles clearing all options from the database, for
-		 * the given options page.
-		 *
-		 * @since Theme_Blvd 2.2.0
-		 */
-		$page.find( '.clear-button' ).on( 'click', function( event ){
-
-			event.preventDefault();
-
-			admin.confirm( '<h3>' + l10n.clear_title + '</h3>' + l10n.clear, { 'confirm': true }, function( response ) {
-
-				if ( response ) {
-
-		        	var $form    = $page.find( '#tb-options-page-form' ),
-		        		optionID = $form.find( 'input[name="option_page"]' ).val();
-
-		        	/*
+            /*
 					 * Clear form's action so we don't go to options.php
 		        	 * and WP Settings API handling.
 					 */
-		        	$form.attr( 'action', '' );
+            $form.attr('action', '');
 
-		        	// Add in reset so our sanitization callback recognizes.
-		        	$form.append( '<input type="hidden" name="themeblvd_clear_options" value="' + optionID + '" />' );
+            // Add in reset so our sanitization callback recognizes.
+            $form.append(
+              '<input type="hidden" name="themeblvd_clear_options" value="' +
+                optionID +
+                '" />'
+            );
 
-		        	$form.submit();
+            $form.submit();
+          }
+        }
+      );
+    });
 
-		        }
+    // Setup options with $.fn.themeblvd namspace.
 
-		    } );
+    $options.themeblvd('init');
 
-		} );
+    $options.themeblvd('options', 'bind');
 
-		// Setup options with $.fn.themeblvd namspace.
+    $options.themeblvd('options', 'setup');
 
-		$options.themeblvd( 'init' );
+    $options.themeblvd('options', 'media-uploader');
 
-		$options.themeblvd( 'options', 'bind' );
+    $options.themeblvd('options', 'editor');
 
-		$options.themeblvd( 'options', 'setup' );
+    $options.themeblvd('options', 'code-editor');
 
-		$options.themeblvd( 'options', 'media-uploader' );
+    $options.themeblvd('options', 'column-widths');
 
-		$options.themeblvd( 'options', 'editor' );
-
-		$options.themeblvd( 'options', 'code-editor' );
-
-		$options.themeblvd( 'options', 'column-widths' );
-
-		$options.themeblvd( 'options', 'sortable' );
-
-	} );
-
-} )( jQuery, window.themeblvd, themeblvdL10n );
+    $options.themeblvd('options', 'sortable');
+  });
+})(jQuery, window.themeblvd, themeblvdL10n);

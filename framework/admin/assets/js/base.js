@@ -15,32 +15,26 @@
  * @param {jQuery} $     jQuery object.
  * @param {object} admin Theme Blvd admin object.
  */
-( function( $, admin ) {
+(function($, admin) {
+  $(document).ready(function($) {
+    /**
+     * When a theme base thumbnail link is clicked,
+     * apply that theme base.
+     *
+     * @since Theme_Blvd 2.5.0
+     */
+    $('#themeblvd-base-admin .select-base').on('click', function(event) {
+      event.preventDefault();
 
-	$( document ).ready( function( $ ) {
+      var $link = $(this);
 
-		/**
-		 * When a theme base thumbnail link is clicked,
-		 * apply that theme base.
-		 *
-		 * @since Theme_Blvd 2.5.0
-		 */
-		$( '#themeblvd-base-admin .select-base' ).on( 'click', function( event ) {
-
-			event.preventDefault();
-
-			var $link = $( this );
-
-			admin.confirm( $link.data( 'confirm' ), { 'confirm': true }, function( response ) {
-
-				if ( response ) {
-					window.location.href = $link.attr( 'href' );
-				}
-
-			} );
-
-		} );
-
-	} );
-
-} )( jQuery, window.themeblvd );
+      admin.confirm($link.data('confirm'), { confirm: true }, function(
+        response
+      ) {
+        if (response) {
+          window.location.href = $link.attr('href');
+        }
+      });
+    });
+  });
+})(jQuery, window.themeblvd);
