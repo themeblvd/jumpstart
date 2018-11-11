@@ -12,6 +12,8 @@ const {
   buildAdminStyles
 } = require('./tasks/admin-assets');
 
+const buildPot = require('./tasks/build-pot');
+
 // Build Font Awesome assets.
 gulp.task('build-fontawesome-shim', buildFontAwesomeShim);
 gulp.task('build-fontawesome-json', ['build-fontawesome-shim'], buildFontAwesomeShim); // prettier-ignore
@@ -28,3 +30,6 @@ gulp.task('build-admin', [
   'minify-admin-scripts',
   'build-admin-styles'
 ]);
+
+// Final build.
+gulp.task('build-pot', buildPot);

@@ -1,6 +1,6 @@
 const gulp = require('gulp');
 const wpPot = require('gulp-wp-pot');
-const { version } = require('../package.json');
+const { version } = require('../../package.json');
 
 /**
  * Generate .pot localization file.
@@ -11,11 +11,11 @@ function buildPot() {
     .pipe(
       wpPot({
         domain: 'jumpstart',
-        package: 'Jump Start ${version}',
-        relativeTo: 'languages/'
+        package: `Jump Start ${version}`,
+        relativeTo: '../languages'
       })
     )
-    .pipe(gulp.dest('languages/jumpstart.pot'));
+    .pipe(gulp.dest('../languages/jumpstart.pot'));
 }
 
 module.exports = buildPot;

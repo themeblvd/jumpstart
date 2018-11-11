@@ -5,7 +5,8 @@
   "main": "gulpfile.js",
   "scripts": {
     "build:fontawesome": "gulp --gulpfile ./build/gulpfile.js build-fontawesome",
-    "build:admin": "gulp --gulpfile ./build/gulpfile.js build-admin"
+    "build:admin": "gulp --gulpfile ./build/gulpfile.js build-admin",
+    "build:pot": "gulp --gulpfile ./build/gulpfile.js build-pot"
   },
   "repository": {
     "type": "git",
