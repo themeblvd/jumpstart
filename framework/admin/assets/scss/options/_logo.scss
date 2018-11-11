@@ -7,52 +7,52 @@
 ////
 
 .tb-options-wrap .section-logo {
-	.section-upload.image-standard input.image-url {
-		margin-bottom: 5px;
-	}
-	.logo-atts {
-		width: 73%;
-	}
-	.logo-width,
-	.logo-height {
-		box-sizing: border-box;
-		float: left;
-		width: 50%;
-	}
-	.logo-width {
-		padding: 0 1px 5px 0;
-	}
-	.logo-height {
-		padding: 0 0 5px 1px;
-	}
-	.logo-label {
-		color: $clr-text-light;
-		display: block;
-		font-size: 11px;
-		font-style: italic;
-		margin-left: 5px;
-	}
-	.logo-url-label {
-		margin-bottom: 5px;
-	}
-	.controls input.image-width,
-	.controls input.image-height {
-		margin-bottom: 5px;
-		width: 100%;
-	}
-	.screenshot {
-		float: none;
-		margin-top: 15px;
-	}
-	.screenshot img {
-		float: none;
-	}
+  .section-upload.image-standard input.image-url {
+    margin-bottom: 5px;
+  }
+  .logo-atts {
+    width: 73%;
+  }
+  .logo-width,
+  .logo-height {
+    box-sizing: border-box;
+    float: left;
+    width: 50%;
+  }
+  .logo-width {
+    padding: 0 1px 5px 0;
+  }
+  .logo-height {
+    padding: 0 0 5px 1px;
+  }
+  .logo-label {
+    color: $clr-text-light;
+    display: block;
+    font-size: 11px;
+    font-style: italic;
+    margin-left: 5px;
+  }
+  .logo-url-label {
+    margin-bottom: 5px;
+  }
+  .controls input.image-width,
+  .controls input.image-height {
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  .screenshot {
+    float: none;
+    margin-top: 15px;
+  }
+  .screenshot img {
+    float: none;
+  }
 }
 .tb-options-wrap .section-upload .section-upload {
-	background: $clr-bg-white;
-	border: 1px solid $clr-border;
-	margin: 0 0 10px 0;
-	padding: 12px 15px;
+  background: $clr-bg-white;
+  border: 1px solid $clr-border;
+  margin: 0 0 10px 0;
+  padding: 12px 15px;
 }
 
 //
@@ -60,21 +60,21 @@
 //
 
 .wp-admin.rtl .tb-options-wrap .section-logo {
-	.logo-width,
-	.logo-height {
-		float: right;
-	}
-	.logo-width {
-		padding: 0 0 5px 1px;
-	}
-	.logo-height {
-		padding: 0 1px 5px 0;
-	}
-	.screenshot {
-		float: none;
-		margin-top: 15px;
-	}
-	.screenshot img {
-		float: none;
-	}
+  .logo-width,
+  .logo-height {
+    float: right;
+  }
+  .logo-width {
+    padding: 0 0 5px 1px;
+  }
+  .logo-height {
+    padding: 0 1px 5px 0;
+  }
+  .screenshot {
+    float: none;
+    margin-top: 15px;
+  }
+  .screenshot img {
+    float: none;
+  }
 }

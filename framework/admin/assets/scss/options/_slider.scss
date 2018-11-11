@@ -7,62 +7,61 @@
 ////
 
 .tb-options-wrap .jquery-ui-slider-wrap {
-	padding: 20px 12px 0 0;
+  padding: 20px 12px 0 0;
 }
 .wp-admin.rtl .tb-options-wrap .jquery-ui-slider-wrap {
-	padding: 20px 0 0 12px;
+  padding: 20px 0 0 12px;
 }
 .tb-options-wrap .jquery-ui-slider {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 1px 0 rgba($clr-bg-black, 0.08);
+  height: 7px;
+  margin: 10px 4px;
+  position: relative;
 
-	border: 1px solid #ddd;
-	border-radius: 10px;
-	box-shadow: 0 1px 0 rgba($clr-bg-black, 0.08);
-	height: 7px;
-	margin: 10px 4px;
-	position: relative;
-
-	.ui-slider-handle {
-		border: 1px solid $clr-border;
-		background: darken($clr-bg-light, 1%);
-		border-radius: 99px;
-		box-shadow: 1px 1px 2px rgba($clr-bg-black, 0.08);
-		cursor: default;
-		display: block;
-		margin-left: -8px;
-		outline: none;
-		position: absolute;
-		top: -5px;
-		width: 16px;
-		height: 16px;
-	}
-	.display-value {
-		background: $clr-bg-light;
-		border: 1px solid $clr-border;
-		box-shadow: 1px 1px 2px rgba($clr-bg-black, 0.08);
-		display: block;
-		line-height: 1;
-		padding: 5px;
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		width: 50px;
-		text-align: center;
-	}
-	.display-value-text {
-		color: $clr-text;
-		display: block;
-		font-size: 13px;
-	}
-	.display-value-arrow {
-		border-left: 5px solid transparent;
-		border-right: 5px solid transparent;
-		border-top: 5px solid $clr-border;
-		display: block;
-		position: absolute;
-		bottom: -6px;
-		left: 50%;
-		margin-left: -5px;
-		width: 0;
-		height: 0;
-	}
+  .ui-slider-handle {
+    border: 1px solid $clr-border;
+    background: darken($clr-bg-light, 1%);
+    border-radius: 99px;
+    box-shadow: 1px 1px 2px rgba($clr-bg-black, 0.08);
+    cursor: default;
+    display: block;
+    margin-left: -8px;
+    outline: none;
+    position: absolute;
+    top: -5px;
+    width: 16px;
+    height: 16px;
+  }
+  .display-value {
+    background: $clr-bg-light;
+    border: 1px solid $clr-border;
+    box-shadow: 1px 1px 2px rgba($clr-bg-black, 0.08);
+    display: block;
+    line-height: 1;
+    padding: 5px;
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    width: 50px;
+    text-align: center;
+  }
+  .display-value-text {
+    color: $clr-text;
+    display: block;
+    font-size: 13px;
+  }
+  .display-value-arrow {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $clr-border;
+    display: block;
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    margin-left: -5px;
+    width: 0;
+    height: 0;
+  }
 }

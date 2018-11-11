@@ -16,7 +16,7 @@
 //
 
 .tb-modal-hide-settings .attachment-details label.setting {
-	display: none;
+  display: none;
 }
 
 //
@@ -28,35 +28,35 @@
 //
 
 .tb-modal-advanced-image .media-sidebar {
-	.attachment-details .setting[data-setting="caption"],
-	.attachment-details .setting[data-setting="alt"],
-	.attachment-details .setting[data-setting="description"],
-	.attachment-display-settings h3,
-	.attachment-display-settings .setting {
-		display: none;
-	}
-	.attachment-display-settings label.setting:last-child {
-		display: block;
-	}
-	.setting span {
-		max-width: 12%;
-		min-width: 0;
-		text-align: left;
-	}
-	.setting input,
-	.setting select {
-		float: left;
-		max-width: 100%;
-		width: 80%;
-	}
+  .attachment-details .setting[data-setting='caption'],
+  .attachment-details .setting[data-setting='alt'],
+  .attachment-details .setting[data-setting='description'],
+  .attachment-display-settings h3,
+  .attachment-display-settings .setting {
+    display: none;
+  }
+  .attachment-display-settings label.setting:last-child {
+    display: block;
+  }
+  .setting span {
+    max-width: 12%;
+    min-width: 0;
+    text-align: left;
+  }
+  .setting input,
+  .setting select {
+    float: left;
+    max-width: 100%;
+    width: 80%;
+  }
 }
 
 .wp-admin.rtl .tb-modal-advanced-image .media-sidebar {
-	.setting span {
-		text-align: right;
-	}
-	.setting input,
-	.setting select {
-		float: right;
-	}
+  .setting span {
+    text-align: right;
+  }
+  .setting input,
+  .setting select {
+    float: right;
+  }
 }

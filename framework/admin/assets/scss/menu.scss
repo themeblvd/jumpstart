@@ -11,15 +11,15 @@
 
 .tb-field-link-mega,
 .tb-field-link-mega-hide-headers {
-	display: none;
+  display: none;
 }
 .menu-item-depth-0 {
-	.tb-field-link-mega,
-	.tb-field-link-mega-hide-headers {
-		display: block;
-	}
-	.tb-field-link-deactivate,
-	.tb-field-link-placeholder {
-		display: none;
-	}
+  .tb-field-link-mega,
+  .tb-field-link-mega-hide-headers {
+    display: block;
+  }
+  .tb-field-link-deactivate,
+  .tb-field-link-placeholder {
+    display: none;
+  }
 }

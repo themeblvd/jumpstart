@@ -11,18 +11,17 @@
 //
 
 .tb-meta-box {
+  margin: -6px -12px;
+  max-width: none !important;
 
-	margin: -6px -12px;
-	max-width: none !important;
-
-	.section {
-		border-top: 1px solid $clr-border;
-		border-bottom: none !important;
-	}
-	> .section:nth-child(2),
-	> .subgroup:nth-child(2) > .section:first-child {
-		border-top: none;
-	}
+  .section {
+    border-top: 1px solid $clr-border;
+    border-bottom: none !important;
+  }
+  > .section:nth-child(2),
+  > .subgroup:nth-child(2) > .section:first-child {
+    border-top: none;
+  }
 }
 
 //
@@ -30,26 +29,24 @@
 //
 
 .tb-meta-box.side {
+  margin-top: -6px;
 
-	margin-top: -6px;
-
-	.section .heading {
-		margin: 0 2px 10px 2px !important;
-	}
-	.section .controls {
-		float: none !important;
-		min-width: 0 !important;
-		width: auto !important;
-	}
-	select {
-		margin-bottom: 0 !important;
-	} // @TODO
-	.section .explain {
-		float: none !important;
-		margin-top: 10px;
-		max-width: none !important;
-	}
-
+  .section .heading {
+    margin: 0 2px 10px 2px !important;
+  }
+  .section .controls {
+    float: none !important;
+    min-width: 0 !important;
+    width: auto !important;
+  }
+  select {
+    margin-bottom: 0 !important;
+  } // @TODO
+  .section .explain {
+    float: none !important;
+    margin-top: 10px;
+    max-width: none !important;
+  }
 }
 
 //
@@ -57,5 +54,5 @@
 //
 
 #tb-sidebar-layout {
-	margin-top: 0.5em;
+  margin-top: 0.5em;
 }

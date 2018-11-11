@@ -7,60 +7,59 @@
 ////
 
 .tb-options-wrap .accordion {
+  border: 1px solid $clr-border;
+  border-top: none;
 
-	border: 1px solid $clr-border;
-	border-top: none;
-
-	.element .element-trigger {
-		background-color: $clr-bg-white;
-		border-top: 1px solid $clr-border;
-		display: block;
-		color: $clr-text;
-		padding: 7px;
-		text-decoration: none;
-	}
-	.element .element-trigger:focus {
-		box-shadow: none;
-		outline: none;
-	}
-	.element .element-trigger:hover,
-	.element .element-trigger.active {
-		background: $clr-bg-light;
-	}
-	.element .element-content {
-		background: $clr-bg-white;
-		border-top: 1px solid $clr-border;
-		height: 300px;
-		overflow: auto;
-		padding: 10px;
-	}
-	.element .element-content .note {
-		border-top: none;
-		font-size: 12px;
-		margin-top: 5px;
-		padding-top: 0;
-	}
-	.element input {
-		width: inherit;
-		margin: 0 5px 0 0;
-	}
-	.element input[type="text"] {
-		margin: 0;
-		width: 98%;
-	}
-	.element textarea {
-		margin: 0;
-		width: 98%;
-		height: 150px;
-	}
-	.element li {
-		list-style: none;
-		padding: 0;
-	}
-	.element .warning {
-		margin: 0;
-	}
-	.element .element-content ul {
-		margin-top: 0;
-	}
+  .element .element-trigger {
+    background-color: $clr-bg-white;
+    border-top: 1px solid $clr-border;
+    display: block;
+    color: $clr-text;
+    padding: 7px;
+    text-decoration: none;
+  }
+  .element .element-trigger:focus {
+    box-shadow: none;
+    outline: none;
+  }
+  .element .element-trigger:hover,
+  .element .element-trigger.active {
+    background: $clr-bg-light;
+  }
+  .element .element-content {
+    background: $clr-bg-white;
+    border-top: 1px solid $clr-border;
+    height: 300px;
+    overflow: auto;
+    padding: 10px;
+  }
+  .element .element-content .note {
+    border-top: none;
+    font-size: 12px;
+    margin-top: 5px;
+    padding-top: 0;
+  }
+  .element input {
+    width: inherit;
+    margin: 0 5px 0 0;
+  }
+  .element input[type='text'] {
+    margin: 0;
+    width: 98%;
+  }
+  .element textarea {
+    margin: 0;
+    width: 98%;
+    height: 150px;
+  }
+  .element li {
+    list-style: none;
+    padding: 0;
+  }
+  .element .warning {
+    margin: 0;
+  }
+  .element .element-content ul {
+    margin-top: 0;
+  }
 }
