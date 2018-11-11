@@ -13,6 +13,7 @@ const {
 } = require('./tasks/admin-assets');
 
 const buildPot = require('./tasks/build-pot');
+const packageTheme = require('./tasks/package-theme');
 
 // Build Font Awesome assets.
 gulp.task('build-fontawesome-shim', buildFontAwesomeShim);
@@ -33,3 +34,4 @@ gulp.task('build-admin', [
 
 // Final build.
 gulp.task('build-pot', buildPot);
+gulp.task('build', ['build-fontawesome', 'build-admin', 'build-pot'], packageTheme); // prettier-ignore
