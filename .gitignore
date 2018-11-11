@@ -3,7 +3,5 @@
 npm-debug.log
 node_modules
 framework/admin/assets/css
-framework/admin/assets/js/*.min.js
-framework/admin/assets/js/utils.js
-framework/admin/assets/js/options.js
+framework/admin/assets/js/*.js
 languages

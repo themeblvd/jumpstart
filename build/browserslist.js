@@ -4,7 +4,7 @@
  * Note: Loosely based on Bootstrap 4 browser
  * support policy.
  */
-const browsers = [
+const browserslist = [
   'Chrome >= 35',
   'Firefox >= 38',
   'Edge >= 12',
@@ -16,4 +16,4 @@ const browsers = [
   'Opera >= 12'
 ];
 
-module.exports = browsers;
+module.exports = browserslist;

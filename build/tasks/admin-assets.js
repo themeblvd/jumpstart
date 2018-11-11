@@ -5,7 +5,7 @@ const minifyjs = require('gulp-uglify');
 const sass = require('gulp-sass');
 const minifycss = require('gulp-clean-css');
 const autoprefixer = require('gulp-autoprefixer');
-const browsers = require('../browsers');
+const browserslist = require('../browserslist');
 const dir = '../framework/admin/assets';
 
 /**
@@ -17,25 +17,25 @@ const dir = '../framework/admin/assets';
 function buildAdminScripts($filename) {
   const partials = {
     'options.js': [
-      dir + '/js/options/options-init.js',
-      dir + '/js/options/options-setup.js',
-      dir + '/js/options/options-bind.js',
-      dir + '/js/options/options-media-uploader.js',
-      dir + '/js/options/options-editor.js',
-      dir + '/js/options/options-code-editor.js',
-      dir + '/js/options/options-column-widths.js',
-      dir + '/js/options/options-sortable.js',
-      dir + '/js/options/options-browsers.js'
+      dir + '/js/src/options/options-init.js',
+      dir + '/js/src/options/options-setup.js',
+      dir + '/js/src/options/options-bind.js',
+      dir + '/js/src/options/options-media-uploader.js',
+      dir + '/js/src/options/options-editor.js',
+      dir + '/js/src/options/options-code-editor.js',
+      dir + '/js/src/options/options-column-widths.js',
+      dir + '/js/src/options/options-sortable.js',
+      dir + '/js/src/options/options-browsers.js'
     ],
     'utils.js': [
-      dir + '/js/utils/utils-init.js',
-      dir + '/js/utils/utils-tools.js',
-      dir + '/js/utils/utils-confirm.js',
-      dir + '/js/utils/utils-jquery.js',
-      dir + '/js/utils/utils-modal.js',
-      dir + '/js/utils/utils-setup.js',
-      dir + '/js/utils/utils-accordion.js',
-      dir + '/js/utils/utils-widgets.js'
+      dir + '/js/src/utils/utils-init.js',
+      dir + '/js/src/utils/utils-tools.js',
+      dir + '/js/src/utils/utils-confirm.js',
+      dir + '/js/src/utils/utils-jquery.js',
+      dir + '/js/src/utils/utils-modal.js',
+      dir + '/js/src/utils/utils-setup.js',
+      dir + '/js/src/utils/utils-accordion.js',
+      dir + '/js/src/utils/utils-widgets.js'
     ]
   };
 
@@ -59,14 +59,15 @@ function buildAdminScripts($filename) {
  */
 function minifyAdminScripts() {
   const files = [
-    dir + '/js/base.js',
-    dir + '/js/menu.js',
-    dir + '/js/meta-box.js',
-    dir + '/js/options-page.js'
+    dir + '/js/src/base.js',
+    dir + '/js/src/menu.js',
+    dir + '/js/src/meta-box.js',
+    dir + '/js/src/options-page.js'
   ];
 
   return gulp
     .src(files)
+    .pipe(gulp.dest(dir + '/js'))
     .pipe(minifyjs())
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest(dir + '/js'));
@@ -87,7 +88,7 @@ function buildAdminStyles() {
     .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
     .pipe(
       autoprefixer({
-        browsers: browsers,
+        browsers: browserslist,
         cascade: false
       })
     )
