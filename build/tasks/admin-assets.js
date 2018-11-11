@@ -77,6 +77,7 @@ function buildAdminStyles() {
   const files = [
     dir + '/scss/base.scss',
     dir + '/scss/global.scss',
+    dir + '/scss/license-admin.scss',
     dir + '/scss/menu.scss',
     dir + '/scss/options-page.scss',
     dir + '/scss/options.scss',

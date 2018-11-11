@@ -719,7 +719,7 @@ class Jump_Start_License_Admin {
 
 			wp_enqueue_style(
 				$this->screen_id,
-				esc_url( get_template_directory_uri() . "/inc/admin/assets/css/license-admin{$suffix}.css" )
+				esc_url( get_template_directory_uri() . "/framework/admin/assets/css/license-admin{$suffix}.css" )
 			);
 
 		}
