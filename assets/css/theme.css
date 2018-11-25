@@ -1307,12 +1307,24 @@ figure,
 .wp-caption.aligncenter {
  	margin-bottom: 40px;
 }
-.wp-caption .wp-caption-text {
+.wp-caption .wp-caption-text,
+.wp-block-image figcaption,
+.wp-block-embed figcaption,
+.wp-block-gallery .blocks-gallery-image figcaption,
+.wp-block-gallery .blocks-gallery-item figcaption {
 	background: #f2f2f2;
+  color: #666666;
+	color: rgba(26,26,26,.7);
 	padding: 20px;
 }
 .wp-caption.alignleft .wp-caption-text,
-.wp-caption.alignright .wp-caption-text {
+.wp-caption.alignright .wp-caption-text,
+.wp-block-image.alignleft figcaption,
+.wp-block-image.alignright figcaption,
+.wp-block-embed.alignleft figcaption,
+.wp-block-embed.alignright figcaption,
+.wp-block-gallery.alignleft figcaption,
+.wp-block-gallery.alignright figcaption {
 	font-size: 12px;
 }
 @media (min-width: 992px) {

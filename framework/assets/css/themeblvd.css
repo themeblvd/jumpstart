@@ -617,12 +617,20 @@ img.size-full {
 	width: auto;
 }
 .wp-caption-text,
-.wp-caption-dd {
+.wp-caption-dd,
+.wp-block-image figcaption,
+.wp-block-embed figcaption,
+.wp-block-gallery .blocks-gallery-image figcaption,
+.wp-block-gallery .blocks-gallery-item figcaption {
 	font-size: .9em;
 	line-height: 1.4;
 	text-align: center;
 }
-.wp-caption .wp-caption-text {
+.wp-caption .wp-caption-text,
+.wp-block-image figcaption,
+.wp-block-embed figcaption,
+.wp-block-gallery .blocks-gallery-image figcaption,
+.wp-block-gallery .blocks-gallery-item figcaption {
 	padding: 10px 5px 0 5px;
 	margin: 0;
 }

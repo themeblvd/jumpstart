@@ -6,6 +6,7 @@
 * New: Basic WordPress 5+ editor (i.e. Gutenberg) compatibility.
 	* Added default block stylesheet from WordPress.
 	* Added basic, general support for new `alignwide` and `alignfull` options.
+	* Match media caption styling of blocks to default caption styling of theme.
 	* Moved "Sidebar Layout" option to "Theme Layout" meta box, for editing both Posts and Pages.
 * Improvement: Better spacing with Image elements, that are linked and have full-size images.
 * Fixed: Adding missing `base` key in `themeblvd_admin_module_caps` filtered array, so that the user capability of the Theme Bases admin page can be modified (see [tutorial](http://dev.themeblvd.com/tutorial/changing-user-role-access-for-admin-modules/)).
