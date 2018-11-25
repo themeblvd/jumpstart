@@ -281,10 +281,8 @@ function themeblvd_add_editor_support() {
 
 	/*
 	 * Allow alignwide and alignfull in block editor.
-	 *
-	 * @TODO In Jump Start 3.0, we'll support this.
 	 */
-	// add_theme_support( 'align-wide' );
+	add_theme_support( 'align-wide' );
 
 }
 

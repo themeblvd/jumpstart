@@ -109,6 +109,16 @@ function themeblvd_post_class( $class ) {
 
 	}
 
+	if ( function_exists( 'has_blocks' ) && has_blocks() ) {
+
+		$class[] = 'has-blocks';
+
+	} else {
+
+		$class[] = 'classic-edited';
+
+	}
+
 	return $class;
 
 }

@@ -12,7 +12,7 @@ jQuery(document).ready(function($) {
 		$body			       = $('body'),
 		$header			       = $('#branding'),
 		$primaryMenu	       = $('.tb-primary-menu'),
-		$popout_img 	       = $('.site-inner.full_width .entry-content .alignnone'),
+		$popout_img 	       = $('.site-inner.full_width .classic-edited .entry-content .alignnone, .site-inner.full_width .entry-content .alignfull'),
 		tbmethods		       = {
 
 			/**
@@ -86,27 +86,39 @@ jQuery(document).ready(function($) {
 						width = $body.hasClass('tb-boxed') ? $('#container').width() : $window.width();
 
 					if ( $window.width() >= 992 ) {
-						if ( $el.hasClass('wp-caption') ) {
+						if ( $el.hasClass('wp-caption') || $el.is('[class*=wp-block-]') ) {
 
-							var $img = $el.find('img');
+							var $img = $el.children('img');
 
-							if ( $img.hasClass('size-full') ) {
+							if ( $img.hasClass('size-full') || $el.is('[class*=wp-block-]') ) {
 
 								if ( $body.hasClass('rtl') ) {
-									$el.css({ 'margin-right': ( ( $el.closest('.entry-content').width() / 2 ) - ( width / 2 ) ), 'max-width': 'none' }).addClass('tb-img-popout');
+									$el.css({
+										'margin-right': ( ( $el.closest('.entry-content').width() / 2 ) - ( width / 2 ) ),
+										'max-width': 'none'
+									}).addClass('tb-img-popout');
 								} else {
-									$el.css({ 'margin-left': ( ( $el.closest('.entry-content').width() / 2 ) - ( width / 2 ) ), 'max-width': 'none' }).addClass('tb-img-popout');
+									$el.css({
+										'margin-left': ( ( $el.closest('.entry-content').width() / 2 ) - ( width / 2 ) ),
+										'max-width': 'none'
+									}).addClass('tb-img-popout');
 								}
 
-								$el.add($img).css({'width': width, 'max-width': 'none' });
+								$el.add($img).css({ 'width': width, 'max-width': 'none' });
 							}
 
 						} else if ( $el.hasClass('size-full') ) {
 
 							if ( $body.hasClass('rtl') ) {
-								$el.css( { 'margin-right': ( ( $el.closest('.entry-content').width() / 2 ) - ( width / 2 ) ), 'margin-left': '0', 'max-width': 'none', 'width': width }).addClass('tb-img-popout');
+								$el.css({
+									'margin-right': ( ( $el.closest('.entry-content').width() / 2 ) - ( width / 2 ) ),
+									'margin-left': '0', 'max-width': 'none', 'width': width
+                }).addClass('tb-img-popout');
 							} else {
-								$el.css( { 'margin-left': ( ( $el.closest('.entry-content').width() / 2 ) - ( width / 2 ) ), 'margin-right': '0', 'max-width': 'none', 'width': width }).addClass('tb-img-popout');
+								$el.css({
+									'margin-left': ( ( $el.closest('.entry-content').width() / 2 ) - ( width / 2 ) ),
+									'margin-right': '0', 'max-width': 'none', 'width': width
+								}).addClass('tb-img-popout');
 							}
 						}
 					}
