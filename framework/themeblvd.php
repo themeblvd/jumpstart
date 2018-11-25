@@ -143,6 +143,7 @@ add_action( 'after_setup_theme', 'themeblvd_add_image_sizes' );
 add_action( 'wp_before_admin_bar_render', 'themeblvd_admin_menu_bar' );
 add_action( 'after_setup_theme', 'themeblvd_plugin_compat' );
 add_action( 'after_setup_theme', 'themeblvd_add_theme_support' );
+add_action( 'after_setup_theme', 'themeblvd_add_editor_support' );
 add_action( 'after_setup_theme', 'themeblvd_register_navs' );
 
 /*------------------------------------------------------*/

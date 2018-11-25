@@ -7173,15 +7173,3 @@ input.alt:focus {
 .panel-primary {
 	border-color: #000000;
 }
-
-/* =Blocks (WordPress 5+)
------------------------------------------------ */
-
-/* Separator */
-.wp-block-separator {
-	border-color: #8f98a1;
-	max-width: 100px;
-}
-.wp-block-separator.is-style-wide {
-	max-width: none;
-}

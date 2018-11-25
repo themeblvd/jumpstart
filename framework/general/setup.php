@@ -258,8 +258,33 @@ function themeblvd_add_theme_support() {
 	// WooCommerce native support by theme.
 	add_theme_support( 'woocommerce' );
 
-	// Add editor style.
-	add_editor_style( 'style-editor.css' );
+}
+/**
+ * Add all theme framework's instances of
+ * add_theme_support().
+ *
+ * This function is hooked to:
+ * 1. `after_setup_theme` - 10
+ *
+ * @since Theme_Blvd 2.0.0
+ */
+function themeblvd_add_editor_support() {
+
+	/*
+	 * Adds default block styling for WordPress 5's
+	 * new block editor.
+	 *
+	 * @TODO In Jump Start 3.0, this should no longer
+	 * be needed.
+	 */
+	add_theme_support( 'wp-block-styles' );
+
+	/*
+	 * Allow alignwide and alignfull in block editor.
+	 *
+	 * @TODO In Jump Start 3.0, we'll support this.
+	 */
+	// add_theme_support( 'align-wide' );
 
 }
 
