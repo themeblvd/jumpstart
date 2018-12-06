@@ -3,10 +3,10 @@
 ## 2.3.0 - XX/XX/XXXX
 
 * **Updated Theme Blvd framework to 2.8.0**
-* New: Basic WordPress 5+ editor (i.e. Gutenberg) compatibility.
+* New: Basic WordPress 5+ block editor compatibility (i.e. Gutenberg).
 	* Added default block stylesheet from WordPress.
 	* Added basic, general support for new `alignwide` and `alignfull` options.
-	* Match media caption styling of blocks to default caption styling of theme.
+	* Matched media caption styling of blocks to default caption styling of theme.
 	* Moved "Sidebar Layout" option to "Theme Layout" meta box, for editing both Posts and Pages.
 * Improvement: Better spacing with Image elements, that are linked and have full-size images.
 * Improvement: Better usage of `https` (instead of `http`) for things like share links, helper text, URL examples, etc.
@@ -14,6 +14,7 @@
 * Fixed: Milestone element animations not working when values contain commas.
 * Fixed: Broken mobile menu navigation list background image, when using light background color.
 * Fixed: Linking to `youtu.be` formatted links in a lightbox (sometimes) not working.
+* Fixed: Misaligned checkbox on frontend comment form, when enabling *Settings > Discussion > Show comments cookies opt-in checkbox.*.
 * Removed: Removed outdated style-editor.css file.
 * Updated: FontAwesome to 5.5.
 

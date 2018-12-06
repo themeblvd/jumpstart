@@ -1569,6 +1569,15 @@ figure,
 #respond .comment-form-comment textarea {
 	margin: 0;
 }
+#respond .comment-form-cookies-consent input {
+	float: left;
+	margin-top: 0;
+	margin-right: 6px;
+}
+#respond .comment-form-cookies-consent label {
+	font-size: 14px;
+	line-height: 1.4em;
+}
 
 /* Comment Form (in reply) */
 .comment #respond {
