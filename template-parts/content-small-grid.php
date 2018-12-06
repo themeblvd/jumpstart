@@ -3,7 +3,7 @@
  * The default template for displaying content in
  * a small post grid.
  *
- * @link http://dev.themeblvd.com/tutorial/template-parts-framework-2-5
+ * @link https://dev.themeblvd.com/tutorial/template-parts-framework-2-5
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd

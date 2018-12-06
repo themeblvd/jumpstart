@@ -815,7 +815,7 @@ function jumpstart_ex_options() {
 			'widget_style' => array(
 				'id'        => 'widget_style',
 				'name'      => __( 'Widget Style', 'jumpstart' ),
-				'desc'      => __( 'Select how you want to style your widgets.', 'jumpstart' ) . ' <a href="http://getbootstrap.com/components/#panels" target="_blank">' . __( 'What\'s a Bootstrap panel?', 'jumpstart' ) . '</a>',
+				'desc'      => __( 'Select how you want to style your widgets.', 'jumpstart' ) . ' <a href="https://getbootstrap.com/docs/3.3/components/#panels" target="_blank">' . __( 'What\'s a Bootstrap panel?', 'jumpstart' ) . '</a>',
 				'std'       => 'standard',
 				'type'      => 'select',
 				'options'   => array(

@@ -20,7 +20,7 @@
  * @return array  $params {
  *     Link arguments.
  *
- *     @type string $href    Link URL, like `http://google.com`.
+ *     @type string $href    Link URL, like `https://google.com`.
  *     @type string $title   Link title.
  *     @type string $target  Link target, like `_self` or `_blank`.
  *     @type string $class   Link CSS class(es) separated by spaces.
@@ -166,7 +166,7 @@ function themeblvd_get_post_thumbnail_link( $post_id = 0, $thumb_id = 0, $link =
 	 * @param array  $params {
 	 *     Link arguments.
 	 *
-	 *     @type string $href    Link URL, like `http://google.com`.
+	 *     @type string $href    Link URL, like `https://google.com`.
 	 *     @type string $title   Link title.
 	 *     @type string $target  Link target, like `_self` or `_blank`.
 	 *     @type string $class   Link CSS class(es) separated by spaces.
@@ -265,7 +265,7 @@ function themeblvd_get_thumbnail_link_icon( $type = '' ) {
  *     @type string     $type   Type of placeholder, not currently used.
  *     @type string|int $width  Width of placeholder.
  *     @type string|int $height Height of placeholder.
- *     @type string     $link   Placeholder link URL, like `http://google.com`.
+ *     @type string     $link   Placeholder link URL, like `https://google.com`.
  *     @type string     $title  If $link, title for link.
  * }
  * @return string $output Final HTML output for placeholder.
@@ -325,7 +325,7 @@ function themeblvd_get_media_placeholder( $args = array() ) {
 	 *     @type string     $type   Type of placeholder, not currently used.
 	 *     @type string|int $width  Width of placeholder.
 	 *     @type string|int $height Height of placeholder.
-	 *     @type string     $link   Placeholder link URL, like `http://google.com`.
+	 *     @type string     $link   Placeholder link URL, like `https://google.com`.
 	 *     @type string     $title  If $link, title for link.
 	 * }
 	 */
@@ -345,7 +345,7 @@ function themeblvd_get_media_placeholder( $args = array() ) {
  *     Lightox link arguments.
  *
  *     @type string $item    HTML that should be wrapped in the lightbox link.
- *     @type string $link    Media source URL for lightbox, like `http://mysite.com/image.jpg`.
+ *     @type string $link    Media source URL for lightbox, like `https://mysite.com/image.jpg`.
  *     @type string $title   Link title, which will get used in lightbox.
  *     @type string $type    Type of lightbox link, `image`, `iframe`, `ajax` or `inline`; leave blank for auto-detection.
  *     @type string $class   CSS classes for link, like `foo bar baz`.
@@ -377,11 +377,11 @@ function themeblvd_get_link_to_lightbox( $args ) {
 	);
 
 	// Fix for youtu.be links
-	if ( false !== strpos( $props['href'], 'http://youtu.be/' ) ) {
+	if ( false !== strpos( $props['href'], 'youtu.be/' ) ) {
 
 		$props['href'] = str_replace(
-			'http://youtu.be/',
-			'http://youtube.com/watch?v=',
+			'youtu.be/',
+			'youtube.com/watch?v=',
 			$props['href']
 		);
 
@@ -447,7 +447,7 @@ function themeblvd_get_link_to_lightbox( $args ) {
 	 *     Lightox link arguments.
 	 *
 	 *     @type string $item    HTML that should be wrapped in the lightbox link.
-	 *     @type string $link    Media source URL for lightbox, like `http://mysite.com/image.jpg`.
+	 *     @type string $link    Media source URL for lightbox, like `https://mysite.com/image.jpg`.
 	 *     @type string $title   Link title, which will get used in lightbox.
 	 *     @type string $type    Type of lightbox link, `image`, `iframe`, `ajax` or `inline`; leave blank for auto-detection.
 	 *     @type string $class   CSS classes for link, like `foo bar baz`.
@@ -480,7 +480,7 @@ function themeblvd_get_link_to_lightbox( $args ) {
 	 *     Lightox link arguments.
 	 *
 	 *     @type string $item    HTML that should be wrapped in the lightbox link.
-	 *     @type string $link    Media source URL for lightbox, like `http://mysite.com/image.jpg`.
+	 *     @type string $link    Media source URL for lightbox, like `https://mysite.com/image.jpg`.
 	 *     @type string $title   Link title, which will get used in lightbox.
 	 *     @type string $type    Type of lightbox link, `image`, `iframe`, `ajax` or `inline`; leave blank for auto-detection.
 	 *     @type string $class   CSS classes for link, like `foo bar baz`.
@@ -525,7 +525,7 @@ function themeblvd_get_link_to_lightbox( $args ) {
 	 *     Lightox link arguments.
 	 *
 	 *     @type string $item    HTML that should be wrapped in the lightbox link.
-	 *     @type string $link    Media source URL for lightbox, like `http://mysite.com/image.jpg`.
+	 *     @type string $link    Media source URL for lightbox, like `https://mysite.com/image.jpg`.
 	 *     @type string $title   Link title, which will get used in lightbox.
 	 *     @type string $type    Type of lightbox link, `image`, `iframe`, `ajax` or `inline`; leave blank for auto-detection.
 	 *     @type string $class   CSS classes for link, like `foo bar baz`.
@@ -1156,7 +1156,7 @@ function themeblvd_bg_shade( $display ) {
  *     @type string $id       Video ID, should be unique.
  *     @type string $mp4      Video URL, can be .mp4, .ogg, .webm, Vimeo web URL, or YouTube web URL.
  *     @type string $ratio    Aspect ratior, like `16:9`.
- *     @type string $fallback Fallback image URL, like `http://mysite.com/image.jpg`.
+ *     @type string $fallback Fallback image URL, like `https://mysite.com/image.jpg`.
  * }
  * @return string $output Final HTML output.
  */
@@ -1211,11 +1211,11 @@ function themeblvd_get_bg_video( $video ) {
 			 * based off that original URL.
 			 *
 			 * For example, if the user inputs:
-			 * `http://mysite/dir/foo.mp4`
+			 * `https://mysite/dir/foo.mp4`
 			 *
 			 * Then, we'll also search for:
-			 * `http://mysite/dir/foo.webm`
-			 * `http://mysite/dir/foo.ogv`
+			 * `https://mysite/dir/foo.webm`
+			 * `https://mysite/dir/foo.ogv`
 			 *
 			 * ... So those can be added to the <video> tag.
 			 *
@@ -1269,7 +1269,7 @@ function themeblvd_get_bg_video( $video ) {
 				 *     @type string $id       Video ID, should be unique.
 				 *     @type string $mp4      Video URL, can be .mp4, .ogg, .webm, Vimeo web URL, or YouTube web URL.
 				 *     @type string $ratio    Aspect ratior, like `16:9`.
-				 *     @type string $fallback Fallback image URL, like `http://mysite.com/image.jpg`.
+				 *     @type string $fallback Fallback image URL, like `https://mysite.com/image.jpg`.
 				 * }
 				 */
 				$args = apply_filters( 'themeblvd_youtube_bg_args', array(
@@ -1350,7 +1350,7 @@ function themeblvd_get_bg_video( $video ) {
 			 *     @type string $id       Video ID, should be unique.
 			 *     @type string $mp4      Video URL, can be .mp4, .ogg, .webm, Vimeo web URL, or YouTube web URL.
 			 *     @type string $ratio    Aspect ratior, like `16:9`.
-			 *     @type string $fallback Fallback image URL, like `http://mysite.com/image.jpg`.
+			 *     @type string $fallback Fallback image URL, like `https://mysite.com/image.jpg`.
 			 * }
 			 */
 			$args = apply_filters( 'themeblvd_vimeo_bg_args', array(
@@ -1396,7 +1396,7 @@ function themeblvd_get_bg_video( $video ) {
 	 *     @type string $id       Video ID, should be unique.
 	 *     @type string $mp4      Video URL, can be .mp4, .ogg, .webm, Vimeo web URL, or YouTube web URL.
 	 *     @type string $ratio    Aspect ratior, like `16:9`.
-	 *     @type string $fallback Fallback image URL, like `http://mysite.com/image.jpg`.
+	 *     @type string $fallback Fallback image URL, like `https://mysite.com/image.jpg`.
 	 * }
 	 */
 	return apply_filters( 'themeblvd_bg_video', $output, $video );

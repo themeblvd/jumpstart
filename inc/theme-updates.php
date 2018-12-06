@@ -97,7 +97,7 @@ function jumpstart_updates() {
 	 * @param string           Website URL to changelog.
 	 * @param string $template Template slug retrieved from get_template().
 	 */
-	$args['changelog_url'] = apply_filters( 'themeblvd_changelog_link', 'http://themeblvd.com/changelog/?theme=' . $template, $template );
+	$args['changelog_url'] = apply_filters( 'themeblvd_changelog_link', 'https://themeblvd.com/changelog/?theme=' . $template, $template );
 
 	/*
 	 * Run Updater.

@@ -125,7 +125,7 @@ class Theme_Blvd_Welcome {
 		$msg .= sprintf(
 			// translators: 1: link to documentation website
 			'<p>' . __( 'Below are some resources to get started. You can find more videos and information at %s.', 'jumpstart' ) . '</p>',
-			'<a href="http://docs.themeblvd.com" target="_blank">docs.themeblvd.com</a>'
+			'<a href="https://docs.themeblvd.com" target="_blank">docs.themeblvd.com</a>'
 		);
 
 		/**
@@ -146,7 +146,7 @@ class Theme_Blvd_Welcome {
 			'msg'   => $msg,
 			'btn'   => __( 'Getting Started', 'jumpstart' ),
 			'title' => __( 'Getting Started', 'jumpstart' ),
-			'link'  => 'http://docs.themeblvd.com/article/7-overview',
+			'link'  => 'https://docs.themeblvd.com/article/7-overview',
 		), $theme );
 
 		?>

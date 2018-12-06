@@ -1314,7 +1314,7 @@ function themeblvd_option_fields( $option_name, $options, $settings, $close = tr
 					$output .= sprintf(
 						// translators: 1: link to Google Font Directory
 						'<h5>' . esc_html__( 'Enter the name of a font from the %s.', 'jumpstart' ) . '</h5>',
-						'<a href="http://www.google.com/webfonts" target="_blank">' . esc_attr__( 'Google Font Directory', 'jumpstart' ) . '</a>'
+						'<a href="https://www.google.com/webfonts" target="_blank">' . esc_attr__( 'Google Font Directory', 'jumpstart' ) . '</a>'
 					);
 
 					$output .= sprintf(

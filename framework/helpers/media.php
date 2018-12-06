@@ -721,7 +721,7 @@ function themeblvd_do_bg_shade( $display ) {
  *     @type string $id       Video ID, should be unique.
  *     @type string $mp4      Video URL, can be .mp4, .ogg, .webm, Vimeo web URL, or YouTube web URL.
  *     @type string $ratio    Aspect ratior, like `16:9`.
- *     @type string $fallback Fallback image URL, like `http://mysite.com/image.jpg`.
+ *     @type string $fallback Fallback image URL, like `https://mysite.com/image.jpg`.
  * }
  * @return string $source Video source, `html5`, `youtube` or `vimeo`.
  */

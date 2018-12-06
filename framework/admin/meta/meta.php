@@ -248,21 +248,21 @@ function setup_themeblvd_post_meta() {
 			'tb_image_link' => array(
 				'id'        => '_tb_image_link',
 				'name'      => __( 'Featured Image - Image Link', 'jumpstart' ),
-				'desc'      => __( 'Enter the full URL of enlarged image that the featured image will link to.', 'jumpstart' ) . '<br><br>' . __( 'Ex: http://your-site.com/uploads/image.jpg', 'jumpstart' ),
+				'desc'      => __( 'Enter the full URL of enlarged image that the featured image will link to.', 'jumpstart' ) . '<br><br>' . __( 'Ex: https://your-site.com/uploads/image.jpg', 'jumpstart' ),
 				'type'      => 'text',
 				'class'     => 'hide receiver receiver-image',
 			),
 			'tb_video_link' => array(
 				'id'        => '_tb_video_link',
 				'name'      => __( 'Featured Image - Video Link', 'jumpstart' ),
-				'desc'      => __( 'Enter the full webpage URL to a video from YouTube or Vimeo.', 'jumpstart' ) . '<br><br>' . __( 'Ex', 'jumpstart' ) . ': http://www.youtube.com/watch?v=ginTCwWfGNY<br>' . __( 'Ex', 'jumpstart' ) . ': http://vimeo.com/11178250',
+				'desc'      => __( 'Enter the full webpage URL to a video from YouTube or Vimeo.', 'jumpstart' ) . '<br><br>' . __( 'Ex', 'jumpstart' ) . ': https://www.youtube.com/watch?v=ginTCwWfGNY<br>' . __( 'Ex', 'jumpstart' ) . ': https://vimeo.com/11178250',
 				'type'      => 'text',
 				'class'     => 'hide receiver receiver-video',
 			),
 			'tb_external_link' => array(
 				'id'        => '_tb_external_link',
 				'name'      => __( 'Featured Image - External Link', 'jumpstart' ),
-				'desc'      => __( 'Enter the full URL of where the featured image will link.', 'jumpstart' ) . '<br><br>' . __( 'Ex: http://google.com', 'jumpstart' ),
+				'desc'      => __( 'Enter the full URL of where the featured image will link.', 'jumpstart' ) . '<br><br>' . __( 'Ex: https://google.com', 'jumpstart' ),
 				'type'      => 'text',
 				'class'     => 'hide receiver receiver-external',
 			),
@@ -317,7 +317,7 @@ function setup_themeblvd_post_meta() {
 	 *     }
 	 *     @type array $options {
 	 *          Standard framework array of options.
-	 *          @link http://dev.themeblvd.com/tutorial/formatting-options/
+	 *          @link https://dev.themeblvd.com/tutorial/formatting-options/
 	 *     }
 	 * }
 	 */
@@ -400,21 +400,21 @@ function setup_themeblvd_page_meta() {
 			'tb_image_link' => array(
 				'id'        => '_tb_image_link',
 				'name'      => __( 'Featured Image - Image Link', 'jumpstart' ),
-				'desc'      => __( 'Enter the full URL of enlarged image that the featured image will link to.', 'jumpstart' ) . '<br><br>' . __( 'Ex: http://your-site.com/uploads/image.jpg', 'jumpstart' ),
+				'desc'      => __( 'Enter the full URL of enlarged image that the featured image will link to.', 'jumpstart' ) . '<br><br>' . __( 'Ex: https://your-site.com/uploads/image.jpg', 'jumpstart' ),
 				'type'      => 'text',
 				'class'     => 'hide receiver receiver-image',
 			),
 			'tb_video_link' => array(
 				'id'        => '_tb_video_link',
 				'name'      => __( 'Featured Image - Video Link', 'jumpstart' ),
-				'desc'      => __( 'Enter the full webpage URL to a video from YouTube or Vimeo.', 'jumpstart' ) . '<br><br>' . __( 'Ex', 'jumpstart' ) . ': http://www.youtube.com/watch?v=ginTCwWfGNY<br>' . __( 'Ex', 'jumpstart' ) . ': http://vimeo.com/11178250',
+				'desc'      => __( 'Enter the full webpage URL to a video from YouTube or Vimeo.', 'jumpstart' ) . '<br><br>' . __( 'Ex', 'jumpstart' ) . ': https://www.youtube.com/watch?v=ginTCwWfGNY<br>' . __( 'Ex', 'jumpstart' ) . ': https://vimeo.com/11178250',
 				'type'      => 'text',
 				'class'     => 'hide receiver receiver-video',
 			),
 			'tb_external_link' => array(
 				'id'        => '_tb_external_link',
 				'name'      => __( 'Featured Image - External Link', 'jumpstart' ),
-				'desc'      => __( 'Enter the full URL of where the featured image will link.', 'jumpstart' ) . '<br><br>' . __( 'Ex: http://google.com', 'jumpstart' ),
+				'desc'      => __( 'Enter the full URL of where the featured image will link.', 'jumpstart' ) . '<br><br>' . __( 'Ex: https://google.com', 'jumpstart' ),
 				'type'      => 'text',
 				'class'     => 'hide receiver receiver-external',
 			),
@@ -456,7 +456,7 @@ function setup_themeblvd_page_meta() {
 	 *     }
 	 *     @type array $options {
 	 *          Standard framework array of options.
-	 *          @link http://dev.themeblvd.com/tutorial/formatting-options/
+	 *          @link https://dev.themeblvd.com/tutorial/formatting-options/
 	 *     }
 	 * }
 	 */
@@ -562,7 +562,7 @@ function setup_themeblvd_layout_meta() {
 	 *     }
 	 *     @type array $options {
 	 *          Standard framework array of options.
-	 *          @link http://dev.themeblvd.com/tutorial/formatting-options/
+	 *          @link https://dev.themeblvd.com/tutorial/formatting-options/
 	 *     }
 	 * }
 	 */
@@ -591,7 +591,7 @@ function setup_themeblvd_pto_meta() {
 		'options' => array(
 			'desc' => array(
 				// translators: 1: link to WP_Query documentation on WordPress Codex
-				'desc'      => sprintf( __( 'Below are the custom fields you can use with the Blog, Post List, Post Grid, and Post Showcase page templates. When working with these options, you can find a lot of helpful information by viewing WordPress\'s Codex page on the %s.', 'jumpstart' ), '<a href="http://codex.wordpress.org/Class_Reference/WP_Query" target="_blank">WP Query</a>' ),
+				'desc'      => sprintf( __( 'Below are the custom fields you can use with the Blog, Post List, Post Grid, and Post Showcase page templates. When working with these options, you can find a lot of helpful information by viewing WordPress\'s Codex page on the %s.', 'jumpstart' ), '<a href="https://codex.wordpress.org/Class_Reference/WP_Query" target="_blank">WP Query</a>' ),
 				'type'      => 'info',
 			),
 			'cat' => array(
@@ -621,13 +621,13 @@ function setup_themeblvd_pto_meta() {
 			'orderby' => array(
 				'id'        => 'orderby',
 				'name'      => __( 'orderby', 'jumpstart' ),
-				'desc'      => __( 'What to order posts by &mdash; date, title, rand, etc.', 'jumpstart' ) . '<br><a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">' . __( 'Learn More', 'jumpstart' ) . '</a>',
+				'desc'      => __( 'What to order posts by &mdash; date, title, rand, etc.', 'jumpstart' ) . '<br><a href="https://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">' . __( 'Learn More', 'jumpstart' ) . '</a>',
 				'type'      => 'text',
 			),
 			'order' => array(
 				'id'        => 'order',
 				'name'      => __( 'order', 'jumpstart' ),
-				'desc'      => __( 'How to order posts &mdash; ASC or DESC.', 'jumpstart' ) . '<br><a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">' . __( 'Learn More', 'jumpstart' ) . '</a>',
+				'desc'      => __( 'How to order posts &mdash; ASC or DESC.', 'jumpstart' ) . '<br><a href="https://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">' . __( 'Learn More', 'jumpstart' ) . '</a>',
 				'type'      => 'text',
 			),
 			'query' => array(
@@ -682,7 +682,7 @@ function setup_themeblvd_pto_meta() {
 	 *     }
 	 *     @type array $options {
 	 *          Standard framework array of options.
-	 *          @link http://dev.themeblvd.com/tutorial/formatting-options/
+	 *          @link https://dev.themeblvd.com/tutorial/formatting-options/
 	 *     }
 	 * }
 	 */

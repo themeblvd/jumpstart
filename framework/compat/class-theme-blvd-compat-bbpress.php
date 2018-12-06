@@ -947,7 +947,7 @@ class Theme_Blvd_Compat_BBPress {
 			 * @since Theme_Blvd 2.5.0
 			 *
 			 * @param string $link HTML for link.
-			 * @param string $url  URL used in link, like `http://google.com`.
+			 * @param string $url  URL used in link, like `https://google.com`.
 			 */
 			$value .= apply_filters( 'themeblvd_bbp_website_link_html', $link, $url );
 

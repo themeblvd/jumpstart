@@ -2101,7 +2101,7 @@ function themeblvd_team_member( $args ) {
  *     @type string $name        Name of person giving testimonial, like `John Smith`.
  *     @type string $tagline     Tagline or position of person giving testimonial, like `Founder and CEO`.
  *     @type string $company     Company of person giving testimonial, like `Google`.
- *     @type string $company_url Company URL of person giving testimonial, like `http://google.com`.
+ *     @type string $company_url Company URL of person giving testimonial, like `https://google.com`.
  *     @type array  $image       Image attributes for person giving testimonial.
  *     @type string $display     How to display the testimonial, `showcase` or `standard`.
  * }
@@ -2245,7 +2245,7 @@ function themeblvd_get_testimonial( $args ) {
 	 *     @type string $name        Name of person giving testimonial, like `John Smith`.
 	 *     @type string $tagline     Tagline or position of person giving testimonial, like `Founder and CEO`.
 	 *     @type string $company     Company of person giving testimonial, like `Google`.
-	 *     @type string $company_url Company URL of person giving testimonial, like `http://google.com`.
+	 *     @type string $company_url Company URL of person giving testimonial, like `https://google.com`.
 	 *     @type array  $image       Image attributes for person giving testimonial.
 	 *     @type string $display     How to display the testimonial, `showcase` or `standard`.
 	 * }

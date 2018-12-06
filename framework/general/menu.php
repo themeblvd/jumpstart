@@ -597,7 +597,7 @@ function themeblvd_get_wp_nav_menu_args( $location = 'primary' ) {
 			 * Here's a good example of a user for this
 			 * filter:
 			 *
-			 * @link http://dev.themeblvd.com/tutorial/creating-a-custom-menu-for-mobile
+			 * @link https://dev.themeblvd.com/tutorial/creating-a-custom-menu-for-mobile
 			 *
 			 * @since Theme_Blvd 2.5.0
 			 *

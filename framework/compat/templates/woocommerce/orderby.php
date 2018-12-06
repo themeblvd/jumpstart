@@ -6,7 +6,7 @@
  *
  * @author      Jason Bobich
  * @copyright   2009-2017 Theme Blvd
- * @link        http://themeblvd.com
+ * @link        https://themeblvd.com
  * @package     Jump_Start
  */
 

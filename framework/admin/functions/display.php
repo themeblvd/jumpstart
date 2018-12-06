@@ -516,7 +516,7 @@ function themeblvd_content_option( $id, $name, $val, $options ) {
 			$select_sidebar .= sprintf(
 				// translators: 1: link to Theme Blvd Widget Areas plugin
 				esc_html__( 'In order for you to use this feature you need to have the %s plugin activated.', 'jumpstart' ),
-				'<a href="http://wordpress.org/extend/plugins/theme-blvd-widget-areas/" target="_blank">Theme Blvd Widget Areas</a>'
+				'<a href="https://wordpress.org/extend/plugins/theme-blvd-widget-areas/" target="_blank">Theme Blvd Widget Areas</a>'
 			);
 
 			$select_sidebar .= '</p>';
@@ -1063,7 +1063,7 @@ function themeblvd_conditionals_option( $id, $name, $val = null ) {
 				 */
 				if ( ! apply_filters( 'themeblvd_disable_sidebar_custom_conditional', false ) ) {
 
-					$link = '<a href="http://codex.wordpress.org/Conditional_Tags" target="_blank">' . esc_html__( 'conditional statement', 'jumpstart' ) . '</a>';
+					$link = '<a href="https://codex.wordpress.org/Conditional_Tags" target="_blank">' . esc_html__( 'conditional statement', 'jumpstart' ) . '</a>';
 
 					$output .= sprintf(
 						'<input type="text" name="%s" value="%s" />',
@@ -1549,7 +1549,7 @@ function themeblvd_custom_layout_dropdown( $layout = null ) {
 		$message = sprintf(
 			// translators: 1: link to Theme Blvd Layout Builder plugin
 			esc_html__( 'In order to use the "Custom Layout" template, you must have the %s plugin installed.', 'jumpstart' ),
-			'<a href="http://wordpress.org/extend/plugins/theme-blvd-layout-builder" target="_blank">Theme Blvd Layout Builder</a>'
+			'<a href="https://wordpress.org/extend/plugins/theme-blvd-layout-builder" target="_blank">Theme Blvd Layout Builder</a>'
 		);
 
 		return sprintf(
@@ -2069,7 +2069,7 @@ function themeblvd_options_footer_text_default() {
 	 * @param string URL to changelog.
 	 * @param string Template slug retrieved from get_template().
 	 */
-	$url = apply_filters( 'themeblvd_changelog_link', 'http://themeblvd.com/changelog/?theme=' . $theme, $theme );
+	$url = apply_filters( 'themeblvd_changelog_link', 'https://themeblvd.com/changelog/?theme=' . $theme, $theme );
 
 	$changelog = sprintf(
 		'<a href="%s" target="_blank">%s</a>',

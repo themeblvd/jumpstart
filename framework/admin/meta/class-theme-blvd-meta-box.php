@@ -32,7 +32,7 @@
  * }
  * @param array  $options {
  *     Standard framework array of options.
- *     @link http://dev.themeblvd.com/tutorial/formatting-options/
+ *     @link https://dev.themeblvd.com/tutorial/formatting-options/
  * }
  */
 class Theme_Blvd_Meta_Box {

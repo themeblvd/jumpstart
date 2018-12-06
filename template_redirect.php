@@ -12,7 +12,7 @@
  *
  * 1. Create a new page.
  * 2. Add a title to the page.
- * 3. Add an URL to the content of the page (e.g. http://www.google.com OR google.com OR www.google.com)
+ * 3. Add an URL to the content of the page (e.g. https://www.google.com OR google.com OR www.google.com)
  * 4. Select "Redirect" as the page template
  * 5. Publish!
  *

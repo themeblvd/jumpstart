@@ -254,7 +254,7 @@ class Jump_Start_Updater {
 				),
 				sprintf(
 					'<a href="%s" target="_blank">%s</a>',
-					'http://themeblvd.com/links/update-responsibly',
+					'https://themeblvd.com/links/update-responsibly',
 					__( 'update responsibly', 'jumpstart' )
 				)
 			);
@@ -393,7 +393,7 @@ class Jump_Start_Updater {
 			__( 'This is a major upgrade that may affect child theme customization. Use caution and %s.', 'jumpstart' ),
 			sprintf(
 				'<a href="%s" target="_blank">%s</a>',
-				'http://themeblvd.com/links/update-responsibly',
+				'https://themeblvd.com/links/update-responsibly',
 				__( 'update responsibly', 'jumpstart' )
 			)
 		);
@@ -789,7 +789,7 @@ class Jump_Start_Updater {
 		if ( isset( $update_data->url ) ) {
 
 			$update_data->url = sprintf(
-				'http://themeblvd.com/changelog/?%s=%s',
+				'https://themeblvd.com/changelog/?%s=%s',
 				$type,
 				$api_params['slug']
 			);

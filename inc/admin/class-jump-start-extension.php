@@ -49,7 +49,7 @@ class Jump_Start_Extension {
 			'item_shortname' => '',
 			'version'        => '',
 			'author'         => 'Theme Blvd',
-			'remote_api_url' => 'http://wpjumpstart.com',
+			'remote_api_url' => 'https://wpjumpstart.com',
 		) );
 
 		if ( ! $args['file'] || ! $args['item_name'] || ! $args['version'] ) {

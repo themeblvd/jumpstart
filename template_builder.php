@@ -45,7 +45,7 @@ get_header();
 				<?php
 				printf(
 					themeblvd_get_local( 'no_builder_plugin' ),
-					'<a href="http://wordpress.org/extend/plugins/theme-blvd-layout-builder" target="_blank">Theme Blvd Layout Builder</a>'
+					'<a href="https://wordpress.org/extend/plugins/theme-blvd-layout-builder" target="_blank">Theme Blvd Layout Builder</a>'
 				);
 				?>
 			</p>

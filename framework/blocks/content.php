@@ -19,7 +19,7 @@
  *
  *     @type string      $quote       Quote text.
  *     @type string      $source      Source of quote, like `John Smith`.
- *     @type string      $source_link URL to quote source, like `http://johnsmith.com`.
+ *     @type string      $source_link URL to quote source, like `https://johnsmith.com`.
  *     @type string      $align       How to align outer block, `left` or `right` (leave blank for standard, center alignment).
  *     @type string      $max_width   Maximum width, like `300px`, `50%`, etc.
  *     @type string|bool $reverse     Whether to align inner text right.
@@ -129,7 +129,7 @@ function themeblvd_get_blockquote( $args ) {
 	 *
 	 *     @type string      $quote       Quote text.
 	 *     @type string      $source      Source of quote, like `John Smith`.
-	 *     @type string      $source_link URL to quote source, like `http://johnsmith.com`.
+	 *     @type string      $source_link URL to quote source, like `https://johnsmith.com`.
 	 *     @type string      $align       How to align outer block, `left` or `right` (leave blank for standard, center alignment).
 	 *     @type string      $max_width   Maximum width, like `300px`, `50%`, etc.
 	 *     @type string|bool $reverse     Whether to align inner text right.

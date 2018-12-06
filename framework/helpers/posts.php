@@ -327,7 +327,7 @@ function themeblvd_get_share_patterns() {
 
 	$patterns = array(
 		'digg' => array(
-			'pattern'     => 'http://digg.com/submit?url=[permalink]&title=[title]',
+			'pattern'     => 'https://digg.com/submit?url=[permalink]&title=[title]',
 			'encode'      => true,
 			'encode_urls' => false,
 			'icon'        => 'digg',
@@ -339,7 +339,7 @@ function themeblvd_get_share_patterns() {
 			'icon'        => 'envelope',
 		),
 		'facebook' => array(
-			'pattern'     => 'http://www.facebook.com/sharer.php?u=[permalink]&amp;t=[title]',
+			'pattern'     => 'https://www.facebook.com/sharer.php?u=[permalink]&amp;t=[title]',
 			'encode'      => true,
 			'encode_urls' => false,
 			'icon'        => 'facebook',
@@ -351,31 +351,31 @@ function themeblvd_get_share_patterns() {
 			'icon'        => 'google-plus',
 		),
 		'linkedin' => array(
-			'pattern'     => 'http://linkedin.com/shareArticle?mini=true&amp;url=[permalink]&amp;title=[title]',
+			'pattern'     => 'https://linkedin.com/shareArticle?mini=true&amp;url=[permalink]&amp;title=[title]',
 			'encode'      => true,
 			'encode_urls' => false,
 			'icon'        => 'linkedin',
 		),
 		'pinterest' => array(
-			'pattern'     => 'http://pinterest.com/pin/create/button/?url=[permalink]&amp;description=[title]&amp;media=[thumbnail]',
+			'pattern'     => 'https://pinterest.com/pin/create/button/?url=[permalink]&amp;description=[title]&amp;media=[thumbnail]',
 			'encode'      => true,
 			'encode_urls' => true,
 			'icon'        => 'pinterest-p',
 		),
 		'reddit' => array(
-			'pattern'     => 'http://reddit.com/submit?url=[permalink]&amp;title=[title]',
+			'pattern'     => 'https://reddit.com/submit?url=[permalink]&amp;title=[title]',
 			'encode'      => true,
 			'encode_urls' => false,
 			'icon'        => 'reddit',
 		),
 		'tumblr' => array(
-			'pattern'     => 'http://www.tumblr.com/share/link?url=[permalink]&amp;name=[title]&amp;description=[excerpt]',
+			'pattern'     => 'https://www.tumblr.com/share/link?url=[permalink]&amp;name=[title]&amp;description=[excerpt]',
 			'encode'      => true,
 			'encode_urls' => true,
 			'icon'        => 'tumblr',
 		),
 		'twitter' => array(
-			'pattern'     => 'http://twitter.com/home?status=[title] [shortlink]',
+			'pattern'     => 'https://twitter.com/home?status=[title] [shortlink]',
 			'encode'      => true,
 			'encode_urls' => false,
 			'icon'        => 'twitter',

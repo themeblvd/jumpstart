@@ -13,7 +13,7 @@
  * Get class for a column based on our framework
  * grid keys.
  *
- * @link http://dev.themeblvd.com/tutorial/grid-system/
+ * @link https://dev.themeblvd.com/tutorial/grid-system/
  *
  * Accepted inputs for $key:
  * 1. A fraction (as string) equivalent to 1/12 - 11/12

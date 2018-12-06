@@ -327,7 +327,7 @@ function themeblvd_do_side_panel() {
 	 * for the side panel funcitonality, use the filter
 	 * `themeblvd_global_config` instead.
 	 *
-	 * @link http://dev.themeblvd.com/tutorial/managing-framework-features/
+	 * @link https://dev.themeblvd.com/tutorial/managing-framework-features/
 	 *
 	 * By default, the side panel is triggered by there
 	 * being a navigation menu applied to one of the

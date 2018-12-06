@@ -7,7 +7,7 @@
  * keep in mind that these may get adjusted at
  * the theme level.
  *
- * @link http://dev.themeblvd.com/tutorial/primary-framework-action-hooks/#finding-actions
+ * @link https://dev.themeblvd.com/tutorial/primary-framework-action-hooks/#finding-actions
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
@@ -488,7 +488,7 @@ if ( ! function_exists( 'themeblvd_sticky_header_logo' ) ) {
 		 *
 		 * @since Theme_Blvd 2.5.0
 		 *
-		 * @param string Logo image URL, like `http://mysite.com/image.jpg`.
+		 * @param string Logo image URL, like `https://mysite.com/image.jpg`.
 		 */
 		$image = apply_filters( 'themeblvd_sticky_logo_uri', '' );
 

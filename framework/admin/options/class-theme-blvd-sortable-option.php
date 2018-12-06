@@ -172,7 +172,7 @@ abstract class Theme_Blvd_Sortable_Option {
 	 * @return array {
 	 *      Standard framework array of options, but
 	 *      with only above types being supported.
-	 *      @link http://dev.themeblvd.com/tutorial/formatting-options/
+	 *      @link https://dev.themeblvd.com/tutorial/formatting-options/
 	 * }
 	 */
 	abstract protected function get_options();
@@ -1188,7 +1188,7 @@ class Theme_Blvd_Buttons_Option extends Theme_Blvd_Sortable_Option {
 				'id'      => 'url',
 				'name'    => __( 'Link URL', 'jumpstart' ),
 				'desc'    => __( 'Enter the full URL where you want the button\'s link to go.', 'jumpstart' ),
-				'std'     => 'http://www.your-site.com/your-landing-page',
+				'std'     => 'https://www.your-site.com/your-landing-page',
 				'type'    => 'text',
 			),
 			array(
@@ -1590,7 +1590,7 @@ class Theme_Blvd_Price_Cols_Option extends Theme_Blvd_Sortable_Option {
 				'id'      => 'button_url',
 				'name'    => __( 'Link URL', 'jumpstart' ),
 				'desc'    => __( 'Enter the full URL where you want the button\'s link to go.', 'jumpstart' ),
-				'std'     => 'http://www.your-site.com/your-landing-page',
+				'std'     => 'https://www.your-site.com/your-landing-page',
 				'type'    => 'text',
 				'class'   => 'hide receiver',
 			),
@@ -1871,7 +1871,7 @@ class Theme_Blvd_Social_Option extends Theme_Blvd_Sortable_Option {
 				'id'      => 'url',
 				'name'    => __( 'Link URL', 'jumpstart' ),
 				'type'    => 'text',
-				'std'     => 'http://',
+				'std'     => 'https://',
 			),
 			array(
 				'id'      => 'label',
@@ -2095,14 +2095,14 @@ class Theme_Blvd_Slider_Option extends Theme_Blvd_Sortable_Option {
 				'id'      => 'link_url',
 				'name'    => __( 'Link URL', 'jumpstart' ),
 				'desc'    => array(
-					'_self'  => __( 'Enter a URL to a webpage.<br />Ex: http://yoursite.com/example', 'jumpstart' ),
-					'_blank' => __( 'Enter a URL to a webpage.<br />Ex: http://google.com', 'jumpstart' ),
-					'image'  => __( 'Enter a URL to an image file.<br />Ex: http://yoursite.com/uploads/image.jpg', 'jumpstart' ),
-					'video'  => __( 'Enter a URL to a YouTube or Vimeo page.<br />Ex: http://vimeo.com/11178250', 'jumpstart' ) . '<br>' . __( 'Ex: https://youtube.com/watch?v=ginTCwWfGNY', 'jumpstart' ),
+					'_self'  => __( 'Enter a URL to a webpage.<br />Ex: https://yoursite.com/example', 'jumpstart' ),
+					'_blank' => __( 'Enter a URL to a webpage.<br />Ex: https://google.com', 'jumpstart' ),
+					'image'  => __( 'Enter a URL to an image file.<br />Ex: https://yoursite.com/uploads/image.jpg', 'jumpstart' ),
+					'video'  => __( 'Enter a URL to a YouTube or Vimeo page.<br />Ex: https://vimeo.com/11178250', 'jumpstart' ) . '<br>' . __( 'Ex: https://youtube.com/watch?v=ginTCwWfGNY', 'jumpstart' ),
 				),
 				'type'    => 'text',
 				'std'     => '',
-				'pholder' => 'http://',
+				'pholder' => 'https://',
 				'class'   => 'receiver receiver-_self receiver-_blank receiver-image receiver-video',
 			),
 			array(
@@ -2248,9 +2248,9 @@ class Theme_Blvd_Logos_Option extends Theme_Blvd_Slider_Option {
 			array(
 				'id'      => 'link',
 				'name'    => __( 'Partner Link (optional)', 'jumpstart' ),
-				'desc'    => __( 'Enter a URL you\'d like this logo to link to.', 'jumpstart' ) . '<br>' . __( 'Ex: http://partersite.com', 'jumpstart' ),
+				'desc'    => __( 'Enter a URL you\'d like this logo to link to.', 'jumpstart' ) . '<br>' . __( 'Ex: https://partersite.com', 'jumpstart' ),
 				'type'    => 'text',
-				'pholder' => 'http://',
+				'pholder' => 'https://',
 			),
 		);
 
@@ -2428,7 +2428,7 @@ class Theme_Blvd_Testimonials_Option extends Theme_Blvd_Sortable_Option {
 				'name'     => __( 'Company URL (optional)', 'jumpstart' ),
 				'desc'     => __( 'Enter the website URL for the company or the person giving the testimonial.', 'jumpstart' ),
 				'type'     => 'text',
-				'pholder'  => 'http://',
+				'pholder'  => 'https://',
 			),
 			array(
 				'id'       => 'image',

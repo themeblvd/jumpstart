@@ -395,7 +395,7 @@ function themeblvd_get_text_transform( $option ) {
  * color.
  *
  * Huge thank you to Oscar for providing this:
- * @link http://stackoverflow.com/questions/3015116/hex-code-brightness-php
+ * @link https://stackoverflow.com/questions/3015116/hex-code-brightness-php
  *
  * @since Theme_Blvd 2.0.0
  *
@@ -460,7 +460,7 @@ function themeblvd_text_color( $bg_color ) {
  * Darken or Lighten a hex color
  *
  * Huge thank you to Jonas John for providing this:
- * @link http://www.jonasjohn.de/snippets/php/darker-color.htm
+ * @link https://www.jonasjohn.de/snippets/php/darker-color.htm
  *
  * @since Theme_Blvd 2.0.5
  *

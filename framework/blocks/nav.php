@@ -302,7 +302,7 @@ function themeblvd_buttons( $buttons, $args = array() ) {
  *          Structure for each individual link.
  *
  *          @type string $icon   Icon name, like `twitter`.
- *          @type string $url    Link URL, like `http://twitter.com/username`.
+ *          @type string $url    Link URL, like `https://twitter.com/username`.
  *          @type string $label  Link label, like `Twitter` or `Follow us on Twitter`.
  *          @type string $target Link target, like `_self` or `_blank`.
  *     }
@@ -517,7 +517,7 @@ function themeblvd_get_contact_bar( $buttons = array(), $args = array() ) {
 	 *          Structure for each individual link.
 	 *
 	 *          @type string $icon   Icon name, like `twitter`.
-	 *          @type string $url    Link URL, like `http://twitter.com/username`.
+	 *          @type string $url    Link URL, like `https://twitter.com/username`.
 	 *          @type string $label  Link label, like `Twitter` or `Follow us on Twitter`.
 	 *          @type string $target Link target, like `_self` or `_blank`.
 	 *     }
@@ -1094,7 +1094,7 @@ function themeblvd_get_mobile_cart_link() {
 	 * @since Theme_Blvd 2.5.0
 	 *
 	 * @param string $output     Final HTML output.
-	 * @param string $cart_url   URL to shopping cart page, like `http://yoursite.com/cart`.
+	 * @param string $cart_url   URL to shopping cart page, like `https://yoursite.com/cart`.
 	 * @param string $cart_label Additional HTML to append to cart link.
 	 */
 	return apply_filters( 'themeblvd_mobile_cart_link', $output, $cart_url, $cart_label );
@@ -1308,7 +1308,7 @@ function themeblvd_pagination( $pages = 0, $range = 2 ) {
  *
  *     @type string $delimiter Any content to output between crumb items; this is blank by default and is inserted via CSS content.
  *     @type string $home      Text for home link, like `Home`.
- *     @type string $home_link URL for home link, like `http://mysite.com`.
+ *     @type string $home_link URL for home link, like `https://mysite.com`.
  *     @type string $before    Markup before current crumb item.
  *     @type string $after     Markup after current crumb item.
  * }

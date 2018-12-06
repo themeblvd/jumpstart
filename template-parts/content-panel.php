@@ -9,7 +9,7 @@
  * Or, `themeblvd_do_side_panel` can be manually
  * filtered to TRUE.
  *
- * @link http://dev.themeblvd.com/tutorial/template-parts-framework-2-5
+ * @link https://dev.themeblvd.com/tutorial/template-parts-framework-2-5
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd

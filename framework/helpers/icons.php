@@ -272,7 +272,7 @@ function themeblvd_get_icon_types() {
  *
  * @since Theme_Blvd 2.7.0
  *
- * @return string File URL, like `http://my-site.com/file.json`.
+ * @return string File URL, like `https://my-site.com/file.json`.
  */
 function themeblvd_get_icon_data_file() {
 
@@ -283,7 +283,7 @@ function themeblvd_get_icon_data_file() {
 	 *
 	 * @since Theme_Blvd 2.7.0
 	 *
-	 * @param string File URL, like `http://my-site.com/file.json`.
+	 * @param string File URL, like `https://my-site.com/file.json`.
 	 */
 	return apply_filters( 'themeblvd_icon_data_file_url', TB_FRAMEWORK_DIRECTORY . '/admin/assets/data/icons.json' );
 
@@ -375,7 +375,7 @@ function themeblvd_get_icon_js_file() {
 	 *
 	 * @since Theme_Blvd 2.7.0
 	 *
-	 * @param string|array $url JavaScript file URL(s), like `http://mysite.com/file.js`.
+	 * @param string|array $url JavaScript file URL(s), like `https://mysite.com/file.js`.
 	 */
 	$url = apply_filters(
 		'themeblvd_icon_js_file_url',

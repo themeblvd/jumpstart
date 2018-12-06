@@ -364,7 +364,7 @@ class Theme_Blvd_Options_API {
 					'header_text' => array(
 						'name'    => __( 'Header Text', 'jumpstart' ),
 						// translators: 1: link to FontAwesome, 2: formatting for option input
-						'desc'    => sprintf( __( 'Enter a brief piece of text you\'d like to show. You can use basic HTML here, or any %1$s ID formatted like %2$s.', 'jumpstart' ), '<a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a>', '<code>%name%</code>' ),
+						'desc'    => sprintf( __( 'Enter a brief piece of text you\'d like to show. You can use basic HTML here, or any %1$s ID formatted like %2$s.', 'jumpstart' ), '<a href="https://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a>', '<code>%name%</code>' ),
 						'id'      => 'header_text',
 						'std'     => '%phone% 1-800-555-5555 %envelope% admin@yoursite.com',
 						'type'    => 'text',
@@ -556,7 +556,7 @@ class Theme_Blvd_Options_API {
 						'name'    => __( 'Footer Copyright Text', 'jumpstart' ),
 						'desc'    => __( 'Enter the copyright text you\'d like to show in the footer of your site.', 'jumpstart' ) . '<br><br><em>%year%</em> &mdash; ' . __( 'Show current year.', 'jumpstart' ) . '<br><em>%site_title%</em> &mdash; ' . __( 'Show your site title.', 'jumpstart' ),
 						'id'      => 'footer_copyright',
-						'std'     => '(c) %year% %site_title% - Powered by <a href="http://wordpress.org" title="WordPress" target="_blank">WordPress</a>, Designed by <a href="http://themeblvd.com" title="Theme Blvd" target="_blank">Theme Blvd</a>',
+						'std'     => '(c) %year% %site_title% - Powered by <a href="https://wordpress.org" title="WordPress" target="_blank">WordPress</a>, Designed by <a href="https://themeblvd.com" title="Theme Blvd" target="_blank">Theme Blvd</a>',
 						'type'    => 'editor',
 						'class'   => 'standard-footer-setup',
 					),
@@ -630,7 +630,7 @@ class Theme_Blvd_Options_API {
 						'std'     => array(
 							'item_1' => array(
 								'icon'   => 'facebook',
-								'url'    => 'http://facebook.com/jasonbobich',
+								'url'    => 'https://facebook.com/jasonbobich',
 								'label'  => 'Facebook',
 								'target' => '_blank',
 							),
@@ -642,7 +642,7 @@ class Theme_Blvd_Options_API {
 							),
 							'item_3' => array(
 								'icon'   => 'twitter',
-								'url'    => 'http://twitter.com/jasonbobich',
+								'url'    => 'https://twitter.com/jasonbobich',
 								'label'  => 'Twitter',
 								'target' => '_blank',
 							),
@@ -1337,7 +1337,7 @@ class Theme_Blvd_Options_API {
 			'lightbox' => array(
 				'name'    => __( 'Lightbox', 'jumpstart' ),
 				// translators: 1: link to Magnific Popup website.
-				'desc'    => sprintf( __( 'These settings apply to the built-in lightbox functionality, which utilizes the %s script.', 'jumpstart' ), '<a href="http://dimsemenov.com/plugins/magnific-popup/" target="_blank">Magnific Popup</a>' ),
+				'desc'    => sprintf( __( 'These settings apply to the built-in lightbox functionality, which utilizes the %s script.', 'jumpstart' ), '<a href="https://dimsemenov.com/plugins/magnific-popup/" target="_blank">Magnific Popup</a>' ),
 				'options' => array(
 					'lightbox_animation' => array(
 						'name'    => __( 'Animate lightboxes?', 'jumpstart' ),
@@ -1399,7 +1399,7 @@ class Theme_Blvd_Options_API {
 				'options' => array(
 					'gmap_info' => array(
 						'id'   => 'gmap_info',
-						'desc' => __( 'You must have a Google Maps API key setup to use the "Google Maps" element of our layout builder.', 'jumpstart' ) . ' <a href="http://docs.themeblvd.com/article/56-google-maps-api" target="_blank">' . __( 'Learn More', 'jumpstart' ) . '</a>',
+						'desc' => __( 'You must have a Google Maps API key setup to use the "Google Maps" element of our layout builder.', 'jumpstart' ) . ' <a href="https://docs.themeblvd.com/article/56-google-maps-api" target="_blank">' . __( 'Learn More', 'jumpstart' ) . '</a>',
 						'type' => 'info',
 					),
 					'gmap_api_key' => array(

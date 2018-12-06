@@ -3,7 +3,7 @@
  * The template used for displaying within the
  * <head> of header.php.
  *
- * @link http://dev.themeblvd.com/tutorial/template-parts-framework-2-5
+ * @link https://dev.themeblvd.com/tutorial/template-parts-framework-2-5
  *
  * @author     Jason Bobich <info@themeblvd.com>
  * @copyright  2009-2017 Theme Blvd
@@ -14,7 +14,7 @@
 ?>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 
-<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="profile" href="https://gmpg.org/xfn/11" />
 
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 

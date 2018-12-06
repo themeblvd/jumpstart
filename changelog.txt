@@ -9,9 +9,11 @@
 	* Match media caption styling of blocks to default caption styling of theme.
 	* Moved "Sidebar Layout" option to "Theme Layout" meta box, for editing both Posts and Pages.
 * Improvement: Better spacing with Image elements, that are linked and have full-size images.
+* Improvement: Better usage of `https` (instead of `http`) for things like share links, helper text, URL examples, etc.
 * Fixed: Adding missing `base` key in `themeblvd_admin_module_caps` filtered array, so that the user capability of the Theme Bases admin page can be modified (see [tutorial](http://dev.themeblvd.com/tutorial/changing-user-role-access-for-admin-modules/)).
 * Fixed: Milestone element animations not working when values contain commas.
 * Fixed: Broken mobile menu navigation list background image, when using light background color.
+* Fixed: Linking to `youtu.be` formatted links in a lightbox (sometimes) not working.
 * Removed: Removed outdated style-editor.css file.
 * Updated: FontAwesome to 5.5.
 

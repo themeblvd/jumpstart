@@ -120,7 +120,7 @@ function themeblvd_setup() {
 	 * The global configuration determines which
 	 * features are supported throughout the theme.
 	 *
-	 * @link http://dev.themeblvd.com/tutorial/managing-framework-features/
+	 * @link https://dev.themeblvd.com/tutorial/managing-framework-features/
 	 *
 	 * @since Theme_Blvd 2.0.0
 	 *
