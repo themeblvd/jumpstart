@@ -1,0 +1,186 @@
+////
+/// Admin: Options, Basic
+///
+/// @package Jump_Start
+/// @subpackage Theme_Blvd
+/// @license GPL-2.0+
+////
+
+//
+// Text Input & Textarea
+//
+
+.tb-options-wrap .controls {
+  input[type='text'],
+  textarea {
+    margin-bottom: 10px;
+    outline: 0;
+    width: 100%;
+  }
+  input[type='text'] {
+    padding: 6px 8px;
+  }
+  textarea {
+    line-height: 150%;
+  }
+}
+
+//
+// Select Menu
+//
+
+.tb-options-wrap .controls select {
+  height: 28px !important; // Hack for WP's core #excerpt <select> styling.
+  margin: 0 0 10px 0;
+  width: 100%;
+}
+.tb-options-wrap .controls p > select {
+  margin-bottom: 0;
+}
+
+//
+// Radio
+//
+
+.tb-options-wrap {
+  .section-radio label {
+    float: left;
+    font-size: 14px;
+    line-height: 1.2em;
+    display: block;
+    max-width: 330px;
+  }
+  .radio-input {
+    margin: 4px 0 7px 0;
+    padding: 0;
+  }
+  input.tb-radio {
+    float: left;
+    clear: both;
+    margin-top: 0;
+    vertical-align: middle;
+    width: auto;
+  }
+}
+.wp-admin.rtl .tb-options-wrap .section-radio label {
+  float: right;
+}
+.wp-admin.rtl .tb-options-wrap input.tb-radio {
+  float: right;
+}
+
+//
+// Checkbox
+//
+
+.tb-options-wrap {
+  input.checkbox {
+    float: left;
+    clear: both;
+    margin-top: 0;
+    vertical-align: middle;
+    width: auto;
+  }
+  .section-checkbox {
+    .controls {
+      min-width: 25px;
+      padding-right: 0;
+      padding-left: 0; // For RTL.
+      width: 25px;
+    }
+    .explain {
+      max-width: 93%;
+    }
+  }
+}
+.wp-admin.rtl .tb-options-wrap input.checkbox {
+  float: right;
+}
+
+//
+// Multi-check
+//
+
+.tb-options-wrap .section-multicheck {
+  label {
+    float: left;
+    font-size: 14px;
+    line-height: 1.2em;
+    display: block;
+    max-width: 330px;
+  }
+  label,
+  input.checkbox {
+    margin-top: 4px;
+  }
+}
+.wp-admin.rtl .tb-options-wrap .section-multicheck label {
+  float: right;
+}
+
+//
+// Color Picker
+//
+
+.tb-options-wrap {
+  .section-color .controls {
+    min-width: 125px;
+  }
+  .controls input[type='text'].tb-color-picker {
+    margin-bottom: 0;
+    width: 65px;
+  }
+}
+.themeblvd-modal-wrap .media-frame {
+  .wp-color-result {
+    border: 1px solid $clr-border;
+  }
+  .tb-color-picker {
+    padding: 3px 5px;
+  }
+}
+
+//
+// Background Properties
+//
+
+.tb-options-wrap {
+  .tb-background-properties {
+    clear: both;
+    margin-top: 18px;
+  }
+  .tb-background-repeat,
+  .tb-background-position,
+  .tb-background-attachment {
+    margin-right: 5px;
+    float: left;
+  }
+}
+.wp-admin.rtl .tb-options-wrap .tb-background-repeat,
+.wp-admin.rtl .tb-options-wrap .tb-background-position,
+.wp-admin.rtl .tb-options-wrap .tb-background-attachment {
+  float: right;
+}
+
+//
+// Image Select
+//
+
+.tb-options-wrap {
+  .tb-radio-img-img {
+    border: 3px solid $clr-bg-light;
+    cursor: pointer;
+    display: none;
+    float: left;
+    margin: 0 5px 10px 0;
+  }
+  .tb-radio-img-selected {
+    border: 3px solid $clr-border-dark;
+  }
+  .tb-radio-img-img:hover {
+    opacity: 0.8;
+  }
+}
+.wp-admin.rtl .tb-options-wrap .tb-radio-img-img {
+  float: right;
+}

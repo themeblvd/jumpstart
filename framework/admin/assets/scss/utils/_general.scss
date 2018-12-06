@@ -1,0 +1,129 @@
+////
+/// Admin: Utilities, General
+///
+/// @package Jump_Start
+/// @subpackage Theme_Blvd
+/// @license GPL-2.0+
+////
+
+//
+// Clearfix
+//
+
+.tb-options-wrap .clearfix:after {
+  content: '.';
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+//
+// Loader
+//
+
+.tb-options-wrap .tb-loader {
+  display: none;
+  visibility: visible;
+  z-index: 4;
+}
+.tb-options-wrap .tb-loader i {
+  animation: spin 2s infinite linear;
+  display: block;
+  font-size: 16px;
+  width: 22px;
+  height: 16px;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+//
+// Contextual
+//
+
+.tb-options-wrap .warning {
+  background: $clr-bg-light;
+  border: 1px solid $clr-border;
+  border-radius: 4px;
+  color: $clr-text;
+  line-height: 1.3em;
+  padding: 10px;
+}
+.tb-options-wrap .note {
+  color: $clr-text-light;
+  font-size: 12px;
+  font-style: italic;
+  line-height: 150%;
+  padding: 5px;
+}
+.tb-options-wrap .inner-label {
+  cursor: inherit;
+  display: block;
+  padding: 5px;
+}
+.tb-options-wrap .inactive {
+  color: $clr-text-light;
+}
+.tb-options-wrap .conflict,
+.tb-options-wrap .no-conflict {
+  background: none;
+  padding: 0;
+}
+.tb-options-wrap .conflict:before,
+.tb-options-wrap .no-conflict:before {
+  font-family: $icon-font-name;
+  margin-right: 5px;
+}
+.tb-options-wrap .conflict:before {
+  content: '\e804';
+  color: $clr-danger;
+}
+.tb-options-wrap .no-conflict:before {
+  content: '\e80e';
+  color: $clr-success;
+}
+
+//
+// Ajax
+//
+
+.tb-options-wrap .ajax-update {
+  display: none;
+}
+.tb-options-wrap .ajax-overlay {
+  background: #eeeeee;
+  display: none;
+  opacity: 0.7;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+//
+// Tables
+//
+
+.tb-options-wrap .widefat {
+  margin-bottom: 20px;
+}
+.tb-options-wrap .widefat td p,
+.tb-options-wrap .widefat td ol,
+.tb-options-wrap .widefat td ul {
+  margin-top: 0;
+}
+.tb-options-wrap .widefat .check-column {
+  padding: 10px 0 0 0;
+}
+.tb-options-wrap .widefat tbody th.check-column,
+.tb-options-wrap .widefat tfoot td.check-column,
+.tb-options-wrap .widefat thead td.check-column {
+  padding-left: 0;
+}

@@ -1,0 +1,151 @@
+////
+/// Admin: Utilities, Icon Font
+///
+/// @package Jump_Start
+/// @subpackage Theme_Blvd
+/// @license GPL-2.0+
+////
+
+// Note: @font-face included from /framework/admin/assets/css/admin-global.css
+
+[class^='tb-icon-']:before,
+[class*=' tb-icon-']:before {
+  font-family: $icon-font-name;
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0.2em;
+  text-align: center;
+
+  // For safety - reset parent styles, that can break glyph codes.
+  font-variant: normal;
+  text-transform: none;
+
+  // Fix buttons height.
+  line-height: 1em;
+
+  // Animation center compensation - margins should be symmetric
+  // remove if not needed.
+  margin-left: 0.2em;
+}
+.tb-icon-code:before {
+  content: '\e607';
+}
+.tb-icon-up-dir:before {
+  content: '\e808';
+}
+.tb-icon-unlock:before {
+  content: '\e601';
+}
+.tb-icon-sort:before {
+  content: '\e602';
+}
+.tb-icon-roadblock:before {
+  content: '\e80c';
+}
+.tb-icon-right-dir:before {
+  content: '\e807';
+}
+.tb-icon-quote:before {
+  content: '\e812';
+}
+.tb-icon-plus-circled:before {
+  content: '\e80a';
+}
+.tb-icon-pictures:before {
+  content: '\e801';
+}
+.tb-icon-picture:before {
+  content: '\e608';
+}
+.tb-icon-pencil:before {
+  content: '\e609';
+}
+.tb-icon-ok-circled:before {
+  content: '\e80e';
+}
+.tb-icon-logo-stroke:before {
+  content: '\e80f';
+}
+.tb-icon-logo-simple:before {
+  content: '\e810';
+}
+.tb-icon-logo-circled:before {
+  content: '\e80b';
+}
+.tb-icon-lock:before {
+  content: '\e80d';
+}
+.tb-icon-link:before {
+  content: '\e811';
+}
+.tb-icon-left-dir:before {
+  content: '\e806';
+}
+.tb-icon-info-sign:before {
+  content: '\e611';
+}
+.tb-icon-help-circled:before {
+  content: '\e802';
+}
+.tb-icon-film:before {
+  content: '\e613';
+}
+.tb-icon-down-dir:before {
+  content: '\e805';
+}
+.tb-icon-commerical-building:before, /* An old typo */
+.tb-icon-commercial-building:before {
+  content: '\e800';
+}
+.tb-icon-circle-arrow-up:before {
+  content: '\e616';
+}
+.tb-icon-circle-arrow-right:before {
+  content: '\e617';
+}
+.tb-icon-circle-arrow-left:before {
+  content: '\e618';
+}
+.tb-icon-circle-arrow-down:before {
+  content: '\e619';
+}
+.tb-icon-cancel-circled:before {
+  content: '\e803';
+}
+.tb-icon-attention:before {
+  content: '\e804';
+}
+.tb-icon-arrows-ccw:before {
+  content: '\e809';
+}
+.tb-icon-move:before {
+  content: '\e60a';
+}
+.tb-icon-copy:before {
+  content: '\e60b';
+}
+.tb-icon-cart:before {
+  content: '\e600';
+}
+.tb-icon-wrench:before {
+  content: '\e603';
+}
+.tb-icon-cogs:before {
+  content: '\e604';
+}
+.tb-icon-cog:before {
+  content: '\e605';
+}
+.tb-icon-spinner:before {
+  content: '\e606';
+}
+.tb-icon-briefcase:before {
+  content: '\e813';
+}
+.tb-icon-barcode:before {
+  content: '\e60c';
+}

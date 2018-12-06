@@ -1,10 +1,13 @@
 {
   "name": "jumpstart",
-  "version": "2.2.6",
+  "version": "2.3.0",
   "description": "Jump Start WordPress Theme",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:fontawesome": "gulp --gulpfile ./build/gulpfile.js build-fontawesome",
+    "build:admin": "gulp --gulpfile ./build/gulpfile.js build-admin",
+    "build:pot": "gulp --gulpfile ./build/gulpfile.js build-pot",
+    "build": "gulp --gulpfile ./build/gulpfile.js build"
   },
   "repository": {
     "type": "git",
@@ -19,17 +22,19 @@
   "devDependencies": {
     "del": "^3.0.0",
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "latest",
-    "gulp-clean": "latest",
-    "gulp-clean-css": "latest",
-    "gulp-concat": "latest",
-    "gulp-rename": "latest",
-    "gulp-replace": "latest",
-    "gulp-sass": "latest",
-    "gulp-uglify": "latest",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-remote-src": "^0.4.3",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.1",
     "gulp-wp-pot": "^2.0.7",
-    "gulp-yaml": "^1.0.1",
-    "gulp-zip": "latest"
+    "gulp-zip": "^4.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.5.0"
+  }
 }

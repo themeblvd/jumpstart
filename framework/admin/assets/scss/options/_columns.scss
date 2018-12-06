@@ -1,0 +1,133 @@
+////
+/// Admin: Options, Columns Set
+///
+/// @package Jump_Start
+/// @subpackage Theme_Blvd
+/// @license GPL-2.0+
+////
+
+.tb-options-wrap {
+  .section-columns .select-wrap {
+    margin-right: 3%;
+    width: 47%;
+  }
+  .section-columns .inactive {
+    margin: 5px 0 0;
+  }
+  .section-column_widths {
+    position: relative;
+  }
+  .section-columns .controls,
+  .section-column_widths .controls {
+    float: none;
+    min-width: 0;
+    margin-bottom: 10px;
+    padding: 0;
+    width: auto;
+  }
+  .section-column_widths .controls {
+    margin-bottom: 0;
+  }
+  .section-columns .explain,
+  .section-column_widths .explain {
+    float: none;
+    max-width: none;
+  }
+  .section-column_widths p.explain {
+    padding-bottom: 0;
+  }
+  .section-column_widths .select-grid-system {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .section-column_widths .select-grid-system .textbox {
+    border-top: none;
+    border-right: none;
+  }
+  .section-column_widths .slider {
+    background: $clr-bg-light;
+    border: 1px solid $clr-border;
+    height: 20px;
+    position: relative;
+  }
+  .section-column_widths .ui-slider-handle {
+    background: $clr-border;
+    cursor: col-resize;
+    display: block;
+    margin-left: -3px;
+    outline: none;
+    position: absolute;
+    top: -1px;
+    width: 6px;
+    height: 22px;
+    z-index: 3;
+  }
+  .section-column_widths .ui-slider-handle:hover,
+  .section-column_widths .ui-slider-handle.ui-state-focus,
+  .section-column_widths .ui-slider-handle.ui-state-hover {
+    background: $clr-bg-dark;
+  }
+  .section-column_widths .ui-slider-handle:first-of-type,
+  .section-column_widths .ui-slider-handle:last-of-type {
+    display: none;
+  }
+  .section-column_widths .column-preview {
+    color: $clr-text-light;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    z-index: 2;
+  }
+  .section-column_widths .grid-display .grid-column {
+    border-right: 1px dashed $clr-border;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+  }
+  .section-column_widths .grid-display .grid-column:last-child {
+    border-right: none;
+  }
+  .section-column_widths p.explain {
+    color: $clr-text-light;
+    font-style: italic;
+    font-size: 13px;
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+
+//
+// RTL
+//
+
+.wp-admin.rtl .tb-options-wrap {
+  .section-columns .select-wrap {
+    margin-right: 0;
+    margin-left: 3%;
+  }
+  .section-columns .controls,
+  .section-column_widths .controls {
+    float: none;
+    min-width: 0;
+    margin-bottom: 10px;
+    padding: 0;
+    width: auto;
+  }
+  .section-column_widths .select-grid-system {
+    right: inherit;
+    left: 0;
+  }
+  .section-column_widths .grid-display .grid-column {
+    border-right: none;
+    border-left: 1px dashed $clr-border;
+  }
+  .section-column_widths .grid-display .grid-column:last-child {
+    border-left: none;
+  }
+}

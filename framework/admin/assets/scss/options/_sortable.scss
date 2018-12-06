@@ -1,0 +1,298 @@
+////
+/// Admin: Options, Sortable
+///
+/// @package Jump_Start
+/// @subpackage Theme_Blvd
+/// @license GPL-2.0+
+////
+
+//
+// Sortable Section
+//
+
+.tb-options-wrap .section-sortable {
+  > .option > .controls {
+    position: relative;
+  }
+  .add-item {
+    float: left;
+  }
+  .max {
+    color: $clr-text-light;
+    float: left;
+    font-size: 11px;
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+  .delete-sortable-items {
+    font-size: 16px;
+    color: $clr-danger;
+    outline: 0;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+  }
+  .delete-sortable-items:hover {
+    color: darken($clr-danger, 20%);
+  }
+}
+
+.wp-admin.rtl .tb-options-wrap .section-sortable {
+  .add-item {
+    float: right;
+  }
+  .max {
+    float: right;
+    margin-left: 0;
+    margin-right: 10px;
+  }
+  .delete-sortable-items {
+    right: inherit;
+    left: 5px;
+  }
+}
+
+//
+// Individual Sortable Items
+//
+
+.tb-options-wrap .tb-sortable-option {
+  .item {
+    background: #ffffff;
+    margin-bottom: 5px;
+  }
+  .item-handle {
+    background: $clr-bg-light;
+    border: 1px solid $clr-border;
+    color: $clr-text-dark;
+    cursor: move;
+    position: relative;
+  }
+  .item-handle:hover {
+    border-color: darken($clr-border, 20%);
+  }
+  .item-handle h3 {
+    border: none;
+    cursor: move;
+    font-size: 13px;
+    height: 32px; // Fix for if <h3> happens to be empty.
+    line-height: 32px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0 10px 0 22px;
+  }
+  .item-handle .tb-icon-sort {
+    font-size: 14px;
+    position: absolute;
+    top: 9px;
+    left: 2px;
+  }
+  .item-handle a.toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $clr-text;
+    font-size: 15px;
+    line-height: 32px;
+    outline: none;
+    text-align: center;
+    width: 30px;
+    height: 32px;
+  }
+  .item-handle a.toggle:hover {
+    color: #000000;
+  }
+  .item-handle.closed a.toggle {
+    transform: rotate(180deg);
+  }
+  .item-content {
+    border: 1px solid $clr-border;
+    border-top: none;
+    display: none;
+  }
+  .section {
+    padding: 10px;
+  }
+  > .section:last-child {
+    border-bottom: none;
+  }
+  .section h4 {
+    margin: 0 0 8px 4px;
+  }
+  .section-hidden {
+    display: none;
+  }
+  .delete-sortable-item {
+    color: $clr-danger;
+    font-size: 12px;
+    text-decoration: none;
+  }
+  .delete-sortable-item:hover {
+    color: darken($clr-danger, 20%);
+  }
+  textarea {
+    height: 100px;
+  }
+  footer {
+    background: $clr-bg-light;
+    padding: 5px;
+    position: relative;
+  }
+}
+
+.wp-admin.rtl .tb-options-wrap .tb-sortable-option {
+  .item-handle h3 {
+    padding: 0 22px 0 10px;
+  }
+  .item-handle .tb-icon-sort {
+    left: inherit;
+    right: 2px;
+  }
+  .item-handle a.toggle {
+    right: inherit;
+    left: 0;
+  }
+}
+
+//
+// Sortable Images (i.e. sliders and logos)
+//
+
+@mixin sortable-image-controls {
+  float: none;
+  min-width: 0;
+  margin-bottom: 10px;
+  padding: 0;
+  width: auto;
+}
+
+@mixin sortable-image-explain {
+  float: none;
+  max-width: none;
+}
+
+.tb-options-wrap .section-slider,
+.tb-options-wrap .section-logos {
+  > .option > .controls {
+    @include sortable-image-controls;
+  }
+  > .option > .explain {
+    @include sortable-image-explain;
+  }
+  .tb-sortable-option .item-handle .preview {
+    background: $clr-bg-white;
+    border: 1px solid $clr-border;
+    padding: 4px;
+    position: absolute;
+    top: 5px;
+    left: 25px;
+  }
+  .tb-sortable-option .item-handle {
+    background-color: $clr-bg-light;
+  }
+  .tb-sortable-option .item-handle .preview img {
+    display: block;
+    width: 40px;
+    height: 40px;
+  }
+  .tb-sortable-option .item-handle h3 {
+    height: 60px;
+    line-height: 60px;
+    padding-left: 84px;
+  }
+  .tb-sortable-option .item-handle .tb-icon-sort {
+    top: 24px;
+  }
+  .tb-sortable-option .item-handle a.toggle {
+    height: 60px;
+    line-height: 60px;
+  }
+}
+
+.wp-admin.rtl .tb-options-wrap .section-slider,
+.wp-admin.rtl .tb-options-wrap .section-logos {
+  > .option > .controls {
+    @include sortable-image-controls;
+  }
+  > .option > .explain {
+    @include sortable-image-explain;
+  }
+  .tb-sortable-option .item-handle .preview {
+    left: inherit;
+    right: 25px;
+  }
+  .tb-sortable-option .item-handle h3 {
+    padding-left: 0;
+    padding-right: 84px;
+  }
+}
+
+//
+// Background Slideshow
+//
+
+.tb-options-wrap .section-bg-slideshow .section-slider {
+  .item-content > .slide-title,
+  .item-content > .slide-desc,
+  .item-content > .slide-link {
+    display: none;
+  }
+}
+
+//
+// Full-Width Sortables
+//
+// Class "full-width" can be added to a sortable
+// option to display full-width.
+//
+// Also, by default an array of option types in
+// the framework automatically get this class added.
+// This array can be filtered with `themeblvd_full_width_options`.
+//
+
+.tb-options-wrap {
+  .section.full-width .tb-sortable-option .item-handle.closed a.toggle {
+    right: -2px;
+  }
+  #builder
+    .section.full-width
+    .tb-sortable-option
+    .item-handle.closed
+    a.toggle {
+    right: 0;
+  }
+  .section.full-width > .option > .controls {
+    float: none;
+    min-width: 0;
+    margin-bottom: 10px;
+    padding: 0;
+    width: auto;
+  }
+  .section.full-width > .option > .explain {
+    float: none;
+    max-width: none;
+    margin-top: 5px;
+  }
+  .section.full-width .tb-sortable-option textarea {
+    height: auto;
+  }
+}
+
+.wp-admin.rtl .tb-options-wrap {
+  .section.full-width .tb-sortable-option .item-handle.closed a.toggle {
+    right: initial;
+    left: -2px;
+  }
+  #builder
+    .section.full-width
+    .tb-sortable-option
+    .item-handle.closed
+    a.toggle {
+    right: initial;
+    left: 0;
+  }
+  .section.full-width > .option > .controls,
+  .section.full-width > .option > .explain {
+    float: none;
+  }
+}
