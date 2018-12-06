@@ -17,7 +17,7 @@ const packageTheme = require('./tasks/package-theme');
 
 // Build Font Awesome assets.
 gulp.task('build-fontawesome-shim', buildFontAwesomeShim);
-gulp.task('build-fontawesome-json', ['build-fontawesome-shim'], buildFontAwesomeShim); // prettier-ignore
+gulp.task('build-fontawesome-json', ['build-fontawesome-shim'], buildFontAwesomeJson); // prettier-ignore
 gulp.task('build-fontawesome', ['build-fontawesome-json'], buildFontAwesome);
 
 // Build admin assets.

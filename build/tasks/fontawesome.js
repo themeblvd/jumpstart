@@ -4,6 +4,7 @@ const concat = require('gulp-concat');
 const replace = require('gulp-replace');
 const minifyjs = require('gulp-uglify');
 const rename = require('gulp-rename');
+const { dependencies } = require('../../package.json');
 
 /**
  * Merge FontAwesome v4 shim into theme.
@@ -21,7 +22,7 @@ function buildFontAwesomeShim() {
  * Merge FontAwesome json.
  */
 function buildFontAwesomeJson() {
-  const faVersion = '5.4.1';
+  const faVersion = dependencies['@fortawesome/fontawesome-free'].replace('^', '');
 
   return remoteSrc(['icons.json'], {
     base: `https://raw.githubusercontent.com/FortAwesome/Font-Awesome/${faVersion}/advanced-options/metadata/`
