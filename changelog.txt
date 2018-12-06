@@ -1,6 +1,6 @@
 # Jump Start Changelog
 
-## 2.3.0 - XX/XX/XXXX
+## 2.3.0 - 12/06/2018
 
 * **Updated Theme Blvd framework to 2.8.0**
 * New: Basic WordPress 5+ block editor compatibility (i.e. Gutenberg).
