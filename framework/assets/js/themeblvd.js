@@ -6,14 +6,14 @@ jQuery(document).ready(function($) {
 
 	"use strict";
 
-	var $window			       = $(window),
-		windowWidth	           = $window.width(),
-		mobileHeaderBreakpoint = parseInt( themeblvd.mobile_header_breakpoint ),
-		$body			       = $('body'),
-		$header			       = $('#branding'),
-		$primaryMenu	       = $('.tb-primary-menu'),
-		$popout_img 	       = $('.site-inner.full_width .classic-edited .entry-content .alignnone, .site-inner.full_width .entry-content .alignfull'),
-		tbmethods		       = {
+	var $window = $(window),
+  		windowWidth = $window.width(),
+  		mobileHeaderBreakpoint = parseInt( themeblvd.mobile_header_breakpoint ),
+  		$body	 = $('body'),
+  		$header = $('#branding'),
+  		$primaryMenu = $('.tb-primary-menu'),
+  		$popout_img = $('.site-inner.full_width .classic-edited .entry-content .alignnone, .site-inner.full_width .entry-content .alignfull'),
+  		tbmethods = {
 
 			/**
 			 * Resize background video to fit
@@ -21,19 +21,19 @@ jQuery(document).ready(function($) {
 			 */
 			bg_video_size: function( $video, $wrap ) {
 
-				var id 			= $video.attr( 'id' ),
-					selector    = '',
-					css 		= '',
-					$section    = $wrap.closest( '.has-bg-video' ),
-					section_w 	= $section.outerWidth(),
-					section_h 	= $section.outerHeight(),
-					ratio		= $wrap.data( 'ratio' ).split( ':' ),
-					w			= 0,
-					h 			= 0,
-					video_w		= ratio[0],
-					video_h		= ratio[1],
-					cover_h		= ( video_h * section_w ) / video_w,
-					cover_w		= ( video_w * section_h ) / video_h;
+				var id = $video.attr( 'id' ),
+  					selector = '',
+  					css = '',
+  					$section = $wrap.closest( '.has-bg-video' ),
+  					section_w = $section.outerWidth(),
+  					section_h = $section.outerHeight(),
+  					ratio = $wrap.data( 'ratio' ).split( ':' ),
+  					w = 0,
+  					h = 0,
+  					video_w = ratio[0],
+  					video_h = ratio[1],
+  					cover_h = ( video_h * section_w ) / video_w,
+  					cover_w= ( video_w * section_h ) / video_h;
 
 				if ( id ) {
 
@@ -1686,7 +1686,9 @@ jQuery(document).ready(function($) {
 	$('.desktop.tb-scroll-effects .tb-milestone .milestone').each(function() {
 
 		var $el = $(this),
-			num = parseInt($el.data('num'));
+			num = $el.data('num'),
+			$num = $el.find('.num'),
+			hasCommas = String($el.data('formatted-num')).indexOf(',') > -1;
 
 		$el.viewportChecker({
 			classToAdd: 'visible',
@@ -1696,7 +1698,13 @@ jQuery(document).ready(function($) {
 					from: 0,
 					to: num,
 					speed: 900,
-					refreshInterval: 30
+					refreshInterval: 30,
+					formatter: function (value, options) {
+						if (!hasCommas) {
+							return value.toFixed(options.decimals);
+						}
+						return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+					}
 				});
 			}
 		});

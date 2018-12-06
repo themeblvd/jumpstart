@@ -256,28 +256,35 @@ function themeblvd_get_milestone( $args ) {
 
 	$output = sprintf( '<div class="%s">', $class );
 
+	$has_commas = strpos($args['milestone'], ',') !== false;
+
 	$num = filter_var( $args['milestone'], FILTER_SANITIZE_NUMBER_INT );
 
-	$num = str_replace( '-', '', $num );
+	$formatted_num = str_replace( '-', '', $num );
 
-	$num = str_replace( '+', '', $num );
+	$formatted_num = str_replace( '+', '', $formatted_num );
+
+	if ( $has_commas ) {
+		$formatted_num = number_format( $num );
+	}
 
 	$milestone = str_replace(
-		$num,
-		'<span class="num">' . $num . '</span>',
+		$formatted_num,
+		'<span class="num">' . $formatted_num . '</span>',
 		themeblvd_kses( $args['milestone'] )
 	);
 
 	if ( themeblvd_do_scroll_effects() ) {
 
-		$milestone = str_replace( $num, '0', $milestone );
+		$milestone = str_replace( $formatted_num, '0', $milestone );
 
 	}
 
 	$output .= sprintf(
-		'<span class="milestone" style="color: %s;" data-num="%s">%s</span>',
+		'<span class="milestone" style="color: %s;" data-num="%s" data-formatted-num="%s">%s</span>',
 		esc_attr( $args['color'] ),
 		esc_attr( $num ),
+		esc_attr( $formatted_num ),
 		$milestone
 	);
 
