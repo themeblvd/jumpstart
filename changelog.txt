@@ -1,5 +1,9 @@
 # Jump Start Changelog
 
+## 2.3.1 - 12/07/2018
+
+* **Updated Theme Blvd framework to 2.8.1**
+
 ## 2.3.0 - 12/06/2018
 
 * **Updated Theme Blvd framework to 2.8.0**
