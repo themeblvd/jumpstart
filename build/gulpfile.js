@@ -1,4 +1,8 @@
 const gulp = require('gulp');
+const runSequence = require('run-sequence');
+const { clean } = require('./tasks/clean');
+const { buildPot } = require('./tasks/build-pot');
+const { copyTheme, zipTheme } = require('./tasks/build-theme');
 
 const {
   buildFontAwesomeShim,
@@ -11,9 +15,6 @@ const {
   minifyAdminScripts,
   buildAdminStyles
 } = require('./tasks/admin-assets');
-
-const buildPot = require('./tasks/build-pot');
-const packageTheme = require('./tasks/package-theme');
 
 // Build Font Awesome assets.
 gulp.task('build-fontawesome-shim', buildFontAwesomeShim);
@@ -33,5 +34,16 @@ gulp.task('build-admin', [
 ]);
 
 // Final build.
+gulp.task('clean', clean);
 gulp.task('build-pot', buildPot);
-gulp.task('build', ['build-fontawesome', 'build-admin', 'build-pot'], packageTheme); // prettier-ignore
+gulp.task('copy-theme', copyTheme);
+gulp.task('zip-theme', zipTheme);
+
+gulp.task('build', () => {
+  runSequence(
+    'clean',
+    ['build-fontawesome', 'build-admin', 'build-pot'],
+    'copy-theme',
+    'zip-theme'
+  );
+});

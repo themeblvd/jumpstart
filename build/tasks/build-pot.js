@@ -18,4 +18,4 @@ function buildPot() {
     .pipe(gulp.dest('../languages/jumpstart.pot'));
 }
 
-module.exports = buildPot;
+module.exports = { buildPot };

@@ -1,9 +1,9 @@
 const gulp = require('gulp');
 const zip = require('gulp-zip');
-// const { version } = require('../../package.json');
+const { version } = require('../../package.json');
 
-function packageTheme() {
-  gulp
+function copyTheme() {
+  return gulp
     .src([
       '../**/*',
       '!../**/README.md',
@@ -16,8 +16,14 @@ function packageTheme() {
       '!../.gitignore',
       '!../*.json'
     ])
-    .pipe(zip('jumpstart.zip'))
-    .pipe(gulp.dest('../dist/'));
+    .pipe(gulp.dest('../dist/jumpstart'));
 }
 
-module.exports = packageTheme;
+function zipTheme() {
+  return gulp
+    .src(['../dist/**', '!../dist/README.md'])
+    .pipe(zip(`jumpstart-${version}.zip`))
+    .pipe(gulp.dest('../dist'));
+}
+
+module.exports = { copyTheme, zipTheme };

@@ -5,3 +5,4 @@ node_modules
 framework/admin/assets/css
 framework/admin/assets/js/*.js
 languages
+dist/jumpstart
