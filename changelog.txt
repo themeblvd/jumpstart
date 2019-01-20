@@ -2,6 +2,7 @@
 
 ## 2.3.2 - XX/XX/2019
 * **Updated Theme Blvd framework to 2.8.2**
+* Fixed: JavaScript file for chart elements not getting included correctly (Filename had the incorrect case; the file was renamed from `Chart.min.js` to `chart.min.js`).
 
 ## 2.3.1 - 12/07/2018
 
