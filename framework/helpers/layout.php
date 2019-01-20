@@ -59,7 +59,7 @@ function themeblvd_has_header_info( $include = array() ) {
 
 	if ( ! $has_info && in_array( 'social_media', $include ) ) {
 
-		if ( themeblvd_get_option( 'social_media' ) ) {
+		if ( themeblvd_get_option( 'social_media' ) && themeblvd_get_option('social_header') ) {
 
 			$has_info = true;
 
