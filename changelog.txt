@@ -5,6 +5,7 @@
 * Fixed: JavaScript file for chart elements not getting included correctly (Filename had the incorrect case; the file was renamed from `Chart.min.js` to `chart.min.js`).
 * Fixed: Empty top header bar displaying on Super User and Entrepreneur theme bases, when it should be hidden.
 * Fixed: Mobile website header displaying with "Blank" page template; the website header should never display at all with this page template.
+* Fixed: Minor HTML output issue when the theme filters the the WordPress core `[caption]` shortcode.
 
 ## 2.3.1 - 12/07/2018
 

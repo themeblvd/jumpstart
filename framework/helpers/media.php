@@ -462,9 +462,11 @@ function themeblvd_img_caption_shortcode( $output, $attr, $content ) {
 
 	}
 
+	$id = '';
+
 	if ( ! empty( $atts['id'] ) ) {
 
-		$atts['id'] = 'id="' . esc_attr( $atts['id'] ) . '" ';
+		$id = $atts['id'];
 
 	}
 
@@ -510,8 +512,8 @@ function themeblvd_img_caption_shortcode( $output, $attr, $content ) {
 	}
 
 	$output  = sprintf(
-		'<figure %s style="width: %spx;" class="%s">',
-		esc_attr( $atts['id'] ),
+		'<figure id="%s" style="width: %spx;" class="%s">',
+		esc_attr( $id ),
 		esc_attr( $atts['width'] ),
 		esc_attr( $class )
 	);
