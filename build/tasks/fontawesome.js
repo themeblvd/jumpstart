@@ -25,7 +25,7 @@ function buildFontAwesomeJson() {
   const faVersion = dependencies['@fortawesome/fontawesome-free'].replace('^', '');
 
   return remoteSrc(['icons.json'], {
-    base: `https://raw.githubusercontent.com/FortAwesome/Font-Awesome/${faVersion}/advanced-options/metadata/`
+    base: `https://raw.githubusercontent.com/FortAwesome/Font-Awesome/${faVersion}/metadata/`
   }).pipe(gulp.dest('../framework/admin/assets/data'));
 }
 

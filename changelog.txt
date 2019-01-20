@@ -6,6 +6,7 @@
 * Fixed: Empty top header bar displaying on Super User and Entrepreneur theme bases, when it should be hidden.
 * Fixed: Mobile website header displaying with "Blank" page template; the website header should never display at all with this page template.
 * Fixed: Minor HTML output issue when the theme filters the the WordPress core `[caption]` shortcode.
+* Updated: Font Awesome to 5.6.3.
 
 ## 2.3.1 - 12/07/2018
 
@@ -28,7 +29,7 @@
 * Fixed: Linking to `youtu.be` formatted links in a lightbox (sometimes) not working.
 * Fixed: Misaligned checkbox on frontend comment form, when enabling *Settings > Discussion > Show comments cookies opt-in checkbox.*.
 * Removed: Removed outdated style-editor.css file.
-* Updated: FontAwesome to 5.5.
+* Updated: Font Awesome to 5.5.0.
 
 --------------------------------------------------------------
 
@@ -38,7 +39,7 @@
 * Improvement: Better styling for password form on password-protected posts and pages.
 * Fixed: Layout issues on password-protected custom layout pages, when password form is shown.
 * Fixed: "Icon After Button Text" not working properly on buttons.
-* Updated: FontAwesome to 5.0.9.
+* Updated: Font Awesome to 5.0.9.
 
 --------------------------------------------------------------
 
@@ -64,7 +65,7 @@
 * Fixed: Minor PHP warnings when a Jump Start extension's license is activated, but then the plugin is disabled.
 * Fixed: Styling issue on testimonial author icon, when no image is supplied.
 * Fixed: List items generated with `themeblvd_do_fa()` were not closing properly; this primarily relates to using `%icon_name%` in header text and footer text widgets.
-* Updated: FontAwesome to 5.0.8.
+* Updated: Font Awesome to 5.0.8.
 
 --------------------------------------------------------------
 
@@ -96,8 +97,8 @@
 ## 2.2.1 - 01/22/2018
 
 * **Updated Theme Blvd framework to 2.7.1**
-* Improvement: Added FontAwesome v4 shim; use `add_filter( 'themeblvd_icon_shims', '__return_true' );` in your child theme to get v4 icon names working until you can update them all to be compatible with FontAwesome v5.
-* Improvement: Customized `angle-*` solid FontAwesome icons to be thinner; this gets the main navigation submenu indicator icons looking more how they did previously.
+* Improvement: Added Font Awesome v4 shim; use `add_filter( 'themeblvd_icon_shims', '__return_true' );` in your child theme to get v4 icon names working until you can update them all to be compatible with Font Awesome v5.
+* Improvement: Customized `angle-*` solid Font Awesome icons to be thinner; this gets the main navigation submenu indicator icons looking more how they did previously.
 * Improvement: When using the [Theme Blvd Shortcodes](https://wordpress.org/plugins/theme-blvd-shortcodes/) plugin, the "Add Shortcode" button has been added to the new framework rich-text editors, used in the layout builder.
 * Improvement: If deemed to be a "major upgrade" theme updates will now display a notice which includes helpful information about [updating responsibly](http://themeblvd.com/links/update-responsibly).
 * Improvement: Added back `themeblvd_responsive_menu_toggle()` as a deprecated function to avoid fatal errors, if being used in a child theme.
@@ -112,7 +113,7 @@
 * Fixed: Minor console error in Chrome for Edit Profile screen, "[DOM] Found 2 elements with non-unique id #_tb_box_archive."
 * Fixed: Minor JavaScript issues in the admin, when plugin notice is present.
 * Fixed: Mobile panel printing "undefined" when a Secondary Side Navigation is set without a Primary Side Navigation.
-* Updated: FontAwesome to 5.0.4.
+* Updated: Font Awesome to 5.0.4.
 
 --------------------------------------------------------------
 
@@ -135,11 +136,11 @@
 * New: Added options section at *Appearance > Theme Options > Layout > Sticky Header*; you can now designate a custom logo for the sticky header.
 * New: Added options section at *Appearance > Theme Options > Layout > Contact* (this already existed for Agent theme base); your social media contact icons are no longer directly associated with the website header, but can be displayed in different locations.
 * New: Contact icons can now show directly in the main menu of the Entrepreneur and Agent theme bases; this also replaces the popover style contact icons that used to exist with the Entrepreneur base.
-* New: [FontAwesome 5](https://fontawesome.com) Implementation.
+* New: [Font Awesome 5](https://fontawesome.com) Implementation.
 	* More modern implementation of icons through JavaScript.
 	* Improved admin icon browser with live search.
-	* More icons to choose from; all free FontAwesome 5 solid and brand icons included by default.
-	* New filters added for developers to implement FontAwesome Pro (or alternative icon styles) on frontend and into admin icon browser.
+	* More icons to choose from; all free Font Awesome 5 solid and brand icons included by default.
+	* New filters added for developers to implement Font Awesome Pro (or alternative icon styles) on frontend and into admin icon browser.
 * Third-Party Plugin Compatibility
 	* [bbPress](https://wordpress.org/plugins/bbpress/): "Lead Topic" enabled by default, with no more theme option to disable. Use filter `themeblvd_bbp_show_lead_topic` to disable.
 	* [bbPress](https://wordpress.org/plugins/bbpress/): Added new option to disable theme's bbPress styling at *Appearance > Theme Options > Plugins > bbPress*.
@@ -158,7 +159,7 @@
 * Improvement: There is now a clear separation between the desktop header and the mobile header, and when one is shown, the other is hidden.
 * Improvement: Footer design and user options have now been standardized across all theme bases; for all theme bases except Developer, see modified options at *Appearance > Theme Options > Styles > Footer*.
 * Improvement: Better handling of background video; instead of just a black screen, the placeholder image will now display as a background image while the video is loading, and continue to show when the video can't be loaded.
-* Improvement: Better handling of retrieving FontAwesome icons for admin icon browser for more server setups, along with minor UI fixes.
+* Improvement: Better handling of retrieving Font Awesome icons for admin icon browser for more server setups, along with minor UI fixes.
 * Improvement: On all theme bases, if no "Primary Navigation" menu is assigned, menu will not display (previously, only the Agent base behaved like this).
 * Improvement: Collapsible widget area locations no longer have the word "Ads" in their titles.
 * Improvement: Better consistency and styling with displaying collapsible widget areas.
@@ -220,7 +221,7 @@
 	* Removed the deprecated action hook, `themeblvd_header_above`; use `themeblvd_header_content` or `themeblvd_header_top` instead.
 	* Removed the filter `themeblvd_featured_thumb_frame` to add old Bootstrap thumbnail border to images; use CSS customization instead.
 	* Optimized (minified) CSS file included on frontend for each theme base.
-* Updated: FontAwesome to 5.0.1.
+* Updated: Font Awesome to 5.0.1.
 * Updated: Chart.js to 2.7.1.
 * Updated: easyPieChart to 2.1.6.
 * Updated: Isotope to 3.0.4.
@@ -348,7 +349,7 @@
 * Fixed: Parallax backgrounds no longer display on mobile devices with large viewports (landscape oriented iPad for example); this was resulting in janky scrolling behavior and was never intended to be supported on true mobile devices.
 * Removed: Admin-side global `$content_width` hack, originally implemented to help manage videos in WP editor. No longer needed and was causing other conflicts with inserting images.
 * Updated: Owl Carousel to 2.2.1.
-* Updated: FontAwesome to 4.7.
+* Updated: Font Awesome to 4.7.
 
 --------------------------------------------------------------
 
@@ -523,7 +524,7 @@
     * Pricing table columns now display in correct order, from right-to-left.
     * Progress bars now display and animate out from right.
     * "Custom CSS" option code editor on theme options page now works with RTL.
-* Updated: FontAwesome to 4.6.
+* Updated: Font Awesome to 4.6.
 * Updated: FlexSlider to 2.6.
 * **Important:** Removed old IE browser support; see updated [browser-compatibility terms](http://wpjumpstart.com/terms/#browsers).
 * **Important:** Theme's registered text domain for localization was changed from `themeblvd` to `jumpstart` to meet wordpress.org localization standards.
@@ -604,7 +605,7 @@
 * Fixed: Columns in custom layouts with backgrounds had margin below, when stacking for mobile.
 * Fixed: Incorrect file permissions of files at `/framework/assets/svg/` for those uploading the theme manually outside of WordPress.
 * Fixed: Theme's default WPML language selector listing languages without translations.
-* Fixed: System for generating FontAwesome icon selections in admin.
+* Fixed: System for generating Font Awesome icon selections in admin.
 * Fixed: Minor admin compatibility issue with WPML 3.2 update.
 * Fixed: Minor admin styling issues with WordPress 4.3.
 * Fixed: Outputted Google Font name CSS declarations not being in quotes.
@@ -612,7 +613,7 @@
 * Removed: Default customizer customizations and framework customizer API functions.
 * Regenerated default localization files.
 * Updated: Bootstrap to 3.3.5.
-* Updated: FontAwesome to 4.4.
+* Updated: Font Awesome to 4.4.
 
 --------------------------------------------------------------
 
@@ -667,7 +668,7 @@
 * Improvement: Typography options can now be set more precisely to use specific weights and subsets from Google Font directory.
 * Removed: Post List Slider.
 * Updated: Bootstrap to 3.3.
-* Updated: FontAwesome to 4.2.
+* Updated: Font Awesome to 4.2.
 
 **Important!** If updating from a development, beta, or RC version of Jump Start 2:
 
