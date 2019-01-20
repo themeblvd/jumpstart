@@ -879,6 +879,13 @@ class Theme_Blvd_Frontend_Init {
 
 		}
 
+		// Always hide header, if it's the "Blank" page template.
+		if ( is_page_template( 'template_blank.php' ) ) {
+
+			$this->config['top'] = false;
+
+		}
+
 		// Hide footer, if necessary.
 		if ( themeblvd_supports( 'display', 'hide_bottom' ) ) {
 
