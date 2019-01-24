@@ -7,6 +7,7 @@
 * Fixed: Mobile website header displaying with "Blank" page template; the website header should never display at all with this page template.
 * Fixed: Minor HTML output issue when the theme filters the the WordPress core `[caption]` shortcode.
 * Fixed: Stars not displaying when a WooCommerce user is writing a review.
+* Fixed: Plus (+) and minus (-) symbols breaking the "Milestone" component.
 * Updated: Font Awesome to 5.6.3.
 
 ## 2.3.1 - 12/07/2018

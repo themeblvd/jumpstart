@@ -260,9 +260,9 @@ function themeblvd_get_milestone( $args ) {
 
 	$num = filter_var( $args['milestone'], FILTER_SANITIZE_NUMBER_INT );
 
-	$formatted_num = str_replace( '-', '', $num );
+	$num = str_replace( array('-', '+'), '', $num );
 
-	$formatted_num = str_replace( '+', '', $formatted_num );
+	$formatted_num = str_replace( array('-', '+'), '', $num );
 
 	if ( $has_commas ) {
 		$formatted_num = number_format( $num );
