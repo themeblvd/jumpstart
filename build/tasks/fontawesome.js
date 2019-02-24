@@ -32,7 +32,7 @@ function buildFontAwesomeJson() {
 /**
  * Build a custom FontAwesome JavaScript file.
  */
-function buildFontAwesome() {
+function buildFontAwesomeJs() {
   const dir = '../framework/assets/js';
 
   const src = [
@@ -81,5 +81,5 @@ function buildFontAwesome() {
 module.exports = {
   buildFontAwesomeShim,
   buildFontAwesomeJson,
-  buildFontAwesome
+  buildFontAwesomeJs
 };

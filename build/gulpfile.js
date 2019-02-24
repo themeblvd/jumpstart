@@ -1,5 +1,4 @@
-const gulp = require('gulp');
-const runSequence = require('run-sequence');
+const { task, series, parallel } = require('gulp');
 const { clean } = require('./tasks/clean');
 const { buildPot } = require('./tasks/build-pot');
 const { copyTheme, zipTheme } = require('./tasks/build-theme');
@@ -7,7 +6,7 @@ const { copyTheme, zipTheme } = require('./tasks/build-theme');
 const {
   buildFontAwesomeShim,
   buildFontAwesomeJson,
-  buildFontAwesome
+  buildFontAwesomeJs
 } = require('./tasks/fontawesome');
 
 const {
@@ -17,33 +16,47 @@ const {
 } = require('./tasks/admin-assets');
 
 // Build Font Awesome assets.
-gulp.task('build-fontawesome-shim', buildFontAwesomeShim);
-gulp.task('build-fontawesome-json', ['build-fontawesome-shim'], buildFontAwesomeJson); // prettier-ignore
-gulp.task('build-fontawesome', ['build-fontawesome-json'], buildFontAwesome);
+task('build-fontawesome-shim', buildFontAwesomeShim);
+task('build-fontawesome-json', buildFontAwesomeJson);
+task('build-fontawesome-js', buildFontAwesomeJs);
+
+task(
+  'build-fontawesome',
+  series(
+    'build-fontawesome-shim',
+    'build-fontawesome-json',
+    'build-fontawesome-js'
+  )
+);
 
 // Build admin assets.
-gulp.task('build-admin-script-options', () => buildAdminScripts('options.js'));
-gulp.task('build-admin-script-utils', () => buildAdminScripts('utils.js'));
-gulp.task('minify-admin-scripts', minifyAdminScripts);
-gulp.task('build-admin-styles', buildAdminStyles);
-gulp.task('build-admin', [
-  'build-admin-script-options',
-  'build-admin-script-utils',
-  'minify-admin-scripts',
-  'build-admin-styles'
-]);
+task('build-admin-script-options', () => buildAdminScripts('options.js'));
+task('build-admin-script-utils', () => buildAdminScripts('utils.js'));
+task('minify-admin-scripts', minifyAdminScripts);
+task('build-admin-styles', buildAdminStyles);
+
+task(
+  'build-admin',
+  parallel(
+    'build-admin-script-options',
+    'build-admin-script-utils',
+    'minify-admin-scripts',
+    'build-admin-styles'
+  )
+);
 
 // Final build.
-gulp.task('clean', clean);
-gulp.task('build-pot', buildPot);
-gulp.task('copy-theme', copyTheme);
-gulp.task('zip-theme', zipTheme);
+task('clean', clean);
+task('build-pot', buildPot);
+task('copy-theme', copyTheme);
+task('zip-theme', zipTheme);
 
-gulp.task('build', () => {
-  runSequence(
+task(
+  'build',
+  series(
     'clean',
-    ['build-fontawesome', 'build-admin', 'build-pot'],
+    parallel('build-fontawesome', 'build-admin', 'build-pot'),
     'copy-theme',
     'zip-theme'
-  );
-});
+  )
+);
