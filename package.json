@@ -1,6 +1,6 @@
 {
   "name": "jumpstart",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "description": "Jump Start WordPress Theme",
   "main": "gulpfile.js",
   "scripts": {

@@ -1,6 +1,11 @@
 # Jump Start Changelog
 
+## 2.3.3 - 02/24/2019
+
+--------------------------------------------------------------
+
 ## 2.3.2 - 01/23/2019
+
 * **Updated Theme Blvd framework to 2.8.2**
 * Fixed: JavaScript file for chart elements not getting included correctly (Filename had the incorrect case; the file was renamed from `Chart.min.js` to `chart.min.js`).
 * Fixed: Empty top header bar displaying on Super User and Entrepreneur theme bases, when it should be hidden.
