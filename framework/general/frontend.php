@@ -945,7 +945,7 @@ if ( ! function_exists( 'themeblvd_include_scripts' ) ) {
 				'bootstrap',
 				esc_url( TB_FRAMEWORK_URI . "/assets/plugins/bootstrap/js/bootstrap{$suffix}.js" ),
 				array( 'jquery' ),
-				'3.3.7',
+				'3.4.1',
 				$in_footer
 			);
 
@@ -1050,7 +1050,7 @@ if ( ! function_exists( 'themeblvd_include_styles' ) ) {
 				'bootstrap',
 				esc_url( TB_FRAMEWORK_URI . "/assets/plugins/bootstrap/css/bootstrap{$suffix}.css" ),
 				array(),
-				'3.3.7',
+				'3.4.1',
 				'all'
 			);
 
