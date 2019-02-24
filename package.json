@@ -4,10 +4,10 @@
   "description": "Jump Start WordPress Theme",
   "main": "gulpfile.js",
   "scripts": {
-    "build:fontawesome": "gulp --gulpfile ./build/gulpfile.js build-fontawesome",
-    "build:admin": "gulp --gulpfile ./build/gulpfile.js build-admin",
-    "build:pot": "gulp --gulpfile ./build/gulpfile.js build-pot",
-    "build": "gulp --gulpfile ./build/gulpfile.js build"
+    "build:fontawesome": "gulp --gulpfile ./gulpfile.js build-fontawesome",
+    "build:admin": "gulp --gulpfile ./gulpfile.js build-admin",
+    "build:pot": "gulp --gulpfile ./gulpfile.js build-pot",
+    "build": "gulp --gulpfile ./gulpfile.js build"
   },
   "repository": {
     "type": "git",

@@ -11,8 +11,8 @@ const { dependencies } = require('../../package.json');
  */
 function buildFontAwesomeShim() {
   const files = [
-    '../node_modules/@fortawesome/fontawesome-free/js/v4-shims.js',
-    '../node_modules/@fortawesome/fontawesome-free/js/v4-shims.min.js'
+    './node_modules/@fortawesome/fontawesome-free/js/v4-shims.js',
+    './node_modules/@fortawesome/fontawesome-free/js/v4-shims.min.js'
   ];
 
   return gulp.src(files).pipe(gulp.dest('../framework/assets/js/'));
@@ -26,7 +26,7 @@ function buildFontAwesomeJson() {
 
   return remoteSrc(['icons.json'], {
     base: `https://raw.githubusercontent.com/FortAwesome/Font-Awesome/${faVersion}/metadata/`
-  }).pipe(gulp.dest('../framework/admin/assets/data'));
+  }).pipe(gulp.dest('./framework/admin/assets/data'));
 }
 
 /**
@@ -36,9 +36,9 @@ function buildFontAwesomeJs() {
   const dir = '../framework/assets/js';
 
   const src = [
-    '../node_modules/@fortawesome/fontawesome-free/js/brands.js',
-    '../node_modules/@fortawesome/fontawesome-free/js/solid.js',
-    '../node_modules/@fortawesome/fontawesome-free/js/fontawesome.js'
+    './node_modules/@fortawesome/fontawesome-free/js/brands.js',
+    './node_modules/@fortawesome/fontawesome-free/js/solid.js',
+    './node_modules/@fortawesome/fontawesome-free/js/fontawesome.js'
   ];
 
   const find_icons = [

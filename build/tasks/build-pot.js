@@ -7,7 +7,7 @@ const { version } = require('../../package.json');
  */
 function buildPot() {
   return gulp
-    .src('../**/*.php')
+    .src('./**/*.php')
     .pipe(
       wpPot({
         domain: 'jumpstart',
@@ -15,7 +15,7 @@ function buildPot() {
         relativeTo: '../languages'
       })
     )
-    .pipe(gulp.dest('../languages/jumpstart.pot'));
+    .pipe(gulp.dest('./languages/jumpstart.pot'));
 }
 
 module.exports = { buildPot };

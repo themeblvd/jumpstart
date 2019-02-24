@@ -6,7 +6,7 @@ const sass = require('gulp-sass');
 const minifycss = require('gulp-clean-css');
 const autoprefixer = require('gulp-autoprefixer');
 const browserslist = require('../browserslist');
-const dir = '../framework/admin/assets';
+const dir = './framework/admin/assets';
 
 /**
  * Build admin scripts from partial files.

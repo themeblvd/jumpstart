@@ -1,19 +1,19 @@
 const { task, series, parallel } = require('gulp');
-const { clean } = require('./tasks/clean');
-const { buildPot } = require('./tasks/build-pot');
-const { copyTheme, zipTheme } = require('./tasks/build-theme');
+const { clean } = require('./build/tasks/clean');
+const { buildPot } = require('./build/tasks/build-pot');
+const { copyTheme, zipTheme } = require('./build/tasks/build-theme');
 
 const {
   buildFontAwesomeShim,
   buildFontAwesomeJson,
   buildFontAwesomeJs
-} = require('./tasks/fontawesome');
+} = require('./build/tasks/fontawesome');
 
 const {
   buildAdminScripts,
   minifyAdminScripts,
   buildAdminStyles
-} = require('./tasks/admin-assets');
+} = require('./build/tasks/admin-assets');
 
 // Build Font Awesome assets.
 task('build-fontawesome-shim', buildFontAwesomeShim);
@@ -49,6 +49,7 @@ task(
 task('clean', clean);
 task('build-pot', buildPot);
 task('copy-theme', copyTheme);
+// task('clean-copied-theme', cleanCopiedTheme);
 task('zip-theme', zipTheme);
 
 task(
@@ -57,6 +58,7 @@ task(
     'clean',
     parallel('build-fontawesome', 'build-admin', 'build-pot'),
     'copy-theme',
+    // 'clean-copied-theme',
     'zip-theme'
   )
 );
