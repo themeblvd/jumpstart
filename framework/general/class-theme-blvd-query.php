@@ -226,6 +226,24 @@ class Theme_Blvd_Query {
 
 				}
 			}
+
+			if ( ! empty( $args['posts_per_page'] ) ) {
+
+				$query['posts_per_page'] = $args['posts_per_page'];
+
+			}
+
+			if ( ! empty( $args['orderby'] ) ) {
+
+				$query['orderby'] = $args['orderby'];
+
+			}
+
+			if ( ! empty( $args['order'] ) ) {
+
+				$query['order'] = $args['order'];
+
+			}
 		}
 
 		// If no custom query, let's build it.

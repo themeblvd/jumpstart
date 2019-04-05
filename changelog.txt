@@ -2,6 +2,9 @@
 
 ## 2.3.4 - XX/XX/2019
 
+* **Updated Theme Blvd framework to 2.8.4**
+* Fixed: Pagination and ordering not working properly with post grid of page slugs.
+
 --------------------------------------------------------------
 
 ## 2.3.3 - 02/24/2019
