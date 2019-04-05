@@ -213,9 +213,10 @@ class Theme_Blvd_Query {
 			$pages = explode( ',', $pages );
 
 			$query = array(
-				'post_type' => 'page',
-				'post__in'  => array(),
-				'orderby'   => 'post__in',
+				'post_type'           => 'page',
+				'post__in'            => array(),
+				'orderby'             => 'post__in',
+				'ignore_sticky_posts' => true,
 			);
 
 			if ( $pages ) {

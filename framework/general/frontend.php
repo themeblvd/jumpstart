@@ -376,9 +376,10 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
 			 *
 			 * @param array Post types.
 			 */
-			'post_type' => apply_filters( 'themeblvd_page_list_post_types', array( 'page', 'post', 'portfolio_item' ) ),
-			'post__in'  => array(),
-			'orderby'   => 'post__in',
+			'post_type'           => apply_filters( 'themeblvd_page_list_post_types', array( 'page', 'post', 'portfolio_item' ) ),
+			'post__in'            => array(),
+			'orderby'             => 'post__in',
+			'ignore_sticky_posts' => true
 		);
 
 		if ( $options['pages'] ) {
