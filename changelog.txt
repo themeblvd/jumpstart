@@ -5,6 +5,7 @@
 * **Updated Theme Blvd framework to 2.8.4**
 * Fixed: Pagination and ordering not working properly with post grid of specified page slugs.
 * Fixed: Sticky posts showing in post grid of specified page slugs.
+* Fixed: Mini post lists not being aligned correctly on mobile.
 
 --------------------------------------------------------------
 

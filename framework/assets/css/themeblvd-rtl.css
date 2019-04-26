@@ -4596,8 +4596,8 @@ body.mobile .tb-bg-video {
 	margin: 5px 0 14px 0;
 }
 @media (max-width: 767px) {
-	.list-wrap > article.has-thumbnail,
-	.list-wrap > article.has-date {
+	.list-wrap article.has-thumbnail,
+	.list-wrap article.has-date {
 		min-height: 0;
 		padding-right: 0;
 	}
