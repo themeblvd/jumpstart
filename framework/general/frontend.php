@@ -330,7 +330,7 @@ function themeblvd_get_posts_args( $options, $type = 'list' ) {
 			}
 
 			// Force posts per page on grids.
-			if ( ( 'grid' === $display || 'showcase' === $display ) ) {
+			if ( 'grid' === $display || 'showcase' === $display ) {
 
 				/**
 				 * Filters whether to force a maximum posts per
