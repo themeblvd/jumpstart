@@ -29,8 +29,8 @@
  *     @type string       $orderby        Used for `orderby` parameter of WP_Query.
  *     @type string       $order          Used for `order` parameter of WP_Query.
  *     @type string|int   $offset         Used for `offset` parameter of WP_Query.
- *     @type string|int   $columns        If $context == `grid`, number of columns.
- *     @type string|int   $rows           If $context == `grid`, number of rows.
+ *     @type string|int   $columns        If $context == `grid` || $context == `showcase`, number of columns.
+ *     @type string|int   $rows           If $context == `grid` || $context == `showcase`, number of rows.
  *     @type string|int   $slides         If $context == `grid` && $display == `slider`, number of slides.
  *     @type string       $pages          Comma-separated list of page slugs to query.
  *     @type string|array $query          Custom query, overrides all else.
